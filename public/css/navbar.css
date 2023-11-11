@@ -1,0 +1,15 @@
+body{
+    background-color: white;
+}
+ul .collapse {
+    transition: height .35s ease; /* Sesuaikan durasi sesuai kebutuhan Anda */
+}
+ul li a span{
+    color: white;
+}
+ul li a span:hover {
+    color: #303947;;
+}
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
