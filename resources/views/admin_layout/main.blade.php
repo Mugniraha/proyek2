@@ -23,9 +23,9 @@
         <div class="container-fluid">
             <div class="row flex-nowrap">
                 <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0" style="background-color:#4C6687 ">
-                    <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                        <a href="/" class="d-flex  align-items-center pb-3 mb-md-0 me-md-auto text-dark text-decoration-none  w-100 rounded rounded-pill" style="background-color:#D9D9D9">
-                            <img class="align-items-center ms-4 mt-3" src="{{asset('img/logo.png')}}" alt="" width="35%">
+                    <div class="sidebar d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                        <a href="/" class=" d-flex  align-items-center pb-3 mb-md-0 me-md-auto text-dark text-decoration-none  w-100 rounded rounded-pill" style="background-color:#D9D9D9">
+                            <img class="align-items-center ms-4 mt-3" src="{{asset('img/logo.png')}}" alt="" width="25%">
                             <span class="d-none fw-bolder d-sm-block mt-3 ms-2" style="color:#303947 ">Bengkel Welding</span>
                         </a>
                         <ul class="nav nav-pills flex-column mt-4 mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
