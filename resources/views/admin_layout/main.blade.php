@@ -97,7 +97,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col py-3 p-5">
+                <div class="col py-3 p-5 container">
                     @yield('content')
                 </div>
             </div>
