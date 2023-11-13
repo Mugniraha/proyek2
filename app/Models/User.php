@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -19,6 +20,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'telp',
         'email',
         'password',
     ];
@@ -42,4 +44,26 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * Change user password.
+     *
+     * @param  string  $oldPassword
+     * @param  string  $newPassword
+     * @return bool
+     */
+    public function changePassword($oldPassword, $newPassword)
+    {
+        // Pastikan password lama sesuai
+        if (!Hash::check($oldPassword, $this->password)) {
+            return false;
+        }
+
+        // Update password baru
+        $this->password = Hash::make($newPassword);
+        $this->save();
+
+        return true;
+    }
+
 }

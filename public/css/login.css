@@ -1,0 +1,43 @@
+/* File: resources/css/login.css */
+
+.custom-button {
+    width: 20%;
+    background-color: rgb(226, 213, 127);
+    color: black;
+}
+
+.bg {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: -45px;
+    left: 43%;
+}
+
+.card-header {
+    text-align: center;
+    background-color: rgb(237, 230, 210);
+}
+
+.card {
+    margin-top: 20px;
+    background-color: rgb(66, 62, 149);
+
+}
+
+.card-body {
+    margin-top: 20px;
+    color: white;
+}
+
+.form-label{
+    color: white;
+}
+
+.d-flex span {
+    color: white; /* Tambahkan properti color di sini */
+}
+
+.d-flex a {
+    color: rgb(236, 219, 104); /* Tambahkan properti color di sini */
+}
