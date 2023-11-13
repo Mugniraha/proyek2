@@ -1,0 +1,48 @@
+body{
+    background-color: white;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+ul .collapse {
+    transition: height .35s ease; /* Sesuaikan durasi sesuai kebutuhan Anda */
+}
+ul li a span{
+    color: white;
+}
+ul li a span:hover {
+    color: #303947;;
+}
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.sidebar {
+    position: fixed;
+    height: 100%;
+    width: 250px;
+    background-color: #4C6687;
+    color: white;
+    padding-top: 20px;
+}
+
+.content {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        position: static;
+        height: auto;
+        padding-top: 10px;
+    }
+
+    .content {
+        margin-left: 0;
+    }
+}

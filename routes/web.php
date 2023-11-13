@@ -1,8 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+<<<<<<< HEAD
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ChangePasswordController;
+=======
+use App\Http\Controllers\profilController;
+use App\Http\Controllers\galeriController;
+use App\Http\Controllers\serviceController;
+use App\Http\Controllers\customController;
+use App\Http\Controllers\historiController;
+>>>>>>> dca8182ef4ae6aedba9e6b6192a4a2a7d7376af9
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +22,12 @@ use App\Http\Controllers\ChangePasswordController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [profilController::class, 'index']);
+Route::get('/profil', function(){
+    $slug = "profil";
+    return view('admin_konten.profil', compact('slug'));
 });
+<<<<<<< HEAD
 
 Route::get('/register', [RegisterController::class, 'registerIndex'])->name('registerIndex');
 Route::post('/register', [RegisterController::class, 'registerPost'])->name('registerPost');
@@ -29,3 +39,12 @@ Route::put('password/edit', [ChangePasswordController::class, 'update'])->name('
 //     Route::get('/change-password', [ChangePasswordController::class, 'showForm'])->name('password.change');
 //     Route::post('/change-password', [ChangePasswordController::class, 'changePassword']);
 // });
+=======
+Route::get('/', [galeriController::class, 'index']);
+Route::get('/galeri', [galeriController::class, 'index']);
+
+// Route::get('/service', function () {
+//     $slug = "service";
+//     return view('admin_konten.service', compact('slug'));
+// });
+>>>>>>> dca8182ef4ae6aedba9e6b6192a4a2a7d7376af9
