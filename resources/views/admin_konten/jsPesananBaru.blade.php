@@ -1,30 +1,59 @@
 @extends('admin_layout.main')
 @section('content')
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Dashboard Admin</li>
+        <li class="breadcrumb-item">Kelola Jasa Service</li>
+        <li class="breadcrumb-item active" aria-current="page">Pesanan Baru</li>
+    </ol>
+</nav>
 <table id="example" class="table" style="width:100%">
     <a href="#" type="button" class="btn btn-primary mb-5" data-bs-toggle="modal" data-bs-target="#tambah"><i class="fa-solid fa-plus" style="color: #ffffff;"></i> Tambah Galeri</a>
     <thead>
         <tr>
-            <th>No</th>
-            <th>Gambar</th>
-            <th>Deskripsi</th>
-            <th>Harga</th>
-            <th>Aksi</th>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Office</th>
+            <th>Age</th>
+            <th>Start date</th>
+            <th>Salary</th>
         </tr>
     </thead>
     <tbody>
-        @foreach ($galeri as $row)
         <tr>
-            <td>{{$loop->iteration}}</td>
-            <td>{{  $row->gambar }}</td>
-            <td>{{$row->deskripsi_galeri}}</td>
-            <td>{{$row->harga}}</td>
+            <td>Tiger Nixon</td>
+            <td>System Architect</td>
+            <td>Edinburgh</td>
+            <td>61</td>
+            <td>2011-04-25</td>
             <td>
-                <a href="#" type="button" class="btn btn-sm btn-warning btn-primary w-50" data-bs-toggle="modal" data-bs-target="#edit{{$row->id_galeri}}"><i class="fa-regular fa-pen-to-square"></i></a>
-                <a  href="#" type="button" class="mt-2 btn btn-sm btn-danger btn-primary w-50" data-bs-toggle="modal" data-bs-target="#hapus{{$row->id_galeri}}"><i class="fa-solid fa-trash"></i></a>
+                <a href="#" type="button" class="btn btn-sm btn-warning btn-primary w-50" data-bs-toggle="modal" data-bs-target="#edit"><i class="fa-regular fa-pen-to-square"></i></a>
+                <a  href="#" type="button" class="mt-2 btn btn-sm btn-danger btn-primary w-50" data-bs-toggle="modal" data-bs-target="#hapus"><i class="fa-solid fa-trash"></i></a>
             </td>
         </tr>
-
-        <div class="modal fade modal-dialog-scrollable text-start" id="edit{{$row->id_galeri}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <tr>
+            <td>Garrett Winters</td>
+            <td>Accountant</td>
+            <td>Tokyo</td>
+            <td>63</td>
+            <td>2011-07-25</td>
+            <td>
+                <a href="#" type="button" class="btn btn-sm btn-warning btn-primary w-50" data-bs-toggle="modal" data-bs-target="#edit"><i class="fa-regular fa-pen-to-square"></i></a>
+                <a  href="#" type="button" class="mt-2 btn btn-sm btn-danger btn-primary w-50" data-bs-toggle="modal" data-bs-target="#hapus"><i class="fa-solid fa-trash"></i></a>
+            </td>
+        </tr>
+        <tr>
+            <td>Ashton Cox</td>
+            <td>Junior Technical Author</td>
+            <td>San Francisco</td>
+            <td>66</td>
+            <td>2009-01-12</td>
+            <td>
+                <a href="#" type="button" class="btn btn-sm btn-warning btn-primary w-50" data-bs-toggle="modal" data-bs-target="#edit"><i class="fa-regular fa-pen-to-square"></i></a>
+                <a  href="#" type="button" class="mt-2 btn btn-sm btn-danger btn-primary w-50" data-bs-toggle="modal" data-bs-target="#hapus"><i class="fa-solid fa-trash"></i></a>
+            </td>
+        </tr>
+        <div class="modal fade modal-dialog-scrollable text-start" id="edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -32,21 +61,21 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{route('galeri.update', $row->id_galeri)}}" method="POST" enctype="multipart/form-data">
+                        <form action="" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="mb-3">
                                 <label for="formGroupExampleInput" class="form-label">Gambar</label>
-                                <input type="file" class="form-control" id="formGroupExampleInput" name="gambar" placeholder="" value="{{$row->gambar}}">
-                                <input type="hidden" value="{{$row->id_galeri}}">
+                                <input type="file" class="form-control" id="formGroupExampleInput" name="gambar" placeholder="" value="">
+                                <input type="hidden" value="">
                             </div>
                             <div class="mb-3">
                                 <label for="formGroupExampleInput2" class="form-label">Deskripsi</label>
-                                <textarea type="number" class="form-control" id="formGroupExampleInput2" name="deskripsi_galeri" placeholder="" value="">{{$row->deskripsi_galeri}}</textarea>
+                                <textarea type="number" class="form-control" id="formGroupExampleInput2" name="deskripsi_galeri" placeholder="" value=""></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="formGroupExampleInput2" class="form-label">Harga</label>
-                                <input type="number" class="form-control" id="formGroupExampleInput2" name="harga" placeholder="" value="{{$row->harga}}">
+                                <input type="number" class="form-control" id="formGroupExampleInput2" name="harga" placeholder="" value="">
                             </div>
 
                             </div>
@@ -60,14 +89,14 @@
             </div>
         </div>
         {{-- Modal untuk hapus data --}}
-        <div class="modal fade modal-dialog-scrollable" id="hapus{{$row->id_galeri}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal fade modal-dialog-scrollable" id="hapus" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="staticBackdropLabel">Hapus Data</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                        <form action="{{route('galeri.destroy', $row->id_galeri)}}" method="POST" enctype="multipart/form-data">
+                        <form action="" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('DELETE')
                             <div class="modal-body">
@@ -81,7 +110,6 @@
                 </div>
             </div>
         </div>
-        @endforeach
         @if(session('success'))
                 <div class="alert alert-success mb-2">
                     {{ session('success') }}
@@ -98,7 +126,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{route('galeri.store')}}" method="POST" enctype="multipart/form-data">
+                <form action="" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="formGroupExampleInput" class="form-label">Gambar</label>

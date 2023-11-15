@@ -4,7 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\profilController;
-use App\Http\Controllers\galeriController;
+use App\Http\Controllers\admin\galeriController;
+use App\Http\Controllers\admin\jaserPesananBaruController;
+use App\Http\Controllers\admin\jaserDalamProsesController;
+use App\Http\Controllers\admin\jaserSelesaiController;
 use App\Http\Controllers\serviceController;
 use App\Http\Controllers\customController;
 use App\Http\Controllers\historiController;
@@ -37,7 +40,11 @@ Route::put('password/edit', [ChangePasswordController::class, 'update'])->name('
 //     Route::get('/change-password', [ChangePasswordController::class, 'showForm'])->name('password.change');
 //     Route::post('/change-password', [ChangePasswordController::class, 'changePassword']);
 // });
+Route::get('/', [galeriController::class, 'index']);
 Route::resource('/galeri', galeriController::class);
+Route::resource('/jsPesananbaru', jaserPesananBaruController::class);
+Route::resource('/jsDalamproses', jaserDalamProsesController::class);
+Route::resource('/jsSelesai', jaserSelesaiController::class);
 
 // Route::get('/galeri', [galeriController::class, 'index']);
 

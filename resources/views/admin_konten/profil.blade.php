@@ -80,7 +80,7 @@
                                         <label for="exampleFormControlTextarea1" class="form-label">Alamat</label>
                                         <textarea class="form-control" id="exampleFormControlTextarea1" name="alamat" placeholder="" rows="3"></textarea>
                                     </div>
-                                
+
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Batal</button>
@@ -152,7 +152,7 @@
                                 <label for="exampleFormControlTextarea1" class="form-label">Alamat</label>
                                 <textarea class="form-control" id="exampleFormControlTextarea1" name="alamat" placeholder="" rows="3"></textarea>
                             </div>
-                        
+
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Batal</button>

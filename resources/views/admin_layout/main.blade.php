@@ -15,8 +15,8 @@
         <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
         <script src="{{asset('js/tables.js')}}"></script>
 
-        
-        
+
+
         <link rel="stylesheet" href="{{asset('css/navbar.css')}}">
     </head>
     <body>
@@ -44,13 +44,13 @@
                                     <i class="fa-solid fa-sliders" style="color: #000000;"></i> <span class="ms-1 d-none d-sm-inline">Kelola Jasa Service</span> </a>
                                 <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                                     <li class="w-100">
-                                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline text-white">Pesanan Baru</span> </a>
+                                        <a href="" class="nav-link {{($slug === "jsPesananBaru") ? : ''}} px-0"> <span class="d-none d-sm-inline text-white">Pesanan Baru</span> </a>
                                     </li>
                                     <li>
-                                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline text-white">Dalam Proses</span> </a>
+                                        <a href="{{url('/jsDalamproses')}}" class="nav-link {{($slug === "jsDalamProses") ? 'active' : ''}} px-0"> <span class="d-none d-sm-inline text-white">Dalam Proses</span> </a>
                                     </li>
                                     <li>
-                                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline text-white">Selesai</span> </a>
+                                        <a href="{{url('/jsSelesai')}}" class="nav-link {{($slug === "jsDalamProses")?:''}} px-0"> <span class="d-none d-sm-inline text-white">Selesai</span> </a>
                                     </li>
                                 </ul>
                             </li>
@@ -97,12 +97,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="col py-3 p-5 container">
+                <div class="col py-3 p-5 container-fluid">
                     @yield('content')
                 </div>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" 
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     </body>
 </html>

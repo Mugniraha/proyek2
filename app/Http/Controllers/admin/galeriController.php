@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
+use App\Http\Controllers\Controller;
 
 use App\Models\galeri;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class galeriController extends Controller
     public function index()
     {
         $slug = "galeri";
-        $galeri = $galeri = DB::table('galeris')->get();;
+        $galeri = DB::table('galeris')->get();
         return view('admin_konten.galeri', compact('slug','galeri'));
     }
 
@@ -25,7 +26,7 @@ class galeriController extends Controller
      */
     public function create()
     {
-        //                                                     
+        //
     }
 
     /**
@@ -39,7 +40,7 @@ class galeriController extends Controller
             'deskripsi_galeri' => 'required',
             'harga'          => 'required',
         ]);
-        
+
         $img = $request->file('gambar');
         $img->storeAs('public/img',$img->hashName());
         // Proses insert
@@ -48,9 +49,9 @@ class galeriController extends Controller
             'deskripsi_galeri' => $request->deskripsi_galeri,
             'harga'          => $request->harga,
         ]);
-    
+
         // Redirect ke halaman yang sesuai
-        return redirect()->route('admin_konten.galeri')->with(['success' => 'Data Berhasil ditambah']);
+        return redirect('/galeri')->with(['success' => 'Data Berhasil ditambah']);
     }
 
     /**
@@ -80,16 +81,16 @@ class galeriController extends Controller
             'deskripsi_galeri' => 'required',
             'harga' => 'required',
         ]);
-    
+
         if ($request->hasFile('gambar')) {
             $img = $request->file('gambar');
             $newFileName = $img->hashName(); // Menggunakan hashName sebagai nama baru
             $img->storeAs('public/img', $newFileName);
-    
+
             // Hapus gambar lama jika sudah ada
             $oldFileName = DB::table('galeris')->where('id_galeri', $id)->value('gambar');
             Storage::delete('public/img/' . $oldFileName);
-    
+
             // Proses update
             DB::table('galeris')->where('id_galeri', $id)->update([
                 'gambar' => $newFileName,
@@ -103,10 +104,10 @@ class galeriController extends Controller
                 'harga' => $request->harga,
             ]);
         }
-        
-    
+
+
         // Redirect ke halaman yang sesuai
-        return redirect()->route('admin_konten.galeri')->with(['success' => 'Data Berhasil ditambah']);
+        return redirect('/galeri')->with(['success' => 'Data Berhasil ditambah']);
 
 
     }
@@ -117,6 +118,6 @@ class galeriController extends Controller
     public function destroy(string $id)
     {
         DB::table('galeris')->where('id_galeri',$id)-> delete();
-        return redirect()->route('admin_konten.galeri')->with(['success' => 'Data Berhasil dihapus']);
+        return redirect('/galeri')->with(['success' => 'Data Berhasil dihapus']);
     }
 }
