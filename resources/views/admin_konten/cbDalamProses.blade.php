@@ -2,76 +2,57 @@
 @section('content')
 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mb-5">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item">Kelola Jasa Service</li>
+        <li class="breadcrumb-item">Kelola Custom Barang</li>
         <li class="breadcrumb-item active" aria-current="page">Dalam Proses</li>
     </ol>
 </nav>
-<table id="example" class="table" style="width:100%" >
+<table id="example" class="table" style="width:100%">
     <thead>
         <tr>
             <th>No</th>
-            <th>Nama customer</th>
-            <th>Deskripsi kerusakan</th>
-            <th>Alamat</th>
+            <th>Detail Pesanan</th>
+            <th>Detail Pemesan</th>
+            <th>Metode Pengiriman</th>
             <th>Tanggal pemesanan</th>
-            <th>Tanggal pengerjaan</th>
-            <th>Status</th>
+            <th>Progres</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>1</td>
+            <td>Tiger Nixon</td>
             <td>System Architect</td>
             <td>Edinburgh</td>
             <td>61</td>
             <td>2011-04-25</td>
-            <td>2011-04-25</td>
             <td>
-                <select class="form-select w-75" aria-label="Default select example">
-                    <option selected>Pilih</option>
-                    <option value="1">Ditunda</option>
-                    <option value="2">Dalam Pengerjaan</option>
-                    <option value="3">Selesai</option>
-                </select>
+                <a href="#" type="button" class="btn btn-sm btn-success btn-primary w-50" data-bs-toggle="modal" data-bs-target="#edit">Input Progres</a>
             </td>
         </tr>
         <tr>
-            <td>2</td>
+            <td>Garrett Winters</td>
             <td>Accountant</td>
             <td>Tokyo</td>
             <td>63</td>
             <td>2011-07-25</td>
-            <td>2011-07-25</td>
             <td>
-                <select class="form-select w-75" aria-label="Default select example">
-                    <option selected>Pilih</option>
-                    <option value="1">Ditunda</option>
-                    <option value="2">Dalam Pengerjaan</option>
-                    <option value="3">Selesai</option>
-                </select>
+                <a href="#" type="button" class="btn btn-sm btn-success btn-primary w-50" data-bs-toggle="modal" data-bs-target="#edit">Input Progres</a>
             </td>
         </tr>
         <tr>
-            <td>3</td>
+            <td>Ashton Cox</td>
             <td>Junior Technical Author</td>
             <td>San Francisco</td>
             <td>66</td>
-            <td>66</td>
             <td>2009-01-12</td>
             <td>
-                <select class="form-select w-75" aria-label="Default select example">
-                    <option selected>Pilih</option>
-                    <option value="1">Ditunda</option>
-                    <option value="2">Dalam Pengerjaan</option>
-                    <option value="3">Selesai</option>
-                </select>
+                <a href="#" type="button" class="btn btn-sm btn-success btn-primary w-50" data-bs-toggle="modal" data-bs-target="#edit">Input Progres</a>
             </td>
         </tr>
         <div class="modal fade modal-dialog-scrollable text-start" id="edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Edit Data</h5>
+                        <h5 class="modal-title" id="staticBackdropLabel">Input Progres</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -79,17 +60,18 @@
                             @csrf
                             @method('PUT')
                             <div class="mb-3">
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected>Input Progres</option>
+                                    <option value="1">25%</option>
+                                    <option value="2">50%</option>
+                                    <option value="3">75%</option>
+                                    <option value="3">100%</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
                                 <label for="formGroupExampleInput" class="form-label">Gambar</label>
                                 <input type="file" class="form-control" id="formGroupExampleInput" name="gambar" placeholder="" value="">
                                 <input type="hidden" value="">
-                            </div>
-                            <div class="mb-3">
-                                <label for="formGroupExampleInput2" class="form-label">Deskripsi</label>
-                                <textarea type="number" class="form-control" id="formGroupExampleInput2" name="deskripsi_galeri" placeholder="" value=""></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="formGroupExampleInput2" class="form-label">Harga</label>
-                                <input type="number" class="form-control" id="formGroupExampleInput2" name="harga" placeholder="" value="">
                             </div>
 
                             </div>
