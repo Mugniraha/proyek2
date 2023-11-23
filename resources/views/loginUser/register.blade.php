@@ -6,6 +6,7 @@
         <title>Register</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <link href="{{ asset('css/register.css') }}" rel="stylesheet">
     </head>
     <body>
         <div class="row justify-content-center mt-5">
@@ -20,14 +21,14 @@
                     </div>
                     <div class="card-body">
                         @if (Session::has('success'))
-                        <div class="alter alert-success" role="alert">
+                        <div class="alert alert-success" role="alert">
                             {{ Session::get('success') }}
                         </div>
                         @endif
                         <form action="{{ route('registerIndex') }}" method="POST">
                             @csrf
                             <div class="mb-3">
-                                <label for="name" class="form-label">Name Lengkap</label>
+                                <label for="name" class="form-label">Nama Lengkap</label>
                                 <input type="text" name="name" class="form-control" id="name" placeholder="Nama Lengkap" required>
                             </div>
                             <div class="mb-3">
@@ -58,17 +59,28 @@
                 </div>
             </div>
         </div>
-        <style>
-            .custom-button {
-                width: 20%; /* Atur ukuran sesuai kebutuhan Anda */
-            }
-            .bg{
-            width: 60px;
-            height: 60px;
-            position: absolute;
-            top: -45px;
-            left: 43%;
-        }
-        </style>
+        <script>
+            document.querySelector("form").addEventListener("submit", async function(event) {
+                event.preventDefault();
+
+                // Fetch API untuk mengirimkan data formulir
+                const formData = new FormData(this);
+                const response = await fetch("{{ route('registerIndex') }}", {
+                    method: "POST",
+                    body: formData,
+                });
+
+                // Periksa apakah registrasi berhasil
+                if (response.ok) {
+                    // Arahkan ke halaman login
+                    window.location.href = "{{ route('loginIndex') }}";
+                } else {
+                    // Tangani kegagalan registrasi (tampilkan pesan kesalahan, dll.)
+                    // Untuk sementara, Anda bisa mencatat kesalahan ke konsol
+                    console.error("Registrasi gagal:", response.statusText);
+                }
+            });
+        </script>
+
     </body>
 </html>

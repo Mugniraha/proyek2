@@ -1,13 +1,9 @@
-body{
+body {
     background-color: #95afd1;
 }
-.custom-button {
-    margin-top: 10%;
-    width: 30%;
-    background-color: #dec6a2;
-    color: black;
-    border: none;
-    border-radius: 16px;
+
+.alert {
+    margin-bottom: 15px;
 }
 
 .bg {
@@ -26,6 +22,8 @@ body{
     background-color: #f5efef;
     padding: 10px;
     max-width: 370px;
+    margin-bottom: 15px;
+
 }
 
 .card-body {
@@ -33,24 +31,33 @@ body{
     background-color: #303947;
     max-width: 350px;
     justify-content: center;
-    border-radius: 10px;
+    padding: 20px;
+    border-radius: 10px; /* Tambahkan border-radius untuk sudut membulat */
 }
 
-.form-label{
+.form-label {
     color: white;
-    width: 100px;
+}
 
+.custom-button {
+    margin-top: 10%;
+    width: 30%;
+    background-color: #dec6a2;
+    color: black;
+    border: none;
+    border-radius: 16px;
 }
 
 .d-flex span {
-    color: white; /* Tambahkan properti color di sini */
+    color: white;
 }
 
 .d-flex a {
-    color: rgb(236, 219, 104); /* Tambahkan properti color di sini */
+    color: rgb(236, 219, 104);
 }
 
-.card-title{
+.card-title {
     margin-top: 30px;
     font-size: 24px;
 }
+

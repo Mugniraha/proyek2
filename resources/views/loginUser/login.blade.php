@@ -47,8 +47,8 @@
                             <a href="{{ route('registerIndex') }}" class="text-decoration-none">Daftar Akun</a>
                         </div>
                         <div class="d-flex">
-                            <span>Lupa Password?</span>
-                            <a href="{{ route('password.edit') }}" class="text-decoration-none">Ubah Password?</a>
+                            {{-- <span>Lupa Password?</span> --}}
+                            <a href="{{ route('password.edit') }}" class="text-decoration-none">Lupa Password?</a>
                         </div>
                     </div>
                 </div>
