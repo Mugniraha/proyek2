@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JOYO ROYO</title>
     <link rel="stylesheet" href="{{ asset('css/homeAwal.css') }}">
-    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> --}}
+    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> --}}
+
 </head>
 <body>
     <div class="container">
@@ -40,7 +42,27 @@
         </nav>
     </header>
     <main>
-		<br>
+        {{-- <div id="imageCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{{ asset('images/Pagar-Rumah-Minimalis-dengan-Tipe-Geser.jpg')}}" class="d-block w-100" alt="Cari" width="550" height="300">
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ asset('images/Set-Kursi-Cafe-Besi-Meja-Bundar.jpg')}}" class="d-block w-100" alt="Cari" width="300" height="300">
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ asset('images/Lampu-Hias-Gantung.jpg')}}" class="d-block w-100" alt="Cari" width="455" height="300">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#imageCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#imageCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div> --}}
 		<img src="{{ asset('images/Pagar-Rumah-Minimalis-dengan-Tipe-Geser.jpg')}}" alt="Cari" width="550" height="300">
 		<img src="{{ asset('images/Set-Kursi-Cafe-Besi-Meja-Bundar.jpg')}}" alt="Cari" width="300" height="300">
 		<img src="{{ asset('images/Lampu-Hias-Gantung.jpg')}}" alt="Cari" width="455" height="300">
