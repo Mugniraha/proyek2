@@ -2,8 +2,8 @@
 @section('content')
 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mb-5">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item">Kelola Jasa Service</li>
-        <li class="breadcrumb-item active" aria-current="page">Pesanan Baru</li>
+        <li class="breadcrumb-item">Kelola Custom Barang</li>
+        <li class="breadcrumb-item active" aria-current="page">Selesai</li>
     </ol>
 </nav>
 <table id="example" class="table" style="width:100%">
@@ -11,11 +11,11 @@
         <tr>
             <th>No</th>
             <th>Nama customer</th>
-            <th>Deskripsi kerusakan</th>
-            <th>Alamat</th>
-            <th>Tanggal pemesanan</th>
-            <th>Tanggal pengerjaan</th>
-            <th>Aksi</th>
+            <th>Detail pesanan</th>
+            <th>Tanggal Masuk</th>
+            <th>Tanggal Selesai</th>
+            <th>status</th>
+            <th>Ulasan</th>
         </tr>
     </thead>
     <tbody>
@@ -23,43 +23,46 @@
             <td>Tiger Nixon</td>
             <td>System Architect</td>
             <td>Edinburgh</td>
-            <td>61</td>
-            <td>2011-04-25</td>
-            <td>2011-04-25</td>
+            <td>20-20-2020</td>
+            <td>20-20-2020</td>
             <td>
-                <a href="#" type="button" class="btn btn-sm btn-success btn-primary w-50" data-bs-toggle="modal" data-bs-target="#edit">Terima</a>
-                <a  href="#" type="button" class="mt-2 btn btn-sm btn-danger btn-primary w-50" data-bs-toggle="modal" data-bs-target="#hapus">Tolak</a>
+                <input class="form-control w-50" type="text" value="Selesai" aria-label="Disabled input example" disabled readonly>
+            </td>
+            <td>
+                <a href="#" type="button" class="btn btn-sm btn-warning btn-primary w-75" data-bs-toggle="modal" data-bs-target="#edit">Balas ulasan</a>
             </td>
         </tr>
         <tr>
             <td>Garrett Winters</td>
             <td>Accountant</td>
             <td>Tokyo</td>
-            <td>63</td>
-            <td>2011-07-25</td>
-            <td>2011-07-25</td>
+            <td>20-20-2020</td>
+            <td>20-20-2020</td>
             <td>
-                <a href="#" type="button" class="btn btn-sm btn-success btn-primary w-50" data-bs-toggle="modal" data-bs-target="#edit">Terima</a>
-                <a  href="#" type="button" class="mt-2 btn btn-sm btn-danger btn-primary w-50" data-bs-toggle="modal" data-bs-target="#hapus">Tolak</a>
+                <input class="form-control w-50" type="text" value="Selesai" aria-label="Disabled input example" disabled readonly>
+            </td>
+            <td>
+                <a href="#" type="button" class="btn btn-sm btn-warning btn-primary w-75" data-bs-toggle="modal" data-bs-target="#edit">Balas ulasan</a>
             </td>
         </tr>
         <tr>
             <td>Ashton Cox</td>
             <td>Junior Technical Author</td>
-            <td>San Francisco</td>
-            <td>66</td>
-            <td>66</td>
-            <td>2009-01-12</td>
+            <td>San Francisco ndnqawndiuwqd jnjnnc</td>
+            <td>20-20-2020</td>
+            <td>20-20-2020</td>
             <td>
-                <a href="#" type="button" class="btn btn-sm btn-success btn-primary w-50" data-bs-toggle="modal" data-bs-target="#edit">Terima</a>
-                <a  href="#" type="button" class="mt-2 btn btn-sm btn-danger btn-primary w-50" data-bs-toggle="modal" data-bs-target="#hapus">Tolak</a>
+                <input class="form-control w-50" type="text" value="Selesai" aria-label="Disabled input example" disabled readonly>
+            </td>
+            <td>
+                <a href="#" type="button" class="btn btn-sm btn-warning btn-primary w-75" data-bs-toggle="modal" data-bs-target="#edit">Balas ulasan</a>
             </td>
         </tr>
         <div class="modal fade modal-dialog-scrollable text-start" id="edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Edit Data</h5>
+                        <h5 class="modal-title" id="staticBackdropLabel">Balas Ulasan</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -67,19 +70,8 @@
                             @csrf
                             @method('PUT')
                             <div class="mb-3">
-                                <label for="formGroupExampleInput" class="form-label">Gambar</label>
-                                <input type="file" class="form-control" id="formGroupExampleInput" name="gambar" placeholder="" value="">
-                                <input type="hidden" value="">
-                            </div>
-                            <div class="mb-3">
-                                <label for="formGroupExampleInput2" class="form-label">Deskripsi</label>
-                                <textarea type="number" class="form-control" id="formGroupExampleInput2" name="deskripsi_galeri" placeholder="" value=""></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="formGroupExampleInput2" class="form-label">Harga</label>
-                                <input type="number" class="form-control" id="formGroupExampleInput2" name="harga" placeholder="" value="">
-                            </div>
-
+                                <label for="formGroupExampleInput2" class="form-label">Ulasan</label>
+                                <textarea type="text" rows="10" class="form-control" id="formGroupExampleInput2" name="deskripsi_galeri" placeholder="" value=""></textarea>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Batal</button>
@@ -87,28 +79,6 @@
                             </div>
                         </form>
                     </div>
-                </div>
-            </div>
-        </div>
-        {{-- Modal untuk hapus data --}}
-        <div class="modal fade modal-dialog-scrollable" id="hapus" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Hapus Data</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                        <form action="" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            @method('DELETE')
-                            <div class="modal-body">
-                                <h3>YAKIN INGIN MENGHAPUS DATA?!</h3>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Batal</button>
-                                <button type="submit" class="btn btn-danger">Hapus</button>
-                            </div>
-                        </form>
                 </div>
             </div>
         </div>

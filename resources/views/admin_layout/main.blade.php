@@ -22,13 +22,18 @@
     <body>
         <div class="container-fluid">
             <div class="row flex-nowrap">
-                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0" style="background-color:#4C6687 ">
+                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 shadow" style="background-color:#4C6687 ">
                     <div class="sidebar d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                        <a href="/" class=" d-flex  align-items-center pb-3 mb-md-0 me-md-auto text-dark text-decoration-none  w-100 rounded rounded-pill" style="background-color:#D9D9D9">
+                        <a href="/" class=" d-flex  align-items-center pb-3 mb-md-0 me-md-auto text-dark text-decoration-none  w-100 rounded rounded-pill shadow" style="background-color:#D9D9D9">
                             <img class="align-items-center ms-4 mt-3" src="{{asset('img/logo.png')}}" alt="" width="25%">
                             <span class="d-none fw-bolder d-sm-block mt-3 ms-2" style="color:#303947 ">Bengkel Welding</span>
                         </a>
                         <ul class="nav nav-pills flex-column mt-4 mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                            <li class="nav-item">
+                                <a href="" class="nav-link align-middle px-0 ">
+                                    <i class="fa-solid fa-house" style="color: #000000;"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                                </a>
+                            </li>
                             <li class="nav-item">
                                 <a href="{{ url('/profil')}}" class="nav-link align-middle px-0 {{($slug === "profil") ? : ''}}">
                                     <i class="fa-regular fa-user" style="color: #000000;"></i> <span class="ms-1 d-none d-sm-inline">Profil</span>
@@ -44,13 +49,13 @@
                                     <i class="fa-solid fa-sliders" style="color: #000000;"></i> <span class="ms-1 d-none d-sm-inline">Kelola Jasa Service</span> </a>
                                 <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                                     <li class="w-100">
-                                        <a href="" class="nav-link {{($slug === "jsPesananBaru") ? : ''}} px-0"> <span class="d-none d-sm-inline text-white">Pesanan Baru</span> </a>
+                                        <a href="{{url('/jsPesananbaru')}}" class="nav-link {{($slug === "jsPesananBaru") ? : ''}} px-0"> <span class="d-none d-sm-inline text-white">Pesanan Baru</span> </a>
                                     </li>
                                     <li>
                                         <a href="{{url('/jsDalamproses')}}" class="nav-link {{($slug === "jsDalamProses") ? 'active' : ''}} px-0"> <span class="d-none d-sm-inline text-white">Dalam Proses</span> </a>
                                     </li>
                                     <li>
-                                        <a href="{{url('/jsSelesai')}}" class="nav-link {{($slug === "jsDalamProses")?:''}} px-0"> <span class="d-none d-sm-inline text-white">Selesai</span> </a>
+                                        <a href="{{url('/jsSelesai')}}" class="nav-link {{($slug === "jsSelesai")?:''}} px-0"> <span class="d-none d-sm-inline text-white">Selesai</span> </a>
                                     </li>
                                 </ul>
                             </li>
@@ -59,13 +64,13 @@
                                     <i class="fa-solid fa-sliders" style="color: #000000;"></i> <span class="ms-1 d-none d-sm-inline ">Kelola Custom Barang</span></a>
                                 <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                                     <li class="w-100">
-                                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline text-white">Pesanan Baru</span> </a>
+                                        <a href="{{url('/cbPesananBaru')}}" class="nav-link {{($slug === "cbPesananBaru")}} px-0"> <span class="d-none d-sm-inline text-white">Pesanan Baru</span> </a>
                                     </li>
                                     <li>
-                                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline text-white">Dalam Proses</span> </a>
+                                        <a href="{{url('/cbDalamProses')}}" class="nav-link {{($slug === "cbDalamProses")}} px-0"> <span class="d-none d-sm-inline text-white">Dalam Proses</span> </a>
                                     </li>
                                     <li>
-                                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline text-white">Selesai</span> </a>
+                                        <a href="{{url('/cbSelesai')}}" class="nav-link {{($slug === "cbSelesai")}} px-0"> <span class="d-none d-sm-inline text-white">Selesai</span> </a>
                                     </li>
                                 </ul>
                             </li>
@@ -74,10 +79,10 @@
                                     <i class="fa-solid fa-clock-rotate-left" style="color: #000000;"></i> <span class="ms-1 d-none d-sm-inline ">Histori Pesanan</span> </a>
                                     <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
                                     <li class="w-100">
-                                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline text-white">Jasa Service</span></a>
+                                        <a href="{{url('/historyJaser')}}" class="nav-link {{($slug === "historyJaser")}} px-0"> <span class="d-none d-sm-inline text-white">Jasa Service</span></a>
                                     </li>
                                     <li>
-                                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline text-white">Custom Barang</span></a>
+                                        <a href="{{url('/historyCusbar')}}" class="nav-link {{($slug === "historyCusbar")}} px-0"> <span class="d-none d-sm-inline text-white">Custom Barang</span></a>
                                     </li>
                                     <li>
                                     </li>
@@ -97,7 +102,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col py-3 p-5 container-fluid">
+                <div class="col py-3 p-5 mt-5 container-fluid">
                     @yield('content')
                 </div>
             </div>
