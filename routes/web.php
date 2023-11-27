@@ -43,6 +43,12 @@ Route::post('/login', [RegisterController::class, 'loginPost'])->name('loginPost
 Route::get('password/edit', [ChangePasswordController::class, 'edit'])->name('password.edit');
 Route::put('password/edit', [ChangePasswordController::class, 'update'])->name('password.update');
 Route::get('/home', [HomeController::class, 'HomeIndex'])->name('HomeIndex');
+Route::get('/bantuan', function () {
+    return view('/homeAwal/bantuan');
+});
+Route::get('/notifikasi', function () {
+    return view('/notifikasi/index');
+});
 
 // Route::get('/', [galeriController::class, 'index']);
 Route::resource('/galeri', galeriController::class);

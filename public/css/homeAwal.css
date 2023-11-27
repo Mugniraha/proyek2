@@ -17,7 +17,7 @@ body {
     align-items: center;
     padding: 10px;
     position: fixed;
-    width: 99%;
+    width: 100%;
     top: 0;
     background-color: #F7F6F2;
     z-index: 1000;
@@ -25,7 +25,23 @@ body {
 
 .fitur{
 	font-family: 'Inter', sans-serif;
+    z-index: 1001;
 }
+
+nav{
+    z-index: 1001;
+    /* position: fixed; */
+}
+
+/* #carouselExampleInterval {
+    position: relative;
+    z-index: 1000;
+}
+
+.carousel-container {
+    position: relative;
+    z-index: 1000;
+} */
 
 .logo-and-title {
 	display: flex;
