@@ -30,8 +30,8 @@
                         </a>
                         <ul class="nav nav-pills flex-column mt-4 mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                             <li class="nav-item">
-                                <a href="" class="nav-link align-middle px-0 ">
-                                    <i class="fa-solid fa-house" style="color: #000000;"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                                <a href="{{url('/dashboard')}}" class="nav-link align-middle px-0 {{($slug === "dashboard") ? : ''}} ">
+                                    <i class="fa-solid fa-house" style="color: #000000;"></i> <span class="ms-1 d-none d-sm-inline">dashboard</span>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -94,7 +94,7 @@
                         <div class="dropdown mb-4 border p-2 rounded">
                             <a href="#" class="d-flex align-items-center text-white text-decoration-none" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                                <span class="d-none d-sm-inline mx-1">Admin Ganteng</span>
+                                <span class="d-none d-sm-inline mx-1">Admin Utama</span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-light text-small shadow">
                                 <li><a class="dropdown-item" href="#">Sign out</a></li>

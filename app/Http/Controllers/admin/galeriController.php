@@ -77,14 +77,34 @@ class galeriController extends Controller
     {
         // Validasi
         $this->validate($request, [
-            'gambar' => 'required|image|mimes:png,jpg,jpeg|max:2048',
             'deskripsi_galeri' => 'required',
             'harga' => 'required',
         ]);
+        // Proses update jika tidak ada file gambar baru
+        DB::table('galeris')->where('id_galeri', $id)->update([
+            'deskripsi_galeri' => $request->deskripsi_galeri,
+            'harga' => $request->harga,
+        ]);
+        // Redirect ke halaman yang sesuai
+        return redirect('/galeri')->with(['success' => 'Data Berhasil ditambah']);
+    }
 
-        if ($request->hasFile('gambar')) {
-            $img = $request->file('gambar');
-            $newFileName = $img->hashName(); // Menggunakan hashName sebagai nama baru
+    public function updateGambar(Request $request, string $id)
+    {
+        // Validasi
+        $this->validate($request, [
+            'gambar' => 'required|image|mimes:png,jpg,jpeg|max:2048',
+        ]);
+
+        // Ambil gambar baru
+        $img = $request->file('gambar');
+
+        // Jika ada gambar baru
+        if ($img) {
+            // Generate nama baru menggunakan hashName
+            $newFileName = $img->hashName();
+
+            // Simpan gambar baru
             $img->storeAs('public/img', $newFileName);
 
             // Hapus gambar lama jika sudah ada
@@ -94,30 +114,26 @@ class galeriController extends Controller
             // Proses update
             DB::table('galeris')->where('id_galeri', $id)->update([
                 'gambar' => $newFileName,
-                'deskripsi_galeri' => $request->deskripsi_galeri,
-                'harga' => $request->harga,
-            ]);
-        } else {
-            // Proses update jika tidak ada file gambar baru
-            DB::table('galeris')->where('id_galeri', $id)->update([
-                'deskripsi_galeri' => $request->deskripsi_galeri,
-                'harga' => $request->harga,
             ]);
         }
 
-
         // Redirect ke halaman yang sesuai
-        return redirect('/galeri')->with(['success' => 'Data Berhasil ditambah']);
-
-
+        return redirect('/galeri')->with(['success' => 'Gambar Berhasil diperbarui']);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(string $id)
     {
-        DB::table('galeris')->where('id_galeri',$id)-> delete();
+        // untuk mendapatkan gambar sesuai id
+        $fileName = DB::table('galeris')->where('id_galeri', $id)->value('gambar');
+
+        // Untuk hapus gambar dari folder public/img
+        Storage::delete('public/img/' . $fileName);
+
+        // Untuk hapus gambar di database
+        DB::table('galeris')->where('id_galeri', $id)->delete();
+
         return redirect('/galeri')->with(['success' => 'Data Berhasil dihapus']);
     }
+
 }
