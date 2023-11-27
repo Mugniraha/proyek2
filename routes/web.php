@@ -17,6 +17,7 @@ use App\Http\Controllers\admin\dashboardController;
 use App\Http\Controllers\serviceController;
 use App\Http\Controllers\customController;
 use App\Http\Controllers\historiController;
+use App\Http\Controllers\HomeController;
 
 
 /*
@@ -42,11 +43,9 @@ Route::get('/login', [RegisterController::class, 'loginIndex'])->name('loginInde
 Route::post('/login', [RegisterController::class, 'loginPost'])->name('loginPost');
 Route::get('password/edit', [ChangePasswordController::class, 'edit'])->name('password.edit');
 Route::put('password/edit', [ChangePasswordController::class, 'update'])->name('password.update');
-// Route::middleware(['auth'])->group(function () {
-//     Route::get('/change-password', [ChangePasswordController::class, 'showForm'])->name('password.change');
-//     Route::post('/change-password', [ChangePasswordController::class, 'changePassword']);
-// });
-Route::get('/', [galeriController::class, 'index']);
+Route::get('/home', [HomeController::class, 'HomeIndex'])->name('HomeIndex');
+
+// Route::get('/', [galeriController::class, 'index']);
 Route::resource('/galeri', galeriController::class);
 Route::put('/galeri/{id}/update-gambar', [galeriController::class, 'updateGambar'])->name('galeri.updateGambar');
 Route::resource('/jsPesananbaru', jaserPesananBaruController::class);
