@@ -11,28 +11,31 @@ body {
     height: 60px;
 }
 
-.container {
+.navCont {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
     position: fixed;
-    width: 100%;
     top: 0;
     background-color: #F7F6F2;
     z-index: 1000;
+    width: 100%;
 }
 
 .fitur{
 	font-family: 'Inter', sans-serif;
-    z-index: 1001;
+    z-index: 1;
 }
 
 nav{
-    z-index: 1001;
+    z-index: 1000;
     /* position: fixed; */
 }
 
+header{
+    z-index: 1000;
+}
 /* #carouselExampleInterval {
     position: relative;
     z-index: 1000;

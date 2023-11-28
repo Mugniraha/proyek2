@@ -11,7 +11,7 @@
 
 </head>
 <body>
-    <div class="container">
+    <div class="navCont">
         <div class="logo-and-title">
             <img src="{{ asset('images/logo welding .png')}}" alt="Logo" width="30" height="24" class="bg">
             <strong>JOYO ROYO</strong>
