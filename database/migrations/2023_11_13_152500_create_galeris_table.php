@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('galeris', function (Blueprint $table) {
             $table->integer('id_galeri')->primary();
-          `  $table->string('gambar');
+            $table->string('gambar');
             $table->string('deskripsi_galeri');
             $table->integer('harga');
             $table->timestamps();

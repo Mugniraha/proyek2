@@ -1,7 +1,7 @@
 @extends('admin_layout.main')
 @section('content')
 <table id="example" class="table" style="width:100%">
-    <a href="#" type="button" class="btn btn-primary mb-5" data-bs-toggle="modal" data-bs-target="#tambah"><i class="fa-solid fa-plus" style="color: #ffffff;"></i> Tambah Galeri</a>
+    <a href="#" type="button" class="btn btn-primary bg-gradient mb-5" data-bs-toggle="modal" data-bs-target="#tambah"><i class="fa-solid fa-plus" style="color: #ffffff;"></i> Tambah Galeri</a>
     <thead>
         <tr>
             <th>No</th>
@@ -15,8 +15,12 @@
         @foreach ($galeri as $row)
         <tr>
             <td>{{$loop->iteration}}</td>
-            <td>{{  $row->gambar }}</td>
-            <td>{{$row->deskripsi_galeri}}</td>
+            <td class="w-25">
+                <img src="{{asset('storage/img/' . $row->gambar)}}" width="50%" alt=""> <br>
+                <a href="#" type="button" class="mt-1 w-50 justify-content-center btn btn-sm btn-warning shadow" data-bs-toggle="modal" data-bs-target="#editGmbr{{$row->id_galeri}}">Ubah Gambar</a>
+            </td>
+            <td>{{$row->deskripsi_galeri}}
+            </td>
             <td>{{$row->harga}}</td>
             <td>
                 <a href="#" type="button" class="btn btn-sm btn-warning btn-primary w-50" data-bs-toggle="modal" data-bs-target="#edit{{$row->id_galeri}}"><i class="fa-regular fa-pen-to-square"></i></a>
@@ -59,6 +63,34 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade modal-dialog-scrollable text-start" id="editGmbr{{$row->id_galeri}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Ubah Gambar</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{route('galeri.updateGambar', $row->id_galeri)}}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
+                            <div class="mb-3">
+                                <label for="formGroupExampleInput" class="form-label">Gambar</label>
+                                <input type="file" class="form-control" id="formGroupExampleInput" name="gambar" placeholder="" value="{{$row->gambar}}">
+                                <input type="hidden" value="{{$row->id_galeri}}">
+                            </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Batal</button>
+                                <button type="submit" class="btn btn-success">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         {{-- Modal untuk hapus data --}}
         <div class="modal fade modal-dialog-scrollable" id="hapus{{$row->id_galeri}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -83,8 +115,9 @@
         </div>
         @endforeach
         @if(session('success'))
-                <div class="alert alert-success mb-2">
+                <div class="alert alert-success mb-2 alert-dismissible fade show" role="alert">
                     {{ session('success') }}
+                    <button type="button" class="btn-close text-end" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
         @endif
     </tbody>

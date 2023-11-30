@@ -1,0 +1,104 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+	background-color: #F7F6F2;
+}
+
+.navbar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1000;
+    border-bottom: 1px solid #D9D9D9;
+	background-color: #F7F6F2;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.header {
+    display: flex;
+    justify-content: space-between; /* Mengatur agar panah dan gambar keranjang berada pada ujung kanan */
+    align-items: center;
+    width: 100%; /* Mengisi seluruh lebar */
+
+}
+
+.back-button {
+    text-decoration: none;
+    color: black;
+    font-size: 30px;
+    margin-right: 30px;
+}
+
+.logo-and-title strong {
+    font-size: 24px; /* Sesuaikan ukuran teks Notifikasi */
+}
+
+.log {
+    margin-left: auto; /* Menempatkan ikon keranjang di paling kanan */
+}
+
+.cart-icon img {
+    width: 35px;
+    height: auto;
+}
+
+.cart-icon strong {
+    font-size: 18px;
+}
+
+nav ol{
+	margin-top: 4%;
+	margin-left: 0;
+	margin-left: 0;
+	font-size: 18px;
+}
+
+nav li.breadcrumb-item {
+	margin-bottom: 10px;
+	margin: 50px auto 10px;
+    font-size: 19px; /* Sesuaikan ukuran teks Konfirmasi Pesanan */
+	margin-left: 0;
+	position: relative;
+	z-index: 1;
+}
+
+.container {
+    /* max-width: 90%; */
+    /* margin: 20px auto;
+    padding: 20px; */
+    background-color: #ffffff;
+
+}
+
+.accordion-item {
+    background-color: #D9E7E8;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+}
+
+.custom-bg {
+    background-color: white !important;
+}
+
+.custom-bg:active,
+.custom-bg:focus {
+    background-color: white !important;
+    /* Tambahkan warna lain jika tombol masih memiliki efek warna biru saat diklik atau mendapatkan fokus */
+    border-color: white !important;
+    box-shadow: none !important;
+}
+
+.breadcrumb-item-custom {
+    color: #6c757d; /* Warna teks samar-samar sesuai dengan Bootstrap */
+    display: inline-block;
+    background-color: transparent; /* Atau warna latar belakang yang sesuai dengan desain Anda */
+    border-radius: 0.25rem; /* Memberikan sudut yang sedikit membulat */
+    padding: 0.375rem 0.75rem; /* Sesuaikan dengan padding yang diinginkan */
+}

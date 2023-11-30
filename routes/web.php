@@ -13,6 +13,7 @@ use App\Http\Controllers\admin\cusbarDalamProsesController;
 use App\Http\Controllers\admin\cusbarSelesaiController;
 use App\Http\Controllers\admin\historyJaserController;
 use App\Http\Controllers\admin\historyCusbarController;
+use App\Http\Controllers\admin\dashboardController;
 use App\Http\Controllers\serviceController;
 use App\Http\Controllers\customController;
 use App\Http\Controllers\historiController;
@@ -47,8 +48,17 @@ Route::get('/produk', [ProdukController::class, 'index'])->name('produk.index');
 
 
 
+Route::get('/bantuan', function () {
+    return view('/homeAwal/bantuan');
+});
+Route::get('/notifikasi', function () {
+    return view('/notifikasi/index');
+});
+
+
 // Route::get('/', [galeriController::class, 'index']);
 Route::resource('/galeri', galeriController::class);
+Route::put('/galeri/{id}/update-gambar', [galeriController::class, 'updateGambar'])->name('galeri.updateGambar');
 Route::resource('/jsPesananbaru', jaserPesananBaruController::class);
 Route::resource('/jsDalamproses', jaserDalamProsesController::class);
 Route::resource('/jsSelesai', jaserSelesaiController::class);
@@ -57,6 +67,7 @@ Route::resource('/cbDalamProses',cusbarDalamProsesController::class);
 Route::resource('/cbSelesai', cusbarSelesaiController::class);
 Route::resource('/historyJaser', historyJaserController::class);
 Route::resource('/historyCusbar', historyCusbarController::class);
+Route::resource('/dashboard', dashboardController::class);
 
 
 // Route::get('/galeri', [galeriController::class, 'index']);

@@ -3,24 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ asset('images/logo welding .png')}}" type="image/x-icon">
     <title>JOYO ROYO</title>
     <link rel="stylesheet" href="{{ asset('css/homeAwal.css') }}">
-    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.3/dist/index.bundle.min.js"></script>
 
 </head>
 <body>
-    <div class="container">
-
+    <div class="navCont">
         <div class="logo-and-title">
             <img src="{{ asset('images/logo welding .png')}}" alt="Logo" width="30" height="24" class="bg">
             <strong>JOYO ROYO</strong>
         </div>
         <div class="search-bar">
-            <input class="form-control me-2" type="search" placeholder="Cari Barang Anda" aria-label="Search" >
-            <button class="btn btn-light" type="submit">
-                <img src="{{ asset('images/cari.png')}}" alt="Cari" width="20" height="20">
-            </button>
+            <div class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Cari Barang Anda" aria-label="Search">
+                <button class="btn btn-light" type="submit">
+                    <img src="{{ asset('images/cari.png')}}" alt="Cari" width="20" height="20">
+                </button>
+            </div>
         </div>
         <div class="log">
             <img src="{{ asset('images/profil.png')}}" alt="Logo" width="25" height="22" class="d-inline-block align-text-top">
@@ -29,7 +31,6 @@
             <a href="halaman_favorit.html" id="favoriteBtn" style="text-decoration: none;">Favorite</a>
         </div>
     </div>
-
     <header>
         <nav>
             <ul>
@@ -42,30 +43,31 @@
         </nav>
     </header>
     <main>
-        {{-- <div id="imageCarousel" class="carousel slide" data-ride="carousel">
+        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="{{ asset('images/Pagar-Rumah-Minimalis-dengan-Tipe-Geser.jpg')}}" class="d-block w-100" alt="Cari" width="550" height="300">
+                <div class="carousel-item active" data-bs-interval="2000">
+                    <img src="{{ asset('images/halaman1.png')}}" class="d-block w-50 mx-auto" alt="Slide Pertama">
                 </div>
-                <div class="carousel-item">
-                    <img src="{{ asset('images/Set-Kursi-Cafe-Besi-Meja-Bundar.jpg')}}" class="d-block w-100" alt="Cari" width="300" height="300">
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="{{ asset('images/halaman2.png')}}" class="d-block w-50 mx-auto" alt="Slide Kedua">
                 </div>
-                <div class="carousel-item">
-                    <img src="{{ asset('images/Lampu-Hias-Gantung.jpg')}}" class="d-block w-100" alt="Cari" width="455" height="300">
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="{{ asset('images/halaman3.png')}}" class="d-block w-50 mx-auto" alt="Slide Ketiga">
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="{{ asset('images/halaman4.png')}}" class="d-block w-50 mx-auto" alt="Slide keempat">
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#imageCarousel" role="button" data-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#imageCarousel" role="button" data-slide="next">
+                <span class="visually-hidden">Sebelumnya</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div> --}}
-		<img src="{{ asset('images/Pagar-Rumah-Minimalis-dengan-Tipe-Geser.jpg')}}" alt="Cari" width="550" height="300">
-		<img src="{{ asset('images/Set-Kursi-Cafe-Besi-Meja-Bundar.jpg')}}" alt="Cari" width="300" height="300">
-		<img src="{{ asset('images/Lampu-Hias-Gantung.jpg')}}" alt="Cari" width="455" height="300">
+                <span class="visually-hidden">Selanjutnya</span>
+            </button>
+        </div>
+
         <section id="produk">
             <h2>Produk</h2>
             <!-- Your produk content goes here -->
@@ -118,18 +120,18 @@
 
 			<div class="textTKM4">
 				<table class="table">
-					<tr style="background-color: #3183FF;">
-						<td class="d-flex align-items-center">
-							<img src="{{ asset('images/kualitas unggul.png')}}" alt="Kualitas" width="50" height="50" style="margin-right: 10px;">
+					<tr>
+                        <td class="d-flex align-items-center" style="background-color: #3183FF;">
+                            <img src="{{ asset('images/kualitas unggul.png')}}" alt="Kualitas" width="50" height="50" style="margin-right: 10px;">
                             <div class="ml-3">
                                 <h5 style="margin-bottom: 5px; margin-top: 2px;">KUALITAS UNGGUL</h5>
                                 <p style="margin: 0; margin-top: 2px;">kami berkomitmen memberikan layanan berkualitas tinggi dan memastikan kepuasan pelanggan .</p>
                             </div>
                         </td>
-					</tr>
+                    </tr>
 
-					<tr style="background-color: #FFFFFF;">
-						<td class="d-flex align-items-center">
+					<tr>
+						<td class="d-flex align-items-center" style="background-color: #FFFFFF;">
 							<img src="{{ asset('images/data aman.png')}}" alt="Kualitas" width="50" height="50" style="margin-right: 10px;">
 							<div class="ml-3">
                                 <h5 style="margin-bottom: 5px; margin-top: 2px;">DATA AMAN SEPENUHNYA</h5>
@@ -138,8 +140,8 @@
                         </td>
 					</tr>
 
-					<tr style="background-color: #56A085">
-						<td class="d-flex align-items-center">
+					<tr>
+						<td class="d-flex align-items-center" style="background-color: #56A085">
 							<img src="{{ asset('images/innovation.png')}}" alt="Kualitas" width="50" height="50" style="margin-right: 10px;">
 							<div class="ml-3">
                                 <h5 style="margin-bottom: 5px; margin-top: 2px;">INOVASI TANPA HENTI</h5>
@@ -148,8 +150,8 @@
                             </td>
 					</tr>
 
-					<tr style="background-color: #A8A8A8;">
-						<td class="d-flex align-items-center">
+					<tr>
+						<td class="d-flex align-items-center" style="background-color: #A8A8A8;">
 							<img src="{{ asset('images/kolaborasi.png')}}" alt="Kualitas" width="50" height="50" style="margin-right: 10px;">
 							<div class="ml-3">
                                 <h5 style="margin-bottom: 5px; margin-top: 2px;">KOLABORASI KUAT</h5>
@@ -158,8 +160,8 @@
                         </td>
 					</tr>
 
-					<tr style="background-color: #FF5C00;">
-						<td class="d-flex align-items-center">
+					<tr>
+						<td class="d-flex align-items-center" style="background-color: #FF5C00;">
 							<img src="{{ asset('images/kepuasan pelanggan.png')}}" alt="Kualitas" width="50" height="50" style="margin-right: 10px;">
 							<div class="ml-3">
                                 <h5 style="margin-bottom: 5px; margin-top: 2px;">KEPUASAN PELANGGAN SELALU TERDEPAN</h5>
@@ -170,7 +172,9 @@
 				</table>
 			</div>
         </section>
+        {{-- @include('tentang_kami') --}}
     </main>
+
     <footer>
         <div class="contact-info">
             <h3>Kontak</h3>
@@ -196,7 +200,10 @@
         </div>
     </footer>
 
+    <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
     <script src="script.js"></script>
-    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> --}}
+
 </body>
 </html>
