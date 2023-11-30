@@ -14,6 +14,7 @@ use App\Http\Controllers\admin\cusbarSelesaiController;
 use App\Http\Controllers\admin\historyJaserController;
 use App\Http\Controllers\admin\historyCusbarController;
 use App\Http\Controllers\admin\dashboardController;
+use App\Http\Controllers\bantuanController;
 use App\Http\Controllers\serviceController;
 use App\Http\Controllers\customController;
 use App\Http\Controllers\formJsController;
@@ -74,6 +75,7 @@ Route::resource('/cbSelesai', cusbarSelesaiController::class);
 Route::resource('/historyJaser', historyJaserController::class);
 Route::resource('/historyCusbar', historyCusbarController::class);
 Route::resource('/dashboard', dashboardController::class);
+Route::resource('/bantuan', bantuanController::class);
 
 
 // Route::get('/galeri', [galeriController::class, 'index']);
