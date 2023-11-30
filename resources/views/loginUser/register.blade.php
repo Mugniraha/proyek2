@@ -34,7 +34,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="telp" class="form-label">Nomer HP</label>
-                                <input type="text" name="telp" class="form-control" id="telp" placeholder="Nomer HP" required>
+                                <input type="number" name="telp" class="form-control" id="telp" placeholder="Nomer HP" required>
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>

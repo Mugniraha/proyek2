@@ -16,6 +16,7 @@ use App\Http\Controllers\admin\historyCusbarController;
 use App\Http\Controllers\admin\dashboardController;
 use App\Http\Controllers\serviceController;
 use App\Http\Controllers\customController;
+use App\Http\Controllers\formJsController;
 use App\Http\Controllers\historiController;
 use App\Http\Controllers\HomeController;
 
@@ -50,6 +51,11 @@ Route::get('/bantuan', function () {
 Route::get('/notifikasi', function () {
     return view('/notifikasi/index');
 });
+// Route::get('/formOrder', function () {
+//     return view('jasaService_User.formulir');
+// });
+Route::resource('/formOrder', formJsController::class );
+Route::put('/formOrder/{id}', [FormJSController::class, 'update'])->name('formOrder.update');
 
 // Route::get('/', [galeriController::class, 'index']);
 Route::resource('/galeri', galeriController::class);
