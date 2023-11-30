@@ -31,7 +31,6 @@
             <a href="halaman_favorit.html" id="favoriteBtn" style="text-decoration: none;">Favorite</a>
         </div>
     </div>
-
     <header>
         <nav>
             <ul>
@@ -43,7 +42,6 @@
             </ul>
         </nav>
     </header>
-
     <main>
         <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">

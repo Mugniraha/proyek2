@@ -19,7 +19,7 @@ use App\Http\Controllers\customController;
 use App\Http\Controllers\formJsController;
 use App\Http\Controllers\historiController;
 use App\Http\Controllers\HomeController;
-
+use App\Http\Controllers\ProdukController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +45,10 @@ Route::post('/login', [RegisterController::class, 'loginPost'])->name('loginPost
 Route::get('password/edit', [ChangePasswordController::class, 'edit'])->name('password.edit');
 Route::put('password/edit', [ChangePasswordController::class, 'update'])->name('password.update');
 Route::get('/home', [HomeController::class, 'HomeIndex'])->name('HomeIndex');
+Route::get('/produk', [ProdukController::class, 'index'])->name('produk.index');
+
+
+
 Route::get('/bantuan', function () {
     return view('/homeAwal/bantuan');
 });
@@ -56,6 +60,7 @@ Route::get('/notifikasi', function () {
 // });
 Route::resource('/formOrder', formJsController::class );
 Route::put('/formOrder/{id}', [FormJSController::class, 'update'])->name('formOrder.update');
+
 
 // Route::get('/', [galeriController::class, 'index']);
 Route::resource('/galeri', galeriController::class);
@@ -69,6 +74,7 @@ Route::resource('/cbSelesai', cusbarSelesaiController::class);
 Route::resource('/historyJaser', historyJaserController::class);
 Route::resource('/historyCusbar', historyCusbarController::class);
 Route::resource('/dashboard', dashboardController::class);
+
 
 // Route::get('/galeri', [galeriController::class, 'index']);
 
