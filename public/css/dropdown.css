@@ -1,0 +1,43 @@
+/* Menyembunyikan dropdown content secara default */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 80px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0;
+    top: 100%;
+    text-align: left;
+}
+
+/* Gaya untuk tombol dropdown */
+.dropbtn {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 5px;
+    position: relative;
+}
+
+/* Gaya untuk link dropdown */
+.dropdown-content a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #44403B;
+}
+
+/* Gaya untuk link dropdown saat dihover */
+.dropdown-content a:hover {
+    background-color: #4C6687;
+}
+
+.listdrop {
+    transition: transform 0.3s ease;
+}
+
+.listdrop:hover {
+    transform: translateX(-10px); /* Menggeser elemen ke kanan sebanyak 5px */
+}

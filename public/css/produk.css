@@ -279,8 +279,8 @@ li a:hover{
 }
 .btn .btnwhis:hover{
     outline: none;
-    background-color: #fdea97;
-    color: #17425f;
+    background-color: rgb(177, 231, 247);
+    color: #4C6687;
 }
 .btn .btnord {
     border: 1px solid transparent;
@@ -297,8 +297,8 @@ li a:hover{
 }
 .btn .btnord:hover{
     outline: none;
-    background-color: #fdea97;
-    color: #17425f;
+    background-color: rgb(95, 248, 171);
+    color: #4C6687;
 }
 .btn .btnulasan {
     border: 1px solid transparent;

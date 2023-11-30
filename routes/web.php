@@ -21,6 +21,7 @@ use App\Http\Controllers\formJsController;
 use App\Http\Controllers\historiController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\CostumProdukController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +48,7 @@ Route::get('password/edit', [ChangePasswordController::class, 'edit'])->name('pa
 Route::put('password/edit', [ChangePasswordController::class, 'update'])->name('password.update');
 Route::get('/home', [HomeController::class, 'HomeIndex'])->name('HomeIndex');
 Route::get('/produk', [ProdukController::class, 'index'])->name('produk.index');
+Route::get('/costumproduk', [CostumProdukController::class, 'index'])->name('costumproduk.index');
 
 
 
