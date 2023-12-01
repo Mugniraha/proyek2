@@ -22,6 +22,11 @@ use App\Http\Controllers\historiController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\CostumProdukController;
+use App\Http\Controllers\DaftarPesananController;
+use App\Http\Controllers\WishlistController;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +54,8 @@ Route::put('password/edit', [ChangePasswordController::class, 'update'])->name('
 Route::get('/home', [HomeController::class, 'HomeIndex'])->name('HomeIndex');
 Route::get('/produk', [ProdukController::class, 'index'])->name('produk.index');
 Route::get('/costumproduk', [CostumProdukController::class, 'index'])->name('costumproduk.index');
+Route::get('/daftarpesanan', [DaftarPesananController::class, 'index'])->name('daftarpesanan.index');
+Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
 
 
 

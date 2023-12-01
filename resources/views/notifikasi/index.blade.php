@@ -13,10 +13,10 @@
         <div class="header">
             <a href="#" class="back-button">&larr;</a>
             <div class="logo-and-title">
-              <strong>Notifikasi</strong>
+            	<strong>Notifikasi</strong>
             </div>
             <a href="" class="log">
-              <img src="{{ asset('images/Vector.png') }}" alt="Keranjang" width="30" height="26" class="d-inline-block align-text-top">
+            	<img src="{{ asset('images/Vector.png') }}" alt="Keranjang" width="30" height="26" class="d-inline-block align-text-top">
             </a>
         </div>
   </div>
