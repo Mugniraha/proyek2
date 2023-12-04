@@ -45,7 +45,7 @@ class formJsController extends Controller
 
         FormJS::create($request->all());
 
-        return redirect()->route('')->with('success', 'Data berhasil disimpan!');
+        return redirect()->route('serviceBaruIndex')->with('success', 'Data berhasil disimpan!');
     }
 
     /**

@@ -14,9 +14,9 @@
                 <h5 class="modal-title" id="staticBackdropLabel">Formulir</h5>
             </div>
             <div class="modal-body">
-                <form action="{{ route('formOrder.update', $row->id_formjs) }}" method="POST">
+                <form action="{{ route('formOrder.store') }}" method="POST">
                     @csrf
-                    @method('PUT')
+                    {{-- @method('PUT') --}}
                     <div class="mb-3">
                         <label for="formGroupExampleInput" class="form-label">Nama</label>
                         <input type="text" class="form-control" id="formGroupExampleInput" name="nama" placeholder="" value="">
@@ -41,14 +41,12 @@
                         <label for="formGroupExampleInput2" class="form-label">Tanggal</label>
                         <input type="date" class="form-control" id="formGroupExampleInput2" name="tanggal" placeholder="" value="">
                     </div>
-
-                    </div>
+            </div>
                     <div class="modal-footer d-block">
-                        <button type="button" class="btn btn-warning d-block w-100" data-bs-dismiss="modal">Batal</button>
                         <button type="submit" class="btn btn-success d-block w-100 mt-2">Simpan</button>
+                        <a href="{{ route('serviceBaruIndex') }}" type="button" class="btn btn-warning d-block w-100">Batal</a>
                     </div>
                 </form>
-
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     </body>

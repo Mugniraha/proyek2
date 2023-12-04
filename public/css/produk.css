@@ -102,7 +102,7 @@ nav ul {
     margin: 0;
     padding: 0;
     display: flex;
-    
+
 }
 
 
@@ -173,7 +173,7 @@ li a:hover{
     align-items: center;
     text-align: center;
     gap: 5px;
-    
+
 }
 .fitur{
     display: flex;
@@ -265,8 +265,8 @@ li a:hover{
 }
 
 .btn .btnwhis {
-    border: 1px solid transparent; 
-    outline: 1px solid rgb(11, 183, 252); 
+    border: 1px solid transparent;
+    outline: 1px solid rgb(11, 183, 252);
     border-radius: 8px;
     background-color: white;
     display: flex;
@@ -284,7 +284,7 @@ li a:hover{
 }
 .btn .btnord {
     border: 1px solid transparent;
-    outline: 1px solid rgb(11, 183, 252); 
+    outline: 1px solid rgb(11, 183, 252);
     border-radius: 8px;
     background-color: white;
     display: flex;
@@ -323,7 +323,7 @@ li a:hover{
 }
 .list-group .list-group-item{
     background-color: #ffffff;
-    
+
 }
 .list-group .list-group-item:hover{
     background-color: #E9DB9C;

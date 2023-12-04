@@ -5,8 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class formjs extends Model
+class Formjs extends Model
 {
     use HasFactory;
     protected $table = 'form_js';
+    protected $fillable = ['nama', 'telpon', 'jenisJasa', 'deskripsi', 'alamat', 'tanggal'];
 }

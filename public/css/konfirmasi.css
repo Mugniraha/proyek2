@@ -1,0 +1,32 @@
+.awal {
+    background-color: #F7F6F2;
+    position: relative;
+    margin-top: -50px;
+    padding-top: 15px;
+    max-width: 200%; /* Sesuaikan lebar maksimum sesuai kebutuhan */
+    width: 50%; /* Ambil lebar penuh dari parent element */
+    margin: 0 auto; /* Tengahkan elemen di tengah halaman */
+    border-radius: 10px;
+}
+
+.container {
+    background-color: #F0E5CF;
+    margin-top: 20px; /* Sesuaikan margin atas sesuai kebutuhan */
+    max-width: 400%; /* Sesuaikan lebar maksimum sesuai kebutuhan */
+    width: 100%; /* Ambil lebar penuh dari parent element */
+    margin: 0 auto; /* Tengahkan elemen di tengah halaman */
+}
+
+.icon-and-text {
+    display: flex;
+    align-items: center; /* Mengatur vertikal ke tengah */
+	margin-left: 10%;
+}
+
+.icon-and-text svg {
+    margin-right: 10px; /* Jarak antara ikon dan teks */
+}
+
+.text{
+	margin-left: 10%;
+}

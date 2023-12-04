@@ -20,6 +20,11 @@ use App\Http\Controllers\formJsController;
 use App\Http\Controllers\historiController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\HomeUserController;
+use App\Http\Controllers\ProfilUserController;
+use App\Http\Controllers\KelolaUserController;
+use App\Http\Controllers\NotifikasiController;
+use App\Http\Controllers\serviceBaruController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,20 +51,21 @@ Route::get('password/edit', [ChangePasswordController::class, 'edit'])->name('pa
 Route::put('password/edit', [ChangePasswordController::class, 'update'])->name('password.update');
 Route::get('/home', [HomeController::class, 'HomeIndex'])->name('HomeIndex');
 Route::get('/produk', [ProdukController::class, 'index'])->name('produk.index');
-
-
+Route::get('/akunUser', [HomeUserController::class, 'HomeUserIndex'])->name('HomeUserIndex');
+Route::get('/profilUser', [ProfilUserController::class, 'ProfilUserIndex'])->name('ProfilUserIndex');
+Route::get('/kelolaUser', [KelolaUserController::class, 'KelolaUserIndex'])->name('KelolaUserIndex');
+Route::get('/notifikasi', [NotifikasiController::class, 'NotifikasiIndex'])->name('NotifikasiIndex');
+Route::get('/konfirmasi', [NotifikasiController::class, 'KonfirmasiIndex'])->name('KonfirmasiIndex');
+Route::put('/formOrder/{id}', [FormJSController::class, 'update'])->name('formOrder.update');
+Route::resource('/formOrder', formJsController::class );
+Route::get('/serviceUser', [serviceBaruController::class, 'serviceBaruIndex'])->name('serviceBaruIndex');
 
 Route::get('/bantuan', function () {
     return view('/homeAwal/bantuan');
 });
-Route::get('/notifikasi', function () {
-    return view('/notifikasi/index');
-});
-// Route::get('/formOrder', function () {
-//     return view('jasaService_User.formulir');
+// Route::get('/serviceUser', function () {
+//     return view('profilUser.service');
 // });
-Route::resource('/formOrder', formJsController::class );
-Route::put('/formOrder/{id}', [FormJSController::class, 'update'])->name('formOrder.update');
 
 
 // Route::get('/', [galeriController::class, 'index']);

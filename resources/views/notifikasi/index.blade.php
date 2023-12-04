@@ -11,7 +11,7 @@
   <body>
 	<div class="navbar">
         <div class="header">
-            <a href="#" class="back-button">&larr;</a>
+            <a href="" class="back-button">&larr;</a>
             <div class="logo-and-title">
               <strong>Notifikasi</strong>
             </div>
