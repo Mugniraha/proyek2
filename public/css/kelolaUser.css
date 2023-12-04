@@ -1,9 +1,27 @@
+.konten1 .awal1{
+    text-align: left;
+    border-radius: 10px;
+    width: 75%;
+    float: left;
+}
+
+.photoprofile{
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+.profile-image img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+}
+
 .awal1 {
     background-color: #E9DB9C;
     position: relative;
-    margin-top: -50px;
     padding-top: 15px;
-    max-width: 200%; /* Sesuaikan lebar maksimum sesuai kebutuhan */
+    max-width: 100%; /* Sesuaikan lebar maksimum sesuai kebutuhan */
     width: 50%; /* Ambil lebar penuh dari parent element */
     margin: 0 auto; /* Tengahkan elemen di tengah halaman */
     border-radius: 10px;
@@ -16,24 +34,27 @@
     width: 100%; /* Ambil lebar penuh dari parent element */
     margin: 0 auto; /* Tengahkan elemen di tengah halaman */
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+    display: block;
+    justify-content: center;
 }
 
 .awal2 {
     background-color: #E9DB9C;
     position: relative;
-    margin-top: -50px;
     padding-top: 20px;
     max-width: 100%; /* Sesuaikan lebar maksimum sesuai kebutuhan */
-    width: 200%; /* Ambil lebar penuh dari parent element */
+    width: 100%; /* Ambil lebar penuh dari parent element */
     margin: 0 auto; /* Tengahkan elemen di tengah halaman */
     border-radius: 10px;
+    display: flex;
 }
 
 .container2 {
     background-color: #F7F6F4;
     margin-top: 20px; /* Sesuaikan margin atas sesuai kebutuhan */
-    max-width: 400%; /* Sesuaikan lebar maksimum sesuai kebutuhan */
+    max-width: 100%; /* Sesuaikan lebar maksimum sesuai kebutuhan */
     width: 100%; /* Ambil lebar penuh dari parent element */
     margin: 0 auto; /* Tengahkan elemen di tengah halaman */
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+    gap: 20px;
 }

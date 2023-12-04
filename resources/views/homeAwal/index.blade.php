@@ -216,71 +216,62 @@
             <h2>Tesmoni</h2>
             <section class="products">
                 <div class="col-left">
-                    <div class="corner-text left">Produk</div>
-                    <img src="{{ asset('images/kursi bar 1 3.png') }}" alt="Testimoni Picture">
+                    <div class="row-top">
+                        <div class="corner-text">Produk</div>
+                    </div>
+                    <div class="row-bottom">
+                        <img src="{{ asset('images/kursi bar 1 3.png') }}" alt="Testimoni Picture">
+                    </div>
                 </div>
                 <div class="col-center">
-                    <div class="corner-text left">Produk</div>
                     <div class="product">
+                        <h2>Kursi Kafe / Kursi Bar</h2>
                         <table class="product-details">
-                            <tr>
-                                <td>Dimensi Produk</td>
-                                <td>:</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Panjang</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-
-                            <h2>Kursi Kafe / Kursi Bar</h2>
-                            <p>:</p>
-                            <ul>
-                                <li>: 300 cm</li>
-                                <li>Lebar kaki bawah: 70 cm</li>
-                                <li>Lebar kaki atas: 35 cm</li>
-                            </ul>
-                            <p>Warna: Silver</p>
-                            <p>Bahan Rangka: Baja ringan</p>
-                            <p>Estimasi Waktu pengerjaan: 7 hari</p>
-                            <p class="jumlah">Jumlah barang: 1</p>
-                            <h5>Total pesanan: Rp. 120.000</h5>
+                                <tr>
+                                    <td>Dimensi Produk</td>
+                                    <td class="narrow-column">:</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="col-d">Panjang</td>
+                                    <td class="narrow-column">:</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="col-d">Lebar kaki bawah</td>
+                                    <td class="narrow-column">:</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="col-d">Lebar kaki atas: 35 cm</td>
+                                    <td class="narrow-column">:</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Warna</td>
+                                    <td class="narrow-column">:</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Bahan Rangka</td>
+                                    <td class="narrow-column">:</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Estimasi Waktu pengerjaan</td>
+                                    <td class="narrow-column">:</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Jumlah Barang</td>
+                                    <td class="narrow-column">:</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Total pesanan</td>
+                                    <td class="narrow-column">:</td>
+                                    <td></td>
+                                </tr>
                         </table>
                     </div>
                 </div>
@@ -299,15 +290,20 @@
             <br>
 
             <section class="testimonials">
-                <div class="corner-text left">Servic</div>
                 <div class="product2">
-                    <h3>Fahmi</h3>
-                    <h4>Perbaikan Pagar</h4>
-                    <h4>Penilaian: ★★★★★</h4>
-                    <p>saya sangat puas dengan kinerja joyo royo welding dalam memperbaiki pagar rumah saya yang rusak, hasil pengerjaan, bagus, rapih,
-                        dan pengerjaan dilakukan dengan cepat</p>
+                    <div class="row-top">
+                        <div class="corner-text">Servic</div>
+                        <div class="corner-text right">Selesai</div>
+                    </div>
+                    <div class="row-bottom">
+                        <h4>Fahmi</h4>
+                        <h5>Perbaikan Pagar</h5>
+                        <h5>Penilaian: ★★★★★</h5>
+                        <p>saya sangat puas dengan kinerja joyo royo welding dalam memperbaiki pagar rumah saya yang rusak, hasil pengerjaan, bagus, rapih,
+                            dan pengerjaan dilakukan dengan cepat</p>
+                    </div>
                 </div>
-                <div class="corner-text right">Selesai</div>
+
             </section>
         </section>
         <section id="layanan">

@@ -1,0 +1,207 @@
+#productspes{
+    width: 80%;
+    padding: 10px;
+    margin: 0;
+    float: right;
+    margin-top: 80px;
+}
+.cardpes {
+    width: 100%; 
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    gap: 10px;
+}
+
+.card-top {
+    height: 20%; 
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #dadadb;
+}
+.card-top-wishlist{
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card-top-wishlist img{
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.card-img-top{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.left-text{
+    float: left;
+    margin-left: 20px;
+}
+.right-text{
+    float: right;
+    margin-right: 20px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    font-weight: bold;
+}
+.vertical-line {
+    border-left: 2px solid #949494b6;
+    height: 30px;
+    margin-top: -10px;
+}
+
+.horizontal-line {
+    border-left: 1px solid #949494b6;
+    width: 100%;
+}
+
+
+.card-center {
+    height: 60%; 
+    display: flex;
+    align-items: center;
+}
+.product-details {
+    border-collapse: collapse;
+    width: 80%;
+    height: 70%;
+    float: left;
+
+}
+
+.product-details td {
+    text-align: left;
+    font-size: 14px;
+}
+
+.product-details td:first-child {
+    width: 150px; 
+}
+.product-details td:nth-child(2) {
+    width: 20px;
+}
+
+
+.col-d{
+    padding-left: 20px;
+}
+
+.left-col{
+    width: 20%;
+}
+.center-col{
+    width: 60%;
+} 
+.right-col {
+    width: 20%;
+}
+
+.right-col h5{
+    float: inline-end;
+    margin-top: 20%;
+    margin-right: 20px;
+}
+
+.card-bottom {
+    height: 20%; 
+    display: flex;
+    justify-content: space-between;
+}
+.btn-left{
+    float: left;
+    margin-left: 20px;
+}
+.btn-left button {
+    padding: 4px 8px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #4C6687;
+    color: #fcf2c5;
+    border: 1px solid #4C6687;
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-weight: 450;
+}
+
+.btn-left button:hover {
+    background-color: #F0E5CF;
+    color: #4C6687;
+}
+
+.btn-right{
+    float: right;
+    display: flex;
+    gap: 10px;
+    margin-right: 20px;
+}
+.btnagain {
+    padding: 4px 8px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid #4C6687;
+    background-color: #4C6687;
+    color: #fcf2c5;
+    transition: background-color 0.3s ease;
+}
+
+.btnagain:hover {
+    background-color: #F0E5CF;
+    color: #4C6687;
+}
+
+.btncall {
+    padding: 4px 8px;
+    font-size: 14px;
+    border: 1px solid #4C6687;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #303947;
+    transition: background-color 0.3s ease;
+}
+
+.btncall:hover {
+    background-color: #4C6687;
+    color: white;
+}
+.card-progres{
+    background-color: #f4f5f7;
+    width: 900px; 
+    height: 180px;
+}
+.dropdown-menu{
+    background-color: #f4f5f7;
+    padding: 0;
+}
+
+.btnriwayat{
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    background-color: #4C6687;
+    color: #fcf2c5;
+    transition: background-color 0.3s ease;
+    width: 150px;
+}
+
+.btnriwayat:hover {
+    background-color: #F0E5CF;
+    color: #4C6687;
+}

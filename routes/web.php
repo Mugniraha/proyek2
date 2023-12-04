@@ -14,6 +14,7 @@ use App\Http\Controllers\admin\cusbarSelesaiController;
 use App\Http\Controllers\admin\historyJaserController;
 use App\Http\Controllers\admin\historyCusbarController;
 use App\Http\Controllers\admin\dashboardController;
+use App\Http\Controllers\bantuanController;
 use App\Http\Controllers\serviceController;
 use App\Http\Controllers\customController;
 use App\Http\Controllers\formJsController;
@@ -25,6 +26,12 @@ use App\Http\Controllers\ProfilUserController;
 use App\Http\Controllers\KelolaUserController;
 use App\Http\Controllers\NotifikasiController;
 use App\Http\Controllers\serviceBaruController;
+use App\Http\Controllers\CostumProdukController;
+use App\Http\Controllers\DaftarPesananController;
+use App\Http\Controllers\WishlistController;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -56,9 +63,14 @@ Route::get('/profilUser', [ProfilUserController::class, 'ProfilUserIndex'])->nam
 Route::get('/kelolaUser', [KelolaUserController::class, 'KelolaUserIndex'])->name('KelolaUserIndex');
 Route::get('/notifikasi', [NotifikasiController::class, 'NotifikasiIndex'])->name('NotifikasiIndex');
 Route::get('/konfirmasi', [NotifikasiController::class, 'KonfirmasiIndex'])->name('KonfirmasiIndex');
-Route::put('/formOrder/{id}', [FormJSController::class, 'update'])->name('formOrder.update');
-Route::resource('/formOrder', formJsController::class );
+Route::put('/formOrder/{id}', [formJSController::class, 'update'])->name('formOrder.update');
 Route::get('/serviceUser', [serviceBaruController::class, 'serviceBaruIndex'])->name('serviceBaruIndex');
+Route::get('/costumproduk', [CostumProdukController::class, 'index'])->name('costumproduk.index');
+Route::get('/daftarpesanan', [DaftarPesananController::class, 'index'])->name('daftarpesanan.index');
+Route::get('/riwayat', [DaftarPesananController::class, 'riwayat'])->name('daftarpesanan.riwayat');
+Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
+
+
 
 Route::get('/bantuan', function () {
     return view('/homeAwal/bantuan');
@@ -66,6 +78,7 @@ Route::get('/bantuan', function () {
 // Route::get('/serviceUser', function () {
 //     return view('profilUser.service');
 // });
+
 
 
 // Route::get('/', [galeriController::class, 'index']);
@@ -80,6 +93,8 @@ Route::resource('/cbSelesai', cusbarSelesaiController::class);
 Route::resource('/historyJaser', historyJaserController::class);
 Route::resource('/historyCusbar', historyCusbarController::class);
 Route::resource('/dashboard', dashboardController::class);
+Route::resource('/bantuan', bantuanController::class);
+Route::resource('/formOrder', formJsController::class );
 
 
 // Route::get('/galeri', [galeriController::class, 'index']);

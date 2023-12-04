@@ -1,18 +1,59 @@
+.kontenr{
+    display: block;
+}
+.top-konten{
+    justify-content: center;
+    float: left;
+}
+.user-profile{
+    border-bottom: 1px solid rgb(208, 208, 208);
+
+}
 .awal {
-    background-color: #E9DB9C;
+    display: flex;
+    background-color: #e9e09c;
     position: relative;
-    margin-top: -50px;
     padding-top: 20px;
     padding-left: 20px;
-    max-width: 400%; /* Sesuaikan lebar maksimum sesuai kebutuhan */
-    width: 100%; /* Ambil lebar penuh dari parent element */
+    max-width: 50%; /* Sesuaikan lebar maksimum sesuai kebutuhan */
+    width: 40%; /* Ambil lebar penuh dari parent element */
     margin: 0 auto; /* Tengahkan elemen di tengah halaman */
+    float: left;
 }
 
-.container {
-    background-color: #F7F6F4;
+.container-row {
+    background-color: #ffffff;
     margin-top: 20px; /* Sesuaikan margin atas sesuai kebutuhan */
-    max-width: 400%; /* Sesuaikan lebar maksimum sesuai kebutuhan */
+    max-width: 100%; /* Sesuaikan lebar maksimum sesuai kebutuhan */
     width: 100%; /* Ambil lebar penuh dari parent element */
     margin: 0 auto; /* Tengahkan elemen di tengah halaman */
+    float: left;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.content-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.part1{
+    width: 40%;
+}
+
+.part2{
+    width: 60%;
+}
+.btn-akun{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.btn-akun .btn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0, 140, 255);
+    border-radius: 5px;
+    color: #ffffff;
 }

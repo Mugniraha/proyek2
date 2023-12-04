@@ -1,0 +1,201 @@
+#productscos{
+    width: 80%;
+    padding: 10px;
+    margin: 0;
+    float: right;
+    margin-top: 100px;
+    
+}
+
+.cardcos{
+    width: 100%;
+    display: flex;
+    height: 450px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    gap: 10px;
+}
+
+.card-left{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    float: left;
+    align-items: center;
+}
+
+.card-left img{
+    width: 100%;
+    height: 100%;
+}
+
+.card-left,
+.card-center,
+.card-right {
+    flex: 0 0 30%; /* Mengatur lebar relatif */
+}
+
+.card-right {
+    flex: 0 0 45%; /* Mengatur lebar relatif untuk card-right */
+    padding: 0 10px; /* Menambahkan padding untuk card-right */
+}
+
+/* Tambahkan gaya tambahan sesuai kebutuhan */
+.card-left img {
+    width: 100%;
+    height: auto;
+}
+
+.card-center {
+    font-family: Arial, sans-serif; 
+    font-size: 12px; 
+    line-height: 1.5; 
+    color: #333; 
+}
+.card-center h6{
+    font-weight: bold;
+}
+.card-center p {
+    margin: 5px 0; 
+    line-height: 1; 
+}
+.price h3,h4{
+    font-weight: bold;
+}
+.price{
+    margin-top: 70px;
+}
+
+.card-right form {
+    display: flex;
+    flex-direction: column;
+    width: 380px;
+    background-color: #44403B;
+    border-radius: 5px;
+    
+}
+
+.card-right label {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.card-right input {
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 50%;
+}
+
+/* Menyesuaikan tampilan input saat di-focus */
+.card-right input[type="text"]:focus,
+.card-right input[type="number"]:focus {
+    outline: none;
+    border-color: #fdea97;
+    box-shadow: 0 0 5px rgba(252, 177, 15, 0.5);
+}
+.input1{
+    display: flex;
+    gap: 10px;
+    padding: 5px;
+}
+.input1 label{
+    color: #ffffff;
+}
+.input1 .mb-3 input{
+    width: 100%;
+}
+.size{
+    display: flex;
+    background-color: #ffffff;
+    padding: 5px;
+    gap: 10px;
+    height: 50px;
+}
+.mb-4{
+    display: flex;
+    gap: 10px;
+}
+.mb-4 input{
+    width: 60px;
+    height: 30px;
+}
+.input2{
+    padding: 5px;
+}
+.input2 label{
+    color: #ffffff;
+}
+textarea.form-control {
+    width: 80%;
+    height: 90px;
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: vertical; 
+}
+
+/* Menyesuaikan tampilan textarea saat di-focus */
+textarea.form-control:focus {
+    outline: none;
+    border-color: #fdea97;
+    box-shadow: 0 0 5px rgba(245, 230, 101, 0.5);
+}
+.btnform{
+    display: flex;
+    gap: 10px;
+}
+.btnform .btnpesan{
+    width: 100%;
+    background-color: rgb(84, 223, 126);
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+.btnform .btnpesan:hover{
+    background-color: #ffffff;
+    color: #4C6687;
+}
+.btnform .btnwishlist{
+    width: 100%;
+    background-color: #F0E5CF;
+    color: #4C6687;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+    gap: 10px;
+    
+}
+.btnform .btnwishlist:hover{
+    background-color: #4C6687;
+    color: #fcf2c5;
+}
+select.form-select {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Menyesuaikan tampilan dropdown saat di-focus */
+select.form-select:focus {
+    outline: none;
+    border-color: #fdea97;
+    box-shadow: 0 0 5px rgba(245, 230, 101, 0.5);
+}
