@@ -1,0 +1,43 @@
+/* Style for the table with class 'progres-barang' */
+.progres-barang {
+    width: 95%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    font-size: 12px;
+    margin-left: 20px;
+    border: 1px solid #edf3fa;
+}
+
+.progres-barang thead {
+    background-color: #f8f8f8;
+}
+
+.progres-barang th,
+.progres-barang td {
+    padding: 4px 8px;
+    text-align: left;
+}
+
+.progres-barang th {
+    background-color: #4C6687;
+    color: #4C6687;
+    text-align: center;
+    color: #E9DB9C;
+}
+
+.progres-barang th:nth-child(3),
+.progres-barang td:nth-child(3) {
+    width: 100px; /* Adjust this value as needed */
+}
+
+.progres-barang th:nth-child(6),
+.progres-barang td:nth-child(6),
+.progres-barang th:nth-child(9),
+.progres-barang td:nth-child(9),
+.progres-barang th:nth-child(12),
+.progres-barang td:nth-child(12) {
+    width: 100px; /* Adjust this value as needed */
+}

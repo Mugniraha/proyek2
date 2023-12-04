@@ -5,7 +5,6 @@
                 <a href="{{ route('daftarpesanan.riwayat') }}"><button class="btnriwayat">Riwayat Pesanan</button></a>
                 <hr>
             </div>
-            
         <div class="container">
             <div class="row">
                 <div class="cardpes">
@@ -14,7 +13,9 @@
                             <h6><i>JOYO ROYO BENGKEL WELDING</i></h6>
                         </div>
                         <div class="right-text">
-                            <p>Status Pesnan</p>
+                            <p>Tanggal Selesai Pembuatan</p>
+                            <div class="vertical-line"></div>
+                            <p>Sudah Diterima</p>
                             <div class="vertical-line"></div>
                             <p>Detail Pesnan</p>
                         </div>
@@ -31,21 +32,6 @@
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td class="col-d">Panjang</td>
-                                    <td class="narrow-column">:</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td class="col-d">Lebar</td>
-                                    <td class="narrow-column">:</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td class="col-d">Tinggi</td>
-                                    <td class="narrow-column">:</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
                                     <td>Warna</td>
                                     <td class="narrow-column">:</td>
                                     <td></td>
@@ -57,6 +43,11 @@
                                 </tr>
                                 <tr>
                                     <td>Jumlah Barang</td>
+                                    <td class="narrow-column">:</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Tanggal Pembuatan</td>
                                     <td class="narrow-column">:</td>
                                     <td></td>
                                 </tr>
@@ -148,7 +139,6 @@
                         
                         <div class="btn-right">
                             <a href="{{ route('costumproduk.index') }}"><button class="btnagain">Order Lagi</button></a>
-                            <a href="{{ route('costumproduk.index') }}"><button class="btncall">Hubungi Pembuat</button></a>
                         </div>
                     </div>
                 </div>

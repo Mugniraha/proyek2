@@ -10,4 +10,8 @@ class DaftarPesananController extends Controller
     {
         return view('daftarpesanan.index'); // Menampilkan view daftarpesanan
     }
+    public function riwayat()
+    {
+        return view('daftarpesanan.riwayat'); 
+    }
 }

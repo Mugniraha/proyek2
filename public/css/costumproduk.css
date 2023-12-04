@@ -149,7 +149,7 @@ textarea.form-control:focus {
 }
 .btnform .btnpesan{
     width: 100%;
-    background-color: rgb(89, 250, 138);
+    background-color: rgb(84, 223, 126);
     border-radius: 5px;
     border: none;
     padding: 5px;
@@ -167,7 +167,8 @@ textarea.form-control:focus {
 }
 .btnform .btnwishlist{
     width: 100%;
-    background-color:#fcf8e8;
+    background-color: #F0E5CF;
+    color: #4C6687;
     border-radius: 5px;
     border: none;
     padding: 5px;
@@ -175,14 +176,14 @@ textarea.form-control:focus {
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: #4C6687;
     cursor: pointer;
     margin-bottom: 10px;
     gap: 10px;
+    
 }
 .btnform .btnwishlist:hover{
-    background-color: rgb(177, 231, 247);
-    color: #4C6687;
+    background-color: #4C6687;
+    color: #fcf2c5;
 }
 select.form-select {
     width: 100%;
