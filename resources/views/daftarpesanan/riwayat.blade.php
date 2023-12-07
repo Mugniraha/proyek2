@@ -2,7 +2,7 @@
 @section('konten')
         <section id="productspes">
             <div class="btn-top">
-                <a href="{{ route('daftarpesanan.riwayat') }}"><button class="btnriwayat">Riwayat Pesanan</button></a>
+                <a href="{{ route('daftarpesanan.index') }}"><button class="btnriwayat">Kembali</button></a>
                 <hr>
             </div>
         <div class="container">

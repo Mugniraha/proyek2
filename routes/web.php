@@ -66,6 +66,7 @@ Route::get('/konfirmasi', [NotifikasiController::class, 'KonfirmasiIndex'])->nam
 Route::put('/formOrder/{id}', [formJSController::class, 'update'])->name('formOrder.update');
 Route::get('/serviceUser', [serviceBaruController::class, 'serviceBaruIndex'])->name('serviceBaruIndex');
 Route::get('/costumproduk', [CostumProdukController::class, 'index'])->name('costumproduk.index');
+Route::get('/payment', [CostumProdukController::class, 'payment'])->name('costumproduk.payment');
 Route::get('/daftarpesanan', [DaftarPesananController::class, 'index'])->name('daftarpesanan.index');
 Route::get('/riwayat', [DaftarPesananController::class, 'riwayat'])->name('daftarpesanan.riwayat');
 Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');

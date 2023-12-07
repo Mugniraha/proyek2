@@ -60,10 +60,40 @@
                                     <td class="narrow-column">:</td>
                                     <td></td>
                                 </tr>
+                                <tr>
+                                    <td>Total Harga</td>
+                                    <td class="narrow-column">:</td>
+                                    <td></td>
+                                </tr>
                             </table>
                         </div>                        
                         <div class="right-col">
-                            <h5><i>Total Harga : </i>RP. 200.000</h5>
+                            <div class="dp-payment">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td><i>Harga DP :</i></td>
+                                            <td class="gap" rowspan="2">
+                                            </td>
+                                            <td class="status-payment" rowspan="2"><i>Sudah Dibayar</i></td>
+                                        </tr>
+                                        <tr>
+                                            <td>RP. 100.000</td>
+                                        </tr>
+                                    </tbody>
+                                </table>     
+                            </div>
+                            <div class="payment">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td><i>Belum dibayar</i></td>
+                                            <td>:</td>
+                                            <td class="pricefull"> RP. 100.000</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                     <div class="card-bottom">
@@ -148,7 +178,7 @@
                         
                         <div class="btn-right">
                             <a href="{{ route('costumproduk.index') }}"><button class="btnagain">Order Lagi</button></a>
-                            <a href="{{ route('costumproduk.index') }}"><button class="btncall">Hubungi Pembuat</button></a>
+                            <a href="{{ route('costumproduk.index') }}"><button class="btncall">Pembayaran</button></a>
                         </div>
                     </div>
                 </div>

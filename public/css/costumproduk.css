@@ -106,6 +106,17 @@
 .input1 .mb-3 input{
     width: 100%;
 }
+.input2{
+    display: flex;
+    gap: 10px;
+    padding: 5px;
+}
+.input2 label{
+    color: #ffffff;
+}
+.input2 .mb-3 input{
+    width: 100%;
+}
 .size{
     display: flex;
     background-color: #ffffff;
@@ -127,6 +138,14 @@
 .input2 label{
     color: #ffffff;
 }
+.input3 label{
+    color: #ffffff;
+    margin-left: 5px;
+}
+.input3{
+    padding-left: 5px;
+    padding-right: 5px;
+}
 textarea.form-control {
     width: 80%;
     height: 90px;
@@ -135,6 +154,7 @@ textarea.form-control {
     border-radius: 5px;
     border: 1px solid #ccc;
     resize: vertical; 
+    margin-left: 5px;
 }
 
 /* Menyesuaikan tampilan textarea saat di-focus */
@@ -147,7 +167,11 @@ textarea.form-control:focus {
     display: flex;
     gap: 10px;
 }
-.btnform .btnpesan{
+.btnform a{
+    text-decoration: none;
+}
+
+.btnpesan{
     width: 100%;
     background-color: rgb(84, 223, 126);
     border-radius: 5px;
@@ -160,10 +184,22 @@ textarea.form-control:focus {
     color: #ffffff;
     cursor: pointer;
     margin-bottom: 10px;
+    text-decoration: none;
 }
 .btnform .btnpesan:hover{
-    background-color: #ffffff;
+    background-color: rgb(147, 255, 179);
     color: #4C6687;
+    text-decoration: none;
+}
+.btnpesan .btnpesancld{
+    background-color: rgba(84, 223, 126, 0);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    color: #ffffff;
+}
+.btnpesan button:focus{
+    outline: none;
 }
 .btnform .btnwishlist{
     width: 100%;

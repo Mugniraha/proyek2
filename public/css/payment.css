@@ -1,0 +1,126 @@
+.payment-container{
+    width: 40%;
+    height: 80%;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 20px 20px;
+}
+
+.payment-top{
+    height: 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.judul{
+    font-size: 20px;
+    font-weight: bold;
+}
+.kodepesanan{
+    float: right;
+    font-size: 16px;
+    font-style: italic;
+    color: rgb(212, 212, 212);
+}
+.payment-center{
+    height: 75%;
+}
+.center-top{
+    height: 20%;
+    display: flex;
+    gap: 20px;
+}
+.center-top img{
+    height: 100%;
+    width: 40%;
+
+}
+.center-top .keterangan{
+    width: 50%;
+    height: 100%;
+}
+.keterangan .product-keterangan{
+    border-collapse: collapse;
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+}
+.col-c{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.center-col-deskripsi{
+    height: 80%;
+}
+
+.product-details-payment {
+    border-collapse: collapse;
+    width: 90%;
+    height: 70%;
+    float: left;
+    margin-top: 20px;
+
+}
+
+.product-details-payment td {
+    text-align: left;
+    font-size: 14px;
+}.product-details-payment td:first-child {
+    width: 110px; 
+}
+.product-details-payment td:nth-child(2) {
+    width: 20px;
+}
+.product-details-payment .col-d{
+    padding-left: 20px;
+}
+
+.payment-bottom{
+    height: 30%;
+    display: block;
+}
+.dp-price-payment{
+    float: right;
+}
+.dp-price-payment td{
+    font-weight: bold;
+}
+
+.btn-payment-dp a{
+    width: 100%;
+    background-color: rgb(84, 223, 126);
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    cursor: pointer;
+    margin-bottom: 10px;
+    text-decoration: none;
+
+}
+.btn-payment-dp a{
+    text-decoration: none;
+}
+
+.btn-payment-dp a:hover{
+    background-color: rgb(147, 255, 179);
+    color: #4C6687;
+    text-decoration: none;
+}
+
+.btn-payment-dp .btndp{
+    background-color: rgba(84, 223, 126, 0);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    color: #ffffff;
+}
+.btn-payment-dp button:focus{
+    outline: none;
+}

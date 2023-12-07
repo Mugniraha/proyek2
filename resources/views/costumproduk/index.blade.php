@@ -26,7 +26,7 @@
                         </div>
                     </div>
                     <div class="card-right">
-                        <form action="" method="POST">
+                        <form action="" method="GET">
                             <div class="input1">
                                 <div class="mb-3">
                                     <label for="formGroupExampleInput" class="form-label">Bahan</label>
@@ -67,6 +67,17 @@
                                     <input type="number" class="form-control" id="formGroupExampleInput2" name="telpon" placeholder="" value="">
                                 </div>
                                 <div class="mb-3">
+                                    <label for="formGroupExampleInput2" class="form-label">Metode Pengiriman</label>
+                                    <select class="form-select" id="pilihan" name="pengiriman" value="none">
+                                        <option value="" selected>Pilih Metode Pengiriman</option>
+                                        <option value="nilai1">Opsi 1</option>
+                                        <option value="nilai2">Opsi 2</option>
+                                        <option value="nilai3">Opsi 3</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="input3">
+                                <div class="mb-3">
                                     <label for="formGroupExampleInput2" class="form-label">Keterangan Tambahan</label>
                                     <textarea class="form-control" id="deskripsi" name="deskripsi" rows="6" placeholder="Masukkan deskripsi"></textarea>
                                 </div>
@@ -75,8 +86,11 @@
                                         <!--!Font Awesome Free 6.5.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
                                         <path fill="#204d6f" d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg>
                                         Wishlist</button>
-                                    <button type="submit" class="btnpesan">Pesan Sekarang</button>
+                                    <a class="btnpesan" href="{{ route('costumproduk.payment') }}">
+                                        <button type="submit" class="btnpesancld">Pesan Sekarang</button>
+                                    </a>
                                 </div>
+                            </div>
                         </form>
                     </div>
                 </div>
