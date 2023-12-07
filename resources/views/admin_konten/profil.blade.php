@@ -135,7 +135,7 @@
                     </div>
                     <div class="modal-body">
                         <form action="" method="POST">
-                            @csrf
+                        @csrf
                             <div class="mb-3">
                                 <label for="formGroupExampleInput" class="form-label">Nama</label>
                                 <input type="text" class="form-control" id="formGroupExampleInput" name="nama" placeholder="" value="">

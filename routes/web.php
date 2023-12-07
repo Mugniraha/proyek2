@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\buatAkunController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ChangePasswordController;
@@ -52,17 +53,21 @@ Route::get('/profil', function(){
 
 Route::get('/register', [RegisterController::class, 'registerIndex'])->name('registerIndex');
 Route::post('/register', [RegisterController::class, 'registerPost'])->name('registerPost');
-Route::get('/login', [RegisterController::class, 'loginIndex'])->name('loginIndex');
-Route::post('/login', [RegisterController::class, 'loginPost'])->name('loginPost');
+Route::get('/loginUser', [RegisterController::class, 'loginIndex'])->name('loginIndex');
+Route::get('/loginAdmin', [RegisterController::class, 'loginAdminIndex'])->name('loginAdminIndex');
+Route::post('/loginUser', [RegisterController::class, 'loginPost'])->name('loginPost');
 Route::get('password/edit', [ChangePasswordController::class, 'edit'])->name('password.edit');
 Route::put('password/edit', [ChangePasswordController::class, 'update'])->name('password.update');
 Route::get('/home', [HomeController::class, 'HomeIndex'])->name('HomeIndex');
 Route::get('/produk', [ProdukController::class, 'index'])->name('produk.index');
 Route::get('/akunUser', [HomeUserController::class, 'HomeUserIndex'])->name('HomeUserIndex');
+Route::resource('/buatAkun', buatAkunController::class );
 Route::get('/profilUser', [ProfilUserController::class, 'ProfilUserIndex'])->name('ProfilUserIndex');
 Route::get('/kelolaUser', [KelolaUserController::class, 'KelolaUserIndex'])->name('KelolaUserIndex');
+Route::put('/updateAkun/{id}', [buatAkunController::class, 'update'])->name('updateAkun');
 Route::get('/notifikasi', [NotifikasiController::class, 'NotifikasiIndex'])->name('NotifikasiIndex');
 Route::get('/konfirmasi', [NotifikasiController::class, 'KonfirmasiIndex'])->name('KonfirmasiIndex');
+Route::resource('/formOrder', formJsController::class );
 Route::put('/formOrder/{id}', [formJSController::class, 'update'])->name('formOrder.update');
 Route::get('/serviceUser', [serviceBaruController::class, 'serviceBaruIndex'])->name('serviceBaruIndex');
 Route::get('/costumproduk', [CostumProdukController::class, 'index'])->name('costumproduk.index');
@@ -95,7 +100,7 @@ Route::resource('/historyJaser', historyJaserController::class);
 Route::resource('/historyCusbar', historyCusbarController::class);
 Route::resource('/dashboard', dashboardController::class);
 Route::resource('/bantuan', bantuanController::class);
-Route::resource('/formOrder', formJsController::class );
+
 
 
 // Route::get('/galeri', [galeriController::class, 'index']);

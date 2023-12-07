@@ -9,15 +9,16 @@
                         <div class="container1 rounded p-5">
                             <div class="user-profile">
                                 <div class="photoprofile">
-                                    <div class="profile-image">
-                                        <img src="{{ asset('images/kucing.jpg') }}" alt="Profile Picture">
+                                    <div class="profile-image" onclick="openFileInput()">
+                                        <img id="profilePicture" src="{{ asset('images/kucing.jpg') }}" alt="Profile Picture">
                                     </div>
                                 </div>
                                 <div class="user-name">
                                     <h4>USERNAME</h4>
                                 </div>
-                                <input type="file" id="fileInput" style="display: none" accept="image/*">
-                                <button type="button" class="btn" style="background-color: #4C6687; color: white" onclick="document.getElementById('fileInput').click()">
+                                <!-- File input to upload a new profile picture -->
+                                <input type="file" id="fileInput" style="display: none" accept="image/*" onchange="updateProfilePicture(this)">
+                                <button type="button" class="btn" style="background-color: #4C6687; color: #fcf2c5;" onclick="document.getElementById('fileInput').click()">
                                     Ganti Foto
                                 </button>
                             </div>
@@ -68,7 +69,7 @@
                                     <textarea class="form-control" id="exampleFormControlTextarea1" name="alamat" placeholder="" rows="3"></textarea>
                                 </div>
                                 <div class="modal-footer">
-                                <button type="submit" class="btn btn-success" style="background-color: #4C6687">Simpan</button>
+                                <button type="submit" class="btn btn-success" style="background-color: #4C6687; color: #fcf2c5;">Simpan</button>
                             </div>
                             </div>
                             </form>
@@ -77,37 +78,58 @@
                 </div>
 
                 <div class="konten2 col py-3">
-                    <div class="container2 rounded p-5">
-                        <div class="user-profile">
-                            <div class="user-name">
-                                <h4>Ubah Password</h4>
+                    <div class="awal2" >
+                        <div class="container2 rounded p-5">
+                            <div class="user-profile">
+                                <div class="user-name">
+                                    <h4>Ubah Password</h4>
+                                </div>
+                                <hr class="underline">
                             </div>
+                            <div class="modal-body">
+                                <form action="" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <div class="mb-3">
+                                        <label for="formGroupExampleInput" class="form-label">Password Lama</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput" name="pw_lama" placeholder="" value="">
+                                        <input type="hidden" value="">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlTextarea1" class="form-label">Password Baru</label>
+                                        <input class="form-control" id="exampleFormControlTextarea1" name="pw_baru" placeholder="" rows="3">
+                                    </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-success" style="background-color: #4C6687;color: #fcf2c5;">Simpan</button>
+                                        <a href="{{ route('ProfilUserIndex') }}" type="button" class="btn btn-warning" style="background-color: red; color:white" data-bs-dismiss="modal">Kembali</a>
+                                    </div>
+                                </form>
                             <hr class="underline">
                         </div>
-                        <div class="modal-body">
-                            <form action="" method="POST">
-                                @csrf
-                                @method('PUT')
-                                <div class="mb-3">
-                                    <label for="formGroupExampleInput" class="form-label">Password Lama</label>
-                                    <input type="text" class="form-control" id="formGroupExampleInput" name="nama" placeholder="" value="">
-                                    <input type="hidden" value="">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="exampleFormControlTextarea1" class="form-label">Password Baru</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" name="no_hp" placeholder="" rows="3"></textarea>
-                                </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="submit" class="btn btn-success" style="background-color: #4C6687">Simpan</button>
-                                    <button type="button" class="btn btn-warning" style="background-color: red; color:white" data-bs-dismiss="modal">Kembali</button>
-                                </div>
-                            </form>
-                        <hr class="underline">
                     </div>
                 </div>
-
-
             </div>
+            <script>
+                function openFileInput() {
+                    // Trigger click event on the file input
+                    document.getElementById('fileInput').click();
+                }
+
+                function updateProfilePicture(input) {
+                    // Check if a file is selected
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+
+                        reader.onload = function (e) {
+                            // Update the profile picture with the selected image
+                            document.getElementById('profilePicture').src = e.target.result;
+                        };
+
+                        // Read the selected file as a data URL
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                }
+            </script>
         </div>
         </section>

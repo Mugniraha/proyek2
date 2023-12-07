@@ -26,8 +26,16 @@
             </div>
         </div>
         <div class="log">
-            <img src="{{ asset('images/profil.png')}}" alt="Logo" width="25" height="22" class="d-inline-block align-text-top">
-            <a href="{{ route('loginIndex') }}" id="loginBtn" style="text-decoration: none;">Login</a>
+            <a href="" id="loginBtn" class="dropbtn" style="text-decoration: none;">
+                <img src="{{ asset('images/profil.png')}}" alt="Logo" width="25" height="22" class="d-inline-block align-text-top">
+                Login</a>
+            <div class="dropdown-content" id="dropdownProfil">
+                <a class="listdrop" href="{{ route('loginIndex') }}">User</a>
+                <a class="listdrop" href="{{ route('loginAdminIndex') }}">Admin</a>
+            </div>
+            {{-- <a href="{{ route('loginIndex') }}" id="loginBtn" class="dropbtn" style="text-decoration: none;">
+                <img src="{{ asset('images/profil.png')}}" alt="Logo" width="25" height="22" class="d-inline-block align-text-top">
+                Login</a> --}}
             <img src="{{ asset('images/love.png')}}" alt="Logo" width="25" height="22" class="d-inline-block align-text-top">
             <a href="halaman_favorit.html" id="favoriteBtn" style="text-decoration: none;">Favorite</a>
         </div>
