@@ -18,7 +18,7 @@
     gap: 10px; /* Sesuaikan jarak antara ikon */
 }
 
-.profile-image {
+.profile {
     margin-right: 20px; /* Sesuaikan margin sesuai kebutuhan */
 }
 
@@ -42,3 +42,46 @@
 .text{
 	margin-left: 20%;
 }
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.row-top {
+    display: flex; /* Menjadikan row-top sebagai flex container */
+    justify-content: space-between; /* Menyusun elemen di sisi kiri dan kanan di dalam row-top */
+    width: 40%;
+}
+
+.row-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 60%;
+}
+
+.flex-right {
+    margin-top: 25%;
+    margin-left: 45%;
+}
+
+.row-bottom,
+.row-bottom2 {
+    width: 100%;
+}
+
+.row-bottom{
+    margin: 5 auto;
+    margin-left: 35%;
+}
+
+.row-bottom2 p{
+    margin-left: 25%;
+    width: 100%;
+}
+
+
+
+
+

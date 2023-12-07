@@ -12,6 +12,7 @@ class RegisterController extends Controller
     /**y
      * Display a listing of the resource.
      */
+
     public function registerIndex()
     {
         return view('loginUser.register');
@@ -33,6 +34,11 @@ class RegisterController extends Controller
         return view('loginUser.login');
     }
 
+    public function loginAdminIndex()
+    {
+        return view('loginAdmin.login');
+    }
+
     public function loginPost(Request $request)
     {
         $credetials = [
@@ -41,7 +47,7 @@ class RegisterController extends Controller
         ];
 
         if (Auth::attempt($credetials)) {
-            return redirect('/home')->with('success', 'Login berhasil');
+            return redirect('/profilUser')->with('success', 'Login berhasil');
         }
 
         return back()->with('error', 'Email or Passwoord salah');

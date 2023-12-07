@@ -2,11 +2,7 @@
 @section('konten')
         <section id="productspes">
 
-	<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" >
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item active" aria-current="page">Konfirmasi Pesanan</li>
-		</ol>
-	</nav>
+			<div class="breadcrumb-item active" style="font-size: 22px" aria-current="page">Konfirmasi Pesanan</div>
 
     <div class="accordion" id="accordionExample">
 		<div class="accordion-item">
