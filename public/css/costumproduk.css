@@ -3,12 +3,10 @@
     padding: 10px;
     margin: 0;
     float: right;
-    margin-top: 30px;
+    margin-top: 100px;
     
 }
-.container .row{
-    margin-left: 15px;
-}
+
 .cardcos{
     width: 100%;
     display: flex;
@@ -17,6 +15,7 @@
     padding: 10px;
     gap: 10px;
 }
+
 .card-left{
     width: 30%;
     height: 100%;
@@ -107,6 +106,17 @@
 .input1 .mb-3 input{
     width: 100%;
 }
+.input2{
+    display: flex;
+    gap: 10px;
+    padding: 5px;
+}
+.input2 label{
+    color: #ffffff;
+}
+.input2 .mb-3 input{
+    width: 100%;
+}
 .size{
     display: flex;
     background-color: #ffffff;
@@ -128,6 +138,14 @@
 .input2 label{
     color: #ffffff;
 }
+.input3 label{
+    color: #ffffff;
+    margin-left: 5px;
+}
+.input3{
+    padding-left: 5px;
+    padding-right: 5px;
+}
 textarea.form-control {
     width: 80%;
     height: 90px;
@@ -136,6 +154,7 @@ textarea.form-control {
     border-radius: 5px;
     border: 1px solid #ccc;
     resize: vertical; 
+    margin-left: 5px;
 }
 
 /* Menyesuaikan tampilan textarea saat di-focus */
@@ -148,9 +167,13 @@ textarea.form-control:focus {
     display: flex;
     gap: 10px;
 }
-.btnform .btnpesan{
+.btnform a{
+    text-decoration: none;
+}
+
+.btnpesan{
     width: 100%;
-    background-color: rgb(89, 250, 138);
+    background-color: rgb(84, 223, 126);
     border-radius: 5px;
     border: none;
     padding: 5px;
@@ -161,14 +184,27 @@ textarea.form-control:focus {
     color: #ffffff;
     cursor: pointer;
     margin-bottom: 10px;
+    text-decoration: none;
 }
 .btnform .btnpesan:hover{
-    background-color: #ffffff;
+    background-color: rgb(147, 255, 179);
     color: #4C6687;
+    text-decoration: none;
+}
+.btnpesan .btnpesancld{
+    background-color: rgba(84, 223, 126, 0);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    color: #ffffff;
+}
+.btnpesan button:focus{
+    outline: none;
 }
 .btnform .btnwishlist{
     width: 100%;
-    background-color:#fcf8e8;
+    background-color: #F0E5CF;
+    color: #4C6687;
     border-radius: 5px;
     border: none;
     padding: 5px;
@@ -176,14 +212,14 @@ textarea.form-control:focus {
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: #4C6687;
     cursor: pointer;
     margin-bottom: 10px;
     gap: 10px;
+    
 }
 .btnform .btnwishlist:hover{
-    background-color: rgb(177, 231, 247);
-    color: #4C6687;
+    background-color: #4C6687;
+    color: #fcf2c5;
 }
 select.form-select {
     width: 100%;

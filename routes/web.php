@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\buatAkunController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ChangePasswordController;
@@ -21,6 +22,11 @@ use App\Http\Controllers\formJsController;
 use App\Http\Controllers\historiController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\HomeUserController;
+use App\Http\Controllers\ProfilUserController;
+use App\Http\Controllers\KelolaUserController;
+use App\Http\Controllers\NotifikasiController;
+use App\Http\Controllers\serviceBaruController;
 use App\Http\Controllers\CostumProdukController;
 use App\Http\Controllers\DaftarPesananController;
 use App\Http\Controllers\WishlistController;
@@ -41,14 +47,27 @@ use App\Http\Controllers\WishlistController;
 
 Route::get('/register', [RegisterController::class, 'registerIndex'])->name('registerIndex');
 Route::post('/register', [RegisterController::class, 'registerPost'])->name('registerPost');
-Route::get('/login', [RegisterController::class, 'loginIndex'])->name('loginIndex');
-Route::post('/login', [RegisterController::class, 'loginPost'])->name('loginPost');
+Route::get('/loginUser', [RegisterController::class, 'loginIndex'])->name('loginIndex');
+Route::get('/loginAdmin', [RegisterController::class, 'loginAdminIndex'])->name('loginAdminIndex');
+Route::post('/loginUser', [RegisterController::class, 'loginPost'])->name('loginPost');
 Route::get('password/edit', [ChangePasswordController::class, 'edit'])->name('password.edit');
 Route::put('password/edit', [ChangePasswordController::class, 'update'])->name('password.update');
 Route::get('/home', [HomeController::class, 'HomeIndex'])->name('HomeIndex');
 Route::get('/produk', [ProdukController::class, 'index'])->name('produk.index');
+Route::get('/akunUser', [HomeUserController::class, 'HomeUserIndex'])->name('HomeUserIndex');
+Route::resource('/buatAkun', buatAkunController::class );
+Route::get('/profilUser', [ProfilUserController::class, 'ProfilUserIndex'])->name('ProfilUserIndex');
+Route::get('/kelolaUser', [KelolaUserController::class, 'KelolaUserIndex'])->name('KelolaUserIndex');
+Route::put('/updateAkun/{id}', [buatAkunController::class, 'update'])->name('updateAkun');
+Route::get('/notifikasi', [NotifikasiController::class, 'NotifikasiIndex'])->name('NotifikasiIndex');
+Route::get('/konfirmasi', [NotifikasiController::class, 'KonfirmasiIndex'])->name('KonfirmasiIndex');
+Route::resource('/formOrder', formJsController::class );
+Route::put('/formOrder/{id}', [formJSController::class, 'update'])->name('formOrder.update');
+Route::get('/serviceUser', [serviceBaruController::class, 'serviceBaruIndex'])->name('serviceBaruIndex');
 Route::get('/costumproduk', [CostumProdukController::class, 'index'])->name('costumproduk.index');
+Route::get('/payment', [CostumProdukController::class, 'payment'])->name('costumproduk.payment');
 Route::get('/daftarpesanan', [DaftarPesananController::class, 'index'])->name('daftarpesanan.index');
+Route::get('/riwayat', [DaftarPesananController::class, 'riwayat'])->name('daftarpesanan.riwayat');
 Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
 
 
@@ -56,14 +75,10 @@ Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.in
 Route::get('/bantuan', function () {
     return view('/homeAwal/bantuan');
 });
-Route::get('/notifikasi', function () {
-    return view('/notifikasi/index');
-});
-// Route::get('/formOrder', function () {
-//     return view('jasaService_User.formulir');
+// Route::get('/serviceUser', function () {
+//     return view('profilUser.service');
 // });
-Route::resource('/formOrder', formJsController::class );
-Route::put('/formOrder/{id}', [FormJSController::class, 'update'])->name('formOrder.update');
+
 
 
 // Route::get('/', [galeriController::class, 'index']);
@@ -80,6 +95,7 @@ Route::resource('/historyCusbar', historyCusbarController::class);
 Route::resource('/dashboard', dashboardController::class);
 Route::resource('/bantuan', bantuanController::class);
 Route::resource('/profil', profilAdminController::class);
+
 
 
 // Route::get('/galeri', [galeriController::class, 'index']);

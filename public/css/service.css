@@ -1,0 +1,87 @@
+.awalan {
+    background-color: #FFFAF1;
+    margin-top: 20px; /* Sesuaikan margin atas sesuai kebutuhan */
+    max-width: 400%; /* Sesuaikan lebar maksimum sesuai kebutuhan */
+    width: 100%; /* Ambil lebar penuh dari parent element */
+    margin: 0 auto; /* Tengahkan elemen di tengah halaman */
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+.user-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-icons {
+    display: flex;
+    gap: 10px; /* Sesuaikan jarak antara ikon */
+}
+
+.profile {
+    margin-right: 20px; /* Sesuaikan margin sesuai kebutuhan */
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* margin-top: 10px; */
+}
+
+.contact-link {
+    margin-bottom: 10px;
+}
+
+.btn-primary {
+    background-color: white;
+    color: black;
+	margin-left: 20%;
+}
+
+.text{
+	margin-left: 20%;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.row-top {
+    display: flex; /* Menjadikan row-top sebagai flex container */
+    justify-content: space-between; /* Menyusun elemen di sisi kiri dan kanan di dalam row-top */
+    width: 40%;
+}
+
+.row-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 60%;
+}
+
+.flex-right {
+    margin-top: 25%;
+    margin-left: 45%;
+}
+
+.row-bottom,
+.row-bottom2 {
+    width: 100%;
+}
+
+.row-bottom{
+    margin: 5 auto;
+    margin-left: 35%;
+}
+
+.row-bottom2 p{
+    margin-left: 25%;
+    width: 100%;
+}
+
+
+
+
+

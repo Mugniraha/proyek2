@@ -3,22 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use  App\Models\formjs;
+use  App\Models\buatAkun;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
-class formJsController extends Controller
+class buatAkunController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $slug = "form_js";
-        $form_js = DB::table('form_js')->get();
-        return view('jasaService_User.formulir', compact('slug','form_js'));
-
+        $slug = "buat_akun";
+        $buat_akun = DB::table('buat_akun')->get();
+        return view('profilUser.buatAkun', compact('slug','buat_akun'));
     }
 
     /**
@@ -26,7 +25,7 @@ class formJsController extends Controller
      */
     public function create()
     {
-        return view('jasaService_User.formulir');
+        return view('profilUser.buatAkun');
     }
 
     /**
@@ -35,17 +34,16 @@ class formJsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required',
+            'username' => 'required',
+            'nama_lengkap' => 'required',
             'telpon' => 'required',
-            'jenisJasa' => 'required',
-            'deskripsi' => 'required',
+            'email' => 'required',
             'alamat' => 'required',
-            'tanggal' => 'required',
         ]);
 
-        FormJS::create($request->all());
+        buatAkun::create($request->all());
 
-        return redirect()->route('serviceBaruIndex')->with('success', 'Data berhasil disimpan!');
+        return redirect()->route('ProfilUserIndex')->with('success', 'Data berhasil disimpan!');
     }
 
     /**
@@ -61,7 +59,9 @@ class formJsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = buatAkun::find($id);
+
+    return view('/kelolaUser', compact('user'));
     }
 
     /**
@@ -70,18 +70,22 @@ class formJsController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'nama' => 'required',
+            'nama_lengkap' => 'required',
             'telpon' => 'required',
-            'jenisJasa' => 'required',
-            'deskripsi' => 'required',
+            'email' => 'required',
             'alamat' => 'required',
-            'tanggal' => 'required',
         ]);
 
-        $formJS = FormJS::find($id);
-        $formJS->update($request->all());
+        $user = buatAkun::findOrFail($id);
 
-        return redirect()->route('nama_route_index')->with('success', 'Data berhasil diperbarui!');
+        $user->update([
+            'nama_lengkap' => $request->input('nama_lengkap'),
+            'telpon' => $request->input('telpon'),
+            'email' => $request->input('email'),
+            'alamat' => $request->input('alamat'),
+        ]);
+
+        return redirect()->route('ProfilUserIndex')->with('success', 'Data berhasil diperbarui!');
     }
 
     /**

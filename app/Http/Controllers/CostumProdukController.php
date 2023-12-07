@@ -10,4 +10,8 @@ class CostumProdukController extends Controller
     {
         return view('costumproduk.index'); 
     }
+    public function payment()
+    {
+        return view('costumproduk.payment'); 
+    }
 }

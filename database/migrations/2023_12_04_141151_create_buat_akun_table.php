@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('form_js', function (Blueprint $table) {
+        Schema::create('buat_akun', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
+            $table->string('username');
+            $table->string('nama_lengkap');
+            $table->string('email');
             $table->string('telpon');
-            $table->string('jenisJasa');
-            $table->string('deskripsi');
             $table->string('alamat');
-            $table->string('tanggal');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('form_js');
+        Schema::dropIfExists('buat_akun');
     }
 };
