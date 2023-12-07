@@ -1,16 +1,15 @@
 @extends('admin_layout.main')
 @section('content')
-<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mb-5">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item">History</li>
-        <li class="breadcrumb-item active" aria-current="page">Custom Barang</li>
-    </ol>
-</nav>
+<style>
+    .card{
+        box-shadow: 1px solid green;
+    }
+</style>
 <div>
     <div class="row">
         <h5>Pengunjung</h5>
         <hr>
-        <div class="col-md-4">
+        <div class="col-md-4 ">
             <div class="card shadow rounded">
                 <div class="card-body text-center">
                     <h5 class="card-title">Pengunjung hari Ini</h5>

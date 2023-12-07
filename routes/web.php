@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ChangePasswordController;
-use App\Http\Controllers\profilController;
+use App\Http\Controllers\admin\profilAdminController;
 use App\Http\Controllers\admin\galeriController;
 use App\Http\Controllers\admin\jaserPesananBaruController;
 use App\Http\Controllers\admin\jaserDalamProsesController;
@@ -38,12 +38,6 @@ use App\Http\Controllers\WishlistController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', [profilController::class, 'index']);
-Route::get('/profil', function(){
-    $slug = "profil";
-    return view('admin_konten.profil', compact('slug'));
-});
-
 
 Route::get('/register', [RegisterController::class, 'registerIndex'])->name('registerIndex');
 Route::post('/register', [RegisterController::class, 'registerPost'])->name('registerPost');
@@ -85,6 +79,7 @@ Route::resource('/historyJaser', historyJaserController::class);
 Route::resource('/historyCusbar', historyCusbarController::class);
 Route::resource('/dashboard', dashboardController::class);
 Route::resource('/bantuan', bantuanController::class);
+Route::resource('/profil', profilAdminController::class);
 
 
 // Route::get('/galeri', [galeriController::class, 'index']);

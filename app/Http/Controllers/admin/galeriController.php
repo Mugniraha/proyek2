@@ -46,6 +46,8 @@ class galeriController extends Controller
         // Proses insert
         DB::table('galeris')->insert([
             'gambar' => $img->hashName(),
+            'kategori' => $request->kategori,
+            'nama_produk' => $request->nama_produk,
             'deskripsi_galeri' => $request->deskripsi_galeri,
             'harga'          => $request->harga,
         ]);
@@ -77,11 +79,15 @@ class galeriController extends Controller
     {
         // Validasi
         $this->validate($request, [
+            'kategori' => 'required',
+            'nama_produk'=> 'required',
             'deskripsi_galeri' => 'required',
             'harga' => 'required',
         ]);
         // Proses update jika tidak ada file gambar baru
         DB::table('galeris')->where('id_galeri', $id)->update([
+            'kategori' => $request->kategori,
+            'nama_produk' => $request->nama_produk,
             'deskripsi_galeri' => $request->deskripsi_galeri,
             'harga' => $request->harga,
         ]);

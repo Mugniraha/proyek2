@@ -1,11 +1,13 @@
 @extends('admin_layout.main')
 @section('content')
 <table id="example" class="table" style="width:100%">
-    <a href="#" type="button" class="btn btn-primary bg-gradient mb-5" data-bs-toggle="modal" data-bs-target="#tambah"><i class="fa-solid fa-plus" style="color: #ffffff;"></i> Tambah Galeri</a>
+    <a href="#" type="button" class="btn mb-5 shadow" data-bs-toggle="modal" data-bs-target="#tambah" style="background-color:#4C6687;color:white"><i class="fa-solid fa-plus" style="color: #ffffff;"></i> Tambah Galeri</a>
     <thead>
         <tr>
             <th>No</th>
             <th>Gambar</th>
+            <th>kategori</th>
+            <th>Nama produk</th>
             <th>Deskripsi</th>
             <th>Harga</th>
             <th>Aksi</th>
@@ -19,12 +21,19 @@
                 <img src="{{asset('storage/img/' . $row->gambar)}}" width="50%" alt=""> <br>
                 <a href="#" type="button" class="mt-1 w-50 justify-content-center btn btn-sm btn-warning shadow" data-bs-toggle="modal" data-bs-target="#editGmbr{{$row->id_galeri}}">Ubah Gambar</a>
             </td>
-            <td>{{$row->deskripsi_galeri}}
+            <td>
+                {{$row->kategori}}
+            </td>
+            <td>
+                {{$row->nama_produk}}
+            </td>
+            <td>
+                {{$row->deskripsi_galeri}}
             </td>
             <td>{{$row->harga}}</td>
             <td>
-                <a href="#" type="button" class="btn btn-sm btn-warning btn-primary w-50" data-bs-toggle="modal" data-bs-target="#edit{{$row->id_galeri}}"><i class="fa-regular fa-pen-to-square"></i></a>
-                <a  href="#" type="button" class="mt-2 btn btn-sm btn-danger btn-primary w-50" data-bs-toggle="modal" data-bs-target="#hapus{{$row->id_galeri}}"><i class="fa-solid fa-trash"></i></a>
+                <a href="#" type="button" class="btn btn-sm btn-warning btn-primary w-50 shadow" data-bs-toggle="modal" data-bs-target="#edit{{$row->id_galeri}}"><i class="fa-regular fa-pen-to-square"></i></a>
+                <a  href="#" type="button" class="mt-2 btn btn-sm btn-danger btn-primary w-50 shadow" data-bs-toggle="modal" data-bs-target="#hapus{{$row->id_galeri}}"><i class="fa-solid fa-trash"></i></a>
             </td>
         </tr>
 
@@ -40,13 +49,16 @@
                             @csrf
                             @method('PUT')
                             <div class="mb-3">
-                                <label for="formGroupExampleInput" class="form-label">Gambar</label>
-                                <input type="file" class="form-control" id="formGroupExampleInput" name="gambar" placeholder="" value="{{$row->gambar}}">
-                                <input type="hidden" value="{{$row->id_galeri}}">
+                                <label for="formGroupExampleInput2" class="form-label">Kategori</label>
+                                <input type="text" class="form-control" id="formGroupExampleInput2" name="kategori" placeholder="" value="{{$row->kategori}}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="formGroupExampleInput2" class="form-label">Nama Produk</label>
+                                <input type="text" class="form-control" id="formGroupExampleInput2" name="nama_produk" placeholder="" value="{{$row->nama_produk}}">
                             </div>
                             <div class="mb-3">
                                 <label for="formGroupExampleInput2" class="form-label">Deskripsi</label>
-                                <textarea type="number" class="form-control" id="formGroupExampleInput2" name="deskripsi_galeri" placeholder="" value="">{{$row->deskripsi_galeri}}</textarea>
+                                <textarea type="text" class="form-control" id="formGroupExampleInput2" name="deskripsi_galeri" placeholder="" value="">{{$row->deskripsi_galeri}}</textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="formGroupExampleInput2" class="form-label">Harga</label>
@@ -137,6 +149,36 @@
                         <label for="formGroupExampleInput" class="form-label">Gambar</label>
                         <input type="file" class="form-control" id="formGroupExampleInput" name="gambar" placeholder="" value="">
                     </div>
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput2" class="form-label">Kategori</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput2" name="kategori" placeholder="" value="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput2" class="form-label">Nama Produk</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput2" name="nama_produk" placeholder="" value=" ">
+                    </div>
+                    <div class="row gx-3 mb-3 gy-2 align-items-center">
+                        <label for="formGroupExampleInput2" class="form-label">Dimensi</label>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <div class="input-group-text">P</div>
+                                <input type="text" class="form-control" id="specificSizeInputGroupUsername" placeholder="Panjang(cm)">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <div class="input-group-text">L</div>
+                                <input type="text" class="form-control" id="specificSizeInputGroupUsername" placeholder="Lebar(cm)">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <div class="input-group-text">T</div>
+                                <input type="text" class="form-control" id="specificSizeInputGroupUsername" placeholder="Tinggi(cm)">
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Deskripsi</label>
                         <textarea type="number" class="form-control" id="formGroupExampleInput2" name="deskripsi_galeri" placeholder="" value=""></textarea>

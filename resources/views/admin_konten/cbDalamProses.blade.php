@@ -69,11 +69,19 @@
                                 </select>
                             </div>
                             <div class="mb-3">
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected>Keterangan</option>
+                                    <option value="1">Bahan sedang dibeli</option>
+                                    <option value="2">50%</option>
+                                    <option value="3">75%</option>
+                                    <option value="3">100%</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
                                 <label for="formGroupExampleInput" class="form-label">Gambar</label>
                                 <input type="file" class="form-control" id="formGroupExampleInput" name="gambar" placeholder="" value="">
                                 <input type="hidden" value="">
                             </div>
-
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Batal</button>

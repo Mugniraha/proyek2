@@ -11,6 +11,7 @@
         <tr>
             <th>No</th>
             <th>Detail Pesanan</th>
+            <th>Nomor Pesanan</th>
             <th>Detail Pemesan</th>
             <th>Metode Pengiriman</th>
             <th>Tanggal pemesanan</th>
@@ -21,6 +22,7 @@
         <tr>
             <td>Tiger Nixon</td>
             <td>System Architect</td>
+            <td>900909090</td>
             <td>Edinburgh</td>
             <td>61</td>
             <td>2011-04-25</td>
