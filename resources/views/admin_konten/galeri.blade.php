@@ -162,19 +162,19 @@
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <div class="input-group-text">P</div>
-                                <input type="text" class="form-control" id="specificSizeInputGroupUsername" placeholder="Panjang(cm)">
+                                <input type="text" class="form-control" name="panjang" id="specificSizeInputGroupUsername" placeholder="Panjang(cm)">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <div class="input-group-text">L</div>
-                                <input type="text" class="form-control" id="specificSizeInputGroupUsername" placeholder="Lebar(cm)">
+                                <input type="text" class="form-control" name="lebar" id="specificSizeInputGroupUsername" placeholder="Lebar(cm)">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <div class="input-group-text">T</div>
-                                <input type="text" class="form-control" id="specificSizeInputGroupUsername" placeholder="Tinggi(cm)">
+                                <input type="text" class="form-control" name="tinggi" id="specificSizeInputGroupUsername" placeholder="Tinggi(cm)">
                             </div>
                         </div>
                     </div>

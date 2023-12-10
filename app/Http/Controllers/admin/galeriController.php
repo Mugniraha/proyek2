@@ -48,8 +48,11 @@ class galeriController extends Controller
             'gambar' => $img->hashName(),
             'kategori' => $request->kategori,
             'nama_produk' => $request->nama_produk,
+            'panjang' => $request->panjang,
+            'lebar' => $request->lebar,
+            'tinggi' => $request->tinggi,
             'deskripsi_galeri' => $request->deskripsi_galeri,
-            'harga'          => $request->harga,
+            'harga' => $request->harga,
         ]);
 
         // Redirect ke halaman yang sesuai
@@ -88,6 +91,9 @@ class galeriController extends Controller
         DB::table('galeris')->where('id_galeri', $id)->update([
             'kategori' => $request->kategori,
             'nama_produk' => $request->nama_produk,
+            'panjang' => $request->panjang,
+            'lebar' => $request->lebar,
+            'tinggi' => $request->tinggi,
             'deskripsi_galeri' => $request->deskripsi_galeri,
             'harga' => $request->harga,
         ]);
