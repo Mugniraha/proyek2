@@ -80,6 +80,52 @@ class profilAdminController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $this->validate($request, [
+            'nama'   => 'required',
+            'no_hp'  => 'required',
+            'email'  => 'required',
+            'alamat' => 'required',
+        ]);
+        // Proses update jika tidak ada file gambar baru
+        DB::table('profil_admins')->where('id_profil', $id)->update([
+            'nama'   => $request->nama,
+            'no_hp'  => $request->no_hp,
+            'email'  => $request->email,
+            'alamat' => $request->alamat,
+        ]);
+        // Redirect ke halaman yang sesuai
+        return redirect('/profil')->with(['success' => 'Data Berhasil ditambah']);
+    }
+
+    public function updateProfil(Request $request, string $id)
+    {
+        // Validasi
+        $this->validate($request, [
+            'gambar' => 'required|image|mimes:png,jpg,jpeg|max:2048',
+        ]);
+
+        // Ambil gambar baru
+        $img = $request->file('gambar');
+
+        // Jika ada gambar baru
+        if ($img) {
+            // Generate nama baru menggunakan hashName
+            $newFileName = $img->hashName();
+
+            // Simpan gambar baru
+            $img->storeAs('public/img', $newFileName);
+
+            // Hapus gambar lama jika sudah ada
+            $oldFileName = DB::table('profil_admins')->where('id_profil', $id)->value('gambar');
+            Storage::delete('public/img/' . $oldFileName);
+
+            // Proses update
+            DB::table('profil_admins')->where('id_profil', $id)->update([
+                'gambar' => $newFileName,
+            ]);
+            return redirect('/profil')->with(['success' => 'Data Berhasil ditambah']);
+
+        }
     }
 
     /**

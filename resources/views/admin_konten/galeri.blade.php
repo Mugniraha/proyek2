@@ -1,16 +1,22 @@
 @extends('admin_layout.main')
 @section('content')
-<table id="example" class="table" style="width:100%">
+<table id="example" class="table table-striped" style="width:100%">
     <a href="#" type="button" class="btn mb-5 shadow" data-bs-toggle="modal" data-bs-target="#tambah" style="background-color:#4C6687;color:white"><i class="fa-solid fa-plus" style="color: #ffffff;"></i> Tambah Galeri</a>
     <thead>
+        <tr class="my-auto">
+            <th rowspan="2" class="align-middle">No</th>
+            <th rowspan="2" class="align-middle">Gambar</th>
+            <th rowspan="2" class="align-middle">kategori</th>
+            <th rowspan="2" class="align-middle">Nama produk</th>
+            <th colspan="3" class="text-center">Dimensi (cm)</th>
+            <th rowspan="2" class="align-middle">Deskripsi</th>
+            <th rowspan="2" class="align-middle">Harga</th>
+            <th rowspan="2" class="align-middle">Aksi</th>
+        </tr>
         <tr>
-            <th>No</th>
-            <th>Gambar</th>
-            <th>kategori</th>
-            <th>Nama produk</th>
-            <th>Deskripsi</th>
-            <th>Harga</th>
-            <th>Aksi</th>
+            <th>Panjang</th>
+            <th>Lebar</th>
+            <th>Tinggi</th>
         </tr>
     </thead>
     <tbody>
@@ -26,6 +32,15 @@
             </td>
             <td>
                 {{$row->nama_produk}}
+            </td>
+            <td>
+                {{$row->panjang}}
+            </td>
+            <td>
+                {{$row->lebar}}
+            </td>
+            <td>
+                {{$row->tinggi}}
             </td>
             <td>
                 {{$row->deskripsi_galeri}}
@@ -56,6 +71,29 @@
                                 <label for="formGroupExampleInput2" class="form-label">Nama Produk</label>
                                 <input type="text" class="form-control" id="formGroupExampleInput2" name="nama_produk" placeholder="" value="{{$row->nama_produk}}">
                             </div>
+
+                            <div class="row gx-3 mb-3 gy-2 align-items-center">
+                                <label for="formGroupExampleInput2" class="form-label">Dimensi</label>
+                                <div class="col-sm-4">
+                                    <div class="input-group">
+                                        <div class="input-group-text">P</div>
+                                        <input type="text" class="form-control" name="panjang" id="specificSizeInputGroupUsername" placeholder="Panjang(cm)" value="{{$row->panjang}}">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="input-group">
+                                        <div class="input-group-text">L</div>
+                                        <input type="text" class="form-control" name="lebar" id="specificSizeInputGroupUsername" placeholder="Lebar(cm)" value="{{$row->lebar}}">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="input-group">
+                                        <div class="input-group-text">T</div>
+                                        <input type="text" class="form-control" name="tinggi" id="specificSizeInputGroupUsername" placeholder="Tinggi(cm)" value="{{$row->tinggi}}">
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="mb-3">
                                 <label for="formGroupExampleInput2" class="form-label">Deskripsi</label>
                                 <textarea type="text" class="form-control" id="formGroupExampleInput2" name="deskripsi_galeri" placeholder="" value="">{{$row->deskripsi_galeri}}</textarea>
@@ -162,19 +200,19 @@
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <div class="input-group-text">P</div>
-                                <input type="text" class="form-control" id="specificSizeInputGroupUsername" placeholder="Panjang(cm)">
+                                <input type="text" class="form-control" name="panjang" id="specificSizeInputGroupUsername" placeholder="Panjang(cm)">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <div class="input-group-text">L</div>
-                                <input type="text" class="form-control" id="specificSizeInputGroupUsername" placeholder="Lebar(cm)">
+                                <input type="text" class="form-control" name="lebar" id="specificSizeInputGroupUsername" placeholder="Lebar(cm)">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <div class="input-group-text">T</div>
-                                <input type="text" class="form-control" id="specificSizeInputGroupUsername" placeholder="Tinggi(cm)">
+                                <input type="text" class="form-control" name="tinggi" id="specificSizeInputGroupUsername" placeholder="Tinggi(cm)">
                             </div>
                         </div>
                     </div>
