@@ -84,6 +84,7 @@ Route::get('/bantuan', function () {
 // Route::get('/', [galeriController::class, 'index']);
 Route::resource('/galeri', galeriController::class);
 Route::put('/galeri/{id}/update-gambar', [galeriController::class, 'updateGambar'])->name('galeri.updateGambar');
+Route::put('/profil/{id}/update-profil',[profilAdminController::class, 'updateProfil'])->name('profil.updateProfil');
 Route::resource('/jsPesananbaru', jaserPesananBaruController::class);
 Route::resource('/jsDalamproses', jaserDalamProsesController::class);
 Route::resource('/jsSelesai', jaserSelesaiController::class);
