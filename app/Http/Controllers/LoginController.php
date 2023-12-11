@@ -1,4 +1,4 @@
-<?php
+<!-- <php
 
 namespace App\Http\Controllers;
 
@@ -29,4 +29,4 @@ class LoginController extends Controller
 
         return back()->with('error', 'Email or Password salah');
     }
-}
+} -->

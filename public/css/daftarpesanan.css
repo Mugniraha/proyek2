@@ -6,7 +6,7 @@
     margin-top: 80px;
 }
 .cardpes {
-    width: 100%; 
+    width: 100%;
     display: flex;
     flex-direction: column;
     height: 250px;
@@ -16,7 +16,7 @@
 }
 
 .card-top {
-    height: 20%; 
+    height: 20%;
     display: flex;
     justify-content: space-between;
     border-bottom: 2px solid #dadadb;
@@ -66,7 +66,7 @@
 
 
 .card-center {
-    height: 60%; 
+    height: 60%;
     display: flex;
     align-items: center;
 }
@@ -85,7 +85,7 @@
 }
 
 .product-details td:first-child {
-    width: 150px; 
+    width: 150px;
 }
 .product-details td:nth-child(2) {
     width: 20px;
@@ -101,7 +101,7 @@
 }
 .center-col{
     width: 60%;
-} 
+}
 .right-col {
     width: 20%;
 }
@@ -119,12 +119,12 @@
     font-size: 12px;
     border-collapse: collapse;
     padding: 3px;
-    
+
 }
 .dp-payment .gap {
     width: 20px;
     position: relative;
-    
+
 }
 
 .status-payment{
@@ -147,7 +147,7 @@
 }
 
 .card-bottom {
-    height: 20%; 
+    height: 20%;
     display: flex;
     justify-content: space-between;
 }
@@ -217,7 +217,7 @@
 }
 .card-progres{
     background-color: #f4f5f7;
-    width: 900px; 
+    width: 900px;
     height: 180px;
 }
 .dropdown-menu{

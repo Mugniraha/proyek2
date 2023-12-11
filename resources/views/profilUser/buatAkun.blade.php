@@ -14,8 +14,16 @@
                 <h5 class="modal-title" id="staticBackdropLabel">Buat Akun</h5>
             </div>
             <div class="modal-body">
-                <form action="{{ route('buatAkun.store') }}" method="POST">
+                <form action="{{ route('buatAkun.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    <div class="mb-3">
+                        <label for="fileInput" class="form-label">Foto Profil</label>
+                        <input type="file" id="fileInput" name="profile" style="display: none" accept="image/*" onchange="updateProfilePicture(this)">
+                        <div style="display: flex; align-items: center;">
+                            <button type="button" onclick="openFileInput()">Pilih Foto</button>
+                            <span id="fileNameDisplay" style="margin-left: 10px;"></span> <!-- Menampilkan nama file di samping tombol -->
+                        </div>
+                    </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput" class="form-label">Username</label>
                         <input type="text" class="form-control" id="formGroupExampleInput" name="username" placeholder="" value="">
@@ -44,5 +52,18 @@
                 </form>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script>
+            function openFileInput() {
+                document.getElementById('fileInput').click();
+            }
+
+            function updateProfilePicture(input) {
+                // Mendapatkan elemen div untuk menampilkan nama file
+                var fileNameDisplay = document.getElementById('fileNameDisplay');
+
+                // Menetapkan nama file ke elemen div
+                fileNameDisplay.innerText = input.files[0].name;
+            }
+        </script>
     </body>
 </html>

@@ -50,15 +50,21 @@ Route::post('/register', [RegisterController::class, 'registerPost'])->name('reg
 Route::get('/loginUser', [RegisterController::class, 'loginIndex'])->name('loginIndex');
 Route::get('/loginAdmin', [RegisterController::class, 'loginAdminIndex'])->name('loginAdminIndex');
 Route::post('/loginUser', [RegisterController::class, 'loginPost'])->name('loginPost');
+Route::post('/loginAdmin', [RegisterController::class, 'loginAdminPost'])->name('loginAdminPost');
+
 Route::get('password/edit', [ChangePasswordController::class, 'edit'])->name('password.edit');
 Route::put('password/edit', [ChangePasswordController::class, 'update'])->name('password.update');
+
 Route::get('/home', [HomeController::class, 'HomeIndex'])->name('HomeIndex');
 Route::get('/produk', [ProdukController::class, 'index'])->name('produk.index');
 Route::get('/akunUser', [HomeUserController::class, 'HomeUserIndex'])->name('HomeUserIndex');
 Route::resource('/buatAkun', buatAkunController::class );
 Route::get('/profilUser', [ProfilUserController::class, 'ProfilUserIndex'])->name('ProfilUserIndex');
 Route::get('/kelolaUser', [KelolaUserController::class, 'KelolaUserIndex'])->name('KelolaUserIndex');
-Route::put('/updateAkun/{id}', [buatAkunController::class, 'update'])->name('updateAkun');
+Route::put('/update-profile-picture/{id}', [buatAkunController::class, 'updateProfilePicture'])->name('updateProfilePicture');
+// Route::put('/updateAkun/{id}', [buatAkunController::class, 'update'])->name('updateAkun');
+Route::get('/kelolaUser/{id}', 'buatAkunController@edit')->name('edit_user');
+Route::put('/kelolaUser/{id}', 'buatAkunController@update')->name('update_user');
 Route::get('/notifikasi', [NotifikasiController::class, 'NotifikasiIndex'])->name('NotifikasiIndex');
 Route::get('/konfirmasi', [NotifikasiController::class, 'KonfirmasiIndex'])->name('KonfirmasiIndex');
 Route::resource('/formOrder', formJsController::class );
@@ -69,12 +75,6 @@ Route::get('/payment', [CostumProdukController::class, 'payment'])->name('costum
 Route::get('/daftarpesanan', [DaftarPesananController::class, 'index'])->name('daftarpesanan.index');
 Route::get('/riwayat', [DaftarPesananController::class, 'riwayat'])->name('daftarpesanan.riwayat');
 Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
-
-
-
-Route::get('/bantuan', function () {
-    return view('/homeAwal/bantuan');
-});
 // Route::get('/serviceUser', function () {
 //     return view('profilUser.service');
 // });

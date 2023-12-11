@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.3/dist/index.bundle.min.js"></script>
 
+
 </head>
 <body>
     <div class="navCont">
@@ -26,18 +27,20 @@
             </div>
         </div>
         <div class="log">
-            <a href="" id="loginBtn" class="dropbtn" style="text-decoration: none;">
-                <img src="{{ asset('images/profil.png')}}" alt="Logo" width="25" height="22" class="d-inline-block align-text-top">
-                Login</a>
-            <div class="dropdown-content" id="dropdownProfil">
-                <a class="listdrop" href="{{ route('loginIndex') }}">User</a>
-                <a class="listdrop" href="{{ route('loginAdminIndex') }}">Admin</a>
+            <div class="dropdown">
+                <a href="" class="btn" data-bs-toggle="dropdown">
+                    <img src="{{ asset('images/profil.png')}}" alt="Logo" width="25" height="22" class="d-inline-block align-text-top">
+                    Login
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{{ route('loginIndex') }}">Pengguna</a></li>
+                    <li><a class="dropdown-item" href="{{ route('loginAdminIndex') }}">Admin</a></li>
+                </ul>
             </div>
-            {{-- <a href="{{ route('loginIndex') }}" id="loginBtn" class="dropbtn" style="text-decoration: none;">
-                <img src="{{ asset('images/profil.png')}}" alt="Logo" width="25" height="22" class="d-inline-block align-text-top">
-                Login</a> --}}
-            <img src="{{ asset('images/love.png')}}" alt="Logo" width="25" height="22" class="d-inline-block align-text-top">
-            <a href="halaman_favorit.html" id="favoriteBtn" style="text-decoration: none;">Favorite</a>
+
+            <a href="#" id="favoriteBtn" style="text-decoration: none;">
+                <img src="{{ asset('images/love.png')}}" alt="Logo" width="25" height="22" class="d-inline-block align-text-top">
+                Favorite</a>
         </div>
     </div>
     <header style="background-color: #44403B;">

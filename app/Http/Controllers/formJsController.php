@@ -43,7 +43,7 @@ class formJsController extends Controller
             'tanggal' => 'required',
         ]);
 
-        FormJS::create($request->all());
+        formJS::create($request->all());
 
         return redirect()->route('serviceBaruIndex')->with('success', 'Data berhasil disimpan!');
     }
@@ -53,7 +53,7 @@ class formJsController extends Controller
      */
     public function show(string $id)
     {
-        //
+
     }
 
     /**
@@ -78,7 +78,7 @@ class formJsController extends Controller
             'tanggal' => 'required',
         ]);
 
-        $formJS = FormJS::find($id);
+        $formJS = formJS::find($id);
         $formJS->update($request->all());
 
         return redirect()->route('nama_route_index')->with('success', 'Data berhasil diperbarui!');

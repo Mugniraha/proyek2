@@ -33,20 +33,6 @@ nav{
     /* position: fixed; */
 }
 
-header{
-    z-index: 1000;
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
-}
-/* #carouselExampleInterval {
-    position: relative;
-    z-index: 1000;
-}
-
-.carousel-container {
-    position: relative;
-    z-index: 1000;
-} */
-
 .logo-and-title {
 	display: flex;
     align-items: center;
@@ -85,7 +71,8 @@ header{
 }
 
 header {
-    /* background-color: #44403B;  kalo masukin css testimoni bagian ini berganti warna */
+    z-index: 999;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
     padding: 20px 0;
     position: fixed;
 	width: 100%;

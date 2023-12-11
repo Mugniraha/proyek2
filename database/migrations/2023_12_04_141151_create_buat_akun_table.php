@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('buat_akun', function (Blueprint $table) {
             $table->id();
+            $table->string('profile');
             $table->string('username');
             $table->string('nama_lengkap');
             $table->string('email');

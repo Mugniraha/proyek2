@@ -53,6 +53,20 @@ class RegisterController extends Controller
         return back()->with('error', 'Email or Passwoord salah');
     }
 
+    public function loginAdminPost(Request $request)
+    { 
+        $credetials = [
+            'email' => $request->email,
+            'password' => $request->password,
+        ];
+
+        if (Auth::attempt($credetials)) {
+            return redirect('/dashboard')->with('success', 'Login berhasil');
+        }
+
+        return back()->with('error', 'Email or Passwoord salah');
+    }
+
     public function change_password(){
         return view ('password.edit');
     }

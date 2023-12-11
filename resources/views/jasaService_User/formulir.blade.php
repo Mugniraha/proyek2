@@ -34,11 +34,11 @@
                         <textarea class="form-control" id="exampleFormControlTextarea1" name="deskripsi" placeholder="" rows="3"></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="formGroupExampleInput2" class="form-label">Alamat</label>
+                        <label for="formGroupExampleInput2" class="form-label">Lokasi</label>
                         <input type="text" class="form-control" id="formGroupExampleInput2" name="alamat" placeholder="" value="">
                     </div>
                     <div class="mb-3">
-                        <label for="formGroupExampleInput2" class="form-label">Tanggal</label>
+                        <label for="formGroupExampleInput2" class="form-label">Tanggal Pengerjaan</label>
                         <input type="date" class="form-control" id="formGroupExampleInput2" name="tanggal" placeholder="" value="">
                     </div>
             </div>
