@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class jaserPesananBaruController extends Controller
 {
@@ -12,7 +16,12 @@ class jaserPesananBaruController extends Controller
     public function index()
     {
         $slug = "jsPesananbaru";
-        return view("admin_konten.jsPesananBaru", compact("slug"));
+        $jasaServis = DB::table('form_js')->get();
+        return view("admin_konten.jsPesananBaru", compact("slug","jasaServis"));
+    }
+
+    public function terimaPesanan(){
+
     }
 
     /**

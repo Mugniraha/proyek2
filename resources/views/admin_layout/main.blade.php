@@ -37,53 +37,95 @@
                             </li>
                             <li class="nav-item ">
                                 <a href="{{ url('/galeri')}}" class="nav-link align-middle px-0">
-                                    <i class="fa-regular fa-image {{($slug === "galeri") ? 'active' : ''}}" style="color: #f6f1db;"></i></i> <span class="ms-1 d-none d-sm-inline ">Kelola Galeri Toko</span>
+                                    <i class="fa-regular fa-image {{($slug === "galeri") ? 'active' : ''}}" style="color: #f6f1db;"></i></i> <span class="ms-1 d-none d-sm-inline ">Kelola Produk</span>
                                 </a>
                             </li>
+                            <li>
+                                <ul class="nav flex-column" id="menu">
+                                    <li class="nav-item">
+                                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                            <i class="fa-solid fa-sliders" style="color: #f6f1db;"></i>
+                                            <span class="ms-1 d-none d-sm-inline">Kelola Jasa Service</span>
+                                        </a>
+                                        <div class="collapse" id="submenu1">
+                                            <ul class="nav flex-column ms-1">
+                                                <li class="w-100">
+                                                    <a href="{{ url('/jsPesananbaru') }}" class="nav-link {{ ($slug === 'jsPesananBaru') ? 'active' : '' }} px-0">
+                                                        <span class="d-none d-sm-inline text-white">Pesanan Baru</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ url('/jsDalamproses') }}" class="nav-link {{ ($slug === 'jsDalamProses') ? 'active' : '' }} px-0">
+                                                        <span class="d-none d-sm-inline text-white">Dalam Proses</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ url('/jsSelesai') }}" class="nav-link {{ ($slug === 'jsSelesai') ? 'active' : '' }} px-0">
+                                                        <span class="d-none d-sm-inline text-white">Selesai</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                            <i class="fa-solid fa-sliders" style="color: #f6f1db;"></i>
+                                            <span class="ms-1 d-none d-sm-inline">Kelola Custom Barang</span>
+                                        </a>
+                                        <div class="collapse" id="submenu2" data-bs-parent="#menu">
+                                            <ul class="nav flex-column ms-1">
+                                                <li class="w-100">
+                                                    <a href="{{ url('/cbPesananBaru') }}" class="nav-link {{ ($slug === 'cbPesananBaru') ? '' : '' }} px-0">
+                                                        <span class="d-none d-sm-inline text-white">Pesanan Baru</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ url('/cbDalamProses') }}" class="nav-link {{ ($slug === 'cbDalamProses') ? '' : '' }} px-0">
+                                                        <span class="d-none d-sm-inline text-white">Dalam Proses</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ url('/cbSelesai') }}" class="nav-link {{ ($slug === 'cbSelesai') ? '' : '' }} px-0">
+                                                        <span class="d-none d-sm-inline text-white">Selesai</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+
                             <li class="nav-item">
-                                <a href="#submenu1" data-bs-toggle="collapse" class="nav-link  px-0 align-middle" >
-                                    <i class="fa-solid fa-sliders" style="color: #f6f1db;"></i> <span class="ms-1 d-none d-sm-inline">Kelola Jasa Service</span> </a>
-                                <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                                    <li class="w-100">
-                                        <a href="{{url('/jsPesananbaru')}}" class="nav-link {{($slug === "jsPesananBaru") ? : ''}} px-0"> <span class="d-none d-sm-inline text-white">Pesanan Baru</span> </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{url('/jsDalamproses')}}" class="nav-link {{($slug === "jsDalamProses") ? 'active' : ''}} px-0"> <span class="d-none d-sm-inline text-white">Dalam Proses</span> </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{url('/jsSelesai')}}" class="nav-link {{($slug === "jsSelesai")?:''}} px-0"> <span class="d-none d-sm-inline text-white">Selesai</span> </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="">
-                                <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                                    <i class="fa-solid fa-sliders" style="color: #f6f1db;"></i> <span class="ms-1 d-none d-sm-inline ">Kelola Custom Barang</span></a>
-                                <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
-                                    <li class="w-100">
-                                        <a href="{{url('/cbPesananBaru')}}" class="nav-link {{($slug === "cbPesananBaru")}} px-0"> <span class="d-none d-sm-inline text-white">Pesanan Baru</span> </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{url('/cbDalamProses')}}" class="nav-link {{($slug === "cbDalamProses")}} px-0"> <span class="d-none d-sm-inline text-white">Dalam Proses</span> </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{url('/cbSelesai')}}" class="nav-link {{($slug === "cbSelesai")}} px-0"> <span class="d-none d-sm-inline text-white">Selesai</span> </a>
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                            <i class="fa-solid fa-clock-rotate-left" style="color: #f6f1db;"></i>
+                                            <span class="ms-1 d-none d-sm-inline">Histori Pesanan</span>
+                                        </a>
+                                        <div class="collapse" id="submenu3" data-bs-parent="#menu">
+                                            <ul class="nav flex-column ms-1">
+                                                <li class="w-100">
+                                                    <a href="{{ url('/historyJaser') }}" class="nav-link px-0">
+                                                        <span class="d-none d-sm-inline text-white">Jasa Service</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ url('/historyCusbar') }}" class="nav-link px-0">
+                                                        <span class="d-none d-sm-inline text-white">Custom Barang</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </li>
                                 </ul>
                             </li>
-                            <li class="">
-                                <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                    <i class="fa-solid fa-clock-rotate-left" style="color:#f6f1db ;"></i> <span class="ms-1 d-none d-sm-inline ">Histori Pesanan</span> </a>
-                                    <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
-                                    <li class="w-100">
-                                        <a href="{{url('/historyJaser')}}" class="nav-link {{($slug === "historyJaser")}} px-0"> <span class="d-none d-sm-inline text-white">Jasa Service</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="{{url('/historyCusbar')}}" class="nav-link {{($slug === "historyCusbar")}} px-0"> <span class="d-none d-sm-inline text-white">Custom Barang</span></a>
-                                    </li>
-                                    <li>
-                                    </li>
-                                </ul>
-                            </li>
+
+
 
                         </ul>
                         <hr>

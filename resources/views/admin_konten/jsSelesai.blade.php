@@ -1,8 +1,9 @@
 @extends('admin_layout.main')
 @section('content')
 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mb-5">
+    <ol class="breadcrumb">
         <li class="breadcrumb-item">Kelola Jasa Service</li>
-        <li class="breadcrumb-item active" aria-current="page">Selesai</li>
+        <li class="breadcrumb-item active" aria-current="page">selesai</li>
     </ol>
 </nav>
 <table id="example" class="table" style="width:100%">
