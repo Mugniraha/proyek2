@@ -13,4 +13,12 @@ class ProdukController extends Controller
 
         return view('produk.index', ['dataGaleri' => $dataGaleri]);
     }
+    public function order(Request $request, $id_galeri)
+    {
+        // Lakukan apa yang diperlukan dengan $id_galeri yang diterima
+        // Contoh: Redirect ke halaman costumproduk dengan menyertakan id_galeri
+        return redirect()->route('costumproduk.index', ['id_galeri' => $id_galeri]);
+    }
 }
+
+

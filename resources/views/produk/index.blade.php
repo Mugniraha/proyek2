@@ -20,15 +20,21 @@
                         <div class="headline">
                             <p>Tangga</p>
                         </div>
+                        <h7 class="card-text" style="color: white">{{ $galeri->id_galeri }}</h7>
                         <h7 class="card-text">{{ $galeri->nama_produk }}</h7>
-                        <p>Dimensi Produk :</p>
                         <p>Lebar : {{ $galeri->lebar }}</p>
                         <p>Panjang : {{ $galeri->panjang }}</p>
                         <p>Tinggi: {{ $galeri->tinggi }}</p>
                         <h6><i>RP. {{ $galeri->harga }}</i></h6>
                         <div class="btn">
                             <button class="btnwhis"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path fill="#204d6f" d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg>Whistlist</button>
-                            <button class="btnord"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path fill="#204d6f" d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"/></svg><a href="{{ route('costumproduk.index') }}" id="orderBtn" style="text-decoration: none;">Order</a></button>
+                            <a href="{{ route('produk.order', ['id_galeri' => $galeri->id]) }}" class="btnord" style="text-decoration: none;">
+                                <!-- SVG icon for Order -->
+                                <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512">
+                                    <!-- Path for the icon -->
+                                </svg>
+                                Order
+                            </a>
                         </div>
                     </div>
                 </div>

@@ -51,6 +51,7 @@ Route::get('/loginUser', [RegisterController::class, 'loginIndex'])->name('login
 Route::get('/loginAdmin', [RegisterController::class, 'loginAdminIndex'])->name('loginAdminIndex');
 Route::post('/loginUser', [RegisterController::class, 'loginPost'])->name('loginPost');
 Route::post('/loginAdmin', [RegisterController::class, 'loginAdminPost'])->name('loginAdminPost');
+Route::post('/costumproduk', [CostumprodukController::class, 'store'])->name('costumproduk.store');
 
 Route::get('password/edit', [ChangePasswordController::class, 'edit'])->name('password.edit');
 Route::put('password/edit', [ChangePasswordController::class, 'update'])->name('password.update');
@@ -70,11 +71,17 @@ Route::get('/konfirmasi', [NotifikasiController::class, 'KonfirmasiIndex'])->nam
 Route::resource('/formOrder', formJsController::class );
 Route::put('/formOrder/{id}', [formJSController::class, 'update'])->name('formOrder.update');
 Route::get('/serviceUser', [serviceBaruController::class, 'serviceBaruIndex'])->name('serviceBaruIndex');
-Route::get('/costumproduk', [CostumProdukController::class, 'index'])->name('costumproduk.index');
-Route::get('/payment', [CostumProdukController::class, 'payment'])->name('costumproduk.payment');
+Route::post('/costumproduk/{id_galeri}', [CostumProdukController::class, 'index'])->name('costumproduk.index');
+Route::get('/costumproduk/payment', [CostumprodukController::class, 'payment'])->name('costumproduk.payment');
 Route::get('/daftarpesanan', [DaftarPesananController::class, 'index'])->name('daftarpesanan.index');
 Route::get('/riwayat', [DaftarPesananController::class, 'riwayat'])->name('daftarpesanan.riwayat');
 Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
+Route::get('/produk/order/{id_galeri}', [ProdukController::class, 'order'])->name('produk.order');
+
+// Route untuk halaman costumproduk
+Route::get('/costumproduk/{id_galeri}', [CostumProdukController::class, 'index'])->name('costumproduk.index');
+
+
 // Route::get('/serviceUser', function () {
 //     return view('profilUser.service');
 // });
