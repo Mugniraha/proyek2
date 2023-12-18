@@ -11,6 +11,7 @@
         <tr>
             <th>No</th>
             <th>Nama customer</th>
+            <th>jenis Kerusakan</th>
             <th>Deskripsi kerusakan</th>
             <th>Alamat</th>
             <th>Tanggal pemesanan</th>
@@ -18,43 +19,25 @@
             <th>Aksi</th>
         </tr>
     </thead>
+    @foreach ($jasaServis as $row)
+
     <tbody>
+
         <tr>
-            <td>Tiger Nixon</td>
-            <td>System Architect</td>
-            <td>Edinburgh</td>
-            <td>61</td>
-            <td>2011-04-25</td>
-            <td>2011-04-25</td>
+            <td>{{$loop->iteration}}</td>
+            <td>{{$row->nama}}</td>
+            <td>{{$row->jenisJasa}}</td>
+            <td>{{$row->deskripsi}}</td>
+            <td>{{$row->alamat}}</td>
+            <td>{{ ($row->created_at) }}</td>
+
+            <td></td>
             <td>
-                <a href="#" type="button" class="btn btn-sm btn-success btn-primary w-50" data-bs-toggle="modal" data-bs-target="#edit">Terima</a>
-                <a  href="#" type="button" class="mt-2 btn btn-sm btn-danger btn-primary w-50" data-bs-toggle="modal" data-bs-target="#hapus">Tolak</a>
+                <a href="#" type="button" class="btn btn-sm btn-success btn-primary w-75" data-bs-toggle="modal" data-bs-target="#edit">Terima</a>
+                <a  href="#" type="button" class="mt-2 btn btn-sm btn-danger btn-primary w-75" data-bs-toggle="modal" data-bs-target="#hapus">Tolak</a>
             </td>
         </tr>
-        <tr>
-            <td>Garrett Winters</td>
-            <td>Accountant</td>
-            <td>Tokyo</td>
-            <td>63</td>
-            <td>2011-07-25</td>
-            <td>2011-07-25</td>
-            <td>
-                <a href="#" type="button" class="btn btn-sm btn-success btn-primary w-50" data-bs-toggle="modal" data-bs-target="#edit">Terima</a>
-                <a  href="#" type="button" class="mt-2 btn btn-sm btn-danger btn-primary w-50" data-bs-toggle="modal" data-bs-target="#hapus">Tolak</a>
-            </td>
-        </tr>
-        <tr>
-            <td>Ashton Cox</td>
-            <td>Junior Technical Author</td>
-            <td>San Francisco</td>
-            <td>66</td>
-            <td>66</td>
-            <td>2009-01-12</td>
-            <td>
-                <a href="#" type="button" class="btn btn-sm btn-success btn-primary w-50" data-bs-toggle="modal" data-bs-target="#edit">Terima</a>
-                <a  href="#" type="button" class="mt-2 btn btn-sm btn-danger btn-primary w-50" data-bs-toggle="modal" data-bs-target="#hapus">Tolak</a>
-            </td>
-        </tr>
+
         <div class="modal fade modal-dialog-scrollable text-start" id="edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -118,7 +101,7 @@
                 </div>
         @endif
     </tbody>
-
+    @endforeach
 </table>
 <div class="modal fade modal-dialog-scrollable text-start" id="tambah" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">

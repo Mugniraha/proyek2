@@ -10,4 +10,5 @@ class Formjs extends Model
     use HasFactory;
     protected $table = 'form_js';
     protected $fillable = ['nama', 'telpon', 'jenisJasa', 'deskripsi', 'alamat', 'tanggal'];
+    protected $dates = ['created_at', 'updated_at'];
 }
