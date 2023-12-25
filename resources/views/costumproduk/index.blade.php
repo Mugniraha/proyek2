@@ -4,19 +4,18 @@
         <div class="container">
             <div class="row">
                 @php
-                $idGaleri = $_GET['id_galeri'] ?? null; // Mengambil id_galeri dari URL
-                $selectedData = null;
-
-                // Mencari data yang sesuai dengan id_galeri
-                if ($idGaleri !== null) {
-                    foreach ($dataGaleri as $galeri) {
-                        if ($galeri->id == $idGaleri) {
-                            $selectedData = $galeri;
-                            break;
+                    $idProduk = request()->input('id_produk');
+                    $selectedData = null;
+                    // Mencari data yang sesuai dengan id_produk
+                    if ($idProduk !== null) {
+                        foreach ($dataProduk as $produk) {
+                            if ($produk->id == $idProduk) {
+                                $selectedData = $produk;
+                                break;
+                            }
                         }
                     }
-                }
-            @endphp
+                @endphp
 
             @if ($selectedData !== null)
                 <div class="cardcos">
@@ -25,7 +24,7 @@
                     </div>
                     <div class="card-center">
                         <h6>Deskripsi Produk</h6>
-                        <p>{{ $selectedData->deskripsi_galeri }}</p><hr>
+                        <p>{{ $selectedData->deskripsi_produk }}</p><hr>
                         <p>Dimensi Produk :</p>
                         <p>Lebar : {{ $selectedData->lebar }}</p>
                         <p>Panjang : {{ $selectedData->panjang }}</p>
@@ -42,9 +41,9 @@
                     <p>Data tidak ditemukan</p>
                     @endif
                     <div class="card-right">
-                        <form action="{{ route('costumproduk.index', ['id_galeri' => '__id__']) }}" method="POST">
+                        <form action="{{ route('costumproduk.index' )}}" method="post">
                             @csrf
-                            <input type="hidden" name="id_galeri" value="{{ $galeri->id }}">
+                            <input type="hidden" name="id_produk" value="{{ $idProduk }}">
                             <div class="input1">
                                 
                                 <div class="mb-3">

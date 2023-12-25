@@ -177,8 +177,8 @@
                         
                         
                         <div class="btn-right">
-                            <a href="{{ route('costumproduk.index') }}"><button class="btnagain">Order Lagi</button></a>
-                            <a href="{{ route('costumproduk.index') }}"><button class="btncall">Pembayaran</button></a>
+                            <a href="{{ route('costumproduk.index', ['id_produk' => $produk->id_produk]) }}"><button class="btnagain">Order Lagi</button></a>
+                            <a href="{{ route('costumproduk.index', ['id_produk' => $produk->id_produk]) }}"><button class="btncall">Pembayaran</button></a>
                         </div>
                     </div>
                 </div>

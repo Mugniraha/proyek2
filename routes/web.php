@@ -71,15 +71,12 @@ Route::get('/konfirmasi', [NotifikasiController::class, 'KonfirmasiIndex'])->nam
 Route::resource('/formOrder', formJsController::class );
 Route::put('/formOrder/{id}', [formJSController::class, 'update'])->name('formOrder.update');
 Route::get('/serviceUser', [serviceBaruController::class, 'serviceBaruIndex'])->name('serviceBaruIndex');
-Route::post('/costumproduk/{id_galeri}', [CostumProdukController::class, 'index'])->name('costumproduk.index');
+Route::post('/costumproduk/{id_produk}', [CostumProdukController::class, 'index'])->name('costumproduk.index');
 Route::get('/costumproduk/payment', [CostumprodukController::class, 'payment'])->name('costumproduk.payment');
 Route::get('/daftarpesanan', [DaftarPesananController::class, 'index'])->name('daftarpesanan.index');
 Route::get('/riwayat', [DaftarPesananController::class, 'riwayat'])->name('daftarpesanan.riwayat');
 Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
-Route::get('/produk/order/{id_galeri}', [ProdukController::class, 'order'])->name('produk.order');
 
-// Route untuk halaman costumproduk
-Route::get('/costumproduk/{id_galeri}', [CostumProdukController::class, 'index'])->name('costumproduk.index');
 
 
 // Route::get('/serviceUser', function () {

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\galeri;
+use App\Models\Produk;
 use App\Models\Costumbarang;
 
 use Illuminate\Http\Request;
@@ -10,9 +10,9 @@ class CostumProdukController extends Controller
 {
     public function index()
     { 
-        $dataGaleri = galeri::all(); // Mengambil semua data dari tabel galeris
+        $dataProduk = produk::all(); // Mengambil semua data dari tabel galeris
 
-        return view('costumproduk.index', ['dataGaleri' => $dataGaleri]);
+        return view('costumproduk.index', ['dataProduk' => $dataProduk]);
     }
     public function payment()
     {
