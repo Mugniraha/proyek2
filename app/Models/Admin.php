@@ -2,16 +2,15 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class Admin extends Model
 {
     use HasApiTokens, HasFactory, Notifiable, CanResetPassword;
 
@@ -21,12 +20,10 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'username',
         'name',
-        'telp',
+        'no_hp',
         'email',
         'password',
-        'profil',
     ];
 
     /**
@@ -70,34 +67,5 @@ class User extends Authenticatable
         return true;
     }
 
-    /**
-     * Get the user's address.
-     */
-    public function alamat()
-    {
-        return $this->hasOne(Alamat::class, 'id');
-    }
-
-    /**
-     * Update user profile information.
-     *
-     * @param  string  $name
-     * @param  string  $email
-     * @param  string  $telpon
-     * @return void
-     */
-    public function updateProfile($username, $name, $email, $telpon)
-    {
-        $this->username = $username;
-        $this->name = $name;
-        $this->email = $email;
-        $this->telp = $telpon; // Sesuai dengan nama kolom yang digunakan pada $fillable
-        $this->save();
-    }
-
-    public function updateUser($userData)
-    {
-        $this->update($userData);
-    }
 
 }

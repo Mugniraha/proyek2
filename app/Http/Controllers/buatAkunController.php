@@ -15,10 +15,11 @@ class buatAkunController extends Controller
      */
     public function index()
     {
-        $slug = "buat_akun";
-        $buat_akun = DB::table('buat_akun')->get();
+        // $slug = "buat_akun";
+        // $buat_akun = DB::table('buat_akun')->get();
 
-        return view('profilUser.buatAkun', compact('slug','buat_akun'));
+        // return view('profilUser.buatAkun', compact('slug','buat_akun'));
+        return view('profilUser.buatAkun');
     }
 
     /**
@@ -64,15 +65,6 @@ class buatAkunController extends Controller
     return redirect()->route('ProfilUserIndex')->with('success', 'Data berhasil disimpan!');
 }
 
-    // private function checkIfUserHasCreatedAccount()
-    // {
-    //     // Sesuaikan logika berdasarkan kondisi yang sesuai pada aplikasi Anda
-    //     // Misalnya, cek apakah ada data buatAkun untuk pengguna saat ini
-    //     $userHasCreatedAccount = buatAkun::where('user_id', auth()->id())->exists();
-
-    //     return $userHasCreatedAccount;
-    // }
-
 
     /**
      * Display the specified resource.
@@ -102,24 +94,6 @@ public function edit(string $id)
 
 public function update(Request $request, string $id)
 {
-    // $request->validate([
-    //     'username' =>'required',
-    //     'nama_lengkap' =>'required',
-    //     'telpon' =>'required',
-    //     'email' =>'required',
-    //     'alamat' =>'required',
-    //     'profile' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-    // ]);
-
-    // $buat_akun = buatAkun::findOrFail($id);
-
-    // $buat_akun->update([
-    //     'username' => $request->input('username'),
-    //     'nama_lengkap' => $request->input('nama_lengkap'),
-    //     'telpon' => $request->input('telpon'),
-    //     'email' => $request->input('email'),
-    //     'alamat' => $request->input('alamat'),
-    // ]);
     $buat_akun = buatAkun::findOrFail($id);
     dd($buat_akun);
     $buat_akun->update($request->all());

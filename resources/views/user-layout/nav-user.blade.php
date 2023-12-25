@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="{{ asset('images/logo welding .png')}}" type="image/x-icon">
     <title>JOYO ROYO BENGKEL WELDING</title>
     <link rel="stylesheet" href="{{ asset('css/produk.css') }}">
     <link rel="stylesheet" href="{{ asset('css/rating.css') }}">
@@ -63,7 +64,7 @@
                     </a>
                     <div class="dropdown-content" id="dropdownProfil">
                         <a class="listdrop" href="#">Profil</a>
-                        <a class="listdrop" href="#">Logout</a>
+                        <a class="listdrop" href="{{ route('logout') }}">Logout</a>
                     </div>
                     <script>
                         document.addEventListener('DOMContentLoaded', function() {
@@ -100,7 +101,13 @@
                     <div class="col-md-12 text-center mb-5">
                         <img src="{{asset('img/logo.png')}}" alt="" class="rounded-circle ">
                     </div>
-                    <h4 class="p-1 border-bottom">Username</h4>
+                    <h4 class="p-1 border-bottom">USERNAME
+                        {{-- @if(session('user') && session('user')->username)
+                            {{ session('user')->username }}
+                        @else
+                            USERNAME
+                        @endif --}}
+                    </h4>
                 </div>
 
                 <ul class="list-group">

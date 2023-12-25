@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class buatAkun extends Model
 {
     use HasFactory;
-    protected $table = 'buat_akun';
-    protected $fillable = ['profile', 'username', 'nama_lengkap', 'email', 'telpon', 'alamat'];
+    protected $table = 'kelola_user';
+    protected $fillable = ['username', 'nama_lengkap', 'email', 'telpon',];
 }
