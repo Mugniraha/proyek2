@@ -4,8 +4,8 @@ use App\Http\Controllers\buatAkunController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ChangePasswordController;
+use App\Http\Controllers\admin\produkController as AdminProdukController;
 use App\Http\Controllers\admin\profilAdminController;
-use App\Http\Controllers\admin\galeriController;
 use App\Http\Controllers\admin\jaserPesananBaruController;
 use App\Http\Controllers\admin\jaserDalamProsesController;
 use App\Http\Controllers\admin\jaserSelesaiController;
@@ -122,8 +122,8 @@ Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.in
 
 
 // Route::get('/', [galeriController::class, 'index']);
-Route::resource('/galeri', galeriController::class);
-Route::put('/galeri/{id}/update-gambar', [galeriController::class, 'updateGambar'])->name('galeri.updateGambar');
+Route::resource('/galeri', AdminProdukController::class);
+Route::put('/galeri/{id}/update-gambar', [AdminProdukController::class, 'updateGambar'])->name('galeri.updateGambar');
 Route::put('/profil/{id}/update-profil',[profilAdminController::class, 'updateProfil'])->name('profil.updateProfil');
 Route::resource('/jsPesananbaru', jaserPesananBaruController::class);
 Route::resource('/jsDalamproses', jaserDalamProsesController::class);
@@ -136,6 +136,11 @@ Route::resource('/historyCusbar', historyCusbarController::class);
 Route::resource('/dashboard', dashboardController::class);
 Route::resource('/bantuan', bantuanController::class);
 Route::resource('/profil', profilAdminController::class);
+Route::get('/jsPesananBaru/{id}/terima', [jaserPesananBaruController::class, 'terimaPesanan'])->name('terimaPesanan');
+Route::get('/jsPesananBaru/{id}/tolak', [jaserPesananBaruController::class, 'tolakPesanan'])->name('tolakPesanan');
+Route::get('/jsDalamProses/{id}',[jaserDalamProsesController::class, 'selesai'])->name('selesai');
+
+
 
 
 

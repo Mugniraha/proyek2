@@ -3,6 +3,11 @@
 namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Str;
+use App\Models\formjs;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class jaserSelesaiController extends Controller
 {
@@ -12,7 +17,8 @@ class jaserSelesaiController extends Controller
     public function index()
     {
         $slug="JsSelesai";
-        return view("admin_konten.jsSelesai",compact("slug"));
+        $jasaServis = DB::table('form_js')->where('status','Selesai')->orWhere('status','Ditolak')->get();
+        return view("admin_konten.jsSelesai",compact("slug","jasaServis"));
     }
 
     /**
