@@ -3,6 +3,11 @@
 namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Str;
+use App\Models\formjs;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class jaserDalamProsesController extends Controller
 {
@@ -12,7 +17,16 @@ class jaserDalamProsesController extends Controller
     public function index()
     {
         $slug = "jsDalamproses";
-        return view("admin_konten.jsDalamProses", compact("slug"));
+        $jasaServis = DB::table('form_js')->get();
+        return view("admin_konten.jsDalamProses", compact("slug","jasaServis"));
+    }
+
+    public function selesai($id_formjs){
+        $pesanan = Formjs::find($id_formjs);
+        $pesanan->status = 'Selesai';
+        $pesanan->save();
+
+        return redirect()->route('pesananSelesai')->with('success', 'Pesanan selesai.');
     }
 
     /**

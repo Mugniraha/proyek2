@@ -96,6 +96,11 @@ Route::resource('/historyCusbar', historyCusbarController::class);
 Route::resource('/dashboard', dashboardController::class);
 Route::resource('/bantuan', bantuanController::class);
 Route::resource('/profil', profilAdminController::class);
+Route::get('/jsPesananBaru/{id}/terima', [jaserPesananBaruController::class, 'terimaPesanan'])->name('terimaPesanan');
+Route::get('/jsPesananBaru/{id}/tolak', [jaserPesananBaruController::class, 'tolakPesanan'])->name('tolakPesanan');
+Route::get('/jsDalamProses/{id}',[jaserDalamProsesController::class, 'selesai'])->name('selesai');
+
+
 
 
 

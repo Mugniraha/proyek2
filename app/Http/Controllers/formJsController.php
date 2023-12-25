@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use  App\Models\formjs;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -42,8 +43,12 @@ class formJsController extends Controller
             'alamat' => 'required',
             'tanggal' => 'required',
         ]);
+        $userId = Auth::id();
 
-        formJS::create($request->all());
+        $dataPesanan = $request->all();
+        $dataPesanan['user_id'] = $userId;
+
+        formJS::create($dataPesanan);
 
         return redirect()->route('serviceBaruIndex')->with('success', 'Data berhasil disimpan!');
     }
