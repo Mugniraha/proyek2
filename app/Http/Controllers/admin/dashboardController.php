@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class dashboardController extends Controller
 {
@@ -11,9 +13,9 @@ class dashboardController extends Controller
      */
     public function index()
     {
-        //
+        $jasaServis = DB::table('form_js')->get();
         $slug = "dahboard";
-        return view("admin_konten.dashboardAdmin", compact("slug"));
+        return view("admin_konten.dashboardAdmin", compact("slug","jasaServis"));
     }
 
     /**

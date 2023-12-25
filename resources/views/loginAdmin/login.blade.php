@@ -16,7 +16,7 @@
                 <div class="card-header text-center">
                     <div class="d-flex flex-column align-items-center" >
                         <img src="{{ asset('images/logo welding .png')}}" alt="Logo" class="bg">
-                        <h2 class="card-title">Login</h2>
+                        <h2 class="card-title">Login Admin</h2>
                         <h6 style="font-weight: normal;">Silahkan Login dengan Akun Anda!</h6>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                         @csrf
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" name="email" class="form-control" id="email" placeholder="Masukkan Email Anda" required>
+                            <input type="email" name="email" class="form-control" id="formGroupExampleInput2" placeholder="Masukkan Email Anda" required>
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
@@ -44,10 +44,10 @@
                         </div>
                     </form>
                     <div class="mb-3 d-flex justify-content-between flex-column align-items-center">
-                        {{-- <div class="d-flex">
+                        <div class="d-flex">
                             <span>Belum memiliki Akun?</span>
-                            <a href="{{ route('registerIndex') }}" class="text-decoration-none">Daftar Akun</a>
-                        </div> --}}
+                            <a href="{{ route('registerAdminPost') }}" class="text-decoration-none">Daftar Akun</a>
+                        </div>
                         <div class="d-flex">
                             {{-- <span>Lupa Password?</span> --}}
                             <a href="{{ route('password.edit') }}" class="text-decoration-none">Lupa Password?</a>

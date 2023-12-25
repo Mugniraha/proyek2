@@ -16,7 +16,7 @@
                     <div class="card-header text-center">
                         <div class="d-flex flex-column align-items-center">
                             <img src="{{ asset('images/logo welding .png')}}" alt="Logo" class="bg">
-                            <h2 class="card-title">Register User</h2>
+                            <h2 class="card-title">Register Admin</h2>
                             <h6 style="font-weight: normal;">Silahkan Daftar dengan Email Anda!</h6>
                         </div>
                     </div>
@@ -26,23 +26,19 @@
                             {{ Session::get('success') }}
                         </div>
                         @endif
-                        <form action="{{ route('registerIndex') }}" method="POST">
+                        <form action="{{ route('registerAdminIndex') }}" method="POST">
                             @csrf
-                            <div class="mb-3">
-                                <label for="username" class="form-label">Username</label>
-                                <input type="text" name="username" class="form-control" id="username" placeholder="Username" required>
-                            </div>
-                            <div class="mb-3">
+                            {{-- <div class="mb-3">
                                 <label for="name" class="form-label">Nama Lengkap</label>
-                                <input type="text" name="name" class="form-control" id="name" placeholder="Nama Lengkap" required>
+                                <input type="text" name="nama" class="form-control" id="formGroupExampleInput2" placeholder="Nama Lengkap" required>
                             </div>
                             <div class="mb-3">
                                 <label for="telp" class="form-label">Nomer HP</label>
-                                <input type="number" name="telp" class="form-control" id="telp" placeholder="Nomer HP" required>
-                            </div>
+                                <input type="number" name="no_hp" class="form-control" id="formGroupExampleInput2" placeholder="Nomer HP" required>
+                            </div> --}}
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" name="email" class="form-control" id="email" placeholder="Email" required>
+                                <input type="email" name="email" class="form-control" id="formGroupExampleInput2" placeholder="Email" required>
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
@@ -57,7 +53,7 @@
                         <div class="mb-3 d-flex justify-content-between flex-column align-items-center">
                             <div class="d-flex">
                                 <span>Sudah memiliki akun?</span>
-                            <a href="{{ route('loginIndex') }}" class="text-decoration-none">Masuk di sini</a>
+                            <a href="{{ route('loginAdminIndex') }}" class="text-decoration-none">Masuk di sini</a>
                             </div>
                         </div>
                     </div>
@@ -67,10 +63,11 @@
         <script>
                 document.querySelector("form").addEventListener("submit", async function(event) {
                 event.preventDefault();
+                console.log("Button clicked");
 
                 // Fetch API untuk mengirimkan data formulir
                 const formData = new FormData(this);
-                const response = await fetch("{{ route('registerIndex') }}", {
+                const response = await fetch("{{ route('registerAdminIndex') }}", {
                     method: "POST",
                     body: formData,
                 });
@@ -78,7 +75,7 @@
                 // Periksa apakah registrasi berhasil
                 if (response.ok) {
                     // Arahkan ke halaman login
-                    window.location.href = "{{ route('loginIndex') }}";
+                    window.location.href = "{{ route('loginAdminIndex') }}";
                 } else {
                     // Tangani kegagalan registrasi (tampilkan pesan kesalahan, dll.)
                     // Untuk sementara, Anda bisa mencatat kesalahan ke konsol

@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Str;
+use App\Models\formjs;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -20,9 +21,25 @@ class jaserPesananBaruController extends Controller
         return view("admin_konten.jsPesananBaru", compact("slug","jasaServis"));
     }
 
-    public function terimaPesanan(){
+    public function terimaPesanan($id_formjs)
+    {
+        $pesanan = Formjs::find($id_formjs);
+        $pesanan->status = 'diproses';
+        $pesanan->save();
 
+        return back()->with('success', 'Pesanan diterima.');
     }
+
+    public function tolakPesanan($id_formjs)
+    {
+        $pesanan = Formjs::find($id_formjs);
+        $pesanan->status = 'ditolak';
+        $pesanan->save();
+
+        return back()->with('success', 'Pesanan ditolak.');
+    }
+
+
 
     /**
      * Show the form for creating a new resource.

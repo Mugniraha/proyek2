@@ -16,7 +16,7 @@
                 <div class="card-header text-center">
                     <div class="d-flex flex-column align-items-center" >
                         <img src="{{ asset('images/logo welding .png')}}" alt="Logo" class="bg">
-                        <h2 class="card-title">Login</h2>
+                        <h2 class="card-title">Login User</h2>
                         <h6 style="font-weight: normal;">Silahkan Login dengan Akun Anda!</h6>
                     </div>
                 </div>

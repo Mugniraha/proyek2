@@ -9,6 +9,7 @@ class Formjs extends Model
 {
     use HasFactory;
     protected $table = 'form_js';
-    protected $fillable = ['nama', 'telpon', 'jenisJasa', 'deskripsi', 'alamat', 'tanggal'];
+    protected $primaryKey = 'id_formjs';
+    protected $fillable = ['id_formjs', 'nama', 'telpon', 'jenisJasa', 'deskripsi', 'alamat', 'tanggal','user_id'];
     protected $dates = ['created_at', 'updated_at'];
 }
