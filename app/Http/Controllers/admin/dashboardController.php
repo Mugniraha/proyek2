@@ -13,7 +13,7 @@ class dashboardController extends Controller
      */
     public function index()
     {
-        $jasaServis = DB::table('form_js')->get();
+        $jasaServis = DB::table('jasa_service')->get();
         $slug = "dahboard";
         return view("admin_konten.dashboardAdmin", compact("slug","jasaServis"));
     }

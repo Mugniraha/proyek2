@@ -23,6 +23,7 @@ class RegisterController extends Controller
 
     public function registerPost(Request $request)
     {
+        // dd($request->all());
         $user = new User();
         $user->username = $request->username;
         $user->name = $request->name;
@@ -31,14 +32,9 @@ class RegisterController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
 
-        // $request->session()->put('user_registration_data', [
-        //     'nama_lengkap' => $request->name,
-        //     'email' => $request->email,
-        //     'telpon' => $request->telp,
-        // ]);
         Session::put('user', $user);
 
-        return back()->with('success', 'Register successfully');
+        return redirect()->route('loginIndex')->with('success', 'Register successfully');
     }
 
     public function loginIndex()
