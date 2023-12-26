@@ -18,7 +18,7 @@ class Alamat extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'id');
+        return $this->belongsTo(User::class, 'idUser');
     }
 
     public function updateUserAddress($nama_alamat, $rt_rw, $desa, $kecamatan, $kabupaten)

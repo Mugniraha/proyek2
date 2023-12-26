@@ -20,6 +20,8 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    protected $table = 'newusers';
     protected $fillable = [
         'username',
         'name',
@@ -75,7 +77,7 @@ class User extends Authenticatable
      */
     public function alamat()
     {
-        return $this->hasOne(Alamat::class, 'id');
+        return $this->hasOne(Alamat::class, 'idUser');
     }
 
     /**
@@ -86,12 +88,12 @@ class User extends Authenticatable
      * @param  string  $telpon
      * @return void
      */
-    public function updateProfile($username, $name, $email, $telpon)
+    public function updateProfile($username, $name, $email, $telp)
     {
         $this->username = $username;
         $this->name = $name;
         $this->email = $email;
-        $this->telp = $telpon; // Sesuai dengan nama kolom yang digunakan pada $fillable
+        $this->telp = $telp; // Sesuai dengan nama kolom yang digunakan pada $fillable
         $this->save();
     }
 

@@ -64,9 +64,11 @@
                 </div>
             </div>
         </div>
-        <script>
+        {{-- <script>
+            // window.addEventListener('DOMContentLoaded', (event) => {
                 document.querySelector("form").addEventListener("submit", async function(event) {
                 event.preventDefault();
+                console.log("Button clicked");
 
                 // Fetch API untuk mengirimkan data formulir
                 const formData = new FormData(this);
@@ -85,6 +87,7 @@
                     console.error("Registrasi gagal:", response.statusText);
                 }
             });
-        </script>
+        // });
+        </script> --}}
     </body>
 </html>
