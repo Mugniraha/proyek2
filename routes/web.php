@@ -51,6 +51,9 @@ Route::get('/register', [RegisterController::class, 'registerIndex'])->name('reg
 Route::post('/register', [RegisterController::class, 'registerPost'])->name('registerPost');
 Route::get('/loginUser', [RegisterController::class, 'loginIndex'])->name('loginIndex');
 Route::post('/loginUser', [RegisterController::class, 'loginPost'])->name('loginPost');
+
+Route::post('/loginAdmin', [RegisterController::class, 'loginAdminPost'])->name('loginAdminPost');
+Route::post('/costumproduk', [CostumprodukController::class, 'store'])->name('costumproduk.store');
 Route::get('/logout', [RegisterController::class, 'logout'])->name('logout');
 
 Route::get('/registerAdmin', [LoginAdminController::class, 'registerAdminIndex'])->name('registerAdminIndex');
@@ -110,11 +113,14 @@ Route::get('/konfirmasi', [NotifikasiController::class, 'KonfirmasiIndex'])->nam
 Route::resource('/formOrder', formJsController::class );
 Route::put('/formOrder/{id}', [formJSController::class, 'update'])->name('formOrder.update');
 Route::get('/serviceUser', [serviceBaruController::class, 'serviceBaruIndex'])->name('serviceBaruIndex');
-Route::get('/costumproduk', [CostumProdukController::class, 'index'])->name('costumproduk.index');
-Route::get('/payment', [CostumProdukController::class, 'payment'])->name('costumproduk.payment');
+Route::post('/costumproduk/{id_produk}', [CostumProdukController::class, 'index'])->name('costumproduk.index');
+Route::get('/costumproduk/payment', [CostumprodukController::class, 'payment'])->name('costumproduk.payment');
 Route::get('/daftarpesanan', [DaftarPesananController::class, 'index'])->name('daftarpesanan.index');
 Route::get('/riwayat', [DaftarPesananController::class, 'riwayat'])->name('daftarpesanan.riwayat');
 Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
+
+
+
 // Route::get('/serviceUser', function () {
 //     return view('profilUser.service');
 // });

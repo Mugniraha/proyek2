@@ -167,11 +167,11 @@ textarea.form-control:focus {
     display: flex;
     gap: 10px;
 }
-.btnform a{
+.btnform{
     text-decoration: none;
 }
 
-.btnpesan{
+.btnpesancld{
     width: 100%;
     background-color: rgb(84, 223, 126);
     border-radius: 5px;
