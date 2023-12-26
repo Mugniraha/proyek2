@@ -17,7 +17,7 @@ class formJsController extends Controller
     public function index()
     {
         $slug = "form_js";
-        $form_js = DB::table('form_js')->get();
+        $form_js = DB::table('jasa_service')->get();
         return view('jasaService_User.formulir', compact('slug','form_js'));
 
     }
@@ -36,17 +36,16 @@ class formJsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required',
-            'telpon' => 'required',
-            'jenisJasa' => 'required',
-            'deskripsi' => 'required',
+            'namaJasa' => 'required',
+            'deskripsiJasa' => 'required',
+            'kategorijasa' => 'required',
             'alamat' => 'required',
             'tanggal' => 'required',
         ]);
         $userId = Auth::id();
 
         $dataPesanan = $request->all();
-        $dataPesanan['user_id'] = $userId;
+        $dataPesanan['idUser'] = $userId;
 
         formJS::create($dataPesanan);
 
