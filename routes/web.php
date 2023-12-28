@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\buatAkunController;
+use App\Http\Controllers\UpdateProfilController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ChangePasswordController;
@@ -76,6 +77,9 @@ Route::post('/update-address', [ProfilUserController::class, 'updateAddress'])->
 Route::get('/profilUser/editProfile', [ProfilUserController::class, 'editProfileForm'])->name('editProfileForm');
 Route::put('/profilUser/updateProfile', [ProfilUserController::class, 'updateProfile'])->name('updateProfile');
 Route::get('/profilUser/editAddress', [ProfilUserController::class, 'editAddressForm'])->name('editAddressForm');
+Route::prefix('profil')->group(function () {
+    Route::put('/update-foto', [UpdateProfilController::class, 'updateFoto'])->name('updateFoto');
+});
 
 
 //     // ... Rute lainnya ...

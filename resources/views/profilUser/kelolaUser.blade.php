@@ -35,27 +35,6 @@
 
                             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
                             <script>
-                                // function openFileInput() {
-                                //     document.getElementById('fileInput').click();
-                                // }
-
-                                // function updateProfilePicture(input) {
-                                //     if (input.files && input.files[0]) {
-                                //         var file = input.files[0];
-                                //         var formData = new FormData();
-                                //         formData.append('profil', file);
-
-                                //     // Kirim file ke server menggunakan AJAX
-                                //         axios.post('/profil/update-picture/{{ Auth::id() }}', formData)
-                                //             .then(response => {
-                                //                 // Update tampilan gambar profil jika berhasil
-                                //                 document.getElementById('profilePicture').src = response.data.url;
-                                //             })
-                                //             .catch(error => {
-                                //                 console.error('Error uploading profile picture:', error);
-                                //             });
-                                //     }
-                                // }
                                 function openFileInput() {
                                     document.getElementById('fileInput').click();
                                 }
@@ -66,18 +45,19 @@
                                         var formData = new FormData();
                                         formData.append('profil', file);
 
-                                        // Dapatkan userId dari sesi atau sesuaikan dengan cara Anda mengelolanya
-                                        var userId = {{ Auth::id() }};
-
-                                        // Kirim file ke server menggunakan AJAX
-                                        axios.post(`/profil/update-picture/${userId}`, formData)
-                                            .then(response => {
-                                                // Update tampilan gambar profil jika berhasil
-                                                document.getElementById('profilePicture').src = response.data.url;
-                                            })
-                                            .catch(error => {
-                                                console.error('Error uploading profile picture:', error);
-                                            });
+                                       // Kirim file ke server menggunakan AJAX
+                                        axios.post(`/profil/update-foto`, formData, {
+                                            headers: {
+                                                'Content-Type': 'multipart/form-data',
+                                            }
+                                        })
+                                        .then(response => {
+                                            // Update tampilan gambar profil jika berhasil
+                                            document.getElementById('profilePicture').src = response.data.url;
+                                        })
+                                        .catch(error => {
+                                            console.error('Error uploading profile picture:', error);
+                                        });
                                     }
                                 }
                             </script>

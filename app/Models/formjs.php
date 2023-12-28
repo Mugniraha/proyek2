@@ -10,6 +10,12 @@ class Formjs extends Model
     use HasFactory;
     protected $table = 'jasa_service';
     protected $primaryKey = 'idJasa';
-    protected $fillable = ['idJasa', 'namaJasa', 'jenisJasa', 'deskripsiJasa', 'alamat', 'tanggal','user_id'];
+    protected $fillable = ['idJasa', 'namaJasa',
+    'deskripsiJasa',
+    'harga',
+    'kategoriJasa',
+    'alamat',
+    'tanggal',
+    'status','user_id'];
     protected $dates = ['created_at', 'updated_at'];
 }
