@@ -10,8 +10,12 @@ class Formjs extends Model
     use HasFactory;
     protected $table = 'jasa_service';
 
-    protected $primaryKey = 'idjasa';
-    protected $fillable = ['id_jasa', 'namaJasa', 'jenisJasa', 'deskripsijasa', 'alamat','kategoriJasa', 'tanggal','idUser'];
+    protected $primaryKey = 'idJasa';
+    protected $fillable = ['idJasa', 'namaJasa','kategoriJasa','deskripsiJasa','alamat','tanggal','user_id','status','tanggal_selesai'];
 
     protected $dates = ['created_at', 'updated_at'];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -24,7 +24,7 @@
     @foreach ($jasaServis as $row)
         <tr>
             <td>{{$nomor++}}</td>
-            <td>{{$row->nama}}</td>
+            <td>{{$row->namaJasa}}</td>
             <td></td>
             <td>
                 @if($row->status === 'Selesai')

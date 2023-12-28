@@ -110,7 +110,7 @@ Route::put('/kelolaUser/{id}', 'buatAkunController@update')->name('update_user')
 
 Route::get('/notifikasi', [NotifikasiController::class, 'NotifikasiIndex'])->name('NotifikasiIndex');
 Route::get('/konfirmasi', [NotifikasiController::class, 'KonfirmasiIndex'])->name('KonfirmasiIndex');
-Route::resource('/formOrder', formJsController::class );
+Route::resource('/formOrder', formJsController::class,  );
 Route::put('/formOrder/{id}', [formJSController::class, 'update'])->name('formOrder.update');
 Route::get('/serviceUser', [serviceBaruController::class, 'serviceBaruIndex'])->name('serviceBaruIndex');
 Route::post('/costumproduk/{id_produk}', [CostumProdukController::class, 'index'])->name('costumproduk.index');
@@ -157,4 +157,3 @@ Route::get('/service', function () {
     $slug = "service";
     return view('admin_konten.service', compact('slug'));
 });
-
