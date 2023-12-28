@@ -16,7 +16,11 @@ class formJsController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
         $slug = "jasa_service";
+=======
+        $slug = "form_js";
+>>>>>>> 457fa1e90c91943ccab5117508878ed002c19d5b
         $form_js = DB::table('jasa_service')->get();
         return view('jasaService_User.formulir', compact('slug','form_js'));
 
@@ -38,8 +42,12 @@ class formJsController extends Controller
         $request->validate([
             'namaJasa' => 'required',
             'deskripsiJasa' => 'required',
+<<<<<<< HEAD
             'harga' => 'required',
             'kategoriJasa' => 'required',
+=======
+            'kategorijasa' => 'required',
+>>>>>>> 457fa1e90c91943ccab5117508878ed002c19d5b
             'alamat' => 'required',
             'tanggal' => 'required',
             'status' => 'required',
@@ -48,7 +56,7 @@ class formJsController extends Controller
         $userId = Auth::id();
 
         $dataPesanan = $request->all();
-        $dataPesanan['user_id'] = $userId;
+        $dataPesanan['idUser'] = $userId;
 
         formJS::create($dataPesanan);
 

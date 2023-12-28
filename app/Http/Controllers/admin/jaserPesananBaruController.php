@@ -17,7 +17,7 @@ class jaserPesananBaruController extends Controller
     public function index()
     {
         $slug = "jsPesananbaru";
-        $jasaServis = DB::table('form_js')->get();
+        $jasaServis = DB::table('jasa_service')->get();
         return view("admin_konten.jsPesananBaru", compact("slug","jasaServis"));
     }
 

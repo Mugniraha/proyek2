@@ -29,11 +29,11 @@
 
         <tr>
             <td>{{$no++}}</td>
-            <td>{{$row->nama}}</td>
+            <td>{{$row->namajasa}}</td>
             <td>{{$row->jenisJasa}}</td>
-            <td>{{$row->deskripsi}}</td>
+            <td>{{$row->deskripsiJasa}}</td>
             <td>{{$row->alamat}}</td>
-            <td>{{ ($row->tanggal) }}</td>
+            <td>{{ $row->tanggal}}</td>
             <td>{{$row->status}}</td>
             <td>
                 <a href="{{ route('terimaPesanan', $row->id_formjs) }}" type="button" class="btn btn-sm btn-success btn-primary w-75">Terima</a>

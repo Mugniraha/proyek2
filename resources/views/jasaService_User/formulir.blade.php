@@ -18,24 +18,24 @@
                     @csrf
                     {{-- @method('PUT') --}}
                     <div class="mb-3">
-                        <label for="formGroupExampleInput" class="form-label">Nama</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" name="nama" placeholder="" value="">
+                        <label for="formGroupExampleInput" class="form-label">Nama Jasa</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput" name="namaJasa" placeholder="" value="">
                     </div>
                     <div class="mb-3">
-                        <label for="formGroupExampleInput2" class="form-label">Nomor Telepon</label>
-                        <input type="number" class="form-control" id="formGroupExampleInput2" name="telpon" placeholder="" value="">
-                    </div>
-                    <div class="mb-3">
-                        <label for="formGroupExampleInput2" class="form-label">Jenis Jasa</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2" name="jenisJasa" placeholder="" value="">
+                        <label for="">Kategori Jasa</label>
+                        <select class="form-select" name="kategoriJasa" aria-label="Default select example">
+                            <option selected>Open this select menu</option>
+                            <option value="Reparasi">Reparasi</option>
+                            <option value="Pembuatan">Pembuatan</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">Deskripsi Masalah</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" name="deskripsi" placeholder="" rows="3"></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" name="deskripsiJasa" placeholder="" rows="3"></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Lokasi</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2" name="alamat" placeholder="" value="">
+                        <textarea type="text" class="form-control" id="formGroupExampleInput2" name="alamat" placeholder="" value=""></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Tanggal Pengerjaan</label>
