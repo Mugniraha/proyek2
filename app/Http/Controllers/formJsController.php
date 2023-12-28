@@ -16,7 +16,7 @@ class formJsController extends Controller
      */
     public function index()
     {
-        $slug = "form_js";
+        $slug = "jasa_service";
         $form_js = DB::table('jasa_service')->get();
         return view('jasaService_User.formulir', compact('slug','form_js'));
     }
@@ -44,7 +44,7 @@ class formJsController extends Controller
         $userId = Auth::id();
 
         $dataPesanan = $request->all();
-        $dataPesanan['user_id'] = $userId;
+        $dataPesanan['idUser'] = $userId;
         $dataPesanan['status'] = 'Menunggu Proses';
 
         Formjs::create($dataPesanan);

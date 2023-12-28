@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\JsonResponse;
-// use  App\Models\buatAkun;
 use  App\Models\User;
 use App\Models\Alamat;
 
@@ -18,51 +16,12 @@ class ProfilUserController extends Controller
         $kelola_user = User::all(); // Ambil semua data dari tabel buat_akun
         return view('profilUser.index', compact('kelola_user'));
     }
-
-    public function updateProfileAndAddress(Request $request)
-    {
-        // Validasi request jika diperlukan
-        // if (auth()->check()) {
-        $user = auth()->user();
-
-        // Update informasi akun
-        $user->updateProfile(
-            $request->input('username'),
-            $request->input('name'),
-            $request->input('email'),
-            $request->input('telp'),
-        );
-
-        // Update atau tambahkan alamat
-        $alamatData = [
-            'nama_alamat' => $request->input('nama_alamat'),
-            'rt_rw' => $request->input('rt_rw'),
-            'desa' => $request->input('desa'),
-            'kecamatan' => $request->input('kecamatan'),
-            'kabupaten' => $request->input('kabupaten'),
-        ];
-
-        if ($user->alamat) {
-            // Jika alamat sudah ada, update alamat
-            $user->alamat->update($alamatData);
-        } else {
-            // Jika alamat belum ada, tambahkan alamat baru
-            $user->alamat()->create($alamatData);
-        }
-
-        return redirect()->route('ProfilUserIndex')->with('success', 'Profil berhasil diperbarui');
-    }
-    // else {
-    //     // Pengguna tidak diotentikasi, lakukan sesuatu atau tampilkan pesan kesalahan
-    //     return redirect()->route('registerIndex')->with('error', 'Pengguna tidak diotentikasi.');
-    // }
-
-
-
     public function editProfileForm()
     {
         $user = auth()->user();
-        return view('profilUser.kelolaUser', compact('user'));
+        $alamat = $user->alamat;
+
+        return view('profilUser.kelolaUser', compact('user', 'alamat'));
     }
 
     public function updateProfile(Request $request)
@@ -72,7 +31,7 @@ class ProfilUserController extends Controller
         // Validasi request jika diperlukan
 
         // Update informasi akun
-        $user->updateUser([
+        $user->update([
             'username' => $request->input('username'),
             'name' => $request->input('name'),
             'email' => $request->input('email'),
@@ -108,5 +67,49 @@ class ProfilUserController extends Controller
 
         return redirect()->route('ProfilUserIndex')->with('success', 'Alamat berhasil diperbarui');
     }
-}
 
+    public function updateProfileAndAddress(Request $request)
+    {
+        // Metode ini dapat menangani pembaruan profil dan alamat sekaligus
+        // Anda dapat menyesuaikannya sesuai kebutuhan Anda
+
+        $user = auth()->user();
+
+        // Validasi request jika diperlukan
+
+        // Update informasi akun
+        $userData = ([
+            'username' => $request->input('username'),
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'telp' => $request->input('telp'),
+        ]);
+
+        // Update atau tambahkan alamat
+        $alamatData = [
+            'nama_alamat' => $request->input('nama_alamat'),
+            'rt_rw' => $request->input('rt_rw'),
+            'desa' => $request->input('desa'),
+            'kecamatan' => $request->input('kecamatan'),
+            'kabupaten' => $request->input('kabupaten'),
+        ];
+
+        \Log::info('User Data Before Update: ' . json_encode($user->toArray()));
+    \Log::info('Update User Data: ' . json_encode($userData));
+    \Log::info('Update Alamat Data: ' . json_encode($alamatData));
+
+        // if ($user->alamat) {
+        //     // Jika alamat sudah ada, update alamat
+        //     $user->alamat->update($alamatData);
+        // } else {
+        //     // Jika alamat belum ada, buat yang baru
+        //     $newAlamat = new Alamat($alamatData);
+        //     $user->alamat()->save($newAlamat);
+        // }
+        $user->updateProfileAndAddress($userData, $alamatData);
+
+        \Log::info('User Data After Update: ' . json_encode($user->toArray()));
+
+        return redirect()->route('ProfilUserIndex')->with('success', 'Profil dan alamat berhasil diperbarui');
+    }
+}
