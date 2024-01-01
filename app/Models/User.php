@@ -112,16 +112,16 @@ class User extends Authenticatable
     // }
 
     public function updateProfileAndAddress(array $userData, array $alamatData)
-{
-    $this->update($userData);
+    {
+        $this->update($userData);
 
-    if ($this->alamat) {
-        // Jika alamat sudah ada, update alamat
-        $this->alamat->update($alamatData);
-    } else {
-        // Jika alamat belum ada, buat yang baru
-        $this->alamat()->create($alamatData);
+        if ($this->alamat) {
+            // Jika alamat sudah ada, update alamat
+            $this->alamat->update($alamatData);
+        } else {
+            // Jika alamat belum ada, buat yang baru
+            $this->alamat()->create($alamatData);
+        }
     }
-}
 
-}
+    }

@@ -5,7 +5,7 @@
                 <a href="{{ route('daftarpesanan.riwayat') }}"><button class="btnriwayat">Riwayat Pesanan</button></a>
                 <hr>
             </div>
-            
+
         <div class="container">
             <div class="row">
                 <div class="cardpes">
@@ -66,7 +66,7 @@
                                     <td></td>
                                 </tr>
                             </table>
-                        </div>                        
+                        </div>
                         <div class="right-col">
                             <div class="dp-payment">
                                 <table>
@@ -81,7 +81,7 @@
                                             <td>RP. 100.000</td>
                                         </tr>
                                     </tbody>
-                                </table>     
+                                </table>
                             </div>
                             <div class="payment">
                                 <table>
@@ -102,7 +102,7 @@
                                 Progres Barang
                             </button>
                             <div class="dropdown-menu" aria-labelledby="toggleButton" style="background-color: #f4f5f7">
-                                <div class="card-progres" id="cardProgres">                                  
+                                <div class="card-progres" id="cardProgres">
                                     <table class="progres-barang">
                                         <thead>
                                             <tr>
@@ -150,19 +150,19 @@
                                         </tbody>
                                     </table>
                                 </div>
-                            </div>                            
+                            </div>
                         </div>
                         <script>
                             document.addEventListener("DOMContentLoaded", function() {
                                 // Dapatkan elemen tombol dan card-progres
                                 const toggleButton = document.getElementById('toggleButton');
                                 const cardProgres = document.getElementById('cardProgres');
-                        
+
                                 // Tambahkan event listener untuk menampilkan card-progres saat tombol diklik
                                 toggleButton.addEventListener('click', function() {
                                     // Cek apakah card-progres sedang ditampilkan
                                     const isCardVisible = cardProgres.classList.contains('show');
-                        
+
                                     // Toggle tampilan card-progres berdasarkan kondisi saat ini
                                     if (!isCardVisible) {
                                         // Tampilkan card-progres
@@ -174,12 +174,12 @@
                                 });
                             });
                         </script>
-                        
-                        
-                        <div class="btn-right">
-                            <a href="{{ route('costumproduk.index', ['id_produk' => $produk->id_produk]) }}"><button class="btnagain">Order Lagi</button></a>
-                            <a href="{{ route('costumproduk.index', ['id_produk' => $produk->id_produk]) }}"><button class="btncall">Pembayaran</button></a>
-                        </div>
+
+
+                        {{-- <div class="btn-right">
+                            <a href="{{ route('costumproduk.index', ['idProduk' => $produk->idProduk]) }}"><button class="btnagain">Order Lagi</button></a>
+                            <a href="{{ route('costumproduk.index', ['idProduk' => $produk->idProduk]) }}"><button class="btncall">Pembayaran</button></a>
+                        </div> --}}
                     </div>
                 </div>
             </div>
