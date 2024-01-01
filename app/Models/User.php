@@ -23,6 +23,7 @@ class User extends Authenticatable
      */
 
     protected $table = 'newusers';
+    protected $primaryKey ='idUser';
     protected $fillable = [
         'username',
         'name',
@@ -60,12 +61,6 @@ class User extends Authenticatable
      * @return bool
      */
 
-    // public function updateFoto(?string $fotoFileName)
-    // {
-    //     if ($fotoFileName) {
-    //         $this->update(['profil' => $fotoFileName]);
-    //     }
-    // }
     public function changePassword($oldPassword, $newPassword)
     {
         // Pastikan password lama sesuai
@@ -85,7 +80,7 @@ class User extends Authenticatable
      */
     public function alamat()
     {
-        return $this->hasOne(Alamat::class, 'idUser');
+        return $this->hasOne(Alamat::class, 'idUser', 'idUser');
     }
 
     /**
@@ -96,31 +91,18 @@ class User extends Authenticatable
      * @param  string  $telpon
      * @return void
      */
-    // public function updateProfile($username, $name, $email, $telp)
-    // {
-    //     $this->username = $username;
-    //     $this->name = $name;
-    //     $this->email = $email;
-    //     $this->telp = $telp; // Sesuai dengan nama kolom yang digunakan pada $fillable
-    //     $this->save();
-    // }
-
-    // public function updateUser($userData)
-    // {
-    //     $this->update($userData);
-    // }
 
     public function updateProfileAndAddress(array $userData, array $alamatData)
-{
-    $this->update($userData);
+    {
+        $this->update($userData);
 
-    if ($this->alamat) {
-        // Jika alamat sudah ada, update alamat
-        $this->alamat->update($alamatData);
-    } else {
-        // Jika alamat belum ada, buat yang baru
-        $this->alamat()->create($alamatData);
+        if ($this->alamat) {
+            // Jika alamat sudah ada, update alamat
+            $this->alamat->update($alamatData);
+        } else {
+            // Jika alamat belum ada, buat yang baru
+            $this->alamat()->create($alamatData);
+        }
     }
-}
 
-}
+    }

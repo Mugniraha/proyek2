@@ -24,48 +24,63 @@
                                         @endif
                                     </h4>
                                 </div>
-                                <!-- Button to open file input -->
-                                <button type="button" class="btn" style="background-color: #4C6687; color: #fcf2c5;" onclick="document.getElementById('fileInput').click()">
-                                    Ganti Foto
-                                </button>
-                                <!-- File input to upload a new profile picture -->
-                                {{-- <input type="file" id="fileInput" style="display: none" accept="image/*" onchange="updateProfilePicture(this)" value=""> --}}
-                                <input type="file" id="fileInput" name="profil" style="display: none" accept="image/*" onchange="updateProfilePicture(this)">
+                                <!-- Formulir untuk Unggah Foto -->
+                                <form action="{{ route('updateFotoProfil') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="file" name="profil" accept="image/*" id="fileInput" style="display: none;" onchange="updateProfilePicture(this)">
+                                    <button type="button" class="btn" onclick="document.getElementById('fileInput').click()">
+                                        Ganti Foto
+                                    </button>
+                                    <button type="submit" class="btn" style="background-color: #4C6687; color: #fcf2c5;">
+                                        Upload Foto
+                                    </button>
+                                </form>
                             </div>
-
                             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
                             <script>
-                                function openFileInput() {
-                                    document.getElementById('fileInput').click();
-                                }
-
                                 function updateProfilePicture(input) {
                                     if (input.files && input.files[0]) {
                                         var file = input.files[0];
+                                        var reader = new FileReader();
+
+                                        reader.onload = function (e) {
+                                            // Memperbarui gambar profil secara langsung dengan gambar yang dipilih
+                                            document.getElementById('profilePicture').src = e.target.result;
+                                        };
+
+                                        // Membaca file yang dipilih sebagai URL data
+                                        reader.readAsDataURL(file);
+
                                         var formData = new FormData();
                                         formData.append('profil', file);
 
-                                       // Kirim file ke server menggunakan AJAX
-                                        axios.post(`/profil/update-foto`, formData, {
+                                        // Mengirim file ke server menggunakan AJAX
+                                        axios.post("/profil/update-foto", formData, {
                                             headers: {
                                                 'Content-Type': 'multipart/form-data',
                                             }
                                         })
                                         .then(response => {
-                                            // Update tampilan gambar profil jika berhasil
-                                            document.getElementById('profilePicture').src = response.data.url;
+                                            // Memperbarui gambar profil dengan respons server setelah pengunggahan berhasil
+                                            document.getElementById('profilePicture').src = response.data.url + '?' + new Date().getTime();
                                         })
                                         .catch(error => {
                                             console.error('Error uploading profile picture:', error);
                                         });
                                     }
                                 }
-                            </script>
 
+
+                                // Menambahkan listener untuk mengupdate gambar ketika ada perubahan pada input file
+                                document.getElementById('fileInput').addEventListener('change', function() {
+                                    updateProfilePicture(this);
+                                });
+                            </script>
 
                         </div>
                     </div>
                 </div>
+
 
                 <div class="konten2 col py-3">
                     <div class="awal2">
@@ -97,30 +112,47 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleFormControlTextarea1" class="form-alamat">Alamat</label>
-                                    {{-- <textarea class="form-control" id="exampleFormControlTextarea1" name="alamat" placeholder="" rows="3"></textarea> --}}
-                                    <div class="alamat">
-                                        <label for="exampleFormControlTextarea2" class="form-label">Nama Jalan</label>
-                                        <input type="text" class="form-control" id="exampleFormControlTextarea2" name="nama_alamat" placeholder="" value="{{ $alamat->nama_alamat ?? '' }}">
 
-                                        <label for="exampleFormControlTextarea3" class="form-label">RT/RW</label>
-                                        <input type="text" class="form-control" id="exampleFormControlTextarea3" name="rt_rw" placeholder="" value="{{ $alamat->rt_rw ?? '' }}">
+                                    {{-- Pemeriksaan apakah sesi alamat sudah ada --}}
+                                    @if(session()->has('alamat'))
+                                        <div class="alamat">
+                                            <label for="exampleFormControlTextarea2" class="form-label">Nama Jalan</label>
+                                            <input type="text" class="form-control" id="exampleFormControlTextarea2" name="nama_alamat" value="{{ session('alamat')->nama_alamat }}">
 
-                                        <label for="exampleFormControlTextarea4" class="form-label">Desa</label>
-                                        <input type="text" class="form-control" id="exampleFormControlTextarea4" name="desa" placeholder="" value="{{ $alamat->desa ?? '' }}">
+                                            <label for="exampleFormControlTextarea3" class="form-label">RT/RW</label>
+                                            <input type="text" class="form-control" id="exampleFormControlTextarea3" name="rt_rw" value="{{ session('alamat')->rt_rw }}">
 
-                                        <label for="exampleFormControlTextarea5" class="form-label">Kecamatan</label>
-                                        <input type="text" class="form-control" id="eampleFormControlTextarea5" name="kecamatan" placeholder="" value="{{ $alamat->kecamatan ?? '' }}">
+                                            <label for="exampleFormControlTextarea4" class="form-label">Desa</label>
+                                            <input type="text" class="form-control" id="exampleFormControlTextarea4" name="desa" value="{{ session('alamat')->desa }}">
 
-                                        <label for="exampleFormControlTextarea6" class="form-label">Kabupaten</label>
-                                        <input type="text" class="form-control" id="exampleFormControlTextarea6" name="kabupaten" placeholder="" value="{{ $alamat->kabupaten ?? '' }}">
-                                    </div>
+                                            <label for="exampleFormControlTextarea5" class="form-label">Kecamatan</label>
+                                            <input type="text" class="form-control" id="eampleFormControlTextarea5" name="kecamatan" value="{{ session('alamat')->kecamatan }}">
+
+                                            <label for="exampleFormControlTextarea6" class="form-label">Kabupaten</label>
+                                            <input type="text" class="form-control" id="exampleFormControlTextarea6" name="kabupaten" value="{{ session('alamat')->kabupaten }}">
+                                        </div>
+                                    @else
+                                        {{-- Jika alamat belum ada, tampilkan pesan atau elemen formulir kosong --}}
+                                        <div class="alamat">
+                                            <label for="exampleFormControlTextarea2" class="form-label">Nama Jalan</label>
+                                            <input type="text" class="form-control" id="exampleFormControlTextarea2" name="nama_alamat" placeholder="">
+
+                                            <label for="exampleFormControlTextarea3" class="form-label">RT/RW</label>
+                                            <input type="text" class="form-control" id="exampleFormControlTextarea3" name="rt_rw" placeholder="">
+
+                                            <label for="exampleFormControlTextarea4" class="form-label">Desa</label>
+                                            <input type="text" class="form-control" id="exampleFormControlTextarea4" name="desa" placeholder="">
+
+                                            <label for="exampleFormControlTextarea5" class="form-label">Kecamatan</label>
+                                            <input type="text" class="form-control" id="eampleFormControlTextarea5" name="kecamatan" placeholder="">
+
+                                            <label for="exampleFormControlTextarea6" class="form-label">Kabupaten</label>
+                                            <input type="text" class="form-control" id="exampleFormControlTextarea6" name="kabupaten" placeholder="">
+                                        </div>
+                                    @endif
                                 </div>
                                 <div class="modal-footer">
-                                    {{-- @if ($kelola_user) --}}
                                     <button type="submit" class="btn btn-success" style="background-color: #4C6687; color: #fcf2c5;">Simpan</button>
-                                {{-- @else
-                                    <p>Error: User tidak ditemukan</p>
-                                @endif --}}
                                 </div>
                             </form>
                             <hr class="underline">
@@ -138,30 +170,43 @@
                                 <hr class="underline">
                             </div>
                             <div class="modal-body">
-                                <form action="" method="POST">
+                                @if(session('success'))
+                                    <div class="alert alert-success">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
+
+                                @if(session('error'))
+                                    <div class="alert alert-danger">
+                                        {{ session('error') }}
+                                    </div>
+                                @endif
+
+                                <form action="{{ route('ubahKataSandi') }}" method="POST">
                                     @csrf
                                     @method('PUT')
                                     <div class="mb-3">
                                         <label for="formGroupExampleInput" class="form-label">Password Lama</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput" name="pw_lama" placeholder="" value="">
-                                        <input type="hidden" value="">
+                                        <input type="password" class="form-control" id="formGroupExampleInput" name="pw_lama" placeholder="" value="">
+                                        {{-- <input type="hidden" value=""> --}}
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleFormControlTextarea1" class="form-label">Password Baru</label>
-                                        <input class="form-control" id="exampleFormControlTextarea1" name="pw_baru" placeholder="" rows="3">
+                                        <input type="password" class="form-control" id="exampleFormControlTextarea1" name="pw_baru" placeholder="" rows="3">
                                     </div>
-                                    </div>
+
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-success" style="background-color: #4C6687;color: #fcf2c5;">Simpan</button>
                                         {{-- <a href="{{ route('ProfilUserIndex') }}" type="button" class="btn btn-warning" style="background-color: red; color:white" data-bs-dismiss="modal">Kembali</a> --}}
                                     </div>
                                 </form>
-                            <hr class="underline">
+                                <hr class="underline">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <script>
+            {{-- <script>
                 function openFileInput() {
                     // Trigger click event on the file input
                     document.getElementById('fileInput').click();
@@ -181,6 +226,6 @@
                         reader.readAsDataURL(input.files[0]);
                     }
                 }
-            </script>
+            </script> --}}
         </div>
         </section>

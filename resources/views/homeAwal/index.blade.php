@@ -38,9 +38,9 @@
                 </ul>
             </div>
 
-            <a href="#" id="favoriteBtn" style="text-decoration: none;">
+            {{-- <a href="#" id="favoriteBtn" style="text-decoration: none;">
                 <img src="{{ asset('images/love.png')}}" alt="Logo" width="25" height="22" class="d-inline-block align-text-top">
-                Favorite</a>
+                Favorite</a> --}}
         </div>
     </div>
     <header style="background-color: #44403B;">
