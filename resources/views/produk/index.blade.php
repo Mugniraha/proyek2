@@ -18,9 +18,8 @@
                             <span class="fa fa-circle" id=""></span>
                         </div>
                         <div class="headline">
-                            <p>Tangga</p>
+                            <p>{{ $produk->kategori }}</p>
                         </div>
-                        <h7 class="card-text" style="color: rgb(0, 0, 0)">{{ $produk->idProduk }}</h7>
                         <h7 class="card-text">{{ $produk->namaProduk }}</h7>
                         <p>Lebar : {{ $produk->lebar }}</p>
                         <p>Panjang : {{ $produk->panjang }}</p>

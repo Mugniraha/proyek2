@@ -1,12 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
+// use App\Models\Produk;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
-
-class historyJaserController extends Controller
+class bahanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +17,9 @@ class historyJaserController extends Controller
     public function index()
     {
         //
-        $slug = "historyJaser";
-        $jasaServis = DB::table("jasa_service")->get();
-        return view("admin_konten.historyJaser", compact("slug", "jasaServis"));
+        $slug = "bahan";
+        $bahan = DB::table('bahan')->get();
+        return view('admin_konten.kelolaHargaBahan',compact('slug','bahan'));
     }
 
     /**
@@ -56,7 +59,21 @@ class historyJaserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        //untuk validasi
+        $this->validate($request,[
+            'besi'            => 'required',
+            'stainless_steel' => 'required',
+            'alumunium'       => 'required',
+            'baja_ringan'     => 'required',
+        ]);
+        DB::table('bahan')->where('idBahan',$id)->update([
+            'besi'            =>$request->besi,
+            'stainless_steel' =>$request->stainless_steel,
+            'alumunium'       =>$request->alumunium,
+            'baja_ringan'     =>$request->baja_ringan,
+        ]);
+
+        return redirect('/bahan')->with(['success' => 'Harga Berhasil diupdate']);
     }
 
     /**

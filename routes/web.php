@@ -32,6 +32,7 @@ use App\Http\Controllers\CostumProdukController;
 use App\Http\Controllers\DaftarPesananController;
 use App\Http\Controllers\LoginAdminController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\bahanController;
 
 
 
@@ -148,6 +149,7 @@ Route::resource('/historyCusbar', historyCusbarController::class);
 Route::resource('/dashboard', dashboardController::class);
 Route::resource('/bantuan', bantuanController::class);
 Route::resource('/profil', profilAdminController::class);
+Route::resource('/bahan', bahanController::class);
 Route::get('/jsPesananBaru/{id}/terima', [jaserPesananBaruController::class, 'terimaPesanan'])->name('terimaPesanan');
 Route::get('/jsPesananBaru/{id}/tolak', [jaserPesananBaruController::class, 'tolakPesanan'])->name('tolakPesanan');
 Route::get('/jsDalamProses/{id}',[jaserDalamProsesController::class, 'selesai'])->name('selesai');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Produk;
 use Carbon\Carbon;
 use App\Models\Costumbarang;
+use App\Models\Bahan;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
@@ -49,13 +50,28 @@ class CostumProdukController extends Controller
         $metodePengiriman = $request->input('pengiriman');
         $bahan = $request->input('pilihan_bahan');
         $tanggalPemesanan = Carbon::now();
-    
-        // Lakukan perhitungan harga berdasarkan faktor-faktor yang telah disebutkan
-
-
-    // Tambahkan harga tambahan ke harga total
-    
         $idUser = Auth::id();
+
+        $hargaBahan = Bahan::where('idBahan', $bahan)->first()->harga;
+
+        // Hitung harga total berdasarkan panjang, lebar, tinggi, jumlah item, dan harga bahan
+        $hargaTotal = ($panjang + $lebar + $tinggi * $hargaBahan) * $jumlahItem;
+    
+        // Logika penambahan harga tambahan jika panjang, lebar, dan tinggi lebih dari kelipatan 100
+        $tambahanHarga = 0;
+        if ($panjang % 100 == 0) {
+            $tambahanHarga += ($hargaBahan * 2);
+        }
+        if ($lebar % 100 == 0) {
+            $tambahanHarga += ($hargaBahan * 2);
+        }
+        if ($tinggi % 100 == 0) {
+            $tambahanHarga += ($hargaBahan * 2);
+        }
+        // Lanjutkan logika kelipatan 100 sesuai kebutuhan aplikasi Anda
+    
+        // Tambahkan harga tambahan ke harga total
+        $hargaTotal += $tambahanHarga;
     
         $idPesanan = substr(uniqid(), -8); // Membuat idPesanan dengan 8 karakter random
         

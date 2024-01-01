@@ -20,7 +20,8 @@ class Formjs extends Model
     'status','user_id'];
 
     protected $primaryKey = 'idJasa';
-    protected $fillable = ['idJasa', 'namaJasa','kategoriJasa','deskripsiJasa','alamat','tanggal','user_id','status','tanggal_selesai'];
+    protected $fillable = ['idJasa', 'namaJasa','kategoriJasa','deskripsiJasa','alamat','tanggal','idUser','status','tanggal_selesai'];
+
 
     protected $dates = ['created_at', 'updated_at'];
     public function user()

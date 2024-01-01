@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use App\Models\Admin;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -17,7 +18,7 @@ class profilAdminController extends Controller
     {
         //
         $slug = "profil"; // Gantilah dengan nilai sesuai dengan kebutuhan Anda
-        $profil = DB::table('profil_admins')->get();
+        $profil = DB::table('admin')->get();
         return view('admin_konten.profil', compact('slug','profil'));
     }
 
@@ -81,17 +82,15 @@ class profilAdminController extends Controller
     {
         //
         $this->validate($request, [
-            'nama'   => 'required',
-            'no_hp'  => 'required',
-            'email'  => 'required',
-            'alamat' => 'required',
+            'namaAdmin'   => 'required',
+            'emailAdmin'  => 'required',
+            'alamatAdmin' => 'required',
         ]);
         // Proses update jika tidak ada file gambar baru
-        DB::table('profil_admins')->where('id_profil', $id)->update([
-            'nama'   => $request->nama,
-            'no_hp'  => $request->no_hp,
-            'email'  => $request->email,
-            'alamat' => $request->alamat,
+        DB::table('admin')->where('idAdmin', $id)->update([
+            'namaAdmin'   => $request->namaAdmin,
+            'emailAdmin'  => $request->emailAdmin,
+            'alamatAdmin' => $request->alamatAdmin,
         ]);
         // Redirect ke halaman yang sesuai
         return redirect('/profil')->with(['success' => 'Data Berhasil ditambah']);
@@ -101,27 +100,27 @@ class profilAdminController extends Controller
     {
         // Validasi
         $this->validate($request, [
-            'gambar' => 'required|image|mimes:png,jpg,jpeg|max:2048',
+            'profil' => 'required|image|mimes:png,jpg,jpeg|max:2048',
         ]);
 
-        // Ambil gambar baru
-        $img = $request->file('gambar');
+        // Ambil profil baru
+        $img = $request->file('profil');
 
-        // Jika ada gambar baru
+        // Jika ada profil baru
         if ($img) {
             // Generate nama baru menggunakan hashName
             $newFileName = $img->hashName();
 
-            // Simpan gambar baru
+            // Simpan profil baru
             $img->storeAs('public/img', $newFileName);
 
-            // Hapus gambar lama jika sudah ada
-            $oldFileName = DB::table('profil_admins')->where('id_profil', $id)->value('gambar');
+            // Hapus profil lama jika sudah ada
+            $oldFileName = DB::table('admin')->where('idAdmin', $id)->value('profil');
             Storage::delete('public/img/' . $oldFileName);
 
             // Proses update
-            DB::table('profil_admins')->where('id_profil', $id)->update([
-                'gambar' => $newFileName,
+            DB::table('admin')->where('idAdmin', $id)->update([
+                'profil' => $newFileName,
             ]);
             return redirect('/profil')->with(['success' => 'Data Berhasil ditambah']);
 
