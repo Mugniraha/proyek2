@@ -36,6 +36,16 @@ class bahanController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request,[
+            'namaBahan'  => 'required',
+            'hargaBahan' => 'required',
+        ]);
+        DB::table('bahan')->insert([
+            'namaBahan'  => $request->namaBahan,
+            'hargaBahan' => $request->hargaBahan,
+        ]);
+
+        return redirect('/bahan')->with(['success' => 'Harga Berhasil diupdate']);
     }
 
     /**
@@ -61,16 +71,13 @@ class bahanController extends Controller
     {
         //untuk validasi
         $this->validate($request,[
-            'besi'            => 'required',
-            'stainless_steel' => 'required',
-            'alumunium'       => 'required',
-            'baja_ringan'     => 'required',
+            'namaBahan'  => 'required',
+            'hargaBahan' => 'required',
         ]);
         DB::table('bahan')->where('idBahan',$id)->update([
-            'besi'            =>$request->besi,
-            'stainless_steel' =>$request->stainless_steel,
-            'alumunium'       =>$request->alumunium,
-            'baja_ringan'     =>$request->baja_ringan,
+            'namaBahan'  => $request->namaBahan,
+            'hargaBahan' => $request->hargaBahan,
+
         ]);
 
         return redirect('/bahan')->with(['success' => 'Harga Berhasil diupdate']);

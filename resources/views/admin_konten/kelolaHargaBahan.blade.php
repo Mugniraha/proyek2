@@ -7,14 +7,13 @@
         <li class="breadcrumb-item active" aria-current="page">Pesanan Baru</li>
     </ol>
 </nav>
+<a href="#" type="button" class="btn mb-5 shadow" data-bs-toggle="modal" data-bs-target="#tambah" style="background-color:#4C6687;color:white"><i class="fa-solid fa-plus" style="color: #ffffff;"></i> Tambah Produk</a>
 <table id="example" class="table" style="width:100%">
     <thead>
         <tr>
             <th>No</th>
-            <th>Besi</th>
-            <th>Stainless Steel</th>
-            <th>Alumunium</th>
-            <th>Baja</th>
+            <th>Nama Bahan</th>
+            <th>Harga</th>
             <th>Aksi</th>
         </tr>
     </thead>
@@ -25,10 +24,8 @@
         @foreach ($bahan as $row)
         <tr>
             <td>{{$no++}}</td>
-            <td>{{$row->besi}}</td>
-            <td>{{$row->stainless_steel}}</td>
-            <td>{{$row->alumunium}}</td>
-            <td>{{$row->baja_ringan}}</td>
+            <td>{{$row->namaBahan}}</td>
+            <td>{{$row->hargaBahan}}</td>
             <td>
                 <a href="#" type="button" class="btn btn-sm btn-success btn-primary w-50" data-bs-toggle="modal" data-bs-target="#update">Update Harga</a>
             </td>
@@ -45,31 +42,16 @@
                             @csrf
                             @method('PUT')
                             <div class="mb-3">
-                                <label for="formGroupExampleInput2" class="form-label fw-bolder">Harga Besi</label>
+                                <label for="formGroupExampleInput2" class="form-label fw-bolder">Nama Bahan</label>
                                 <div class="input-group">
-                                    <div class="input-group-text">Rp</div>
-                                    <input type="text" class="form-control" id="formGroupExampleInput2" name="besi" placeholder="" value="{{$row->besi}}">
+                                    <input type="text" class="form-control" id="formGroupExampleInput2" name="namaBahan" placeholder="" value="{{$row->namaBahan}}">
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label for="formGroupExampleInput2" class="form-label fw-bolder">Harga Stainless Steel</label>
+                                <label for="formGroupExampleInput2" class="form-label fw-bolder">Harga</label>
                                 <div class="input-group">
                                     <div class="input-group-text">Rp</div>
-                                    <input type="text" class="form-control" id="formGroupExampleInput2" name="stainless_steel" placeholder="" value="{{$row->stainless_steel}}">
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="formGroupExampleInput2" class="form-label fw-bolder">Harga Alumunium</label>
-                                <div class="input-group">
-                                    <div class="input-group-text">Rp</div>
-                                    <input type="text" class="form-control" id="formGroupExampleInput2" name="alumunium" placeholder="" value="{{$row->alumunium}}">
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="formGroupExampleInput2" class="form-label fw-bolder">Harga Baja Ringan</label>
-                                <div class="input-group">
-                                    <div class="input-group-text">Rp</div>
-                                    <input type="text" class="form-control" id="formGroupExampleInput2" name="baja_ringan" placeholder="" value="{{$row->baja_ringan}}">
+                                    <input type="text" class="form-control" id="formGroupExampleInput2" name="hargaBahan" placeholder="" value="{{$row->hargaBahan}}">
                                 </div>
                             </div>
 
@@ -114,4 +96,39 @@
         @endforeach
     </tbody>
 </table>
+
+<div class="modal fade modal-dialog-scrollable text-start" id="tambah" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Tambah Data</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{route('bahan.store')}}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput2" class="form-label fw-bolder">Nama Bahan</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="formGroupExampleInput2" name="namaBahan" placeholder="" value="">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput2" class="form-label fw-bolder">Harga</label>
+                        <div class="input-group">
+                            <div class="input-group-text">Rp</div>
+                            <input type="text" class="form-control" id="formGroupExampleInput2" name="hargaBahan" placeholder="" value="">
+                        </div>
+                    </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-success">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
