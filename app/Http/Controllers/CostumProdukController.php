@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Models\Produk;
+use Carbon\Carbon;
 use App\Models\Costumbarang;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
@@ -14,6 +16,11 @@ class CostumProdukController extends Controller
 
         return view('costumproduk.index', ['dataProduk' => $dataProduk]);
     }
+    public function show($idProduk)
+    {
+        $produk = Produk::find($idProduk);
+        return view('costumproduk.index', compact('produk'));
+    }
     public function payment()
     {
         // Implementasi method payment
@@ -23,28 +30,54 @@ class CostumProdukController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'pilihan_bahan' => 'required', // Ubah nama validasi sesuai dengan name pada form
+            'namaProduk' => 'required',
+            'pilihan_bahan' => 'required',
             'pilihan_warna' => 'required',
-            'panjang' => 'required|numeric', // Sesuaikan dengan input yang diperlukan
-            'lebar' => 'required|numeric', // Sesuaikan dengan input yang diperlukan
-            'tinggi' => 'required|numeric', // Sesuaikan dengan input yang diperlukan
-            'jumlah_pesanan' => 'required|numeric', // Sesuaikan dengan input yang diperlukan
-            'pengiriman' => 'required', // Sesuaikan dengan input yang diperlukan
+            'panjang' => 'required|numeric',
+            'lebar' => 'required|numeric',
+            'tinggi' => 'required|numeric',
+            'jumlahItem' => 'required|numeric',
+            'pengiriman' => 'required',
             'deskripsi' => 'nullable',
         ]);
+        $namaPesanan = $request->input('namaProduk');
+        $warna = $request->input('pilihan_warna');
+        $panjang = $request->input('panjang');
+        $lebar = $request->input('lebar');
+        $tinggi = $request->input('tinggi');
+        $jumlahItem = $request->input('jumlahItem');
+        $metodePengiriman = $request->input('pengiriman');
+        $bahan = $request->input('pilihan_bahan');
+        $tanggalPemesanan = Carbon::now();
+    
+        // Lakukan perhitungan harga berdasarkan faktor-faktor yang telah disebutkan
 
+
+    // Tambahkan harga tambahan ke harga total
+    
+        $idUser = Auth::id();
+    
+        $idPesanan = substr(uniqid(), -8); // Membuat idPesanan dengan 8 karakter random
+        
+    
         $costumbarang = new Costumbarang();
-        $costumbarang->bahan = $request->input('pilihan_bahan'); // Ubah menjadi 'pilihan_bahan' sesuai dengan name pada form
-        $costumbarang->warna = $request->input('pilihan_warna');
-        $costumbarang->panjang = $request->input('panjang');
-        $costumbarang->lebar = $request->input('lebar');
-        $costumbarang->tinggi = $request->input('tinggi');
-        $costumbarang->jumlah_pesanan = $request->input('jumlah_pesanan');
-        $costumbarang->metode_pengiriman = $request->input('pengiriman');
-        $costumbarang->keterangan_tambahan = $request->input('deskripsi');
-
+        $costumbarang->idPesanan = $idPesanan;
+        $costumbarang->namaPesanan = $namaPesanan;
+        $costumbarang->idUser = $idUser;
+        $costumbarang->bahan = $bahan;
+        $costumbarang->warna = $warna;
+        $costumbarang->panjang = $panjang;
+        $costumbarang->lebar = $lebar;
+        $costumbarang->tinggi = $tinggi;
+        $costumbarang->jumlahItem = $jumlahItem;
+        $costumbarang->tanggalPemesanan = $tanggalPemesanan;
+        $costumbarang->metodePengiriman = $metodePengiriman;
+        $costumbarang->deskripsiPesanan = $request->input('deskripsi');
+        $costumbarang->totalHarga = $hargaTotal;
+    
         $costumbarang->save();
+    
         return redirect()->route('costumproduk.payment')->with('success', 'Data Berhasil Disimpan');
     }
-
+    
 }

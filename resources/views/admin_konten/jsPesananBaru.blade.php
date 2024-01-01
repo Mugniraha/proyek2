@@ -29,15 +29,15 @@
 
         <tr>
             <td>{{$no++}}</td>
-            <td>{{$row->nama}}</td>
-            <td>{{$row->jenisJasa}}</td>
-            <td>{{$row->deskripsi}}</td>
+            <td>{{$row->namaJasa}}</td>
+            <td>{{$row->kategoriJasa}}</td>
+            <td>{{$row->deskripsiJasa}}</td>
             <td>{{$row->alamat}}</td>
-            <td>{{ ($row->tanggal) }}</td>
+            <td>{{ $row->tanggal}}</td>
             <td>{{$row->status}}</td>
             <td>
-                <a href="{{ route('terimaPesanan', $row->id_formjs) }}" type="button" class="btn btn-sm btn-success btn-primary w-75">Terima</a>
-                <a  href="{{ route('tolakPesanan', $row->id_formjs) }}" type="button" class="mt-2 btn btn-sm btn-danger btn-primary w-75">Tolak</a>
+                <a href="{{ route('terimaPesanan', $row->idJasa) }}" type="button" class="btn btn-sm btn-success btn-primary w-75">Terima</a>
+                <a  href="{{ route('tolakPesanan', $row->idJasa) }}" type="button" class="mt-2 btn btn-sm btn-danger btn-primary w-75">Tolak</a>
             </td>
         </tr>
     </tbody>

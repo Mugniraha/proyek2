@@ -20,12 +20,16 @@ class LoginAdminController extends Controller
     public function registerAdminPost(Request $request)
     {
         $admin = new Admin();
-        // $admin->nama = $request->nama;
-        // $admin->no_hp = $request->no_hp;
-        $admin->email = $request->email;
+        $admin->emailAdmin = $request->emailAdmin;
         $admin->password = Hash::make($request->password);
         $admin->save();
-        return back()->with('success', 'Register successfully');
+        return redirect()->route('loginAdminIndex')->with('success', 'Register successfully');
+        // Validasi input
+        // $request->validate([
+        //     'emailAdmin' => 'required|email|unique:admin',
+        //     'password' => 'required|min:6',
+        // ]);
+
     }
 
     public function loginAdminIndex()
@@ -36,17 +40,20 @@ class LoginAdminController extends Controller
     public function loginAdminPost(Request $request)
 {
     $credentials = [
-        'email' => $request->email,
+        'emailAdmin' => $request->emailAdmin,
         'password' => $request->password,
     ];
 
     // Cari admin berdasarkan email
-    $admin = Admin::where('email', $request->email)->first();
+    $admin = Admin::where('emailAdmin', $request->emailAdmin)->first();
 
     // Periksa apakah admin ditemukan dan password cocok
     if ($admin && Hash::check($request->password, $admin->password)) {
         // Jika cocok, login berhasil
-        return redirect('/dashboard')->with('success', 'Login berhasil');
+
+    //     // Ambil ID admin yang berhasil login
+    // $adminId = $admin->id;
+        return redirect()->route('dashboard.index')->with('success', 'Login berhasil');
     }
 
     // Jika tidak cocok, kembalikan ke halaman login

@@ -8,6 +8,7 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Hash;
 
@@ -20,6 +21,9 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    protected $table = 'newusers';
+    protected $primaryKey ='idUser';
     protected $fillable = [
         'username',
         'name',
@@ -56,6 +60,13 @@ class User extends Authenticatable
      * @param  string  $newPassword
      * @return bool
      */
+
+    // public function updateFoto(?string $fotoFileName)
+    // {
+    //     if ($fotoFileName) {
+    //         $this->update(['profil' => $fotoFileName]);
+    //     }
+    // }
     public function changePassword($oldPassword, $newPassword)
     {
         // Pastikan password lama sesuai
@@ -75,7 +86,7 @@ class User extends Authenticatable
      */
     public function alamat()
     {
-        return $this->hasOne(Alamat::class, 'id');
+        return $this->hasOne(Alamat::class, 'idUser');
     }
 
     /**
@@ -86,18 +97,31 @@ class User extends Authenticatable
      * @param  string  $telpon
      * @return void
      */
-    public function updateProfile($username, $name, $email, $telpon)
-    {
-        $this->username = $username;
-        $this->name = $name;
-        $this->email = $email;
-        $this->telp = $telpon; // Sesuai dengan nama kolom yang digunakan pada $fillable
-        $this->save();
-    }
+    // public function updateProfile($username, $name, $email, $telp)
+    // {
+    //     $this->username = $username;
+    //     $this->name = $name;
+    //     $this->email = $email;
+    //     $this->telp = $telp; // Sesuai dengan nama kolom yang digunakan pada $fillable
+    //     $this->save();
+    // }
 
-    public function updateUser($userData)
-    {
-        $this->update($userData);
+    // public function updateUser($userData)
+    // {
+    //     $this->update($userData);
+    // }
+
+    public function updateProfileAndAddress(array $userData, array $alamatData)
+{
+    $this->update($userData);
+
+    if ($this->alamat) {
+        // Jika alamat sudah ada, update alamat
+        $this->alamat->update($alamatData);
+    } else {
+        // Jika alamat belum ada, buat yang baru
+        $this->alamat()->create($alamatData);
     }
+}
 
 }

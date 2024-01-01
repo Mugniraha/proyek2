@@ -29,8 +29,8 @@
                     <form action="{{ route('loginAdminIndex') }}" method="POST">
                         @csrf
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" name="email" class="form-control" id="formGroupExampleInput2" placeholder="Masukkan Email Anda" required>
+                            <label for="emailAdmin" class="form-label">Email</label>
+                            <input type="email" name="emailAdmin" class="form-control" id="formGroupExampleInput2" placeholder="Masukkan Email Anda" required>
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>

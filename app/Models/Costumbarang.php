@@ -8,11 +8,24 @@ use Illuminate\Database\Eloquent\Model;
 class Costumbarang extends Model
 {
     use HasFactory;
-    protected $table = 'costumbarang';
+    protected $table = 'pesanan';
 
     protected $fillable = [
-        'bahan','warna', 'panjang', 'lebar', 'tinggi', 'jumlah_pesanan', 'metode_pengiriman', 'keterangan_tambahan',
+        'idPesanan',
+        'jumlahItem',
+        'totalHarga',
+        'metodePengiriman',
+        'deskripsiPesanan',
+        'bahan',
+        'panjang',
+        'lebar',
+        'tinggi',
+        'warna',
+        'tanggalPemesanan',
+        'idUser',
+        'idProduk'
     ];
+    
 
     public $timestamps = false;
 }

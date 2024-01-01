@@ -14,4 +14,9 @@ class ProdukController extends Controller
 
         return view('produk.index', ['dataProduk' => $dataProduk]); // Mengirim data ke view dengan nama 'dataProduk'
     }
+    public function show($idProduk)
+    {
+        $produk = Produk::find($idProduk);
+        return view('costumproduk.index', compact('produk'));
+    }
 }

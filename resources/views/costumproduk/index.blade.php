@@ -1,51 +1,37 @@
 @extends('user-layout.nav-produk')
 @section('konten')
+
         <section id="productscos">
         <div class="container">
             <div class="row">
-                @php
-                    $idProduk = request()->input('id_produk');
-                    $selectedData = null;
-                    // Mencari data yang sesuai dengan id_produk
-                    if ($idProduk !== null) {
-                        foreach ($dataProduk as $produk) {
-                            if ($produk->id == $idProduk) {
-                                $selectedData = $produk;
-                                break;
-                            }
-                        }
-                    }
-                @endphp
-
-            @if ($selectedData !== null)
+            @if ($produk !== null)
                 <div class="cardcos">
                     <div class="card-left">
-                        <img class="card-img-left" src="{{ asset('storage/img/'.$selectedData->gambar) }}" alt="Card image cap">
+                        <img class="card-img-left" src="{{ asset('storage/img/'.$produk->gambar) }}" alt="Card image cap">
                     </div>
                     <div class="card-center">
                         <h6>Deskripsi Produk</h6>
-                        <p>{{ $selectedData->deskripsi_produk }}</p><hr>
+                        <p>{{ $produk->deskripsi_produk }}</p><hr>
                         <p>Dimensi Produk :</p>
-                        <p>Lebar : {{ $selectedData->lebar }}</p>
-                        <p>Panjang : {{ $selectedData->panjang }}</p>
-                        <p>Tinggi: {{ $selectedData->tinggi }}</p>
+                        <p>Lebar : {{ $produk->lebar }}</p>
+                        <p>Panjang : {{ $produk->panjang }}</p>
+                        <p>Tinggi: {{ $produk->tinggi }}</p>
                         <div class="price">
-                            <h3>{{ $selectedData->nama_produk }}</h3>
-                            <h3><i>RP.</i> {{ $selectedData->harga }}</h3>
+                            <h3>{{ $produk->namaProduk }}</h3>
+                            <h3><i>RP.</i>{{ $produk->harga }}</h3>
                         </div>
                         <div class="btn">
                             <button class="btnord"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><!--Icon SVG--></svg>Order</button>
                         </div>
                     </div>
-                    @else
-                    <p>Data tidak ditemukan</p>
-                    @endif
+                    
                     <div class="card-right">
-                        <form action="{{ route('costumproduk.index' )}}" method="post">
+                        <form action="{{ route('costumproduk.store' )}}" method="POST">
                             @csrf
-                            <input type="hidden" name="id_produk" value="{{ $idProduk }}">
+                            <div class="inputProduk">
+                                <input type="number" class="form-control" id="namaProduk" name="namaProduk" placeholder="{{ $produk->namaProduk }}" value="{{ $produk->namaProduk }}" disabled>
+                            </div>
                             <div class="input1">
-                                
                                 <div class="mb-3">
                                     <label for="bahan" class="form-label">Bahan</label>
                                     <select class="form-select" id="bahan" name="pilihan_bahan">
@@ -81,8 +67,8 @@
                             </div>
                             <div class="input2">
                                 <div class="mb-3">
-                                    <label for="jumlah_pesanan" class="form-label">Jumlah Pesanan</label>
-                                    <input type="number" class="form-control" id="jumlah_pesanan" name="jumlah_pesanan" placeholder="" value="">
+                                    <label for="jumlahItem" class="form-label">Jumlah Pesanan</label>
+                                    <input type="number" class="form-control" id="jumlahItem" name="jumlahItem" placeholder="" value="">
                                 </div>
                                 <div class="mb-3">
                                     <label for="pengiriman" class="form-label">Metode Pengiriman</label>
@@ -108,7 +94,10 @@
                                     <button type="submit" class="btnpesancld">Pesan Sekarang</button>
                                 </div>
                             </div>
-                        </form>                        
+                        </form>
+                        @else
+                        <p>Data tidak ditemukan</p>
+                        @endif                        
                     </div>
                 </div>
             </div>

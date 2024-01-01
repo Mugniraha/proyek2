@@ -95,6 +95,19 @@
     border-color: #fdea97;
     box-shadow: 0 0 5px rgba(252, 177, 15, 0.5);
 }
+.inputProduk{
+    padding: 5px;
+    width: 100%;
+}
+.inputProduk input{
+    padding: 5px;
+    width: 100%;
+    background-color: #ffffff !important;
+    color: white !important;
+    border: none !important;
+    font-weight: bold;
+}
+
 .input1{
     display: flex;
     gap: 10px;
@@ -115,7 +128,12 @@
     color: #ffffff;
 }
 .input2 .mb-3 input{
+    width: 70%;
+    height: 40px;
+}
+.input2 .mb-3 .form-select{
     width: 100%;
+    height: 40px;
 }
 .size{
     display: flex;
@@ -138,17 +156,22 @@
 .input2 label{
     color: #ffffff;
 }
+.inputAlamat input{
+    padding: 5px;
+    width: 100%;
+}
 .input3 label{
     color: #ffffff;
     margin-left: 5px;
 }
 .input3{
+    width: 100%;
     padding-left: 5px;
     padding-right: 5px;
 }
 textarea.form-control {
     width: 80%;
-    height: 90px;
+    height: 70px;
     padding: 5px;
     font-size: 14px;
     border-radius: 5px;

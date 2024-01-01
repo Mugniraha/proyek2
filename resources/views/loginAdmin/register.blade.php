@@ -37,8 +37,8 @@
                                 <input type="number" name="no_hp" class="form-control" id="formGroupExampleInput2" placeholder="Nomer HP" required>
                             </div> --}}
                             <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" name="email" class="form-control" id="formGroupExampleInput2" placeholder="Email" required>
+                                <label for="emailAdmin" class="form-label">Email</label>
+                                <input type="email" name="emailAdmin" class="form-control" id="formGroupExampleInput2" placeholder="Email" required>
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
@@ -60,7 +60,7 @@
                 </div>
             </div>
         </div>
-        <script>
+        {{-- <script>
                 document.querySelector("form").addEventListener("submit", async function(event) {
                 event.preventDefault();
                 console.log("Button clicked");
@@ -82,6 +82,6 @@
                     console.error("Registrasi gagal:", response.statusText);
                 }
             });
-        </script>
+        </script> --}}
     </body>
 </html>

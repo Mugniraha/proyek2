@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use  App\Models\formjs;
+use  App\Models\Formjs;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
@@ -16,10 +16,9 @@ class formJsController extends Controller
      */
     public function index()
     {
-        $slug = "form_js";
-        $form_js = DB::table('form_js')->get();
+        $slug = "jasa_service";
+        $form_js = DB::table('jasa_service')->get();
         return view('jasaService_User.formulir', compact('slug','form_js'));
-
     }
 
     /**
@@ -36,19 +35,19 @@ class formJsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required',
-            'telpon' => 'required',
-            'jenisJasa' => 'required',
-            'deskripsi' => 'required',
+            'namaJasa' => 'required',
+            'kategoriJasa' => 'required',
+            'deskripsiJasa' => 'required',
             'alamat' => 'required',
             'tanggal' => 'required',
         ]);
         $userId = Auth::id();
 
         $dataPesanan = $request->all();
-        $dataPesanan['user_id'] = $userId;
+        $dataPesanan['idUser'] = $userId;
+        $dataPesanan['status'] = 'Menunggu Proses';
 
-        formJS::create($dataPesanan);
+        Formjs::create($dataPesanan);
 
         return redirect()->route('serviceBaruIndex')->with('success', 'Data berhasil disimpan!');
     }

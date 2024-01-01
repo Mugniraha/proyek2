@@ -17,16 +17,17 @@ class jaserDalamProsesController extends Controller
     public function index()
     {
         $slug = "jsDalamproses";
-        $jasaServis = DB::table('form_js')->get();
+        $jasaServis = DB::table('jasa_service')->get();
         return view("admin_konten.jsDalamProses", compact("slug","jasaServis"));
     }
 
-    public function selesai($id_formjs){
-        $pesanan = Formjs::find($id_formjs);
+    public function selesai($idJasa){
+        $pesanan = Formjs::find($idJasa);
         $pesanan->status = 'Selesai';
+        $pesanan->tanggal_selesai = now();
         $pesanan->save();
 
-        return redirect()->route('pesananSelesai')->with('success', 'Pesanan selesai.');
+        return back()->with('success', 'Pesanan selesai.');
     }
 
     /**

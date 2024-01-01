@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\buatAkunController;
+use App\Http\Controllers\UpdateProfilController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ChangePasswordController;
@@ -76,6 +77,9 @@ Route::post('/update-address', [ProfilUserController::class, 'updateAddress'])->
 Route::get('/profilUser/editProfile', [ProfilUserController::class, 'editProfileForm'])->name('editProfileForm');
 Route::put('/profilUser/updateProfile', [ProfilUserController::class, 'updateProfile'])->name('updateProfile');
 Route::get('/profilUser/editAddress', [ProfilUserController::class, 'editAddressForm'])->name('editAddressForm');
+Route::prefix('profil')->group(function () {
+Route::put('/update-foto', [UpdateProfilController::class, 'updateFoto'])->name('updateFoto');
+});
 
 
 //     // ... Rute lainnya ...
@@ -110,11 +114,13 @@ Route::put('/kelolaUser/{id}', 'buatAkunController@update')->name('update_user')
 
 Route::get('/notifikasi', [NotifikasiController::class, 'NotifikasiIndex'])->name('NotifikasiIndex');
 Route::get('/konfirmasi', [NotifikasiController::class, 'KonfirmasiIndex'])->name('KonfirmasiIndex');
-Route::resource('/formOrder', formJsController::class );
+Route::resource('/formOrder', formJsController::class,  );
 Route::put('/formOrder/{id}', [formJSController::class, 'update'])->name('formOrder.update');
 Route::get('/serviceUser', [serviceBaruController::class, 'serviceBaruIndex'])->name('serviceBaruIndex');
-Route::post('/costumproduk/{id_produk}', [CostumProdukController::class, 'index'])->name('costumproduk.index');
-Route::get('/costumproduk/payment', [CostumprodukController::class, 'payment'])->name('costumproduk.payment');
+Route::resource('/costumproduk', CostumProdukController::class);
+Route::get('/costumproduk/{idProduk}', [CostumProdukController::class, 'show'])->name('costumproduk.index');
+// Route::post('/costumproduk', [CostumProdukController::class, 'index'])->name('costumproduk.index');
+Route::post('/costumproduk/payment', [CostumprodukController::class, 'payment'])->name('costumproduk.payment');
 Route::get('/daftarpesanan', [DaftarPesananController::class, 'index'])->name('daftarpesanan.index');
 Route::get('/riwayat', [DaftarPesananController::class, 'riwayat'])->name('daftarpesanan.riwayat');
 Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
@@ -157,4 +163,3 @@ Route::get('/service', function () {
     $slug = "service";
     return view('admin_konten.service', compact('slug'));
 });
-

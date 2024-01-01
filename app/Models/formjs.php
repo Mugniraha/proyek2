@@ -8,8 +8,23 @@ use Illuminate\Database\Eloquent\Model;
 class Formjs extends Model
 {
     use HasFactory;
-    protected $table = 'form_js';
-    protected $primaryKey = 'id_formjs';
-    protected $fillable = ['id_formjs', 'nama', 'telpon', 'jenisJasa', 'deskripsi', 'alamat', 'tanggal','user_id'];
+    protected $table = 'jasa_service';
+
+    protected $primaryKey = 'idJasa';
+    protected $fillable = ['idJasa', 'namaJasa',
+    'deskripsiJasa',
+    'harga',
+    'kategoriJasa',
+    'alamat',
+    'tanggal',
+    'status','user_id'];
+
+    protected $primaryKey = 'idJasa';
+    protected $fillable = ['idJasa', 'namaJasa','kategoriJasa','deskripsiJasa','alamat','tanggal','user_id','status','tanggal_selesai'];
+
     protected $dates = ['created_at', 'updated_at'];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
