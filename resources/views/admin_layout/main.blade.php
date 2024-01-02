@@ -162,7 +162,7 @@
                                 <span class="d-none d-sm-inline mx-1">Admin Utama</span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-light text-small shadow">
-                                <li><a class="dropdown-item" href="#">Sign out</a></li>
+                                <li><a class="dropdown-item" href="{{ route('logout') }}">Sign out</a></li>
                             </ul>
                         </div>
                     </div>

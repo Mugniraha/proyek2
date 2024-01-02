@@ -2,11 +2,9 @@
 @section('konten')
         <section id="productspes">
             <div class="btn-top">
-                <a href="{{ route('daftarpesanan.riwayat') }}"><button class="btnriwayat">Riwayat Pesanan</button></a>
-                <a href="{{ route('daftarpesanan.riwayatService') }}"><button class="btnriwayat">Riwayat Pesanan Service</button></a>
+                <a href="{{ route('daftarpesanan.index') }}"><button class="btnriwayat">Kembali</button></a>
                 <hr>
             </div>
-
         <div class="container">
             <div class="row">
                 <div class="cardpes">
@@ -15,7 +13,9 @@
                             <h6><i>JOYO ROYO BENGKEL WELDING</i></h6>
                         </div>
                         <div class="right-text">
-                            <p>Status Pesnan</p>
+                            <p>Tanggal Selesai Pembuatan</p>
+                            <div class="vertical-line"></div>
+                            <p>Sudah Diterima</p>
                             <div class="vertical-line"></div>
                             <p>Detail Pesnan</p>
                         </div>
@@ -27,74 +27,34 @@
                         <div class="center-col">
                             <table class="product-details">
                                 <tr>
-                                    <td>Dimensi Produk</td>
+                                    <td>Nama Jasa</td>
                                     <td class="narrow-column">:</td>
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td class="col-d">Panjang</td>
+                                    <td>Kategori Jasa</td>
                                     <td class="narrow-column">:</td>
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td class="col-d">Lebar</td>
+                                    <td>Deskripsi Masalah</td>
                                     <td class="narrow-column">:</td>
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td class="col-d">Tinggi</td>
+                                    <td>Lokasi</td>
                                     <td class="narrow-column">:</td>
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td>Warna</td>
-                                    <td class="narrow-column">:</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Bahan Rangka</td>
-                                    <td class="narrow-column">:</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Jumlah Barang</td>
-                                    <td class="narrow-column">:</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Total Harga</td>
+                                    <td>Tanggal Pengerjaan</td>
                                     <td class="narrow-column">:</td>
                                     <td></td>
                                 </tr>
                             </table>
                         </div>
                         <div class="right-col">
-                            <div class="dp-payment">
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <td><i>Harga DP :</i></td>
-                                            <td class="gap" rowspan="2">
-                                            </td>
-                                            <td class="status-payment" rowspan="2"><i>Sudah Dibayar</i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>RP. 100.000</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="payment">
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <td><i>Belum dibayar</i></td>
-                                            <td>:</td>
-                                            <td class="pricefull"> RP. 100.000</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            <h5><i>Total Harga : </i>RP. 200.000</h5>
                         </div>
                     </div>
                     <div class="card-bottom">
@@ -177,10 +137,9 @@
                         </script>
 
 
-                        {{-- <div class="btn-right">
-                            <a href="{{ route('costumproduk.index', ['idProduk' => $produk->idProduk]) }}"><button class="btnagain">Order Lagi</button></a>
-                            <a href="{{ route('costumproduk.index', ['idProduk' => $produk->idProduk]) }}"><button class="btncall">Pembayaran</button></a>
-                        </div> --}}
+                        <div class="btn-right">
+                            <a href=""><button class="btnagain">Order Lagi</button></a>
+                        </div>
                     </div>
                 </div>
             </div>

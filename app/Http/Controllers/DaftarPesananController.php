@@ -12,6 +12,11 @@ class DaftarPesananController extends Controller
     }
     public function riwayat()
     {
-        return view('daftarpesanan.riwayat'); 
+        return view('daftarpesanan.riwayat');
+    }
+
+    public function riwayatService()
+    {
+        return view('daftarpesanan.riwayatService');
     }
 }

@@ -1,5 +1,8 @@
 .kontenr{
-    display: block;
+    /* display: block; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .top-konten{
     justify-content: center;
@@ -15,8 +18,8 @@
     position: relative;
     padding-top: 20px;
     padding-left: 20px;
-    max-width: 50%; /* Sesuaikan lebar maksimum sesuai kebutuhan */
-    width: 40%; /* Ambil lebar penuh dari parent element */
+    /* max-width: 50%;  */
+    width: 100%; /* Ambil lebar penuh dari parent element */
     margin: 0 auto; /* Tengahkan elemen di tengah halaman */
     float: left;
 }
@@ -24,8 +27,8 @@
 .container-row {
     background-color: #ffffff;
     margin-top: 20px; /* Sesuaikan margin atas sesuai kebutuhan */
-    max-width: 100%; /* Sesuaikan lebar maksimum sesuai kebutuhan */
-    width: 100%; /* Ambil lebar penuh dari parent element */
+    /* max-width: 100%; */
+    width: 100%;
     margin: 0 auto; /* Tengahkan elemen di tengah halaman */
     float: left;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -34,15 +37,24 @@
 .content-row {
     display: flex;
     flex-wrap: wrap;
+    align-items: center; /* Posisikan elemen secara vertikal di tengah */
 }
 
-.part1{
-    width: 40%;
+.part1,
+.part1-nama-jalan {
+    width: calc(50% - 30px); /* Setel lebar menjadi 50% dengan sedikit pengurangan */
 }
 
-.part2{
-    width: 60%;
+.part2 {
+    width: 50%; /* Setel lebar menjadi 50% */
 }
+
+.part1-nama-jalan {
+    margin-left: 10px; /* Atur margin kiri sesuai kebutuhan untuk membuat tulisan "Nama Jalan" bergeser ke kiri */
+}
+
+
+
 .btn-akun{
     display: flex;
     justify-content: center;

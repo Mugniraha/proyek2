@@ -101,12 +101,12 @@
                     <div class="col-md-12 text-center mb-5">
                         <img src="{{asset('img/logo.png')}}" alt="" class="rounded-circle ">
                     </div>
-                    <h4 class="p-1 border-bottom">USERNAME
-                        {{-- @if(session('user') && session('user')->username)
+                    <h4 class="p-1 border-bottom">
+                        @if(session('user') && session('user')->username)
                             {{ session('user')->username }}
                         @else
                             USERNAME
-                        @endif --}}
+                        @endif
                     </h4>
                 </div>
 
