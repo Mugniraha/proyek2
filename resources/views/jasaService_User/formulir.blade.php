@@ -19,7 +19,9 @@
                     {{-- @method('PUT') --}}
                     <div class="mb-3">
                         <label for="formGroupExampleInput" class="form-label">Nama Jasa</label>
+                        <!-- Dalam formulir HTML -->
                         <input type="text" class="form-control" id="formGroupExampleInput" name="namaJasa" placeholder="" value="">
+                        <input type="hidden" name="user_id" value="{{ Auth::id() }}">
                     </div>
                     <div class="mb-3">
                         <label for="">Kategori Jasa</label>

@@ -12,7 +12,11 @@
                             <div class="user-profile">
                                 <div class="photoprofile">
                                     <div class="profile-image" style="pointer-events: none;">
-                                        <img id="profilePicture" src="{{ asset('images/profil1.png') }}" alt="Profile Picture">
+                                        @if(session('user_profile_url_' . Auth::user()->idUser))
+                                        <img id="profilePicture" src="{{ session('user_profile_url_' . Auth::user()->idUser) }}" alt="Profile Picture">
+                                        @else
+                                            <img id="profilePicture" src="{{ asset('images/profil1.png') }}" alt="Default Profile Picture">
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="user-name">

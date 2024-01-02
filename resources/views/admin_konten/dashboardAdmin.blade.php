@@ -3,13 +3,15 @@
 <style>
     .card{
         box-shadow: 1px solid green;
+        background-color: #4C6687;
+        color: white;
     }
 </style>
 <div>
     <div class="row">
-        <h5>Pengunjung</h5>
+        <h5 class="fw-bold">Pengunjung</h5>
         <hr>
-        <div class="col-md-4 ">
+        <div class="col-md-4 " >
             <div class="card shadow rounded">
                 <div class="card-body text-center">
                     <h5 class="card-title">Pengunjung hari Ini</h5>
@@ -29,7 +31,7 @@
     </div>
 
     <div class="row mt-5">
-        <h5>Custom Barang</h5>
+        <h5 class="fw-bold">Custom Barang</h5>
         <hr>
         <div class="col-md-4">
             <div class="card shadow rounded">
@@ -59,7 +61,7 @@
     </div>
 
     <div class="row mt-5">
-        <h5>Jasa Service</h5>
+        <h5 class="fw-bold">Jasa Service</h5>
         <hr>
         @php
         $jumlahPesananBaru = $jasaServis->where('status', 'Menunggu Proses')->count(); // Menghitung jumlah pesanan baru dari data yang diterima

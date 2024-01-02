@@ -1,45 +1,26 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
+// use App\Models\Produk;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Str;
-use App\Models\formjs;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
-class jaserPesananBaruController extends Controller
+class bahanController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $slug = "jsPesananbaru";
-        $jasaServis = DB::table('jasa_service')->get();
-        return view("admin_konten.jsPesananBaru", compact("slug","jasaServis"));
+        //
+        $slug = "bahan";
+        $bahan = DB::table('bahan')->get();
+        return view('admin_konten.kelolaHargaBahan',compact('slug','bahan'));
     }
-
-    public function terimaPesanan($idJasa)
-    {
-        $pesanan = Formjs::find($idJasa);
-        $pesanan->status = 'diproses';
-        $pesanan->save();
-
-        return back()->with('success', 'Pesanan diterima.');
-    }
-
-    public function tolakPesanan($idJasa)
-    {
-        $pesanan = Formjs::find($idJasa);
-        $pesanan->status = 'ditolak';
-        $pesanan->save();
-
-        return back()->with('success', 'Pesanan ditolak.');
-    }
-
-
 
     /**
      * Show the form for creating a new resource.
@@ -55,6 +36,16 @@ class jaserPesananBaruController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request,[
+            'namaBahan'  => 'required',
+            'hargaBahan' => 'required',
+        ]);
+        DB::table('bahan')->insert([
+            'namaBahan'  => $request->namaBahan,
+            'hargaBahan' => $request->hargaBahan,
+        ]);
+
+        return redirect('/bahan')->with(['success' => 'Harga Berhasil diupdate']);
     }
 
     /**
@@ -78,7 +69,18 @@ class jaserPesananBaruController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        //untuk validasi
+        $this->validate($request,[
+            'namaBahan'  => 'required',
+            'hargaBahan' => 'required',
+        ]);
+        DB::table('bahan')->where('idBahan',$id)->update([
+            'namaBahan'  => $request->namaBahan,
+            'hargaBahan' => $request->hargaBahan,
+
+        ]);
+
+        return redirect('/bahan')->with(['success' => 'Harga Berhasil diupdate']);
     }
 
     /**

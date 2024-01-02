@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use  App\Models\formjs;
+use  App\Models\Formjs;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
@@ -14,14 +14,19 @@ class formJsController extends Controller
     /**
      * Display a listing of the resource.
      */
+    // public function index()
+    // {
+    //     $slug = "jasa_service";
+    //     $form_js = DB::table('jasa_service')->get();
+    //     return view('jasaService_User.formulir', compact('slug','form_js'));
+    // }
     public function index()
     {
         $slug = "jasa_service";
-        $slug = "form_js";
-        $form_js = DB::table('jasa_service')->get();
-        return view('jasaService_User.formulir', compact('slug','form_js'));
-
+        $form_js = Formjs::all();
+        return view('jasaService_User.formulir', compact('slug', 'form_js'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -42,17 +47,18 @@ class formJsController extends Controller
             'harga' => 'required',
             'kategoriJasa' => 'required',
             'kategorijasa' => 'required',
+            'kategoriJasa' => 'required',
+            'deskripsiJasa' => 'required',
             'alamat' => 'required',
             'tanggal' => 'required',
-            'status' => 'required',
-
         ]);
         $userId = Auth::id();
 
         $dataPesanan = $request->all();
         $dataPesanan['idUser'] = $userId;
+        $dataPesanan['status'] = 'Menunggu Proses';
 
-        formJS::create($dataPesanan);
+        Formjs::create($dataPesanan);
 
         return redirect()->route('serviceBaruIndex')->with('success', 'Data berhasil disimpan!');
     }
@@ -87,10 +93,10 @@ class formJsController extends Controller
             'tanggal' => 'required',
         ]);
 
-        $formJS = formJS::find($id);
+        $formJS = Formjs::find($id);
         $formJS->update($request->all());
 
-        return redirect()->route('nama_route_index')->with('success', 'Data berhasil diperbarui!');
+        return redirect()->route('serviceBaruIndex')->with('success', 'Data berhasil diperbarui!');
     }
 
     /**

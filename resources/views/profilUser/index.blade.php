@@ -60,7 +60,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row mt-1"> 
+                    <div class="row mt-1">
                         <div class="content-row">
                             <div class="part1 p-2">
                                 No Telepon

@@ -36,7 +36,7 @@ class ProfilUserController extends Controller
         $user = auth()->user();
 
         // Validasi request jika diperlukan
- 
+
         // Update informasi akun
         $user->update([
             'username' => $request->input('username'),
@@ -47,44 +47,7 @@ class ProfilUserController extends Controller
 
         return redirect()->route('ProfilUserIndex')->with('success', 'Profil berhasil diperbarui');
     }
-
-    // public function updateProfil(Request $request)
-    // {
-    //     $request->validate([
-    //         'profil' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-    //         'username' => 'required|string|max:255',
-    //         'name' => 'required|string|max:255',
-    //         'email' => 'required|string|email|max:255',
-    //         'telp' => 'required|string|max:15',
-    //         // tambahkan validasi untuk alamat sesuai kebutuhan
-    //     ]);
-
-    //     $authenticatedUserId = Auth::id();
-    //     $user = User::findOrFail($authenticatedUserId);
-
-    //     if ($request->hasFile('profil')) {
-    //         $file = $request->file('profil');
-    //         $fileName = time() . '_' . $file->getClientOriginalName();
-    //         $file->storeAs('public/profiles', $fileName);
-
-    //         if ($user->profil) {
-    //             Storage::delete('public/profiles/' . $user->profil);
-    //         }
-
-    //         $user->update(['profil' => $fileName]);
-    //     }
-
-    //     $user->update([
-    //         'username' => $request->input('username'),
-    //         'name' => $request->input('name'),
-    //         'email' => $request->input('email'),
-    //         'telp' => $request->input('telp'),
-    //         // tambahkan proses untuk menyimpan alamat sesuai kebutuhan
-    //     ]);
-
-    //     return redirect()->route('ProfilUserIndex')->with('success', 'Profil berhasil diperbarui');
-    // }
-
+    
     public function editAddressForm()
     {
         $user = auth()->user();

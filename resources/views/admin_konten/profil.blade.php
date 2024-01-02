@@ -4,14 +4,20 @@
 
     <div class="container rounded p-5 shadow" style="background-color: #F7F6F4">
         @forelse ($profil as $row)
+
         <div class="row">
             <div class="col-md-12 text-center">
-                <img src="{{asset('storage/img/' .$row->gambar)}}" alt="" class="rounded-circle shadow">
+                @if($row->profil)
+                <img src="{{asset('storage/img/' .$row->profil)}}" alt="" width="15%" class="rounded-circle shadow">
+                @else
+                    <img src="{{ asset('images/profil.png') }}" alt="Default Profil" width="15%" class="rounded-circle shadow">
+                @endif
             </div>
         </div>
+
         <div class="row">
             <div class="col-md-12 text-center mb-5">
-                <a href="#" type="button" class="btn btn-sm mb-3 shadow" data-bs-toggle="modal" data-bs-target="#edit-profil" style="background-color:#4C6687;color:white">Ubah Profil</a>
+                <a href="#" type="button" class="btn btn-sm mb-3 shadow" data-bs-toggle="modal" data-bs-target="#edit-profil" style="background-color:#4C6687;color:white">Ubah Foto</a>
             </div>
         </div>
 
@@ -21,23 +27,23 @@
                 NAMA
             </div>
             <div class="col-md-8 bg-light p-3 text-dark rounded shadow-sm">
-                {{$row->nama}}
+                {{$row->namaAdmin}}
             </div>
         </div>
-        <div class="row mt-1">
+        {{-- <div class="row mt-1">
             <div class="col-md-4 p-2">
                 NOMOR TELEPON
             </div>
             <div class="col-md-8 bg-light p-3 text-dark rounded shadow-sm">
-                {{$row->no_hp}}
+
             </div>
-        </div>
+        </div> --}}
         <div class="row mt-1">
             <div class="col-md-4 p-2">
                 EMAIL
             </div>
             <div class="col-8 bg-light p-3 text-dark rounded shadow-sm">
-                {{$row->email}}
+                {{$row->emailAdmin}}
             </div>
         </div>
         <div class="row mt-1 mb-5">
@@ -45,7 +51,7 @@
                 ALAMAT
             </div>
             <div class="col-md-8 bg-light p-3 text-dark rounded shadow-sm">
-                {{$row->alamat}}
+                {{$row->alamatAdmin}}
             </div>
         </div>
 
@@ -68,24 +74,20 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="{{route('profil.update', $row->id_profil)}}" method="POST">
+                                <form action="{{route('profil.update', $row->idAdmin)}}" method="POST">
                                     @csrf
                                     @method('PUT')
                                     <div class="mb-3">
                                         <label for="formGroupExampleInput2" class="form-label">Nama</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput2" name="nama" placeholder="" value="{{$row->nama}}">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="formGroupExampleInput2" class="form-label">No Telepon</label>
-                                        <input type="number" class="form-control" id="formGroupExampleInput2" name="no_hp" placeholder="" value="{{$row->no_hp}}">
+                                        <input type="text" class="form-control" id="formGroupExampleInput2" name="namaAdmin" placeholder="" value="{{$row->namaAdmin}}">
                                     </div>
                                     <div class="mb-3">
                                         <label for="formGroupExampleInput2" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="formGroupExampleInput2" name="email" placeholder="" value="{{$row->email}}">
+                                        <input type="email" class="form-control" id="formGroupExampleInput2" name="emailAdmin" placeholder="" value="{{$row->emailAdmin}}">
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleFormControlTextarea1" class="form-label">Alamat</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" name="alamat" placeholder="" rows="3">{{$row->alamat}}</textarea>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" name="alamatAdmin" placeholder="" rows="3">{{$row->alamatAdmin}}</textarea>
                                     </div>
                                     </div>
                                     <div class="modal-footer">
@@ -98,21 +100,21 @@
                     </div>
                 </div>
 
-                {{-- Edit Profil --}}
+                {{-- Edit Foto Profil --}}
                 <div class="modal fade modal-dialog-scrollable text-start" id="edit-profil" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="staticBackdropLabel">Ubah Profil</h5>
+                                <h5 class="modal-title" id="staticBackdropLabel">Ubah Foto</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="{{route('profil.updateProfil',$row->id_profil)}}" method="POST" enctype="multipart/form-data">
+                                <form action="{{route('profil.updateProfil',$row->idAdmin)}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
                                     <div class="mb-3">
                                         <label for="formGroupExampleInput" class="form-label">Foto Profil</label>
-                                        <input type="file" class="form-control" id="formGroupExampleInput" name="gambar" placeholder="" value="{{$row->gambar}}">
+                                        <input type="file" class="form-control" id="formGroupExampleInput" name="profil" placeholder="" value="">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Batal</button>

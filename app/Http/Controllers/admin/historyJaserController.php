@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class historyJaserController extends Controller
 {
@@ -13,7 +15,8 @@ class historyJaserController extends Controller
     {
         //
         $slug = "historyJaser";
-        return view("admin_konten.historyJaser", compact("slug"));
+        $jasaServis = DB::table("jasa_service")->get();
+        return view("admin_konten.historyJaser", compact("slug", "jasaServis"));
     }
 
     /**

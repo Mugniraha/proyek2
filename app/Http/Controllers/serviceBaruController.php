@@ -10,5 +10,10 @@ class serviceBaruController extends Controller
     {
         return view('profilUser.service');
     }
+
+    public function listService()
+    {
+        return view('profilUser.listPesananService');
+    }
 }
 

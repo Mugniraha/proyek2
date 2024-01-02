@@ -3,7 +3,7 @@
 
 namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
-use App\Models\galeri;
+use App\Models\Produk;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Str;
@@ -18,7 +18,7 @@ class produkController extends Controller
     public function index()
     {
         $slug = "galeri";
-        $galeri = DB::table('produks')->get();
+        $galeri = DB::table('produk')->get();
         return view('admin_konten.produk', compact('slug','galeri'));
     }
 
@@ -33,33 +33,43 @@ class produkController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
     public function store(Request $request): RedirectResponse
     {
-        // Validasi
         $this->validate($request, [
-            'gambar'         => 'required|image|mimes:png,jpg,jpeg|max:2048',
-            'deskripsi_galeri' => 'required',
-            'harga'          => 'required',
+            'gambar'           => 'required|image|mimes:png,jpg,jpeg|max:2048',
+            'namaProduk'       => 'required',
+            'kategori'         => 'required',
+            'bahan'            => 'required',
+            'warna'            => 'required',
+            'panjang'          => 'required',
+            'lebar'            => 'required',
+            'tinggi'           => 'required',
+            'deskripsi_produk' => 'required',
+            'harga'            => 'required',
         ]);
 
         $img = $request->file('gambar');
         $img->storeAs('public/img',$img->hashName());
         // Proses insert
-        DB::table('produks')->insert([
+        DB::table('produk')->insert([
             'gambar' => $img->hashName(),
-            'kategori' => $request->kategori,
-            'nama_produk' => $request->nama_produk,
-            'bahan' => $request->bahan,
-            'panjang' => $request->panjang,
-            'lebar' => $request->lebar,
-            'tinggi' => $request->tinggi,
-            'deskripsi_galeri' => $request->deskripsi_galeri,
-            'harga' => $request->harga,
+            'namaProduk'       => $request->namaProduk,
+            'kategori'         => $request->kategori,
+            'bahan'            => $request->bahan,
+            'warna'            => $request->warna,
+            'panjang'          => $request->panjang,
+            'lebar'            => $request->lebar,
+            'tinggi'           => $request->tinggi,
+            'deskripsi_produk' => $request->deskripsi_produk,
+            'harga'            => $request->harga,
         ]);
+
 
         // Redirect ke halaman yang sesuai
         return redirect('/galeri')->with(['success' => 'Data Berhasil ditambah']);
     }
+
 
 
     /**
@@ -85,23 +95,30 @@ class produkController extends Controller
     {
         // Validasi
         $this->validate($request, [
-            'kategori' => 'required',
-            'nama_produk'=> 'required',
-            'deskripsi_galeri' => 'required',
-            'harga' => 'required',
+            'namaProduk'       => 'required',
+            'kategori'         => 'required',
+            'bahan'            => 'required',
+            'warna'            => 'required',
+            'panjang'          => 'required',
+            'lebar'            => 'required',
+            'tinggi'           => 'required',
+            'deskripsi_produk' => 'required',
+            'harga'            => 'required',
         ]);
         // Proses update jika tidak ada file gambar baru
-        DB::table('produks')->where('id_produk', $id)->update([
-            'kategori' => $request->kategori,
-            'nama_produk' => $request->nama_produk,
-            'panjang' => $request->panjang,
-            'lebar' => $request->lebar,
-            'tinggi' => $request->tinggi,
-            'deskripsi_galeri' => $request->deskripsi_galeri,
-            'harga' => $request->harga,
+        DB::table('produk')->where('idProduk', $id)->update([
+            'namaProduk'       => $request->namaProduk,
+            'kategori'         => $request->kategori,
+            'bahan'            => $request->bahan,
+            'warna'            => $request->warna,
+            'panjang'          => $request->panjang,
+            'lebar'            => $request->lebar,
+            'tinggi'           => $request->tinggi,
+            'deskripsi_produk' => $request->deskripsi_produk,
+            'harga'            => $request->harga,
         ]);
         // Redirect ke halaman yang sesuai
-        return redirect('/galeri')->with(['success' => 'Data Berhasil ditambah']);
+        return redirect('/galeri')->with(['success' => 'Data Berhasil Diubah']);
     }
 
     public function updateGambar(Request $request, string $id)
@@ -123,11 +140,11 @@ class produkController extends Controller
             $img->storeAs('public/img', $newFileName);
 
             // Hapus gambar lama jika sudah ada
-            $oldFileName = DB::table('produks')->where('id_produk', $id)->value('gambar');
+            $oldFileName = DB::table('produk')->where('idProduk', $id)->value('gambar');
             Storage::delete('public/img/' . $oldFileName);
 
             // Proses update
-            DB::table('produks')->where('id_produk', $id)->update([
+            DB::table('produk')->where('idProduk', $id)->update([
                 'gambar' => $newFileName,
             ]);
         }
@@ -140,13 +157,13 @@ class produkController extends Controller
     public function destroy(string $id)
     {
         // untuk mendapatkan gambar sesuai id
-        $fileName = DB::table('produks')->where('id_produk', $id)->value('gambar');
+        $fileName = DB::table('produk')->where('idProduk', $id)->value('gambar');
 
         // Untuk hapus gambar dari folder public/img
         Storage::delete('public/img/' . $fileName);
 
         // Untuk hapus gambar di database
-        DB::table('produks')->where('id_produk', $id)->delete();
+        DB::table('produk')->where('idProduk', $id)->delete();
 
         return redirect('/galeri')->with(['success' => 'Data Berhasil dihapus']);
     }

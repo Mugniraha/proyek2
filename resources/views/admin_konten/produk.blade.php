@@ -25,14 +25,14 @@
         <tr>
             <td>{{$loop->iteration}}</td>
             <td class="w-25">
-                <img src="{{asset('storage/img/' . $row->gambar)}}" width="50%" alt=""> <br>
-                <a href="#" type="button" class="mt-1 w-50 justify-content-center btn btn-sm btn-warning shadow" data-bs-toggle="modal" data-bs-target="#editGmbr{{$row->id_produk}}">Ubah Gambar</a>
+                <img src="{{asset('storage/img/' .$row->gambar)}}" width="50%" alt=""> <br>
+                <a href="#" type="button" class="mt-1 w-50 justify-content-center btn btn-sm btn-warning shadow" data-bs-toggle="modal" data-bs-target="#editGmbr{{$row->idProduk}}">Ubah Gambar</a>
             </td>
             <td>
                 {{$row->kategori}}
             </td>
             <td>
-                {{$row->nama_produk}}
+                {{$row->namaProduk}}
             </td>
             <td>
                 {{$row->bahan}}
@@ -47,16 +47,16 @@
                 {{$row->tinggi}}
             </td>
             <td>
-                {{$row->deskripsi_galeri}}
+                {{$row->deskripsi_produk}}
             </td>
             <td>{{$row->harga}}</td>
             <td>
-                <a href="#" type="button" class="btn btn-sm btn-warning btn-primary w-50 shadow" data-bs-toggle="modal" data-bs-target="#edit{{$row->id_produk}}"><i class="fa-regular fa-pen-to-square"></i></a>
-                <a  href="#" type="button" class="mt-2 btn btn-sm btn-danger btn-primary w-50 shadow" data-bs-toggle="modal" data-bs-target="#hapus{{$row->id_produk}}"><i class="fa-solid fa-trash"></i></a>
+                <a href="#" type="button" class="btn btn-sm btn-warning btn-primary w-50 shadow" data-bs-toggle="modal" data-bs-target="#edit{{$row->idProduk}}"><i class="fa-regular fa-pen-to-square"></i></a>
+                <a  href="#" type="button" class="mt-2 btn btn-sm btn-danger btn-primary w-50 shadow" data-bs-toggle="modal" data-bs-target="#hapus{{$row->idProduk}}"><i class="fa-solid fa-trash"></i></a>
             </td>
         </tr>
 
-        <div class="modal fade modal-dialog-scrollable text-start" id="edit{{$row->id_produk}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal fade modal-dialog-scrollable text-start" id="edit{{$row->idProduk}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -64,57 +64,67 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{route('galeri.update', $row->id_produk)}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('galeri.update', $row->idProduk)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="mb-3">
                                 <label for="formGroupExampleInput2" class="form-label">Kategori</label>
                                 <select class="form-select" name="kategori" aria-label="Default select example">
-                                    <option disabled selected value="{{$row->kategori}}">{{$row->kategori}}</option>
-                                    <option value="meja">Meja</option>
-                                    <option value="kursi">Kursi</option>
-                                    <option value="tangga">Tangga</option>
-                                    <option value="tralis">Tralis</option>
-                                    <option value="etalase">Etalase</option>
-                                    <option value="container">Container</option>
+                                    <option selected value="">{{$row->kategori}}</option>
+                                    <option value="Meja">Meja</option>
+                                    <option value="Kursi">Kursi</option>
+                                    <option value="Tangga">Tangga</option>
+                                    <option value="Tralis">Tralis</option>
+                                    <option value="Etalase">Etalase</option>
+                                    <option value="Container">Container</option>
                                 </select>
                             </div>
                             <div class="mb-3">
                                 <label for="formGroupExampleInput2" class="form-label">Nama Produk</label>
-                                <input type="text" class="form-control" id="formGroupExampleInput2" name="nama_produk" placeholder="" value="{{$row->nama_produk}}">
+                                <input type="text" class="form-control" id="formGroupExampleInput2" name="namaProduk" placeholder="" value=" {{$row->namaProduk}}">
                             </div>
-
+                            <div class="mb-3">
+                                <label for="formGroupExampleInput2" class="form-label">Bahan</label>
+                                <select class="form-select" name="bahan" aria-label="Default select example">
+                                    <option selected>{{$row->bahan}}</option>
+                                    <option value="Alumunium">Alumunium</option>
+                                    <option value="Besi">Besi</option>
+                                    <option value="Baja Ringan">Baja Ringan</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="formGroupExampleInput2" class="form-label">Warna</label>
+                                <input type="text" class="form-control" id="formGroupExampleInput2" name="warna" placeholder="" value="{{$row->warna}} ">
+                            </div>
                             <div class="row gx-3 mb-3 gy-2 align-items-center">
                                 <label for="formGroupExampleInput2" class="form-label">Dimensi</label>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <div class="input-group-text">P</div>
-                                        <input type="text" class="form-control" name="panjang" id="specificSizeInputGroupUsername" placeholder="Panjang(cm)" value="{{$row->panjang}}">
+                                        <input type="number" class="form-control" name="panjang" id="specificSizeInputGroupUsername" placeholder="Panjang(cm)" value="{{$row->panjang}}">
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <div class="input-group-text">L</div>
-                                        <input type="text" class="form-control" name="lebar" id="specificSizeInputGroupUsername" placeholder="Lebar(cm)" value="{{$row->lebar}}">
+                                        <input type="number" class="form-control" name="lebar" id="specificSizeInputGroupUsername" placeholder="Lebar(cm)" value="{{$row->lebar}}">
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <div class="input-group-text">T</div>
-                                        <input type="text" class="form-control" name="tinggi" id="specificSizeInputGroupUsername" placeholder="Tinggi(cm)" value="{{$row->tinggi}}">
+                                        <input type="number" class="form-control" name="tinggi" id="specificSizeInputGroupUsername" placeholder="Tinggi(cm)" value="{{$row->tinggi}}">
                                     </div>
                                 </div>
                             </div>
-
                             <div class="mb-3">
                                 <label for="formGroupExampleInput2" class="form-label">Deskripsi</label>
-                                <textarea type="text" class="form-control" id="formGroupExampleInput2" name="deskripsi_galeri" placeholder="" value="">{{$row->deskripsi_galeri}}</textarea>
+                                <textarea class="form-control" id="formGroupExampleInput2" name="deskripsi_produk" placeholder="" value="">{{$row->deskripsi_produk}}</textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="formGroupExampleInput2" class="form-label">Harga</label>
                                 <input type="number" class="form-control" id="formGroupExampleInput2" name="harga" placeholder="" value="{{$row->harga}}">
                             </div>
-
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Batal</button>
@@ -126,7 +136,7 @@
             </div>
         </div>
 
-        <div class="modal fade modal-dialog-scrollable text-start" id="editGmbr{{$row->id_produk}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal fade modal-dialog-scrollable text-start" id="editGmbr{{$row->idProduk}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -134,13 +144,13 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{route('galeri.updateGambar', $row->id_produk)}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('galeri.updateGambar', $row->idProduk)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="mb-3">
                                 <label for="formGroupExampleInput" class="form-label">Gambar</label>
                                 <input type="file" class="form-control" id="formGroupExampleInput" name="gambar" placeholder="" value="{{$row->gambar}}">
-                                <input type="hidden" value="{{$row->id_produk}}">
+                                <input type="hidden" value="{{$row->idProduk}}">
                             </div>
                             </div>
                             <div class="modal-footer">
@@ -154,14 +164,14 @@
         </div>
 
         {{-- Modal untuk hapus data --}}
-        <div class="modal fade modal-dialog-scrollable" id="hapus{{$row->id_produk}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal fade modal-dialog-scrollable" id="hapus{{$row->idProduk}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="staticBackdropLabel">Hapus Data</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                        <form action="{{route('galeri.destroy', $row->id_produk)}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('galeri.destroy', $row->idProduk)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('DELETE')
                             <div class="modal-body">
@@ -213,7 +223,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Nama Produk</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2" name="nama_produk" placeholder="" value=" ">
+                        <input type="text" class="form-control" id="formGroupExampleInput2" name="namaProduk" placeholder="" value=" ">
                     </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Bahan</label>
@@ -224,31 +234,35 @@
                             <option value="baja ringan">Baja Ringan</option>
                         </select>
                     </div>
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput2" class="form-label">Warna</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput2" name="warna" placeholder="" value=" ">
+                    </div>
                     <div class="row gx-3 mb-3 gy-2 align-items-center">
                         <label for="formGroupExampleInput2" class="form-label">Dimensi</label>
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <div class="input-group-text">P</div>
-                                <input type="text" class="form-control" name="panjang" id="specificSizeInputGroupUsername" placeholder="Panjang(cm)">
+                                <input type="number" class="form-control" name="panjang" id="specificSizeInputGroupUsername" placeholder="Panjang(cm)">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <div class="input-group-text">L</div>
-                                <input type="text" class="form-control" name="lebar" id="specificSizeInputGroupUsername" placeholder="Lebar(cm)">
+                                <input type="number" class="form-control" name="lebar" id="specificSizeInputGroupUsername" placeholder="Lebar(cm)">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <div class="input-group-text">T</div>
-                                <input type="text" class="form-control" name="tinggi" id="specificSizeInputGroupUsername" placeholder="Tinggi(cm)">
+                                <input type="number" class="form-control" name="tinggi" id="specificSizeInputGroupUsername" placeholder="Tinggi(cm)">
                             </div>
                         </div>
                     </div>
 
                     <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Deskripsi</label>
-                        <textarea type="number" class="form-control" id="formGroupExampleInput2" name="deskripsi_galeri" placeholder="" value=""></textarea>
+                        <textarea class="form-control" id="formGroupExampleInput2" name="deskripsi_produk" placeholder="" value=""></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Harga</label>

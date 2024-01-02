@@ -40,6 +40,11 @@
                                     <i class="fa-regular fa-image {{($slug === "galeri") ? 'active' : ''}}" style="color: #f6f1db;"></i></i> <span class="ms-1 d-none d-sm-inline ">Kelola Produk</span>
                                 </a>
                             </li>
+                            <li class="nav-item ">
+                                <a href="{{ url('/bahan')}}" class="nav-link align-middle px-0">
+                                    <i class="fa-regular fa-image {{($slug === "bahan") ? 'active' : ''}}" style="color: #f6f1db;"></i></i> <span class="ms-1 d-none d-sm-inline ">Kelola Harga Bahan</span>
+                                </a>
+                            </li>
                             <li>
                                 <ul class="nav flex-column" id="menu">
                                     <li class="nav-item">

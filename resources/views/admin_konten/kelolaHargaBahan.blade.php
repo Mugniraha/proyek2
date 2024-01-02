@@ -1,61 +1,58 @@
 @extends('admin_layout.main')
 @section('content')
+
 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mb-5">
     <ol class="breadcrumb">
         <li class="breadcrumb-item">Kelola Custom Barang</li>
         <li class="breadcrumb-item active" aria-current="page">Pesanan Baru</li>
     </ol>
 </nav>
+<a href="#" type="button" class="btn mb-5 shadow" data-bs-toggle="modal" data-bs-target="#tambah" style="background-color:#4C6687;color:white"><i class="fa-solid fa-plus" style="color: #ffffff;"></i> Tambah Produk</a>
 <table id="example" class="table" style="width:100%">
     <thead>
         <tr>
             <th>No</th>
-            <th>Konfirmasi Pesanan</th>
-            <th>Detail Pesanan</th>
-            <th>Nomor Pesanan</th>
-            <th>Detail Pemesan</th>
-            <th>Metode Pengiriman</th>
-            <th>Tanggal pemesanan</th>
+            <th>Nama Bahan</th>
+            <th>Harga</th>
             <th>Aksi</th>
         </tr>
     </thead>
     <tbody>
+        @php
+            $no = 1;
+        @endphp
+        @foreach ($bahan as $row)
         <tr>
-            <td>Tiger Nixon</td>
-            <td>System Architect</td>
-            <td>900909090</td>
-            <td>Edinburgh</td>
-            <td>Edinburgh</td>
-            <td>61</td>
-            <td>2011-04-25</td>
+            <td>{{$no++}}</td>
+            <td>{{$row->namaBahan}}</td>
+            <td>{{$row->hargaBahan}}</td>
             <td>
-                <a href="#" type="button" class="btn btn-sm btn-success btn-primary w-50" data-bs-toggle="modal" data-bs-target="#edit">Terima</a>
-                <a  href="#" type="button" class="mt-2 btn btn-sm btn-danger btn-primary w-50" data-bs-toggle="modal" data-bs-target="#hapus">Tolak</a>
+                <a href="#" type="button" class="btn btn-sm btn-success btn-primary w-50" data-bs-toggle="modal" data-bs-target="#update">Update Harga</a>
             </td>
         </tr>
-        <div class="modal fade modal-dialog-scrollable text-start" id="edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal fade modal-dialog-scrollable text-start" id="update" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Edit Data</h5>
+                        <h5 class="modal-title fw-bold" id="staticBackdropLabel">Update Harga</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('bahan.update', $row->idBahan)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="mb-3">
-                                <label for="formGroupExampleInput" class="form-label">Gambar</label>
-                                <input type="file" class="form-control" id="formGroupExampleInput" name="gambar" placeholder="" value="">
-                                <input type="hidden" value="">
+                                <label for="formGroupExampleInput2" class="form-label fw-bolder">Nama Bahan</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="formGroupExampleInput2" name="namaBahan" placeholder="" value="{{$row->namaBahan}}">
+                                </div>
                             </div>
                             <div class="mb-3">
-                                <label for="formGroupExampleInput2" class="form-label">Deskripsi</label>
-                                <textarea type="number" class="form-control" id="formGroupExampleInput2" name="deskripsi_galeri" placeholder="" value=""></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="formGroupExampleInput2" class="form-label">Harga</label>
-                                <input type="number" class="form-control" id="formGroupExampleInput2" name="harga" placeholder="" value="">
+                                <label for="formGroupExampleInput2" class="form-label fw-bolder">Harga</label>
+                                <div class="input-group">
+                                    <div class="input-group-text">Rp</div>
+                                    <input type="text" class="form-control" id="formGroupExampleInput2" name="hargaBahan" placeholder="" value="{{$row->hargaBahan}}">
+                                </div>
                             </div>
 
                             </div>
@@ -91,13 +88,15 @@
             </div>
         </div>
         @if(session('success'))
-                <div class="alert alert-success mb-2">
-                    {{ session('success') }}
-                </div>
+            <div class="alert alert-success mb-2 alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close text-end" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
         @endif
+        @endforeach
     </tbody>
-
 </table>
+
 <div class="modal fade modal-dialog-scrollable text-start" id="tambah" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -106,19 +105,20 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="{{route('bahan.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
-                        <label for="formGroupExampleInput" class="form-label">Gambar</label>
-                        <input type="file" class="form-control" id="formGroupExampleInput" name="gambar" placeholder="" value="">
+                        <label for="formGroupExampleInput2" class="form-label fw-bolder">Nama Bahan</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="formGroupExampleInput2" name="namaBahan" placeholder="" value="">
+                        </div>
                     </div>
                     <div class="mb-3">
-                        <label for="formGroupExampleInput2" class="form-label">Deskripsi</label>
-                        <textarea type="number" class="form-control" id="formGroupExampleInput2" name="deskripsi_galeri" placeholder="" value=""></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="formGroupExampleInput2" class="form-label">Harga</label>
-                        <input type="number" class="form-control" id="formGroupExampleInput2" name="harga" placeholder="" value="">
+                        <label for="formGroupExampleInput2" class="form-label fw-bolder">Harga</label>
+                        <div class="input-group">
+                            <div class="input-group-text">Rp</div>
+                            <input type="text" class="form-control" id="formGroupExampleInput2" name="hargaBahan" placeholder="" value="">
+                        </div>
                     </div>
 
                     </div>

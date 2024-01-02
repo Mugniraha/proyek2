@@ -28,14 +28,14 @@
 
         <tr>
             <td>{{$nomor++}}</td>
-            <td>{{$row->nama}}</td>
-            <td>{{$row->jenisJasa}}</td>
-            <td>{{$row->deskripsi}}</td>
+            <td>{{$row->namaJasa}}</td>
+            <td>{{$row->kategoriJasa}}</td>
+            <td>{{$row->deskripsiJasa}}</td>
             <td>{{$row->alamat}}</td>
-            <td>{{ ($row->created_at) }}</td>
+            <td>{{ ($row->tanggal) }}</td>
             <td>
                 @if($row->status === 'diproses')
-                    <a href="{{route('selesai', $row->id_formjs)}}" class="btn btn-sm btn-primary w-75">Selesaikan</a>
+                    <a href="{{route('selesai', $row->idJasa)}}" class="btn btn-sm btn-primary w-75">Selesaikan</a>
                 @elseif($row->status === 'ditolak')
                     <button class="btn btn-sm btn-danger w-75" disabled>Ditolak</button>
                 @else
