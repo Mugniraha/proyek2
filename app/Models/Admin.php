@@ -35,7 +35,6 @@ class Admin extends Model
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
         'remember_token',
     ];
 

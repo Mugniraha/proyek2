@@ -135,12 +135,13 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form action="{{ route('changePassword',$row->idAdmin) }}" method="POST">
+                            <form action="{{ route('changePassword', $row->idAdmin) }}" method="POST">
                                 @csrf
-                                @method('PUT') <!-- Gunakan metode PUT sesuai dengan definisi route -->
+                                @method('PUT')
+
                                 <div class="mb-3">
                                     <label for="formGroupExampleInput" class="form-label">Password Lama</label>
-                                    <input type="password" class="form-control" id="passowrd" value="" name="old_password" placeholder="">
+                                    <input type="password" class="form-control" id="password" name="old_password" placeholder="">
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleFormControlTextarea1" class="form-label">Password Baru</label>
@@ -150,6 +151,7 @@
                                     <button type="submit" class="btn btn-success" style="background-color: #4C6687;color: #fcf2c5;">Simpan</button>
                                 </div>
                             </form>
+
                         </div>
                     </div>
                 </div>

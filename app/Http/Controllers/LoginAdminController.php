@@ -60,28 +60,29 @@ class LoginAdminController extends Controller
     return back()->with('error', 'Email or Password salah');
 }
 
-public function changePassword(Request $request)
-{
-    // Periksa apakah pengguna terautentikasi
-    if (!auth()->check()) {
-        return redirect()->route('loginAdminIndex')->with('error', 'Pengguna belum terautentikasi');
+public function changePassword(Request $request, $id)
+    {
+        // Validate the request
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|min:8', // You can adjust the minimum length as needed
+        ]);
+
+        // Find the admin by ID
+        $admin = Admin::findOrFail($id);
+
+        // Check if the old password matches
+        if (!Hash::check($request->old_password, $admin->password)) {
+            return redirect()->back()->with('error', 'Incorrect old password. Please try again.');
+        }
+
+        // Update the password
+        $admin->password = Hash::make($request->new_password);
+        $admin->save();
+
+        // Redirect with success message
+        return redirect()->back()->with('success', 'Password updated successfully.');
     }
-
-    // Dapatkan admin yang terautentikasi
-    $admin = auth()->user();
-
-    // Periksa apakah kata sandi lama benar
-    if (!Hash::check($request->old_password, $admin->password)) {
-        return back()->with('error', 'Kata sandi lama tidak benar');
-    }
-
-    // Perbarui kata sandi admin
-    $admin->password = bcrypt($request->new_password);
-    $admin->save();
-
-    return redirect()->route('dashboard.index')->with('success', 'Kata sandi berhasil diperbarui');
-}
-
 
 
 

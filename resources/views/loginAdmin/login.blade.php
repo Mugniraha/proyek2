@@ -44,10 +44,10 @@
                         </div>
                     </form>
                     <div class="mb-3 d-flex justify-content-between flex-column align-items-center">
-                        {{-- <div class="d-flex">
+                        <div class="d-flex">
                             <span>Belum memiliki Akun?</span>
                             <a href="{{ route('registerAdminPost') }}" class="text-decoration-none">Daftar Akun</a>
-                        </div> --}}
+                        </div>
                         <div class="d-flex">
                             {{-- <span>Lupa Password?</span> --}}
                             <a href="{{ route('password.edit') }}" class="text-decoration-none">Lupa Password?</a>

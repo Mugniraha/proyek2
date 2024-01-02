@@ -41,11 +41,11 @@
                             @method('PUT')
                             <div class="mb-3">
                                 <select class="form-select" aria-label="Default select example">
-                                    <option selected>Input Progres</option>
-                                    <option value="1">25%</option>
-                                    <option value="2">50%</option>
-                                    <option value="3">75%</option>
-                                    <option value="3">100%</option>
+                                    <option name="statusPesanan" selected>Input Progres</option>
+                                    <option value="25">25%</option>
+                                    <option value="50">50%</option>
+                                    <option value="75">75%</option>
+                                    <option value="100">100%</option>
                                 </select>
                             </div>
                             <div class="mb-3">
