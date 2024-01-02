@@ -34,13 +34,13 @@ class formJsController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'namaJasa' => 'required',
-            'kategoriJasa' => 'required',
-            'deskripsiJasa' => 'required',
-            'alamat' => 'required',
-            'tanggal' => 'required',
-        ]);
+        // $request->validate([
+        //     'namaJasa' => 'required',
+        //     'kategorijasa' => 'required',
+        //     'deskripsiJasa' => 'required',
+        //     'alamat' => 'required',
+        //     'tanggal' => 'required',
+        // ]);
         $userId = Auth::id();
 
         $dataPesanan = $request->all();
@@ -73,19 +73,19 @@ class formJsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate([
-            'nama' => 'required',
-            'telpon' => 'required',
-            'jenisJasa' => 'required',
-            'deskripsi' => 'required',
-            'alamat' => 'required',
-            'tanggal' => 'required',
-        ]);
+        // $request->validate([
+        //     'nama' => 'required',
+        //     'telpon' => 'required',
+        //     'jenisJasa' => 'required',
+        //     'deskripsi' => 'required',
+        //     'alamat' => 'required',
+        //     'tanggal' => 'required',
+        // ]);
 
-        $formJS = formJS::find($id);
+        $formJS = Formjs::find($id);
         $formJS->update($request->all());
 
-        return redirect()->route('nama_route_index')->with('success', 'Data berhasil diperbarui!');
+        return redirect()->route('nama_rote_index')->with('success', 'Data berhasil diperbarui!');
     }
 
     /**

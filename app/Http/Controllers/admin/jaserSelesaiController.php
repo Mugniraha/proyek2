@@ -16,9 +16,9 @@ class jaserSelesaiController extends Controller
      */
     public function index()
     {
-        $slug="JsSelesai";
-        $jasaServis = DB::table('jasa_service')->where('status','Selesai')->orWhere('status','Ditolak')->get();
-        return view("admin_konten.jsSelesai",compact("slug","jasaServis"));
+        $slug = "jsSelesai";
+        $jasaServis = Formjs::with('User')->where('status','Selesai')->orWhere('status','Ditolak')->get();
+        return view("admin_konten.jsSelesai", compact("slug", "jasaServis"));
     }
 
     /**

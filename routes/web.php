@@ -34,6 +34,8 @@ use App\Http\Controllers\LoginAdminController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\bahanController;
 use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\pengirimanController;
+
 
 
 
@@ -54,18 +56,19 @@ Route::get('/register', [RegisterController::class, 'registerIndex'])->name('reg
 Route::post('/register', [RegisterController::class, 'registerPost'])->name('registerPost');
 Route::get('/loginUser', [RegisterController::class, 'loginIndex'])->name('loginIndex');
 Route::post('/loginUser', [RegisterController::class, 'loginPost'])->name('loginPost');
-
-Route::post('/loginAdmin', [RegisterController::class, 'loginAdminPost'])->name('loginAdminPost');
-Route::post('/costumproduk', [CostumprodukController::class, 'store'])->name('costumproduk.store');
+Route::get('password/edit', [ChangePasswordController::class, 'edit'])->name('password.edit');
+Route::put('/ubahPassword', [ChangePasswordController::class, 'ubahKataSandi'])->name('ubahKataSandi');
 Route::get('/logout', [RegisterController::class, 'logout'])->name('logout');
+
+Route::post('/costumproduk', [CostumprodukController::class, 'store'])->name('costumproduk.store');
 
 Route::get('/registerAdmin', [LoginAdminController::class, 'registerAdminIndex'])->name('registerAdminIndex');
 Route::post('/registerAdmin', [LoginAdminController::class, 'registerAdminPost'])->name('registerAdminPost');
 Route::get('/loginAdmin', [LoginAdminController::class, 'loginAdminIndex'])->name('loginAdminIndex');
 Route::post('/loginAdmin', [LoginAdminController::class, 'loginAdminPost'])->name('loginAdminPost');
+Route::put('/ubahpw', [LoginAdminController::class, 'changePassword'])->name('changePassword');
+Route::get('/logout', [LoginAdminController::class, 'logout'])->name('logout');
 
-Route::get('password/edit', [ChangePasswordController::class, 'edit'])->name('password.edit');
-Route::put('password/edit', [ChangePasswordController::class, 'update'])->name('password.update');
 
 Route::get('/home', [HomeController::class, 'HomeIndex'])->name('HomeIndex');
 Route::get('/produk', [ProdukController::class, 'index'])->name('produk.index');
@@ -83,34 +86,15 @@ Route::prefix('profil')->group(function () {
 Route::put('/update-foto', [UpdateProfilController::class, 'updateFoto'])->name('updateFoto');
 });
 
-
-//     // ... Rute lainnya ...
-
-//     // Tambahkan rute untuk memperbarui profil dan alamat
-//     Route::put('/profil/update', [ProfilUserControlle r::class, 'updateProfileAndAddress'])
-//         ->name('updateProfileAndAddress');
-// });
-
-// // Route::get('/profil-user/{id}/edit', [ProfilUserController::class, 'edit'])->name('ProfilUserEdit');
-// // Route::put('/profil-user/{id}/update', [ProfilUserController::class, 'update'])->name('ProfilUserUpdate');
-// Route::get('/profil/edit/{id}', 'ProfilUserController@edit')->name('profil.edit');
-// Route::put('/profil/update/{id}', 'ProfilUserController@ProfilUserUpdate')->name('updateProfileAndAddress');
-// // Route::post('/profil/update-picture/{id}', 'ProfilUserController@updateProfilePicture')->name('updateProfilePicture');
-// Route::post('/profil/update-picture/{user}', 'ProfileController@updateProfilePicture')->name('updateProfilePicture');
-
-// Route::get('/user/{id}/edit', [ProfilUserController::class, 'edit'])->name('ProfilUserEdit');
-// Route::put('/user/{id}', [ProfilUserController::class, 'update']);
+Route::post('/profil/update-foto', [UpdateProfilController::class, 'updateFoto'])->name('updateFotoProfil');
 
 
-// Route::get('/profilUser', [RegisterController::class, 'registerPost'])->name('user.profile.post');
 Route::get('/buatAkun', [buatAkunController::class, 'index'])->name('index');
 
 Route::get('/kelolaUser', [KelolaUserController::class, 'KelolaUserIndex'])->name('KelolaUserIndex');
 Route::put('/update-profile-picture/{id}', [buatAkunController::class, 'updateProfilePicture'])->name('updateProfilePicture');
 Route::get('/kelolaUser/{id}', 'buatAkunController@edit')->name('edit_user');
 Route::put('/kelolaUser/{id}', 'buatAkunController@update')->name('update_user');
-// Route::put('/update-profile-and-address', 'RegisterController@updateProfileAndAddress')->name('updateProfileAndAddress');
-// Route::post('/update-profile-picture', 'RegisterController@updateProfilePicture')->name('updateProfilePicture');
 
 
 
@@ -122,8 +106,17 @@ Route::get('/serviceUser', [serviceBaruController::class, 'serviceBaruIndex'])->
 Route::resource('/costumproduk', CostumProdukController::class);
 Route::get('/costumproduk/{idProduk}', [CostumProdukController::class, 'show'])->name('costumproduk.index');
 Route::resource('/pembayaran', PembayaranController::class);
+Route::get('/pembayaran/{idPesanan}/{idProduk}/{idPengiriman}/{idBahan}', [PembayaranController::class, 'showData'])->name('pembayaran.index');
+Route::get('/listserviceUser', [serviceBaruController::class, 'listService'])->name('listService');
+Route::post('/costumproduk/{idProduk}', [CostumProdukController::class, 'index'])->name('costumproduk.index');
+
+
+
+
+
 Route::get('/daftarpesanan', [DaftarPesananController::class, 'index'])->name('daftarpesanan.index');
 Route::get('/riwayat', [DaftarPesananController::class, 'riwayat'])->name('daftarpesanan.riwayat');
+Route::get('/riwayatService', [DaftarPesananController::class, 'riwayatService'])->name('daftarpesanan.riwayatService');
 Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
 
 
@@ -150,10 +143,10 @@ Route::resource('/dashboard', dashboardController::class);
 Route::resource('/bantuan', bantuanController::class);
 Route::resource('/profil', profilAdminController::class);
 Route::resource('/bahan', bahanController::class);
+Route::resource('/pengiriman', pengirimanController::class);
 Route::get('/jsPesananBaru/{id}/terima', [jaserPesananBaruController::class, 'terimaPesanan'])->name('terimaPesanan');
 Route::get('/jsPesananBaru/{id}/tolak', [jaserPesananBaruController::class, 'tolakPesanan'])->name('tolakPesanan');
 Route::get('/jsDalamProses/{id}',[jaserDalamProsesController::class, 'selesai'])->name('selesai');
-
 
 
 

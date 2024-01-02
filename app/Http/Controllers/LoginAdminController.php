@@ -60,6 +60,35 @@ class LoginAdminController extends Controller
     return back()->with('error', 'Email or Password salah');
 }
 
+public function changePassword(Request $request)
+{
+    // Periksa apakah pengguna terautentikasi
+    if (!auth()->check()) {
+        return redirect()->route('loginAdminIndex')->with('error', 'Pengguna belum terautentikasi');
+    }
+
+    // Dapatkan admin yang terautentikasi
+    $admin = auth()->user();
+
+    // Periksa apakah kata sandi lama benar
+    if (!Hash::check($request->old_password, $admin->password)) {
+        return back()->with('error', 'Kata sandi lama tidak benar');
+    }
+
+    // Perbarui kata sandi admin
+    $admin->password = bcrypt($request->new_password);
+    $admin->save();
+
+    return redirect()->route('dashboard.index')->with('success', 'Kata sandi berhasil diperbarui');
+}
+
+
+
+
+public function logout(){
+    Auth::logout();
+    return view('homeAwal.index');
+}
 
 
     /**

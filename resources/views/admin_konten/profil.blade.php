@@ -60,7 +60,7 @@
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
                     <a href="#" type="button" class="btn shadow" data-bs-toggle="modal" data-bs-target="#edit" style="background-color:#4C6687;color:white"><i class="fa-regular fa-pen-to-square"></i> Ubah Profil</a>
-                    <a href="#" type="button" class="btn shadow" data-bs-toggle="modal" data-bs-target="#edit" style="background-color:#4C6687;color:white"><i class="fa-regular fa-pen-to-square"></i> Ubah Password</a>
+                    <a href="#" type="button" class="btn shadow" data-bs-toggle="modal" data-bs-target="#ubahpw{{$row->idAdmin}}" style="background-color:#4C6687;color:white"><i class="fa-regular fa-pen-to-square"></i> Ubah Password</a>
                 </div>
                 <div class="col-md-2"></div>
             </div>
@@ -127,8 +127,32 @@
                 </div>
 
             {{-- Edit Password --}}
-            <div class="modal fade modal-dialog-scrollable text-start" id="edit-pw" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <!-- ... Kode Modal Edit Password ... -->
+            <div class="modal fade modal-dialog-scrollable text-start" id="ubahpw{{$row->idAdmin}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Ubah Password</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ route('changePassword',$row->idAdmin) }}" method="POST">
+                                @csrf
+                                @method('PUT') <!-- Gunakan metode PUT sesuai dengan definisi route -->
+                                <div class="mb-3">
+                                    <label for="formGroupExampleInput" class="form-label">Password Lama</label>
+                                    <input type="password" class="form-control" id="passowrd" value="" name="old_password" placeholder="">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Password Baru</label>
+                                    <input type="password" class="form-control" id="password" name="new_password" placeholder="">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-success" style="background-color: #4C6687;color: #fcf2c5;">Simpan</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         @empty
             <!-- Tampilkan pesan atau tindakan yang sesuai saat data tidak tersedia -->

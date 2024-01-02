@@ -20,11 +20,11 @@
     </thead>
     <tbody>
         <tr>
-            <td>Tiger Nixon</td>
-            <td>System Architect</td>
-            <td>Edinburgh</td>
+            <td>1</td>
+            <td>Rama</td>
+            <td>0019</td>
             <td>20-20-2020</td>
-            <td>20-20-2020</td>
+            <td>29-20-2020</td>
             <td>
                 <input class="form-control w-50" type="text" value="Selesai" aria-label="Disabled input example" disabled readonly>
             </td>
@@ -32,32 +32,7 @@
                 <a href="#" type="button" class="btn btn-sm btn-warning btn-primary w-75" data-bs-toggle="modal" data-bs-target="#edit">Balas ulasan</a>
             </td>
         </tr>
-        <tr>
-            <td>Garrett Winters</td>
-            <td>Accountant</td>
-            <td>Tokyo</td>
-            <td>20-20-2020</td>
-            <td>20-20-2020</td>
-            <td>
-                <input class="form-control w-50" type="text" value="Selesai" aria-label="Disabled input example" disabled readonly>
-            </td>
-            <td>
-                <a href="#" type="button" class="btn btn-sm btn-warning btn-primary w-75" data-bs-toggle="modal" data-bs-target="#edit">Balas ulasan</a>
-            </td>
-        </tr>
-        <tr>
-            <td>Ashton Cox</td>
-            <td>Junior Technical Author</td>
-            <td>San Francisco ndnqawndiuwqd jnjnnc</td>
-            <td>20-20-2020</td>
-            <td>20-20-2020</td>
-            <td>
-                <input class="form-control w-50" type="text" value="Selesai" aria-label="Disabled input example" disabled readonly>
-            </td>
-            <td>
-                <a href="#" type="button" class="btn btn-sm btn-warning btn-primary w-75" data-bs-toggle="modal" data-bs-target="#edit">Balas ulasan</a>
-            </td>
-        </tr>
+
         <div class="modal fade modal-dialog-scrollable text-start" id="edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">

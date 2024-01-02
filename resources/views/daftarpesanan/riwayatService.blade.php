@@ -2,12 +2,9 @@
 @section('konten')
         <section id="productspes">
             <div class="btn-top">
-                <a href="{{ route('daftarpesanan.riwayat') }}"><button class="btnriwayat">Riwayat Pesanan</button></a>
-
-                <a href="{{ route('daftarpesanan.riwayatService') }}"><button class="btnriwayat">Riwayat Service</button></a>
+                <a href="{{ route('daftarpesanan.index') }}"><button class="btnriwayat">Kembali</button></a>
                 <hr>
             </div>
-        @foreach($dataPesanan as $pesanan)
         <div class="container">
             <div class="row">
                 <div class="cardpes">
@@ -16,61 +13,48 @@
                             <h6><i>JOYO ROYO BENGKEL WELDING</i></h6>
                         </div>
                         <div class="right-text">
-                            <p>Status Pesnan</p>
+                            <p>Tanggal Selesai Pembuatan</p>
                             <div class="vertical-line"></div>
-                            <p class="idpesanan">{{ $pesanan->idPesanan }}</p>
+                            <p>Sudah Diterima</p>
+                            <div class="vertical-line"></div>
+                            <p>Detail Pesnan</p>
                         </div>
                     </div>
                     <div class="card-center">
+                        <div class="left-col">
+                            <img class="card-img-left" src="images/" alt="Card image cap">
+                        </div>
                         <div class="center-col">
                             <table class="product-details">
                                 <tr>
-                                    <td  class="colhead" colspan="3">{{ $pesanan->namaPesanan }}</td>
+                                    <td>Nama Jasa</td>
+                                    <td class="narrow-column">:</td>
+                                    <td></td>
                                 </tr>
                                 <tr>
-                                    <td>Warna</td>
+                                    <td>Kategori Jasa</td>
                                     <td class="narrow-column">:</td>
-                                    <td>{{ $pesanan->warna}}</td>
+                                    <td></td>
                                 </tr>
                                 <tr>
-                                    <td>Jumlah Barang</td>
+                                    <td>Deskripsi Masalah</td>
                                     <td class="narrow-column">:</td>
-                                    <td>{{ $pesanan->jumlahItem }}</td>
+                                    <td></td>
                                 </tr>
                                 <tr>
-                                    <td>Total Harga</td>
+                                    <td>Lokasi</td>
                                     <td class="narrow-column">:</td>
-                                    <td>{{ $pesanan->totalHarga }}</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Tanggal Pengerjaan</td>
+                                    <td class="narrow-column">:</td>
+                                    <td></td>
                                 </tr>
                             </table>
                         </div>
                         <div class="right-col">
-                            <div class="dp-payment">
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <td><i>Harga DP :</i></td>
-                                            <td class="gap" rowspan="2">
-                                            </td>
-                                            <td class="status-payment" rowspan="2"><i>Sudah Dibayar</i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>{{ $pesanan->totalHarga / 2 }}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="payment">
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <td><i>Belum dibayar</i></td>
-                                            <td>:</td>
-                                            <td class="pricefull"> {{ $pesanan->totalHarga}}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            <h5><i>Total Harga : </i>RP. 200.000</h5>
                         </div>
                     </div>
                     <div class="card-bottom">
@@ -153,13 +137,11 @@
                         </script>
 
 
-                        {{-- <div class="btn-right">
-                            <a href="{{ route('costumproduk.index', ['idProduk' => $produk->idProduk]) }}"><button class="btnagain">Order Lagi</button></a>
-                            <a href="{{ route('costumproduk.index', ['idProduk' => $produk->idProduk]) }}"><button class="btncall">Pembayaran</button></a>
-                        </div> --}}
+                        <div class="btn-right">
+                            <a href=""><button class="btnagain">Order Lagi</button></a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        @endforeach
         </section>

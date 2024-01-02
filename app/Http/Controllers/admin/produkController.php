@@ -117,6 +117,7 @@ class produkController extends Controller
             'deskripsi_produk' => $request->deskripsi_produk,
             'harga'            => $request->harga,
         ]);
+
         // Redirect ke halaman yang sesuai
         return redirect('/galeri')->with(['success' => 'Data Berhasil Diubah']);
     }

@@ -26,10 +26,11 @@
                     </div>
                     
                     <div class="card-right">
-                        <form action="{{ route('costumproduk.store' )}}" method="POST">
+                        <form action="{{ route('costumproduk.store')}}" method="POST">
                             @csrf
                             <div class="inputProduk">
-                                <input type="number" class="form-control" id="namaProduk" name="namaPesanan" placeholder="{{ $produk->namaProduk }}" value="{{ $produk->namaProduk }}" disabled>
+                                <input type="text" class="form-control" id="namaPesanan" name="namaPesanan" placeholder="{{ $produk->namaProduk }}" value="{{ $produk->namaProduk }}" readonly>
+                                <input type="hidden" name="namaPesanan" value="{{ $produk->namaProduk }}">
                             </div>
                             <div class="input1">
                                 <div class="mb-3">
@@ -100,7 +101,11 @@
                                         <tr>
                                             <td class="labelharga"><label for="totalHarga" class="form-label">Total Harga</label></td>
                                             <td></td>
-                                            <td class="totalharga">Rp.<input type="number" class="form-control" id="totalHarga" name="totalHarga" placeholder="{{ $produk->harga }}" value="" disabled></td>
+                                            <td class="totalharga">Rp.
+                                                <input type="number" class="form-control" id="totalHarga" name="totalHarga" placeholder="{{ $produk->harga }}" value="" readonly>
+                                                <input type="hidden" class="form-control" name="totalHarga" value="{{ $produk->harga }}">
+                                                <input type="hidden" class="form-control" name="idProduk" value="{{ $produk->idProduk }}">
+                                            </td>
                                         </tr>
                                     </table>
                                     

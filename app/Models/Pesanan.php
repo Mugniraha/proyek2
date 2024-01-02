@@ -4,14 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use PhpParser\Node\Expr\Cast;
 
-class Costumbarang extends Model
+class Pesanan extends Model
 {
     use HasFactory;
     protected $table = 'pesanan';
+    protected $primaryKey = 'idPesanan';
+
+    protected $casts = [
+        'idPesanan' => 'string',
+    ];
 
     protected $fillable = [
         'idPesanan',
+        'namaPesanan',
         'jumlahItem',
         'totalHarga',
         'metodePengiriman',
@@ -22,8 +29,7 @@ class Costumbarang extends Model
         'tinggi',
         'warna',
         'tanggalPemesanan',
-        'idUser',
-        'idProduk'
+        'idUser'
     ];
     
 

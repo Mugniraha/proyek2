@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,30 +16,28 @@ class UpdateProfilController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function updateFoto(Request $request)
-    {
-        // Validasi data yang dikirimkan dari formulir
-        $request->validate([
-            'profil' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+{
+    $request->validate([
+        'profil' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    ]);
 
-        $profilFile = time().'.'.$request->profil->extension();
-        dd($profilFile);
+    $authenticatedUser = Auth::user();
 
-    //     // Dapatkan data pengguna yang sedang login
-    //     $user = Auth::user();
+    if ($request->hasFile('profil')) {
+        $file = $request->file('profil');
+        $fileName = time() . '_' . $file->getClientOriginalName();
+        $file->storeAs('public/profiles', $fileName);
 
-    //     // Jika ada file gambar yang diunggah
-    //     if ($request->hasFile('profil')) {
-    //         // Hapus foto lama jika ada
-    //         if ($user->profil) {
-    //             Storage::delete("public/images/{$user->profil}");
-    //         }
+        if ($authenticatedUser->profil) {
+            Storage::delete('public/profiles/' . $authenticatedUser->profil);
+        }
 
-    //         $profilFile = $request->file('profil');
-    //         $profilFileName = time() . '.' . $profilFile->getClientOriginalExtension();
+        $authenticatedUser->update(['profil' => $fileName]);
 
-    //         // Pindahkan file ke direktori penyimpanan (public/images)
-    //         $profilFile->storeAs('public/images', $profilFileName);
+        // Simpan URL gambar di sesi dengan kunci 'idUser'
+        session(['user_profile_url_' . $authenticatedUser->idUser => asset('storage/profiles/' . $fileName)]);
+    }
+
 
     //         // Simpan nama file gambar ke dalam basis data
     //         $user->profil = $profilFileName;
@@ -51,3 +50,8 @@ class UpdateProfilController extends Controller
         return redirect()->route('ProfilUserIndex')->with('success', 'Profil berhasil diperbarui');
     }
 }
+
+    return redirect()->route('ProfilUserIndex')->with('success', 'Profil berhasil diperbarui');
+}
+}
+

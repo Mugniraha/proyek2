@@ -12,10 +12,17 @@ use App\Models\Alamat;
 class ProfilUserController extends Controller
 {
     public function ProfilUserIndex()
-    {
-        $kelola_user = User::all(); // Ambil semua data dari tabel buat_akun
-        return view('profilUser.index', compact('kelola_user'));
-    }
+{
+    $kelola_user = User::all();
+    $user = auth()->user();
+    $alamat = $user->alamat;
+
+    // Menyimpan data alamat dalam sesi
+    session(['alamat' => $alamat]);
+
+    return view('profilUser.index', compact('kelola_user', 'user', 'alamat'));
+}
+
     public function editProfileForm()
     {
         $user = auth()->user();
@@ -40,7 +47,7 @@ class ProfilUserController extends Controller
 
         return redirect()->route('ProfilUserIndex')->with('success', 'Profil berhasil diperbarui');
     }
-
+    
     public function editAddressForm()
     {
         $user = auth()->user();
@@ -54,6 +61,9 @@ class ProfilUserController extends Controller
         $user = auth()->user();
         $alamat = $user->alamat;
 
+        \Log::info('User ID: ' . $user->id);
+        \Log::info('Alamat Before Update: ' . json_encode($alamat->toArray()));
+
         // Validasi request jika diperlukan
 
         // Update informasi alamat
@@ -65,7 +75,10 @@ class ProfilUserController extends Controller
             'kabupaten' => $request->input('kabupaten'),
         ]);
 
-        return redirect()->route('ProfilUserIndex')->with('success', 'Alamat berhasil diperbarui');
+        \Log::info('Alamat After Update: ' . json_encode($alamat->toArray()));
+
+        // return redirect()->route('ProfilUserIndex')->with('success', 'Alamat berhasil diperbarui');
+        return view('profilUser.index', compact('user', 'alamat'))->with('success', 'Alamat berhasil diperbarui');
     }
 
     public function updateProfileAndAddress(Request $request)
@@ -95,20 +108,20 @@ class ProfilUserController extends Controller
         ];
 
         \Log::info('User Data Before Update: ' . json_encode($user->toArray()));
-    \Log::info('Update User Data: ' . json_encode($userData));
-    \Log::info('Update Alamat Data: ' . json_encode($alamatData));
+        \Log::info('Update User Data: ' . json_encode($userData));
+        \Log::info('Update Alamat Data: ' . json_encode($alamatData));
 
-        // if ($user->alamat) {
-        //     // Jika alamat sudah ada, update alamat
-        //     $user->alamat->update($alamatData);
-        // } else {
-        //     // Jika alamat belum ada, buat yang baru
-        //     $newAlamat = new Alamat($alamatData);
-        //     $user->alamat()->save($newAlamat);
-        // }
         $user->updateProfileAndAddress($userData, $alamatData);
 
         \Log::info('User Data After Update: ' . json_encode($user->toArray()));
+
+        // Hapus data sesi lama
+        session()->forget('user');
+        session()->forget('alamat');
+
+        // Tetapkan data pengguna dan alamat yang diperbarui dalam sesi
+        session(['user' => $user]);
+        session(['alamat' => $user->alamat]);
 
         return redirect()->route('ProfilUserIndex')->with('success', 'Profil dan alamat berhasil diperbarui');
     }
