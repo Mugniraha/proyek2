@@ -33,6 +33,7 @@ use App\Http\Controllers\DaftarPesananController;
 use App\Http\Controllers\LoginAdminController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\bahanController;
+use App\Http\Controllers\PembayaranController;
 
 
 
@@ -120,8 +121,7 @@ Route::put('/formOrder/{id}', [formJSController::class, 'update'])->name('formOr
 Route::get('/serviceUser', [serviceBaruController::class, 'serviceBaruIndex'])->name('serviceBaruIndex');
 Route::resource('/costumproduk', CostumProdukController::class);
 Route::get('/costumproduk/{idProduk}', [CostumProdukController::class, 'show'])->name('costumproduk.index');
-// Route::post('/costumproduk', [CostumProdukController::class, 'index'])->name('costumproduk.index');
-Route::post('/costumproduk/payment', [CostumprodukController::class, 'payment'])->name('costumproduk.payment');
+Route::resource('/pembayaran', PembayaranController::class);
 Route::get('/daftarpesanan', [DaftarPesananController::class, 'index'])->name('daftarpesanan.index');
 Route::get('/riwayat', [DaftarPesananController::class, 'riwayat'])->name('daftarpesanan.riwayat');
 Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');

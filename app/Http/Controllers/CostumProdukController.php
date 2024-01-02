@@ -22,16 +22,9 @@ class CostumProdukController extends Controller
         $produk = Produk::find($idProduk);
         return view('costumproduk.index', compact('produk'));
     }
-    public function payment()
-    {
-        // Implementasi method payment
-        // Misalnya, kembalikan view untuk halaman pembayaran
-        return view('costumproduk.payment');
-    }
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'namaProduk' => 'required',
             'pilihan_bahan' => 'required',
             'pilihan_warna' => 'required',
             'panjang' => 'required|numeric',
@@ -41,46 +34,42 @@ class CostumProdukController extends Controller
             'pengiriman' => 'required',
             'deskripsi' => 'nullable',
         ]);
-        $namaPesanan = $request->input('namaProduk');
+    
+        // Mengambil data dari request
+        $namaPesanan = $request->input('namaPesanan'); // Diambil dari form sebelumnya
         $warna = $request->input('pilihan_warna');
         $panjang = $request->input('panjang');
         $lebar = $request->input('lebar');
         $tinggi = $request->input('tinggi');
         $jumlahItem = $request->input('jumlahItem');
         $metodePengiriman = $request->input('pengiriman');
-        $bahan = $request->input('pilihan_bahan');
+        $idBahan = $request->input('pilihan_bahan');
         $tanggalPemesanan = Carbon::now();
         $idUser = Auth::id();
+    
+        // Mendapatkan harga bahan dari database berdasarkan pilihan bahan
+        $hargaBahan = Bahan::where('idBahan', $idBahan)->value('hargaBahan');
 
-        $hargaBahan = Bahan::where('idBahan', $bahan)->first()->harga;
+    // Logika penghitungan harga berdasarkan panjang, lebar, tinggi, dan harga bahan
+    $hargaPanjang = ceil($panjang / 100); // Menentukan harga panjang berdasarkan kondisi kelipatan
+    $hargaLebar = ceil($lebar / 100); // Menentukan harga lebar berdasarkan kondisi kelipatan
+    $hargaTinggi = ceil($tinggi / 100); // Menentukan harga tinggi berdasarkan kondisi kelipatan
 
-        // Hitung harga total berdasarkan panjang, lebar, tinggi, jumlah item, dan harga bahan
-        $hargaTotal = ($panjang + $lebar + $tinggi * $hargaBahan) * $jumlahItem;
+    // Mendapatkan biaya pengiriman dari tabel 'pengiriman' berdasarkan idPengiriman yang dipilih
+    $biayaPengiriman = Pengiriman::where('idPengiriman', $idPengiriman)->value('biayaPengiriman');
+
+    // Menghitung total harga sesuai dengan logika yang dijelaskan
+    $totalHarga = ($hargaBahan + ($hargaBahan * $hargaPanjang * $hargaLebar * $hargaTinggi) + $biayaPengiriman) * $jumlahItem;
     
-        // Logika penambahan harga tambahan jika panjang, lebar, dan tinggi lebih dari kelipatan 100
-        $tambahanHarga = 0;
-        if ($panjang % 100 == 0) {
-            $tambahanHarga += ($hargaBahan * 2);
-        }
-        if ($lebar % 100 == 0) {
-            $tambahanHarga += ($hargaBahan * 2);
-        }
-        if ($tinggi % 100 == 0) {
-            $tambahanHarga += ($hargaBahan * 2);
-        }
-        // Lanjutkan logika kelipatan 100 sesuai kebutuhan aplikasi Anda
+        // Membuat idPesanan dengan 8 karakter random
+        $idPesanan = substr(uniqid(), -8);
     
-        // Tambahkan harga tambahan ke harga total
-        $hargaTotal += $tambahanHarga;
-    
-        $idPesanan = substr(uniqid(), -8); // Membuat idPesanan dengan 8 karakter random
-        
-    
+        // Menyimpan data ke dalam model Costumbarang
         $costumbarang = new Costumbarang();
         $costumbarang->idPesanan = $idPesanan;
         $costumbarang->namaPesanan = $namaPesanan;
         $costumbarang->idUser = $idUser;
-        $costumbarang->bahan = $bahan;
+        $costumbarang->idBahan = $idBahan;
         $costumbarang->warna = $warna;
         $costumbarang->panjang = $panjang;
         $costumbarang->lebar = $lebar;
@@ -89,11 +78,12 @@ class CostumProdukController extends Controller
         $costumbarang->tanggalPemesanan = $tanggalPemesanan;
         $costumbarang->metodePengiriman = $metodePengiriman;
         $costumbarang->deskripsiPesanan = $request->input('deskripsi');
-        $costumbarang->totalHarga = $hargaTotal;
+        $costumbarang->totalHarga = $totalHarga;
     
         $costumbarang->save();
     
-        return redirect()->route('costumproduk.payment')->with('success', 'Data Berhasil Disimpan');
+        // Redirect ke halaman pembayaran dengan pesan sukses
+        return redirect()->route('pembayaran.index')->with('success', 'Data Berhasil Disimpan');
     }
     
 }

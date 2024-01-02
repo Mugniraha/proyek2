@@ -138,7 +138,7 @@
                         
                         
                         <div class="btn-right">
-                            <a href="{{ route('costumproduk.index') }}"><button class="btnagain">Order Lagi</button></a>
+                            <a href=""><button class="btnagain">Order Lagi</button></a>
                         </div>
                     </div>
                 </div>
