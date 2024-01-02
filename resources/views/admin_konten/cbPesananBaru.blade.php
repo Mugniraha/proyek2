@@ -10,7 +10,6 @@
     <thead>
         <tr>
             <th>No</th>
-            <th>Konfirmasi Pesanan</th>
             <th>Detail Pesanan</th>
             <th>Nomor Pesanan</th>
             <th>Detail Pemesan</th>
@@ -21,7 +20,7 @@
     </thead>
     <tbody>
         <tr>
-            <td>Tiger Nixon</td>
+            {{-- <td>1</td>
             <td>System Architect</td>
             <td>900909090</td>
             <td>Edinburgh</td>
@@ -29,9 +28,9 @@
             <td>61</td>
             <td>2011-04-25</td>
             <td>
-                <a href="#" type="button" class="btn btn-sm btn-success btn-primary w-50" data-bs-toggle="modal" data-bs-target="#edit">Terima</a>
-                <a  href="#" type="button" class="mt-2 btn btn-sm btn-danger btn-primary w-50" data-bs-toggle="modal" data-bs-target="#hapus">Tolak</a>
-            </td>
+                <a href="#" type="button" class="btn btn-sm btn-success btn-primary w-100" data-bs-toggle="modal" data-bs-target="#edit">Terima</a>
+                <a  href="#" type="button" class="mt-2 btn btn-sm btn-danger btn-primary w-100" data-bs-toggle="modal" data-bs-target="#hapus">Tolak</a>
+            </td> --}}
         </tr>
         <div class="modal fade modal-dialog-scrollable text-start" id="edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">

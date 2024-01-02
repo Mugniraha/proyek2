@@ -15,7 +15,7 @@
             <div class="card shadow rounded">
                 <div class="card-body text-center">
                     <h5 class="card-title">Pesanan Baru</h5>
-                    <p>76</p>
+                    <p>4</p>
                 </div>
             </div>
         </div>
@@ -23,7 +23,7 @@
             <div class="card shadow rounded">
                 <div class="card-body text-center">
                     <h5 class="card-title">Siap Dikirim</h5>
-                    <p>76</p>
+                    <p>0</p>
                 </div>
             </div>
         </div>
@@ -31,7 +31,7 @@
             <div class="card shadow rounded">
                 <div class="card-body text-center">
                     <h5 class="card-title">Ulasan Baru</h5>
-                    <p>76</p>
+                    <p>0</p>
                 </div>
             </div>
         </div>
@@ -56,7 +56,7 @@
             <div class="card shadow rounded">
                 <div class="card-body text-center">
                     <h5 class="card-title">Ulasan Baru</h5>
-                    <p>76</p>
+                    <p>0</p>
                 </div>
             </div>
         </div>

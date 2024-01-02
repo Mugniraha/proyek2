@@ -21,7 +21,7 @@
                 <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 " style="background-color:">
                     <div class="sidebar d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 min-vh-100 text-white shadow">
                         <a href="/" class=" d-flex  align-items-center pb-3 mb-md-0 me-md-auto text-dark text-decoration-none  w-100 rounded rounded-pill shadow" style="background-color:#D9D9D9">
-                            <img class="align-items-center ms-4 mt-3" src="{{asset('img/logo.png')}}" alt="" width="25%">
+                            <img class="align-items-center ms-4 mt-3" src="{{asset('images/logo welding .png')}}" alt="" width="25%">
                             <span class="d-none fw-bolder d-sm-block mt-3 ms-2" style="color:#303947 ">Bengkel Welding</span>
                         </a>
                         <ul class="nav nav-pills flex-column mt-4 mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
@@ -156,14 +156,8 @@
 
                         </ul>
                         <hr>
-                        <div class="dropdown mb-4 border p-2 rounded">
-                            <a href="#" class="d-flex align-items-center text-white text-decoration-none" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                                <span class="d-none d-sm-inline mx-1">Admin Utama</span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-light text-small shadow">
-                                <li><a class="dropdown-item" href="{{ route('logout') }}">Sign out</a></li>
-                            </ul>
+                        <div class="mb-4 w-100">
+                            <a href="{{ route('logout') }}" type="button" class="btn shadow w-100" style="background-color:#4C6687;color:white"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
                         </div>
                     </div>
                 </div>

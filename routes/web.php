@@ -64,6 +64,7 @@ Route::get('/registerAdmin', [LoginAdminController::class, 'registerAdminIndex']
 Route::post('/registerAdmin', [LoginAdminController::class, 'registerAdminPost'])->name('registerAdminPost');
 Route::get('/loginAdmin', [LoginAdminController::class, 'loginAdminIndex'])->name('loginAdminIndex');
 Route::post('/loginAdmin', [LoginAdminController::class, 'loginAdminPost'])->name('loginAdminPost');
+Route::put('/ubahpw', [LoginAdminController::class, 'changePassword'])->name('changePassword');
 Route::get('/logout', [LoginAdminController::class, 'logout'])->name('logout');
 
 
@@ -127,7 +128,6 @@ Route::resource('/pengiriman', pengirimanController::class);
 Route::get('/jsPesananBaru/{id}/terima', [jaserPesananBaruController::class, 'terimaPesanan'])->name('terimaPesanan');
 Route::get('/jsPesananBaru/{id}/tolak', [jaserPesananBaruController::class, 'tolakPesanan'])->name('tolakPesanan');
 Route::get('/jsDalamProses/{id}',[jaserDalamProsesController::class, 'selesai'])->name('selesai');
-
 
 
 

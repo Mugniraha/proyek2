@@ -13,7 +13,6 @@
             <th>Nama customer</th>
             <th>Detail pesanan</th>
             <th>status</th>
-            <th>Ulasan</th>
         </tr>
     </thead>
     <tbody>
@@ -61,14 +60,6 @@
                     <a href="#" class="btn btn-sm btn-success w-100" disabled>Selesai</a>
                     @elseif ($row->status === 'ditolak')
                     <a href="#" class="btn btn-sm btn-danger w-100" disabled>Ditolak</a>
-                    @else
-                    @endif
-                </td>
-                <td>
-                    @if($row->status === 'Selesai')
-                        <a href="#" class="btn btn-sm w-100 text-white" style="background-color:#4C6687;" data-bs-toggle="modal" data-bs-target="#ulasan">Balas Ulasan</a>
-                    @elseif($row->status === 'ditolak')
-                        <button class="btn btn-sm w-100 text-white" style="background-color:#4C6687;" disabled>Balas Ulasan</button>
                     @else
                     @endif
                 </td>
