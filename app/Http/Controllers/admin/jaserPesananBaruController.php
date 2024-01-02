@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Str;
 use App\Models\formjs;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -16,9 +17,12 @@ class jaserPesananBaruController extends Controller
      */
     public function index()
     {
+        // $slug = "jsPesananbaru";
+        // $jasaServis = DB::table('jasa_service')->get();
+        // return view("admin_konten.jsPesananBaru", compact("slug","jasaServis"));
         $slug = "jsPesananbaru";
-        $jasaServis = DB::table('jasa_service')->get();
-        return view("admin_konten.jsPesananBaru", compact("slug","jasaServis"));
+        $jasaServis = Formjs::with('User')->where('status', 'Menunggu Proses')->get();
+        return view("admin_konten.jsPesananBaru", compact("slug", "jasaServis"));
     }
 
     public function terimaPesanan($idJasa)

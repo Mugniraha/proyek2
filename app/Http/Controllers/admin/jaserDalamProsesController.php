@@ -17,8 +17,8 @@ class jaserDalamProsesController extends Controller
     public function index()
     {
         $slug = "jsDalamproses";
-        $jasaServis = DB::table('jasa_service')->get();
-        return view("admin_konten.jsDalamProses", compact("slug","jasaServis"));
+        $jasaServis = Formjs::with('User')->get();
+        return view("admin_konten.jsDalamProses", compact("slug", "jasaServis"));
     }
 
     public function selesai($idJasa){

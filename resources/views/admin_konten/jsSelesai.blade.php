@@ -23,7 +23,7 @@
         @foreach ($jasaServis as $row)
             <tr>
                 <td>{{$nomor++}}</td>
-                <td>{{$row->namaJasa}}</td>
+                <td>{{$row->user->username}}</td>
                 <td>
                     <div class="card shadow p-2">
                         <table style="width: 100%; table-layout: fixed;">

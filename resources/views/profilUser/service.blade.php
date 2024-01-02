@@ -41,7 +41,7 @@
 			<div class="awalan">
 				Apakah Anda sedang mencari solusi profesional untuk pemasangan, perbaikan, atau pemeliharaan gerbang rumah Anda? Sebagai penyedia jasa pelayanan gerbang rumah yang berpengalaman, kami memahami betapa pentingnya keamanan dan kenyamanan rumah bagi Anda. Kami hadir dengan tim teknisi yang terampil, berkomitmen untuk memberikan layanan berkualitas tinggi, dan siap menjaga performa optimal gerbang rumah Anda.
 
-<br><br> Dengan fokus pada kepuasan pelanggan, kami tidak hanya menawarkan layanan pemasangan dan perbaikan yang presisi, tetapi juga menyediakan pemeliharaan rutin guna memastikan fungsi optimal gerbang rumah Anda. Percayakan kepada kami untuk menjadi mitra yang dapat diandalkan dalam memenuhi berbagai kebutuhan terkait gerbang rumah Anda, sehingga Anda dapat merasa tenang dan yakin bahwa properti Anda terjaga dengan baik.
+                <br><br> Dengan fokus pada kepuasan pelanggan, kami tidak hanya menawarkan layanan pemasangan dan perbaikan yang presisi, tetapi juga menyediakan pemeliharaan rutin guna memastikan fungsi optimal gerbang rumah Anda. Percayakan kepada kami untuk menjadi mitra yang dapat diandalkan dalam memenuhi berbagai kebutuhan terkait gerbang rumah Anda, sehingga Anda dapat merasa tenang dan yakin bahwa properti Anda terjaga dengan baik.
 			</div>
 		</div>
         </section>

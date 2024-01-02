@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
-class bahanController extends Controller
+class pengirimanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +17,9 @@ class bahanController extends Controller
     public function index()
     {
         //
-        $slug = "bahan";
-        $bahan = DB::table('bahan')->get();
-        return view('admin_konten.kelolaHargaBahan',compact('slug','bahan'));
+        $pengiriman = DB::table('pengiriman')->get();
+        $slug = "pengiriman";
+        return view('admin_konten.pengiriman', compact('pengiriman','slug'));
     }
 
     /**
@@ -37,15 +37,15 @@ class bahanController extends Controller
     {
         //
         $this->validate($request,[
-            'namaBahan'  => 'required',
-            'hargaBahan' => 'required',
+            'jenisPengiriman' => 'required',
+            'biayaPengiriman' => 'required',
         ]);
-        DB::table('bahan')->insert([
-            'namaBahan'  => $request->namaBahan,
-            'hargaBahan' => $request->hargaBahan,
+        DB::table('pengiriman')->insert([
+            'jenisPengiriman' => $request->jenisPengiriman,
+            'biayaPengiriman' => $request->biayaPengiriman,
         ]);
 
-        return redirect('/bahan')->with(['success' => 'Harga Berhasil ditambah']);
+        return redirect('/pengiriman')->with(['success'=>'Berhasil Menambah Pengiriman']);
     }
 
     /**
@@ -69,18 +69,16 @@ class bahanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //untuk validasi
+        //
         $this->validate($request,[
-            'namaBahan'  => 'required',
-            'hargaBahan' => 'required',
+            'jenisPengiriman' => 'required',
+            'biayaPengiriman' => 'required',
         ]);
-        DB::table('bahan')->where('idBahan',$id)->update([
-            'namaBahan'  => $request->namaBahan,
-            'hargaBahan' => $request->hargaBahan,
-
+        DB::table('pengiriman')->where('idPengiriman',$id)->update([
+            'jenisPengiriman' => $request->jenisPengiriman,
+            'biayaPengiriman' => $request->biayaPengiriman,
         ]);
-
-        return redirect('/bahan')->with(['success' => 'Harga Berhasil diupdate']);
+        return redirect('/pengiriman')->with(['success'=> 'Berhasil diupdate']);
     }
 
     /**
@@ -89,7 +87,7 @@ class bahanController extends Controller
     public function destroy(string $id)
     {
         //
-        DB::table('bahan')->where('idBahan', $id)->delete();
-        return redirect('/bahan')->with(['success' => 'Berhasil dihapus']);
+        DB::table('pengiriman')->where('idPengiriman', $id)->delete();
+        return redirect('/pengiriman')->with(['success' => 'Berhasil dihapus']);
     }
 }

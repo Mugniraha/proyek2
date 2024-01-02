@@ -40,17 +40,39 @@
                                     <i class="fa-regular fa-image {{($slug === "galeri") ? 'active' : ''}}" style="color: #f6f1db;"></i></i> <span class="ms-1 d-none d-sm-inline ">Kelola Produk</span>
                                 </a>
                             </li>
-                            <li class="nav-item ">
-                                <a href="{{ url('/bahan')}}" class="nav-link align-middle px-0">
-                                    <i class="fa-regular fa-image {{($slug === "bahan") ? 'active' : ''}}" style="color: #f6f1db;"></i></i> <span class="ms-1 d-none d-sm-inline ">Kelola Harga Bahan</span>
-                                </a>
+                            <li>
+                                <ul class="nav flex-column" id="menu">
+                                    <li class="nav-item">
+                                        <a href="#submenu" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                            <i class="fa-solid fa-sliders" style="color: #f6f1db;"></i>
+                                            <span class="ms-1 d-none d-sm-inline">Kelola Custom Barang</span>
+                                        </a>
+                                        <div class="collapse" id="submenu">
+                                            <ul class="nav flex-column ms-1">
+                                                <li class="w-100">
+                                                    <a href="{{ url('/bahan')}}" class="nav-link align-middle px-0">
+                                                        <i class="fa-solid fa-barcode {{($slug === "bahan") ? 'active' : ''}}" style="color: #f6f1db;"></i><span class="ms-1 d-none d-sm-inline ">Kelola Harga Bahan</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ url('/pengiriman') }}" class="nav-link {{ ($slug === 'jsDalamProses') ? 'active' : '' }} px-0">
+                                                        <i class="fa-solid fa-truck" style="color: #f6f1db;"></i>
+                                                        <span class="d-none d-sm-inline text-white">Kelola Pengiriman</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
                             </li>
+
+
                             <li>
                                 <ul class="nav flex-column" id="menu">
                                     <li class="nav-item">
                                         <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                            <i class="fa-solid fa-sliders" style="color: #f6f1db;"></i>
-                                            <span class="ms-1 d-none d-sm-inline">Kelola Jasa Service</span>
+                                            <i class="fa-solid fa-cart-shopping" style="color: #f6f1db;"></i>
+                                            <span class="ms-1 d-none d-sm-inline">Pesanan Jasa Service</span>
                                         </a>
                                         <div class="collapse" id="submenu1">
                                             <ul class="nav flex-column ms-1">
@@ -65,7 +87,7 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ url('/jsSelesai') }}" class="nav-link {{ ($slug === 'jsSelesai') ? 'active' : '' }} px-0">
+                                                    <a href="{{ url('/jsSelesai') }}" class="nav-link px-0">
                                                         <span class="d-none d-sm-inline text-white">Selesai</span>
                                                     </a>
                                                 </li>
@@ -79,8 +101,8 @@
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
                                         <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                            <i class="fa-solid fa-sliders" style="color: #f6f1db;"></i>
-                                            <span class="ms-1 d-none d-sm-inline">Kelola Custom Barang</span>
+                                            <i class="fa-solid fa-cart-shopping" style="color: #f6f1db;"></i>
+                                            <span class="ms-1 d-none d-sm-inline">Pesanan Custom Barang</span>
                                         </a>
                                         <div class="collapse" id="submenu2" data-bs-parent="#menu">
                                             <ul class="nav flex-column ms-1">

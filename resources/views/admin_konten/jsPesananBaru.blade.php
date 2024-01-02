@@ -29,7 +29,7 @@
 
         <tr>
             <td>{{$no++}}</td>
-            <td>{{$row->namaJasa}}</td>
+            <td>{{$row->user->username}}</td>
             <td>{{$row->kategoriJasa}}</td>
             <td>{{$row->deskripsiJasa}}</td>
             <td>{{$row->alamat}}</td>

@@ -70,7 +70,7 @@
                             <div class="mb-3">
                                 <label for="formGroupExampleInput2" class="form-label">Kategori</label>
                                 <select class="form-select" name="kategori" aria-label="Default select example">
-                                    <option selected value="">{{$row->kategori}}</option>
+                                    <option selected value="{{$row->kategori}}">{{$row->kategori}}</option>
                                     <option value="Meja">Meja</option>
                                     <option value="Kursi">Kursi</option>
                                     <option value="Tangga">Tangga</option>
@@ -81,12 +81,12 @@
                             </div>
                             <div class="mb-3">
                                 <label for="formGroupExampleInput2" class="form-label">Nama Produk</label>
-                                <input type="text" class="form-control" id="formGroupExampleInput2" name="namaProduk" placeholder="" value=" {{$row->namaProduk}}">
+                                <input type="text" class="form-control" id="formGroupExampleInput2" name="namaProduk"  value=" {{$row->namaProduk}}">
                             </div>
                             <div class="mb-3">
                                 <label for="formGroupExampleInput2" class="form-label">Bahan</label>
                                 <select class="form-select" name="bahan" aria-label="Default select example">
-                                    <option selected>{{$row->bahan}}</option>
+                                    <option selected value="{{$row->bahan}}">{{$row->bahan}}</option>
                                     <option value="Alumunium">Alumunium</option>
                                     <option value="Besi">Besi</option>
                                     <option value="Baja Ringan">Baja Ringan</option>
@@ -94,7 +94,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="formGroupExampleInput2" class="form-label">Warna</label>
-                                <input type="text" class="form-control" id="formGroupExampleInput2" name="warna" placeholder="" value="{{$row->warna}} ">
+                                <input type="text" class="form-control" id="formGroupExampleInput2" name="warna"  value="{{$row->warna}} ">
                             </div>
                             <div class="row gx-3 mb-3 gy-2 align-items-center">
                                 <label for="formGroupExampleInput2" class="form-label">Dimensi</label>
@@ -119,11 +119,11 @@
                             </div>
                             <div class="mb-3">
                                 <label for="formGroupExampleInput2" class="form-label">Deskripsi</label>
-                                <textarea class="form-control" id="formGroupExampleInput2" name="deskripsi_produk" placeholder="" value="">{{$row->deskripsi_produk}}</textarea>
+                                <textarea class="form-control" id="formGroupExampleInput2" name="deskripsi_produk"  >{{$row->deskripsi_produk}}</textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="formGroupExampleInput2" class="form-label">Harga</label>
-                                <input type="number" class="form-control" id="formGroupExampleInput2" name="harga" placeholder="" value="{{$row->harga}}">
+                                <input type="number" class="form-control" id="formGroupExampleInput2" name="harga"  value="{{$row->harga}}">
                             </div>
                             </div>
                             <div class="modal-footer">
