@@ -20,6 +20,7 @@
             $nomor = 1;
         @endphp
         @foreach ($jasaServis as $row)
+        @if ($row->status === 'Selesai' || $row->status === 'ditolak')
             <tr>
                 <td>{{$nomor++}}</td>
                 <td>{{$row->namaJasa}}</td>
@@ -64,6 +65,7 @@
                     @endif
                 </td>
             </tr>
+        @endif
         @endforeach
     </tbody>
 </table>
