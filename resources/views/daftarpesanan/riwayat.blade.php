@@ -52,7 +52,7 @@
                                     <td></td>
                                 </tr>
                             </table>
-                        </div>                        
+                        </div>
                         <div class="right-col">
                             <h5><i>Total Harga : </i>RP. 200.000</h5>
                         </div>
@@ -63,7 +63,7 @@
                                 Progres Barang
                             </button>
                             <div class="dropdown-menu" aria-labelledby="toggleButton" style="background-color: #f4f5f7">
-                                <div class="card-progres" id="cardProgres">                                  
+                                <div class="card-progres" id="cardProgres">
                                     <table class="progres-barang">
                                         <thead>
                                             <tr>
@@ -111,19 +111,19 @@
                                         </tbody>
                                     </table>
                                 </div>
-                            </div>                            
+                            </div>
                         </div>
                         <script>
                             document.addEventListener("DOMContentLoaded", function() {
                                 // Dapatkan elemen tombol dan card-progres
                                 const toggleButton = document.getElementById('toggleButton');
                                 const cardProgres = document.getElementById('cardProgres');
-                        
+
                                 // Tambahkan event listener untuk menampilkan card-progres saat tombol diklik
                                 toggleButton.addEventListener('click', function() {
                                     // Cek apakah card-progres sedang ditampilkan
                                     const isCardVisible = cardProgres.classList.contains('show');
-                        
+
                                     // Toggle tampilan card-progres berdasarkan kondisi saat ini
                                     if (!isCardVisible) {
                                         // Tampilkan card-progres
@@ -135,10 +135,10 @@
                                 });
                             });
                         </script>
-                        
-                        
+
+
                         <div class="btn-right">
-                            <a href="{{ route('costumproduk.index') }}"><button class="btnagain">Order Lagi</button></a>
+                            <a href=""><button class="btnagain">Order Lagi</button></a>
                         </div>
                     </div>
                 </div>

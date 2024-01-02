@@ -120,9 +120,6 @@
                     <li class="list-group-item"><a href="{{ route('serviceBaruIndex') }}">
                         <span class="fa fa-circle pr-1" id="daftarpesanan"></span>Service
                     </a></li>
-                    <li class="list-group-item"><a href="{{ route('listService') }}">
-                        <span class="fa fa-circle pr-1" id="listservice"></span>List Pesanan Service
-                    </a></li>
                     <li class="list-group-item"><a href="{{ route('daftarpesanan.index') }}">
                         <span class="fa fa-circle pr-1" id="daftarpesanan"></span>Daftar Pesanan
                     </a></li>

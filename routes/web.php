@@ -87,9 +87,7 @@ Route::put('/kelolaUser/{id}', 'buatAkunController@update')->name('update_user')
 
 Route::get('/notifikasi', [NotifikasiController::class, 'NotifikasiIndex'])->name('NotifikasiIndex');
 Route::get('/konfirmasi', [NotifikasiController::class, 'KonfirmasiIndex'])->name('KonfirmasiIndex');
-Route::get('/formOrder', [formJsController::class, 'index'])->name('index');
 Route::resource('/formOrder', formJsController::class,  );
-Route::post('/store', [formJsController::class, 'store'])->name('store');
 Route::put('/formOrder/{id}', [formJSController::class, 'update'])->name('formOrder.update');
 Route::get('/serviceUser', [serviceBaruController::class, 'serviceBaruIndex'])->name('serviceBaruIndex');
 Route::get('/listserviceUser', [serviceBaruController::class, 'listService'])->name('listService');
@@ -97,6 +95,7 @@ Route::post('/costumproduk/{id_produk}', [CostumProdukController::class, 'index'
 Route::get('/costumproduk/payment', [CostumprodukController::class, 'payment'])->name('costumproduk.payment');
 Route::get('/daftarpesanan', [DaftarPesananController::class, 'index'])->name('daftarpesanan.index');
 Route::get('/riwayat', [DaftarPesananController::class, 'riwayat'])->name('daftarpesanan.riwayat');
+Route::get('/riwayatService', [DaftarPesananController::class, 'riwayatService'])->name('daftarpesanan.riwayatService');
 Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
 
 

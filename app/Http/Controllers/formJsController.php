@@ -14,19 +14,12 @@ class formJsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    // public function index()
-    // {
-    //     $slug = "jasa_service";
-    //     $form_js = DB::table('jasa_service')->get();
-    //     return view('jasaService_User.formulir', compact('slug','form_js'));
-    // }
     public function index()
     {
         $slug = "jasa_service";
-        $form_js = Formjs::all();
-        return view('jasaService_User.formulir', compact('slug', 'form_js'));
+        $form_js = DB::table('jasa_service')->get();
+        return view('jasaService_User.formulir', compact('slug','form_js'));
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -41,17 +34,13 @@ class formJsController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'namaJasa' => 'required',
-            'deskripsiJasa' => 'required',
-            'harga' => 'required',
-            'kategoriJasa' => 'required',
-            'kategorijasa' => 'required',
-            'kategoriJasa' => 'required',
-            'deskripsiJasa' => 'required',
-            'alamat' => 'required',
-            'tanggal' => 'required',
-        ]);
+        // $request->validate([
+        //     'namaJasa' => 'required',
+        //     'kategorijasa' => 'required',
+        //     'deskripsiJasa' => 'required',
+        //     'alamat' => 'required',
+        //     'tanggal' => 'required',
+        // ]);
         $userId = Auth::id();
 
         $dataPesanan = $request->all();
@@ -84,19 +73,19 @@ class formJsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate([
-            'nama' => 'required',
-            'telpon' => 'required',
-            'jenisJasa' => 'required',
-            'deskripsi' => 'required',
-            'alamat' => 'required',
-            'tanggal' => 'required',
-        ]);
+        // $request->validate([
+        //     'nama' => 'required',
+        //     'telpon' => 'required',
+        //     'jenisJasa' => 'required',
+        //     'deskripsi' => 'required',
+        //     'alamat' => 'required',
+        //     'tanggal' => 'required',
+        // ]);
 
         $formJS = Formjs::find($id);
         $formJS->update($request->all());
 
-        return redirect()->route('serviceBaruIndex')->with('success', 'Data berhasil diperbarui!');
+        return redirect()->route('nama_rote_index')->with('success', 'Data berhasil diperbarui!');
     }
 
     /**
