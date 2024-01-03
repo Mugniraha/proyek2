@@ -59,11 +59,17 @@
     margin: 5px 0; 
     line-height: 1; 
 }
-.price h3,h4{
+.price h2{
     font-weight: bold;
+    color: #333;
+    
 }
 .price{
     margin-top: 70px;
+}
+.price h3{
+    color: #71c14c;
+    font-weight: bold;
 }
 
 .card-right form {
@@ -95,6 +101,19 @@
     border-color: #fdea97;
     box-shadow: 0 0 5px rgba(252, 177, 15, 0.5);
 }
+.inputProduk{
+    padding: 5px;
+    width: 100%;
+}
+.inputProduk input{
+    padding: 5px;
+    width: 100%;
+    background-color: #ffffff !important;
+    color: white !important;
+    border: none !important;
+    font-weight: bold;
+}
+
 .input1{
     display: flex;
     gap: 10px;
@@ -110,12 +129,53 @@
     display: flex;
     gap: 10px;
     padding: 5px;
+    align-items: center;
+    height: 60px;
+    padding-top: 100px;
+    
+}
+.input2 .mb-3{
+    margin-top: 10px !important;
+}
+.input2 .mb-4{
+    margin-top: 15px !important;
+}
+.input2 .mb-3 {
+    display: grid;
+    align-items: center;
+    padding: 5px;
+    width: 100%;
+    margin-top: 10px;
+}
+.input2 .mb-3 table td{
+    align-items: center;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 12px;
+    padding-bottom: 5px;
+}
+
+
+.input2 .mb-4{
+    gap: 10px;
+    padding: 5px;
+    width: 50%;
+    padding-top: 10px;
 }
 .input2 label{
     color: #ffffff;
 }
 .input2 .mb-3 input{
+    width: 70%;
+    height: 40px;
+}
+.input2 .mb-3 .form-select{
     width: 100%;
+    height: 40px;
+}
+.input2 .mb-3 .form-control{
+    width: 100%;
+    height: 15px;
 }
 .size{
     display: flex;
@@ -138,17 +198,22 @@
 .input2 label{
     color: #ffffff;
 }
+.inputAlamat input{
+    padding: 5px;
+    width: 100%;
+}
 .input3 label{
     color: #ffffff;
     margin-left: 5px;
 }
 .input3{
+    width: 100%;
     padding-left: 5px;
     padding-right: 5px;
 }
 textarea.form-control {
     width: 80%;
-    height: 90px;
+    height: 50px;
     padding: 5px;
     font-size: 14px;
     border-radius: 5px;
@@ -156,6 +221,34 @@ textarea.form-control {
     resize: vertical; 
     margin-left: 5px;
 }
+td.labelharga label{
+    color: #fcf2c5;
+}
+td.labelharga{
+    background-color: #4C6687;
+}
+td.totalharga input{
+    background-color: #ffffff !important;
+    color: white;
+    border-radius: 0 !important;
+    border: none !important;
+    width: 150px;
+    
+    
+}
+.totalharga input::placeholder {
+    color: #44403B; /* Ganti dengan warna hijau yang diinginkan */
+    font-size: 16px;
+}
+td.totalharga{
+    background-color: white;
+    display: flex;
+    color: #44403B;
+    font-style: italic;
+    padding-left: 5px;
+    align-items: center;
+}
+
 
 /* Menyesuaikan tampilan textarea saat di-focus */
 textarea.form-control:focus {

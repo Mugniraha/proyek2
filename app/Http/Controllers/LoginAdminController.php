@@ -60,11 +60,36 @@ class LoginAdminController extends Controller
     return back()->with('error', 'Email or Password salah');
 }
 
+public function changePassword(Request $request, $id)
+    {
+        // Validate the request
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|min:8', // You can adjust the minimum length as needed
+        ]);
+
+        // Find the admin by ID
+        $admin = Admin::findOrFail($id);
+
+        // Check if the old password matches
+        if (!Hash::check($request->old_password, $admin->password)) {
+            return redirect()->back()->with('error', 'Incorrect old password. Please try again.');
+        }
+
+        // Update the password
+        $admin->password = Hash::make($request->new_password);
+        $admin->save();
+
+        // Redirect with success message
+        return redirect()->back()->with('success', 'Password updated successfully.');
+    }
+
+
+
 public function logout(){
     Auth::logout();
     return view('homeAwal.index');
 }
-
 
 
     /**

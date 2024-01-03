@@ -33,6 +33,9 @@ use App\Http\Controllers\DaftarPesananController;
 use App\Http\Controllers\LoginAdminController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\bahanController;
+use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\pengirimanController;
+
 
 
 
@@ -63,7 +66,12 @@ Route::get('/registerAdmin', [LoginAdminController::class, 'registerAdminIndex']
 Route::post('/registerAdmin', [LoginAdminController::class, 'registerAdminPost'])->name('registerAdminPost');
 Route::get('/loginAdmin', [LoginAdminController::class, 'loginAdminIndex'])->name('loginAdminIndex');
 Route::post('/loginAdmin', [LoginAdminController::class, 'loginAdminPost'])->name('loginAdminPost');
+<<<<<<< HEAD
 Route::get('/lupaPassAdmin', [ChangePasswordController::class, 'editAdmin'])->name('editPassAdmin');
+=======
+// Route::put('/ubahpw', [LoginAdminController::class, 'changePassword'])->name('changePassword');
+Route::put('/admin/{idAdmin}/change-password', [LoginAdminController::class, 'changePassword'])->name('changePassword');
+>>>>>>> 23f680b71ac630b86ed97fa0d9c7a0f3f80e469f
 Route::get('/logout', [LoginAdminController::class, 'logout'])->name('logout');
 
 
@@ -75,7 +83,16 @@ Route::resource('/buatAkun', buatAkunController::class );
 Route::get('/profilUser', [ProfilUserController::class, 'ProfilUserIndex'])->name('ProfilUserIndex');
 Route::put('/profil/update', [ProfilUserController::class, 'updateProfileAndAddress'])
     ->name('updateProfileAndAddress');
+Route::post('/update-address', [ProfilUserController::class, 'updateAddress'])->name('updateAddress');
+Route::get('/profilUser/editProfile', [ProfilUserController::class, 'editProfileForm'])->name('editProfileForm');
+Route::put('/profilUser/updateProfile', [ProfilUserController::class, 'updateProfile'])->name('updateProfile');
+Route::get('/profilUser/editAddress', [ProfilUserController::class, 'editAddressForm'])->name('editAddressForm');
+Route::prefix('profil')->group(function () {
+Route::put('/update-foto', [UpdateProfilController::class, 'updateFoto'])->name('updateFoto');
+});
+
 Route::post('/profil/update-foto', [UpdateProfilController::class, 'updateFoto'])->name('updateFotoProfil');
+
 
 Route::get('/buatAkun', [buatAkunController::class, 'index'])->name('index');
 
@@ -91,9 +108,17 @@ Route::get('/konfirmasi', [NotifikasiController::class, 'KonfirmasiIndex'])->nam
 Route::resource('/formOrder', formJsController::class,  );
 Route::put('/formOrder/{id}', [formJSController::class, 'update'])->name('formOrder.update');
 Route::get('/serviceUser', [serviceBaruController::class, 'serviceBaruIndex'])->name('serviceBaruIndex');
+Route::resource('/costumproduk', CostumProdukController::class);
+Route::get('/costumproduk/{idProduk}', [CostumProdukController::class, 'show'])->name('costumproduk.index');
+Route::resource('/pembayaran', PembayaranController::class);
+Route::get('/pembayaran/{idPesanan}/{idProduk}/{idPengiriman}/{idBahan}', [PembayaranController::class, 'showData'])->name('pembayaran.index');
 Route::get('/listserviceUser', [serviceBaruController::class, 'listService'])->name('listService');
-Route::post('/costumproduk/{id_produk}', [CostumProdukController::class, 'index'])->name('costumproduk.index');
-Route::get('/costumproduk/payment', [CostumprodukController::class, 'payment'])->name('costumproduk.payment');
+Route::post('/costumproduk/{idProduk}', [CostumProdukController::class, 'index'])->name('costumproduk.index');
+
+
+
+
+
 Route::get('/daftarpesanan', [DaftarPesananController::class, 'index'])->name('daftarpesanan.index');
 Route::get('/riwayat', [DaftarPesananController::class, 'riwayat'])->name('daftarpesanan.riwayat');
 Route::get('/riwayatService', [DaftarPesananController::class, 'riwayatService'])->name('daftarpesanan.riwayatService');
@@ -123,10 +148,10 @@ Route::resource('/dashboard', dashboardController::class);
 Route::resource('/bantuan', bantuanController::class);
 Route::resource('/profil', profilAdminController::class);
 Route::resource('/bahan', bahanController::class);
+Route::resource('/pengiriman', pengirimanController::class);
 Route::get('/jsPesananBaru/{id}/terima', [jaserPesananBaruController::class, 'terimaPesanan'])->name('terimaPesanan');
 Route::get('/jsPesananBaru/{id}/tolak', [jaserPesananBaruController::class, 'tolakPesanan'])->name('tolakPesanan');
 Route::get('/jsDalamProses/{id}',[jaserDalamProsesController::class, 'selesai'])->name('selesai');
-
 
 
 

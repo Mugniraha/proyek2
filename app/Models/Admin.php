@@ -20,7 +20,9 @@ class Admin extends Model
      * @var array<int, string>
      */
     protected $table = 'admin';
+    protected $primaryKey = 'idAdmin';
     protected $fillable = [
+        'idAdmin',
         'namaAdmin',
         'alamatAdmin',
         'emailAdmin',
@@ -33,7 +35,6 @@ class Admin extends Model
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
         'remember_token',
     ];
 
@@ -54,6 +55,8 @@ class Admin extends Model
      * @param  string  $newPassword
      * @return bool
      */
+
+
     public function changePassword($oldPassword, $newPassword)
     {
         // Pastikan password lama sesuai

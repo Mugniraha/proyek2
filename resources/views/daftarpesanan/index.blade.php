@@ -3,10 +3,14 @@
         <section id="productspes">
             <div class="btn-top">
                 <a href="{{ route('daftarpesanan.riwayat') }}"><button class="btnriwayat">Riwayat Pesanan</button></a>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 23f680b71ac630b86ed97fa0d9c7a0f3f80e469f
                 <a href="{{ route('daftarpesanan.riwayatService') }}"><button class="btnriwayat">Riwayat Service</button></a>
                 <hr>
             </div>
-
+        @foreach($dataPesanan as $pesanan)
         <div class="container">
             <div class="row">
                 <div class="cardpes">
@@ -17,54 +21,29 @@
                         <div class="right-text">
                             <p>Status Pesnan</p>
                             <div class="vertical-line"></div>
-                            <p>Detail Pesnan</p>
+                            <p class="idpesanan">{{ $pesanan->idPesanan }}</p>
                         </div>
                     </div>
                     <div class="card-center">
-                        <div class="left-col">
-                            <img class="card-img-left" src="images/" alt="Card image cap">
-                        </div>
                         <div class="center-col">
                             <table class="product-details">
                                 <tr>
-                                    <td>Dimensi Produk</td>
-                                    <td class="narrow-column">:</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td class="col-d">Panjang</td>
-                                    <td class="narrow-column">:</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td class="col-d">Lebar</td>
-                                    <td class="narrow-column">:</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td class="col-d">Tinggi</td>
-                                    <td class="narrow-column">:</td>
-                                    <td></td>
+                                    <td  class="colhead" colspan="3">{{ $pesanan->namaPesanan }}</td>
                                 </tr>
                                 <tr>
                                     <td>Warna</td>
                                     <td class="narrow-column">:</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Bahan Rangka</td>
-                                    <td class="narrow-column">:</td>
-                                    <td></td>
+                                    <td>{{ $pesanan->warna}}</td>
                                 </tr>
                                 <tr>
                                     <td>Jumlah Barang</td>
                                     <td class="narrow-column">:</td>
-                                    <td></td>
+                                    <td>{{ $pesanan->jumlahItem }}</td>
                                 </tr>
                                 <tr>
                                     <td>Total Harga</td>
                                     <td class="narrow-column">:</td>
-                                    <td></td>
+                                    <td>{{ $pesanan->totalHarga }}</td>
                                 </tr>
                             </table>
                         </div>
@@ -79,7 +58,7 @@
                                             <td class="status-payment" rowspan="2"><i>Sudah Dibayar</i></td>
                                         </tr>
                                         <tr>
-                                            <td>RP. 100.000</td>
+                                            <td>{{ $pesanan->totalHarga / 2 }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -90,7 +69,7 @@
                                         <tr>
                                             <td><i>Belum dibayar</i></td>
                                             <td>:</td>
-                                            <td class="pricefull"> RP. 100.000</td>
+                                            <td class="pricefull"> {{ $pesanan->totalHarga}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -185,4 +164,5 @@
                 </div>
             </div>
         </div>
+        @endforeach
         </section>

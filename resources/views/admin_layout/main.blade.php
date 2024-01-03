@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Joyo Royo</title>
+        <link rel="icon" type="image/png" href="{{asset('images/logo.ico')}}">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
@@ -21,7 +22,7 @@
                 <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 " style="background-color:">
                     <div class="sidebar d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 min-vh-100 text-white shadow">
                         <a href="/" class=" d-flex  align-items-center pb-3 mb-md-0 me-md-auto text-dark text-decoration-none  w-100 rounded rounded-pill shadow" style="background-color:#D9D9D9">
-                            <img class="align-items-center ms-4 mt-3" src="{{asset('img/logo.png')}}" alt="" width="25%">
+                            <img class="align-items-center ms-4 mt-3" src="{{asset('images/logo welding .png')}}" alt="" width="25%">
                             <span class="d-none fw-bolder d-sm-block mt-3 ms-2" style="color:#303947 ">Bengkel Welding</span>
                         </a>
                         <ul class="nav nav-pills flex-column mt-4 mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
@@ -40,17 +41,39 @@
                                     <i class="fa-regular fa-image {{($slug === "galeri") ? 'active' : ''}}" style="color: #f6f1db;"></i></i> <span class="ms-1 d-none d-sm-inline ">Kelola Produk</span>
                                 </a>
                             </li>
-                            <li class="nav-item ">
-                                <a href="{{ url('/bahan')}}" class="nav-link align-middle px-0">
-                                    <i class="fa-regular fa-image {{($slug === "bahan") ? 'active' : ''}}" style="color: #f6f1db;"></i></i> <span class="ms-1 d-none d-sm-inline ">Kelola Harga Bahan</span>
-                                </a>
+                            <li>
+                                <ul class="nav flex-column" id="menu">
+                                    <li class="nav-item">
+                                        <a href="#submenu" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                            <i class="fa-solid fa-sliders" style="color: #f6f1db;"></i>
+                                            <span class="ms-1 d-none d-sm-inline">Kelola Custom Barang</span>
+                                        </a>
+                                        <div class="collapse" id="submenu">
+                                            <ul class="nav flex-column ms-1">
+                                                <li class="w-100">
+                                                    <a href="{{ url('/bahan')}}" class="nav-link align-middle px-0">
+                                                        <i class="fa-solid fa-barcode {{($slug === "bahan") ? 'active' : ''}}" style="color: #f6f1db;"></i><span class="ms-1 d-none d-sm-inline ">Kelola Harga Bahan</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ url('/pengiriman') }}" class="nav-link {{ ($slug === 'jsDalamProses') ? 'active' : '' }} px-0">
+                                                        <i class="fa-solid fa-truck" style="color: #f6f1db;"></i>
+                                                        <span class="d-none d-sm-inline text-white">Kelola Pengiriman</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
                             </li>
+
+
                             <li>
                                 <ul class="nav flex-column" id="menu">
                                     <li class="nav-item">
                                         <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                            <i class="fa-solid fa-sliders" style="color: #f6f1db;"></i>
-                                            <span class="ms-1 d-none d-sm-inline">Kelola Jasa Service</span>
+                                            <i class="fa-solid fa-cart-shopping" style="color: #f6f1db;"></i>
+                                            <span class="ms-1 d-none d-sm-inline">Pesanan Jasa Service</span>
                                         </a>
                                         <div class="collapse" id="submenu1">
                                             <ul class="nav flex-column ms-1">
@@ -65,7 +88,7 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ url('/jsSelesai') }}" class="nav-link {{ ($slug === 'jsSelesai') ? 'active' : '' }} px-0">
+                                                    <a href="{{ url('/jsSelesai') }}" class="nav-link px-0">
                                                         <span class="d-none d-sm-inline text-white">Selesai</span>
                                                     </a>
                                                 </li>
@@ -79,8 +102,8 @@
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
                                         <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                            <i class="fa-solid fa-sliders" style="color: #f6f1db;"></i>
-                                            <span class="ms-1 d-none d-sm-inline">Kelola Custom Barang</span>
+                                            <i class="fa-solid fa-cart-shopping" style="color: #f6f1db;"></i>
+                                            <span class="ms-1 d-none d-sm-inline">Pesanan Custom Barang</span>
                                         </a>
                                         <div class="collapse" id="submenu2" data-bs-parent="#menu">
                                             <ul class="nav flex-column ms-1">
@@ -134,14 +157,8 @@
 
                         </ul>
                         <hr>
-                        <div class="dropdown mb-4 border p-2 rounded">
-                            <a href="#" class="d-flex align-items-center text-white text-decoration-none" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                                <span class="d-none d-sm-inline mx-1">Admin Utama</span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-light text-small shadow">
-                                <li><a class="dropdown-item" href="{{ route('logout') }}">Sign out</a></li>
-                            </ul>
+                        <div class="mb-4 w-100">
+                            <a href="{{ route('logout') }}" type="button" class="btn shadow w-100" style="background-color:#4C6687;color:white"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
                         </div>
                     </div>
                 </div>

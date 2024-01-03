@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 use App\Models\Produk;
-use App\Models\Costumbarang;
+use Carbon\Carbon;
+use App\Models\Pesanan;
+use App\Models\Bahan;
+use App\Models\Pengiriman;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
@@ -14,37 +18,75 @@ class CostumProdukController extends Controller
 
         return view('costumproduk.index', ['dataProduk' => $dataProduk]);
     }
-    public function payment()
+    public function show($idProduk)
     {
-        // Implementasi method payment
-        // Misalnya, kembalikan view untuk halaman pembayaran
-        return view('costumproduk.payment');
+        $produk = Produk::find($idProduk);
+        return view('costumproduk.index', compact('produk'));
     }
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'pilihan_bahan' => 'required', // Ubah nama validasi sesuai dengan name pada form
-            'pilihan_warna' => 'required',
-            'panjang' => 'required|numeric', // Sesuaikan dengan input yang diperlukan
-            'lebar' => 'required|numeric', // Sesuaikan dengan input yang diperlukan
-            'tinggi' => 'required|numeric', // Sesuaikan dengan input yang diperlukan
-            'jumlah_pesanan' => 'required|numeric', // Sesuaikan dengan input yang diperlukan
-            'pengiriman' => 'required', // Sesuaikan dengan input yang diperlukan
-            'deskripsi' => 'nullable',
+            'pilihan_bahan' => 'required|numeric', // Contoh validasi untuk pilihan bahan yang harus berupa angka
+            'pilihan_warna' => 'required|string', // Validasi untuk pilihan warna yang harus berupa string
+            'panjang' => 'required|numeric',
+            'lebar' => 'required|numeric',
+            'tinggi' => 'required|numeric',
+            'jumlahItem' => 'required|numeric',
+            'pengiriman' => 'required|numeric',
+            'deskripsi' => 'nullable|string', // Deskripsi boleh kosong atau berupa string
         ]);
+    
+        // Mengambil data dari request
+        $namaPesanan = $request->input('namaPesanan'); // Diambil dari form sebelumnya
+        $warna = $request->input('pilihan_warna');
+        $panjang = $request->input('panjang');
+        $lebar = $request->input('lebar');
+        $tinggi = $request->input('tinggi');
+        $jumlahItem = $request->input('jumlahItem');
+        $idPengiriman = $request->input('pengiriman');
+        $idBahan = $request->input('pilihan_bahan');
+        $hargaProduk = $request->input('totalharga');
+        $idProduk = $request->input('idProduk');
+        $tanggalPemesanan = Carbon::now();
+        $idUser = Auth::id();
+    
+        // Mendapatkan harga bahan dari database berdasarkan pilihan bahan
+        $hargaBahan = Bahan::where('idBahan', $idBahan)->value('hargaBahan');
 
-        $costumbarang = new Costumbarang();
-        $costumbarang->bahan = $request->input('pilihan_bahan'); // Ubah menjadi 'pilihan_bahan' sesuai dengan name pada form
-        $costumbarang->warna = $request->input('pilihan_warna');
-        $costumbarang->panjang = $request->input('panjang');
-        $costumbarang->lebar = $request->input('lebar');
-        $costumbarang->tinggi = $request->input('tinggi');
-        $costumbarang->jumlah_pesanan = $request->input('jumlah_pesanan');
-        $costumbarang->metode_pengiriman = $request->input('pengiriman');
-        $costumbarang->keterangan_tambahan = $request->input('deskripsi');
+    // Logika penghitungan harga berdasarkan panjang, lebar, tinggi, dan harga bahan
+        $hargaPanjang = ceil($panjang / 100); // Menentukan harga panjang berdasarkan kondisi kelipatan
+        $hargaLebar = ceil($lebar / 100); // Menentukan harga lebar berdasarkan kondisi kelipatan
+        $hargaTinggi = ceil($tinggi / 100); // Menentukan harga tinggi berdasarkan kondisi kelipatan
 
-        $costumbarang->save();
-        return redirect()->route('costumproduk.payment')->with('success', 'Data Berhasil Disimpan');
+        // Mendapatkan biaya pengiriman dari tabel 'pengiriman' berdasarkan idPengiriman yang dipilih
+        $biayaPengiriman = Pengiriman::where('idPengiriman', $idPengiriman)->value('biayaPengiriman');
+
+        // Menghitung total harga sesuai dengan logika yang dijelaskan
+        $totalHarga = ($hargaProduk + ($hargaBahan * $hargaPanjang * $hargaLebar * $hargaTinggi) + $biayaPengiriman) * $jumlahItem;
+    
+        // Membuat idPesanan dengan 8 karakter random
+        $idPesanan = substr(uniqid(), -8);
+    
+        // Menyimpan data ke dalam model Costumbarang
+        $pesanan = new Pesanan();
+        $pesanan->idPesanan = $idPesanan;
+        $pesanan->namaPesanan = $namaPesanan;
+        $pesanan->idUser = $idUser;
+        $pesanan->bahan = $idBahan;
+        $pesanan->warna = $warna;
+        $pesanan->panjang = $panjang;
+        $pesanan->lebar = $lebar;
+        $pesanan->tinggi = $tinggi;
+        $pesanan->jumlahItem = $jumlahItem;
+        $pesanan->tanggalPemesanan = $tanggalPemesanan;
+        $pesanan->metodePengiriman = $idPengiriman;
+        $pesanan->deskripsiPesanan = $request->input('deskripsi');
+        $pesanan->totalHarga = $totalHarga;
+        
+    
+        $pesanan->save();
+        // Redirect ke halaman pembayaran dengan pesan sukses
+        return redirect()->route('pembayaran.index',['idPesanan' => $idPesanan,'idProduk' => $idProduk, 'idBahan' => $idBahan,'idPengiriman' => $idPengiriman ])->with('success', 'Data Berhasil Disimpan');
     }
-
+    
 }

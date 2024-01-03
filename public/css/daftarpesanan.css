@@ -5,14 +5,18 @@
     float: right;
     margin-top: 80px;
 }
+.row{
+    gap: 10px;
+}
 .cardpes {
     width: 100%;
     display: flex;
     flex-direction: column;
-    height: 250px;
+    height: 220px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     padding: 10px;
     gap: 10px;
+    margin-bottom: 10px;
 }
 
 .card-top {
@@ -52,6 +56,10 @@
     gap: 20px;
     align-items: center;
     font-weight: bold;
+    font-style: italic;
+}
+p.idpesanan{
+    color: #949494b6;
 }
 .vertical-line {
     border-left: 2px solid #949494b6;
@@ -72,23 +80,26 @@
 }
 .product-details {
     border-collapse: collapse;
-    width: 80%;
+    width: 100%;
     height: 70%;
     float: left;
-    margin-top: 20px;
 
 }
 
 .product-details td {
     text-align: left;
     font-size: 14px;
+    
 }
 
 .product-details td:first-child {
-    width: 150px;
+    width: 30%;
 }
 .product-details td:nth-child(2) {
-    width: 20px;
+    width: 10px;
+}
+.product-details td:nth-child(3) {
+    width: 70%;
 }
 
 
@@ -96,11 +107,13 @@
     padding-left: 20px;
 }
 
-.left-col{
-    width: 20%;
+.colhead{
+    font-weight: bold;
+    font-size: 16px;
+    width: 100%;
 }
 .center-col{
-    width: 60%;
+    width: 80%;
 }
 .right-col {
     width: 20%;
