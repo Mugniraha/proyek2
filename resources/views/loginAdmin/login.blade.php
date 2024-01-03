@@ -50,7 +50,7 @@
                         </div> --}}
                         <div class="d-flex">
                             {{-- <span>Lupa Password?</span> --}}
-                            <a href="{{ route('password.edit') }}" class="text-decoration-none">Lupa Password?</a>
+                            <a href="{{ route('editPassAdmin') }}" class="text-decoration-none">Lupa Password?</a>
                         </div>
                     </div>
                 </div>

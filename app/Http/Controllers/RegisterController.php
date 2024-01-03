@@ -32,7 +32,7 @@ class RegisterController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
 
-        Session::put('user', $user); 
+        Session::put('user', $user);
 
         return redirect()->route('loginIndex')->with('success', 'Register successfully');
     }

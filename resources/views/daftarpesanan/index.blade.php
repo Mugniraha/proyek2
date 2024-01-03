@@ -3,7 +3,7 @@
         <section id="productspes">
             <div class="btn-top">
                 <a href="{{ route('daftarpesanan.riwayat') }}"><button class="btnriwayat">Riwayat Pesanan</button></a>
-                <a href="{{ route('daftarpesanan.riwayatService') }}"><button class="btnriwayat">Riwayat Pesanan Service</button></a>
+                <a href="{{ route('daftarpesanan.riwayatService') }}"><button class="btnriwayat">Riwayat Service</button></a>
                 <hr>
             </div>
 
