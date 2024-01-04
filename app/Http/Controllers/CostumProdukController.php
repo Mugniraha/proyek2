@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 class CostumProdukController extends Controller
 {
     public function index()
-    { 
+    {
         $dataProduk = produk::all(); // Mengambil semua data dari tabel galeris
 
         return view('costumproduk.index', ['dataProduk' => $dataProduk]);
@@ -35,7 +35,7 @@ class CostumProdukController extends Controller
             'pengiriman' => 'required|numeric',
             'deskripsi' => 'nullable|string', // Deskripsi boleh kosong atau berupa string
         ]);
-    
+
         // Mengambil data dari request
         $namaPesanan = $request->input('namaPesanan'); // Diambil dari form sebelumnya
         $warna = $request->input('pilihan_warna');
@@ -50,7 +50,7 @@ class CostumProdukController extends Controller
         $statusPesanan = $request->input('statusPesanan');
         $tanggalPemesanan = Carbon::now();
         $idUser = Auth::id();
-    
+
         // Mendapatkan harga bahan dari database berdasarkan pilihan bahan
         $hargaBahan = Bahan::where('idBahan', $idBahan)->value('hargaBahan');
 
@@ -64,10 +64,10 @@ class CostumProdukController extends Controller
 
         // Menghitung total harga sesuai dengan logika yang dijelaskan
         $totalHarga = ($hargaProduk + ($hargaBahan * $hargaPanjang * $hargaLebar * $hargaTinggi) + $biayaPengiriman) * $jumlahItem;
-    
+
         // Membuat idPesanan dengan 8 karakter random
         $idPesanan = substr(uniqid(), -8);
-    
+
         // Menyimpan data ke dalam model Costumbarang
         $pesanan = new Pesanan();
         $pesanan->idPesanan = $idPesanan;
@@ -84,12 +84,9 @@ class CostumProdukController extends Controller
         $pesanan->metodePengiriman = $idPengiriman;
         $pesanan->deskripsiPesanan = $request->input('deskripsi');
         $pesanan->totalHarga = $totalHarga;
-        $pesanan->statusPesanan = $statusPesanan;
-        
-    
         $pesanan->save();
         // Redirect ke halaman pembayaran dengan pesan sukses
         return redirect()->route('pembayaran.index',['idPesanan' => $idPesanan,'idProduk' => $idProduk, 'idBahan' => $idBahan,'idPengiriman' => $idPengiriman ])->with('success', 'Data Berhasil Disimpan');
     }
-    
+
 }

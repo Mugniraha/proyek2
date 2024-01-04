@@ -15,7 +15,8 @@
             <th>Detail Custom</th>
             <th>Metode Pengiriman</th>
             <th>Tanggal pemesanan</th>
-            <th>Jumlah</th>
+            <th>Jumlah Barang</th>
+            <th>Harga DP</th>
             <th>Total Harga</th>
             <th>Aksi</th>
         </tr>
@@ -70,9 +71,10 @@
             <td>{{$row->tanggalPemesanan}}</td>
             <td>{{$row->jumlahItem}}</td>
             <td>{{$row->totalHarga}}</td>
+            <td>{{$row->totalHarga}}</td>
             <td>
-                <a href="#" type="button" class="btn btn-sm btn-success btn-primary w-100" data-bs-toggle="modal" data-bs-target="#edit">Terima</a>
-                <a  href="#" type="button" class="mt-2 btn btn-sm btn-danger btn-primary w-100" data-bs-toggle="modal" data-bs-target="#hapus">Tolak</a>
+                <a href="{{route('terimaPesanan',$row->idPesanan)}}" type="button" class="btn btn-sm btn-success btn-primary w-100" >Terima<a>
+                <a  href="{{route('tolakPesanan',$row->idPesanan)}}" type="button" class="mt-2 btn btn-sm btn-danger btn-primary w-100">Tolak</a>
             </td>
         </tr>
         <div class="modal fade modal-dialog-scrollable text-start" id="edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\Pesanan;
 
 class cusbarSelesaiController extends Controller
 {
@@ -13,7 +15,8 @@ class cusbarSelesaiController extends Controller
     {
         //
         $slug = "cbSelesai";
-        return view("admin_konten.cbSelesai", compact("slug"));
+        $custom = DB::table('pesanan')->get();
+        return view("admin_konten.cbSelesai", compact("slug","custom"));
     }
 
     /**

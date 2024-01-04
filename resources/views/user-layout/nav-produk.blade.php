@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/png" href="{{asset('images/logo.ico')}}">
     <title>PRODUK JOYO ROYO BENGKEL WELDING</title>
     <link rel="stylesheet" href="{{ asset('css/produk.css') }}">
     <link rel="stylesheet" href="{{ asset('css/rating.css') }}">
@@ -79,9 +80,9 @@
                     });
 
                     </script>
-                </li>                
+                </li>
             </ul>
-        </nav>        
+        </nav>
     </header>
     <main>
         <section id="sidebar">
@@ -109,7 +110,7 @@
                     <li class="list-group-item"><a href="#">
                         <span class="fa fa-circle pr-1" id="container"></span>Container
                     </a></li>
-                    
+
                 </ul>
             </div>
         </section>

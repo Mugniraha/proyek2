@@ -29,10 +29,11 @@ class Pesanan extends Model
         'tinggi',
         'warna',
         'tanggalPemesanan',
+        'statusPesanan',
         'idUser',
         'idProduk'
     ];
-    
+
 
     public $timestamps = false;
     public function produk()
