@@ -22,7 +22,8 @@ class DaftarPesananController extends Controller
     
     public function riwayat()
     {
-        return view('daftarpesanan.riwayat');
+        $dataPesanan = Pesanan::all();
+        return view('daftarpesanan.riwayat', ['dataPesanan' => $dataPesanan]);
     }
 
     public function riwayatService()

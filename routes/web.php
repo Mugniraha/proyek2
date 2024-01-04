@@ -51,7 +51,9 @@ use App\Http\Controllers\pengirimanController;
 |
 */
 // Route::middleware(['auth'])->group(function () {
-
+    Route::get('/', function () {
+        return view('HomeAwal.index'); // Ganti 'home' dengan nama view yang ingin Anda tampilkan
+    });
 Route::get('/register', [RegisterController::class, 'registerIndex'])->name('registerIndex');
 Route::post('/register', [RegisterController::class, 'registerPost'])->name('registerPost');
 Route::get('/loginUser', [RegisterController::class, 'loginIndex'])->name('loginIndex');
@@ -66,12 +68,12 @@ Route::get('/registerAdmin', [LoginAdminController::class, 'registerAdminIndex']
 Route::post('/registerAdmin', [LoginAdminController::class, 'registerAdminPost'])->name('registerAdminPost');
 Route::get('/loginAdmin', [LoginAdminController::class, 'loginAdminIndex'])->name('loginAdminIndex');
 Route::post('/loginAdmin', [LoginAdminController::class, 'loginAdminPost'])->name('loginAdminPost');
-<<<<<<< HEAD
+
 Route::get('/lupaPassAdmin', [ChangePasswordController::class, 'editAdmin'])->name('editPassAdmin');
-=======
+
 // Route::put('/ubahpw', [LoginAdminController::class, 'changePassword'])->name('changePassword');
 Route::put('/admin/{idAdmin}/change-password', [LoginAdminController::class, 'changePassword'])->name('changePassword');
->>>>>>> 23f680b71ac630b86ed97fa0d9c7a0f3f80e469f
+
 Route::get('/logout', [LoginAdminController::class, 'logout'])->name('logout');
 
 
@@ -118,7 +120,7 @@ Route::post('/costumproduk/{idProduk}', [CostumProdukController::class, 'index']
 
 
 Route::get('/pembayaran/transaksi/{idPesanan}', [PembayaranController::class, 'transaksi'])->name('pembayaran.transaksi');
-
+Route::post('/pembayaran/transaksi', [PembayaranController::class, 'store'])->name('pembayaran.store');
 
 Route::get('/daftarpesanan', [DaftarPesananController::class, 'index'])->name('daftarpesanan.index');
 Route::get('/riwayat', [DaftarPesananController::class, 'riwayat'])->name('daftarpesanan.riwayat');
