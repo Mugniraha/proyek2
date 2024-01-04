@@ -30,9 +30,14 @@ class Pesanan extends Model
         'warna',
         'tanggalPemesanan',
         'statusPesanan',
-        'idUser'
+        'idUser',
+        'idProduk'
     ];
 
 
     public $timestamps = false;
+    public function produk()
+    {
+        return $this->belongsTo(\App\Models\Produk::class, 'idProduk', 'idProduk');
+    }
 }

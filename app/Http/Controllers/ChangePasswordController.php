@@ -16,6 +16,11 @@ class ChangePasswordController extends Controller
         return view('password.edit');
     }
 
+    public function editAdmin()
+    {
+        return view('password.editAdmin');
+    }
+
     public function ubahKataSandi(Request $request)
     {
         // $request->validate([
@@ -27,13 +32,6 @@ class ChangePasswordController extends Controller
 
         // Periksa apakah kata sandi lama cocok dengan kata sandi saat ini yang diotentikasi oleh pengguna
         if (Hash::check($request->pw_lama, auth()->user()->password)) {
-            // Dump data untuk pemeriksaan
-            // dd($request->all(), auth()->user()->password);
-
-            // Perbarui kata sandi pengguna
-            // auth()->user()->update([
-            //     'password' => bcrypt($request->pw_baru),
-            // ]);
 
             $user->password = bcrypt($request->pw_baru);
             $user->save();
