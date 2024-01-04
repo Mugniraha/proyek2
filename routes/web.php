@@ -113,6 +113,7 @@ Route::post('/costumproduk/{idProduk}', [CostumProdukController::class, 'index']
 
 
 
+Route::get('/pembayaran/transaksi/{idPesanan}', [PembayaranController::class, 'transaksi'])->name('pembayaran.transaksi');
 
 
 Route::get('/daftarpesanan', [DaftarPesananController::class, 'index'])->name('daftarpesanan.index');

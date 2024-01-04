@@ -95,7 +95,7 @@
             <div class="payment-bottom">
                 <hr>
                 <div class="btn-payment-dp">
-                    <a href="#"><button class="btndp">Menunggu Veirifikasi</button></a>
+                    <a href="#"><button class="btndp">{{ $pesanan->statusPesanan }}</button></a>
                 </div>
             </div>
         </div> 

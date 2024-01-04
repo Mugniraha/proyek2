@@ -47,6 +47,7 @@ class CostumProdukController extends Controller
         $idBahan = $request->input('pilihan_bahan');
         $hargaProduk = $request->input('totalharga');
         $idProduk = $request->input('idProduk');
+        $statusPesanan = $request->input('statusPesanan');
         $tanggalPemesanan = Carbon::now();
         $idUser = Auth::id();
     
@@ -70,6 +71,7 @@ class CostumProdukController extends Controller
         // Menyimpan data ke dalam model Costumbarang
         $pesanan = new Pesanan();
         $pesanan->idPesanan = $idPesanan;
+        $pesanan->idProduk = $idProduk;
         $pesanan->namaPesanan = $namaPesanan;
         $pesanan->idUser = $idUser;
         $pesanan->bahan = $idBahan;
@@ -82,6 +84,7 @@ class CostumProdukController extends Controller
         $pesanan->metodePengiriman = $idPengiriman;
         $pesanan->deskripsiPesanan = $request->input('deskripsi');
         $pesanan->totalHarga = $totalHarga;
+        $pesanan->statusPesanan = $statusPesanan;
         
     
         $pesanan->save();

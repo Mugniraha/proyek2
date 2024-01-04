@@ -22,4 +22,10 @@ class PembayaranController extends Controller
             return redirect()->back()->with('error', 'Data tidak ditemukan');
         }
     }
+    public function transaksi($idPesanan)
+    {
+        $pesanan = Pesanan::find($idPesanan);
+        return view('pembayaran.transaksi', compact('pesanan'));
+    }
+        // Menampilkan view daftarpesanan
 }

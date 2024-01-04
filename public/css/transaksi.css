@@ -1,0 +1,282 @@
+.payment-container-transaksi{
+    width: 40%;
+    height: 60%;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 20px 20px;
+}
+
+.payment-top-transaksi{
+    height: 2%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.judul-transaksi{
+    font-size: 20px;
+    font-weight: bold;
+}
+.kodepesanan-transaksi{
+    float: right;
+    font-size: 16px;
+    font-style: italic;
+    color: rgb(212, 212, 212);
+    text-transform: uppercase;
+}
+.payment-center-transaksi{
+    height: 75%;
+}
+.center-top-transaksi{
+    height: 20%;
+    display: flex;
+    gap: 20px;
+}
+.center-top-transaksi img{
+    width: 30%;
+
+}
+.center-top-transaksi .keterangan-transaksi{
+    width: 50%;
+    height: 100%;
+}
+.keterangan .product-keterangan{
+    border-collapse: collapse;
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+}
+.col-c-transaksi{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.center-col-deskripsi-transaksi{
+    height: 80%;
+}
+
+.product-details-payment-transaksi {
+    border-collapse: collapse;
+    width: 90%;
+    height: 70%;
+    float: left;
+    margin-top: 20px;
+
+}
+
+.product-details-payment-transaksi td {
+    text-align: left;
+    font-size: 14px;
+}.product-details-payment-transaksi td:first-child {
+    width: 200px; 
+}
+.product-details-payment-transaksi td:nth-child(2) {
+    width: 20px;
+}
+.product-details-payment-transaksi .col-d{
+    padding-left: 20px;
+}
+
+.payment-bottom-transaksi{
+    height: 30%;
+    display: block;
+}
+.dp-price-payment-transaksi{
+    float: right;
+}
+.dp-price-payment-transaksi td{
+    font-weight: bold;
+}
+
+.btn-payment-dp-transaksi a{
+    width: 100%;
+    background-color: rgb(84, 223, 126);
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    cursor: pointer;
+    margin-bottom: 10px;
+    text-decoration: none;
+
+}
+.btn-payment-dp-transaksi a{
+    text-decoration: none;
+}
+
+.btn-payment-dp-transaksi a:hover{
+    background-color: rgb(147, 255, 179);
+    color: #4C6687;
+    text-decoration: none;
+}
+
+.btn-payment-dp-transaksi .btndp{
+    background-color: rgba(84, 223, 126, 0);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    color: #ffffff;
+}
+.btn-payment-dp-transaksi button:focus{
+    outline: none;
+}
+
+.transaksi{
+    display: flex;
+    gap: 20px;
+}
+.list-group-transaksi .list-group-item-gopay a{
+    text-decoration: none;
+}
+.list-group-transaksi .list-group-item-gopay{
+    background-color: #ffffff;
+    padding: 15px;
+    outline: 0.5px solid #e6e6e6;
+
+}
+.list-group-transaksi .list-group-item-gopay:hover{
+    background-color: rgb(185, 239, 255);
+    color: #1e526e;
+}
+.list-group-item-gopay {
+    transition: transform 0.3s ease;
+}
+
+.list-group-item-gopay:hover {
+    transform: translateX(10px); /* Menggeser elemen ke kanan sebanyak 5px */
+}
+.list-group-transaksi .list-group-item-dana a{
+    text-decoration: none;
+}
+.list-group-transaksi .list-group-item-dana{
+    background-color: #ffffff;
+    padding: 15px;
+    outline: 0.5px solid #e6e6e6;
+
+}
+.list-group-transaksi .list-group-item-dana:hover{
+    background-color: #d7efff;
+    color: #1e526e;
+}
+.list-group-item-dana {
+    transition: transform 0.3s ease;
+}
+
+.list-group-item-dana:hover {
+    transform: translateX(10px); /* Menggeser elemen ke kanan sebanyak 5px */
+}
+.list-group-transaksi .list-group-item-ovo a{
+    text-decoration: none;
+}
+.list-group-transaksi .list-group-item-ovo{
+    background-color: #ffffff;
+    padding: 15px;
+    outline: 0.5px solid #e6e6e6;
+
+}
+.list-group-transaksi .list-group-item-ovo:hover{
+    background-color: #fdd7ff;
+    color: #4c3850;
+}
+.list-group-item-ovo {
+    transition: transform 0.3s ease;
+}
+
+.list-group-item-ovo:hover {
+    transform: translateX(10px); /* Menggeser elemen ke kanan sebanyak 5px */
+}
+
+.transaksi-card{
+    width: 40%;
+    height: 70%;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    
+}
+.transaksi-top{
+    height: 5%;
+}
+.transaksi-head{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-left: 20px;
+
+}
+.transaksi-top .transaksi-sign{
+    background-color: #dcfdff;
+    color: #000000;
+    font-size: 11px;
+    padding: 8px;
+    height: 80%;
+    width: 100%;
+}
+.transaksi-middle{
+    height: 70%;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.img-pembayaran{
+    width: 20%;
+    margin-right: 10px;
+}
+.transaksi-bottom{
+    height: 10%;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.button-upload{
+    display: flex;
+    gap: 10px;
+}
+button.btn-trn{
+    width: 100%;
+    background-color: rgb(84, 223, 126);
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    cursor: pointer;
+    text-decoration: none;
+}
+button.btn-trn:hover{
+    background-color: rgb(147, 255, 179);
+    color: #4C6687;
+    text-decoration: none;
+}
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile+label {
+    font-size: 14px;
+    color: #32506e;
+    outline: 0.5px solid rgb(172, 172, 172);
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.inputfile:focus+label,
+.inputfile+label:hover {
+    background-color: #fcf2c5;
+}
+
+
+    

@@ -105,6 +105,7 @@
                                                 <input type="number" class="form-control" id="totalHarga" name="totalHarga" placeholder="{{ $produk->harga }}" value="" readonly>
                                                 <input type="hidden" class="form-control" name="totalHarga" value="{{ $produk->harga }}">
                                                 <input type="hidden" class="form-control" name="idProduk" value="{{ $produk->idProduk }}">
+                                                <input type="hidden" class="form-control" name="statusPesanan" value="Menununggu Verifikasi">
                                             </td>
                                         </tr>
                                     </table>

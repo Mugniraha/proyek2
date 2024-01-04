@@ -16,12 +16,19 @@
                             <h6><i>JOYO ROYO BENGKEL WELDING</i></h6>
                         </div>
                         <div class="right-text">
-                            <p>Status Pesnan</p>
+                            <p class="statusPesanan">{{ $pesanan->statusPesanan }}</p>
                             <div class="vertical-line"></div>
-                            <p class="idpesanan">{{ $pesanan->idPesanan }}</p>
+                            <p class="idpesanan">ID:{{ $pesanan->idPesanan }}</p>
                         </div>
                     </div>
                     <div class="card-center">
+                        <div class="left-col">
+                            @if($pesanan->produk)
+                            <img src="{{ asset('storage/img/' . $pesanan->produk->gambar) }}" alt="Gambar Produk">
+                            @else
+                                <p>Gambar tidak tersedia</p>
+                            @endif
+                        </div>
                         <div class="center-col">
                             <table class="product-details">
                                 <tr>
@@ -65,7 +72,7 @@
                                     <tbody>
                                         <tr>
                                             <td><i>Belum dibayar</i></td>
-                                            <td>:</td>
+                                            <td>: Rp</td>
                                             <td class="pricefull"> {{ $pesanan->totalHarga}}</td>
                                         </tr>
                                     </tbody>
@@ -153,10 +160,9 @@
                         </script>
 
 
-                        {{-- <div class="btn-right">
-                            <a href="{{ route('costumproduk.index', ['idProduk' => $produk->idProduk]) }}"><button class="btnagain">Order Lagi</button></a>
-                            <a href="{{ route('costumproduk.index', ['idProduk' => $produk->idProduk]) }}"><button class="btncall">Pembayaran</button></a>
-                        </div> --}}
+                        <div class="btn-right">
+                            <a href="{{ route('pembayaran.transaksi', ['idPesanan' => $pesanan->idPesanan]) }}"><button class="btncall">Pembayaran</button></a>
+                        </div>
                     </div>
                 </div>
             </div>
