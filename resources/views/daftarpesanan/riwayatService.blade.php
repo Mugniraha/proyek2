@@ -26,32 +26,39 @@
                         </div>
                         <div class="center-col">
                             <table class="product-details">
-                                <tr>
-                                    <td>Nama Jasa</td>
-                                    <td class="narrow-column">:</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Kategori Jasa</td>
-                                    <td class="narrow-column">:</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Deskripsi Masalah</td>
-                                    <td class="narrow-column">:</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Lokasi</td>
-                                    <td class="narrow-column">:</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Tanggal Pengerjaan</td>
-                                    <td class="narrow-column">:</td>
-                                    <td></td>
-                                </tr>
-                            </table>
+                                {{-- @if(isset($form_js) && count($form_js) > 0) --}}
+                                <table class="product-details">
+                                    @foreach($form_js as $form)
+                                        <tr>
+                                            <td>Nama Jasa</td>
+                                            <td class="narrow-column">:</td>
+                                            <td>{{ $form->namaJasa }}</td>
+                                        </tr>
+                                    <tr>
+                                        <td>Kategori Jasa</td>
+                                        <td class="narrow-column">:</td>
+                                        <td>{{ $form->kategorijasa }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Deskripsi Masalah</td>
+                                        <td class="narrow-column">:</td>
+                                        <td>{{ $form->deskripsiJasa }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Lokasi</td>
+                                        <td class="narrow-column">:</td>
+                                        <td>{{ $form->alamat }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tanggal Pengerjaan</td>
+                                        <td class="narrow-column">:</td>
+                                        <td>{{ $form->tanggal }}</td>
+                                    </tr>
+                                    @endforeach
+                                </table>
+                            {{-- @else
+                            <p>Tidak ada data pesanan yang tersedia.</p>
+                            @endif --}}
                         </div>
                         <div class="right-col">
                             <h5><i>Total Harga : </i>RP. 200.000</h5>
@@ -145,3 +152,4 @@
             </div>
         </div>
         </section>
+        @endsection

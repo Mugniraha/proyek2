@@ -98,8 +98,15 @@
         <section id="sidebar">
             <div>
                 <div class="profil">
-                    <div class="col-md-12 text-center mb-5">
+                    {{-- <div class="col-md-12 text-center mb-5">
                         <img src="{{asset('img/logo.png')}}" alt="" class="rounded-circle ">
+                    </div> --}}
+                    <div class="profile-image">
+                        @if(session('user_profile_url_' . Auth::user()->idUser))
+                            <img id="profilePicture" src="{{ session('user_profile_url_' . Auth::user()->idUser) }}" alt="Profile Picture">
+                        @else
+                            <img id="profilePicture" src="{{ asset('images/profil1.png') }}" alt="Default Profile Picture">
+                        @endif
                     </div>
                     <h4 class="p-1 border-bottom">
                         @if(session('user') && session('user')->username)

@@ -14,10 +14,11 @@ class formJsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index() 
     {
         $slug = "jasa_service";
-        $form_js = DB::table('jasa_service')->get();
+        // $form_js = DB::table('jasa_service')->get();
+        $form_js = Formjs::all();
         return view('jasaService_User.formulir', compact('slug','form_js'));
     }
 
@@ -57,7 +58,9 @@ class formJsController extends Controller
      */
     public function show(string $id)
     {
+        $formJS = Formjs::find($id);
 
+        return view('jasaService_User.detail_pesanan', compact('formJS'));
     }
 
     /**

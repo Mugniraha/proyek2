@@ -192,6 +192,7 @@
                                     <div class="mb-3">
                                         <label for="formGroupExampleInput" class="form-label">Password Lama</label>
                                         <input type="password" class="form-control" id="formGroupExampleInput" name="pw_lama" placeholder="" value="">
+                                        {{-- <input type="password" class="form-control" id="formGroupExampleInput" name="pw_lama" placeholder="" value="{{ old('pw_lama') ? old('pw_lama') : auth()->user()->password }}"> --}}
                                         {{-- <input type="hidden" value=""> --}}
                                     </div>
                                     <div class="mb-3">
@@ -210,6 +211,7 @@
                     </div>
                 </div>
             </div>
+
             {{-- <script>
                 function openFileInput() {
                     // Trigger click event on the file input
