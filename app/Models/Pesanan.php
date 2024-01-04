@@ -29,9 +29,10 @@ class Pesanan extends Model
         'tinggi',
         'warna',
         'tanggalPemesanan',
+        'statusPesanan',
         'idUser'
     ];
-    
+
 
     public $timestamps = false;
 }

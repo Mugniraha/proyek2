@@ -4,6 +4,8 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Pesanan;
+
 class cusbarPesananBaruController extends Controller
 {
     /**
@@ -15,6 +17,24 @@ class cusbarPesananBaruController extends Controller
         $slug = "cbPesananBaru";
         $custom = DB::table('pesanan')->get();
         return view("admin_konten.cbPesananBaru", compact("slug","custom"));
+    }
+
+    public function terimaPesanan($idPesanan)
+    {
+        $pesanan = Pesanan::find($idPesanan);
+        $pesanan->statusPesanan = 'Sudah Diverifikasi';
+        $pesanan->save();
+
+        return back()->with('success', 'Pesanan diterima.');
+    }
+
+    public function tolakPesanan($idPesanan)
+    {
+        $pesanan = Pesanan::find($idPesanan);
+        $pesanan->statusPesanan = 'Ditolak';
+        $pesanan->save();
+
+        return back()->with('success', 'Pesanan ditolak.');
     }
 
     /**

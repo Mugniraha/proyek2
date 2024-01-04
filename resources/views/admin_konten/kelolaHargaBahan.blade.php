@@ -28,11 +28,11 @@
             <td>{{$row->namaBahan}}</td>
             <td>{{$row->hargaBahan}}</td>
             <td>
-                <a href="#" type="button" class="btn btn-sm btn-success btn-primary w-50" data-bs-toggle="modal" data-bs-target="#update">Update Harga</a>
+                <a href="#" type="button" class="btn btn-sm btn-success btn-primary w-50" data-bs-toggle="modal" data-bs-target="#update{{$row->idBahan}}">Update Harga</a>
                 <a  href="#" type="button" class="mt-2 btn btn-sm btn-danger btn-primary w-50 shadow" data-bs-toggle="modal" data-bs-target="#hapus{{$row->idBahan}}"><i class="fa-solid fa-trash"></i></a>
             </td>
         </tr>
-        <div class="modal fade modal-dialog-scrollable text-start" id="update" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal fade modal-dialog-scrollable text-start" id="update{{$row->idBahan}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">

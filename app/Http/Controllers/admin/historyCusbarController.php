@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\Pesanan;
 
 class historyCusbarController extends Controller
 {
@@ -13,7 +15,8 @@ class historyCusbarController extends Controller
     {
         //
         $slug = "historyCusbar";
-        return view("admin_konten.historyCusbar", compact("slug"));
+        $custom = DB::table('pesanan')->get();
+        return view("admin_konten.historyCusbar", compact("slug","custom"));
     }
 
     /**

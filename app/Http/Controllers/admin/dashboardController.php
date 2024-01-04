@@ -14,8 +14,9 @@ class dashboardController extends Controller
     public function index()
     {
         $jasaServis = DB::table('jasa_service')->get();
+        $customBarang = DB::table('pesanan')->get();
         $slug = "dahboard";
-        return view("admin_konten.dashboardAdmin", compact("slug","jasaServis"));
+        return view("admin_konten.dashboardAdmin", compact("slug","jasaServis","customBarang"));
     }
 
     /**
