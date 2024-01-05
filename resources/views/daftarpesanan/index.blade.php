@@ -117,19 +117,26 @@
                                     <table class="progres-barang">
                                         <thead>
                                             <tr>
-                                                <th colspan="3">25%</th>
-                                                <th colspan="3">50%</th>
-                                                <th colspan="3">75%</th>
-                                                <th colspan="3">100%</th>
+                                                <th colspan="3">Start</th>
+                                                <th colspan="3">Process</th>
+                                                <th colspan="3">Finishing</th>
+                                                <th colspan="3">End</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach($pesanan->pemantauans as $pemantauan)
                                             <tr>
+                                                @if($pemantauan->porgres==25)
                                                 <td colspan="3"></td>
+                                                @elseif($pemantauan->porgres==50)
                                                 <td colspan="3"><img class="card-img-left" src="{{ asset('storage/img/' . $pemantauan->gambar) }}" alt="Card image cap" width=75px height=75px></td>
+                                                @elseif($pemantauan->porgres==75)
                                                 <td colspan="3"></td>
-                                                <td colspan="3"><img class="card-img-left" src="{{ asset('storage/img/' . $pemantauan->gambar) }}" alt="Card image cap" width=75px height=75px></td>
+                                                @elseif($pemantauan->progres==100)
+                                                <td></td>
+                                                @else
+
+                                                @endif
                                             </tr>
                                             <tr>
                                                 <td>Keterangan</td>
