@@ -28,7 +28,7 @@ class PembayaranController extends Controller
         $pesanan = Pesanan::find($idPesanan);
         return view('pembayaran.transaksi', compact('pesanan'));
     }
-    
+
     public function store(Request $request){
         // Mengambil data dari request
         $idPesanan = $request->input('idPesanan');

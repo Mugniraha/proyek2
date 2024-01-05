@@ -108,10 +108,9 @@ return new class extends Migration
         // Tabel Pemantauan
         Schema::create('pemantauan', function (Blueprint $table) {
             $table->id('idPemantauan');
-            $table->string('start');
-            $table->string('process');
-            $table->string('finishing');
-            $table->string('end');
+            $table->integer('progres');
+            $table->string('keterangan');
+            $table->string('gambar')->nullable();
             $table->timestamps();
         });
 
@@ -129,7 +128,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        // Hapus tabel-tabel yang telah dibuat
         Schema::dropIfExists('pembayaran');
         Schema::dropIfExists('pemantauan');
         Schema::dropIfExists('ulasan');
@@ -139,6 +137,6 @@ return new class extends Migration
         Schema::dropIfExists('produk');
         Schema::dropIfExists('admin');
         Schema::dropIfExists('alamat');
-        Schema::dropIfExists('userrs');
+        Schema::dropIfExists('newUsers');
     }
 };

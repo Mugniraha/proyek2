@@ -41,7 +41,7 @@
                                     <td class="col-g">Panjang</td>
                                     <td class="narrow-column">:</td>
                                     <td class="col-g">{{ $pesanan->panjang }}</td>
-                                    
+
                                 </tr>
                                 <tr>
                                     <td>Warna</td>
@@ -203,10 +203,10 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
         @else
-            
+
         @endif
         @endforeach
         </section>

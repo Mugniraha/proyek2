@@ -158,6 +158,7 @@ Route::get('/cbPesananBaru/{id}/terima',[cusbarPesananBaruController::class, 'te
 Route::get('/cbPesananBaru/{id}/tolak',[cusbarPesananBaruController::class, 'tolakPesanan'])->name('tolakPesanan');
 Route::get('/cbPesananBaru/{id}/verifikasiPembayaran',[cusbarDalamProsesController::class, 'verifikasiPembayaran'])->name('verifikasiPembayaran');
 Route::put('/inputProgres/{id}/inputProgres',[cusbarDalamProsesController::class,'inputProgres'])->name('inputProgres');
+Route::get('/selesai/{id}',[cusbarDalamProsesController::class,'selesai'])->name('selesai');
 
 
 
