@@ -66,12 +66,10 @@ Route::get('/registerAdmin', [LoginAdminController::class, 'registerAdminIndex']
 Route::post('/registerAdmin', [LoginAdminController::class, 'registerAdminPost'])->name('registerAdminPost');
 Route::get('/loginAdmin', [LoginAdminController::class, 'loginAdminIndex'])->name('loginAdminIndex');
 Route::post('/loginAdmin', [LoginAdminController::class, 'loginAdminPost'])->name('loginAdminPost');
-<<<<<<< HEAD
 Route::get('/lupaPassAdmin', [ChangePasswordController::class, 'editAdmin'])->name('editPassAdmin');
-=======
 // Route::put('/ubahpw', [LoginAdminController::class, 'changePassword'])->name('changePassword');
 Route::put('/admin/{idAdmin}/change-password', [LoginAdminController::class, 'changePassword'])->name('changePassword');
->>>>>>> 23f680b71ac630b86ed97fa0d9c7a0f3f80e469f
+
 Route::get('/logout', [LoginAdminController::class, 'logout'])->name('logout');
 
 

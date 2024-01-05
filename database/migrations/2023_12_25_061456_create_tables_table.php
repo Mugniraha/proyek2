@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('telp');
-            $table->string('profil');
+            $table->string('profil')->nullable();
             $table->string('password');
             $table->timestamps();
         });
@@ -26,19 +26,20 @@ return new class extends Migration
         // Tabel Alamat
         Schema::create('alamat', function (Blueprint $table) {
             $table->id('idAlamat');
-            $table->string('nama_alamat');
-            $table->string('rt_rw');
-            $table->string('desa');
-            $table->string('kecamatan');
-            $table->string('kabupaten');
+            $table->string('nama_alamat')->nullable();
+            $table->string('rt_rw')->nullable();
+            $table->string('desa')->nullable();
+            $table->string('kecamatan')->nullable();
+            $table->string('kabupaten')->nullable();
             $table->timestamps();
         });
 
         // Tabel Admin
         Schema::create('admin', function (Blueprint $table) {
             $table->id('idAdmin');
-            $table->string('namaAdmin');
-            $table->string('alamatAdmin');
+            $table->string('namaAdmin')->nullable();
+            $table->string('profil')->nullable();
+            $table->string('alamatAdmin')->nullable();
             $table->string('emailAdmin');
             $table->string('password');
             $table->timestamps();
@@ -65,17 +66,17 @@ return new class extends Migration
             $table->id('idJasa');
             $table->string('namaJasa');
             $table->text('deskripsiJasa');
-            $table->float('harga', 10, 2);
             $table->string('kategoriJasa');
             $table->string('alamat');
             $table->date('tanggal');
-            $table->string('status');
+            $table->string('status')->nullable();
+            $table->date('tanggal_selesai')->nullable();
             $table->timestamps();
         });
 
         // Tabel Pesanan
         Schema::create('pesanan', function (Blueprint $table) {
-            $table->id('idPesanan');
+            $table->string('idPesanan',8);
             $table->integer('jumlahItem');
             $table->float('totalHarga', 10, 2);
             $table->string('metodePengiriman');
@@ -85,6 +86,7 @@ return new class extends Migration
             $table->integer('lebar');
             $table->integer('tinggi');
             $table->string('warna');
+            $table->string('statusPesanan')->nullable();
             $table->date('tanggalPemesanan');
             $table->timestamps();
         });
