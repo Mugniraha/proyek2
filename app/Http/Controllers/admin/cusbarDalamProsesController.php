@@ -30,19 +30,31 @@ class cusbarDalamProsesController extends Controller
     }
 
     public function inputProgres(Request $request):RedirectResponse{
-        $this->validate($request, [
-            'gambar'       => 'required|image|mimes:png,jpg,jpeg|max:2048',
-            'progres'      => 'required',
-            'keterangan'   => 'required',
-        ]);
+        // $this->validate($request, [
+        //     'progres'      => 'required',
+        //     'keterangan'   => 'required',
+        // ]);
 
-        $img = $request->file('gambar');
-        $img->storeAs('public/img',$img->hashName());
-        // Proses insert
-        DB::table('produk')->insert([
-            'gambar'      => $img->hashName(),
-            'progres'     => $request->progres,
-            'keterangan'  => $request->keterangan,
+        $progres = $request->progres;
+        $keterangan = $request->keterangan;
+
+        if($progres == 25){
+            $keterangan = 'Bahan Sedang Dibeli';
+        }elseif($progres == 50){
+            $this->validate($request, [
+                'gambar' => 'required|image|mimes:,jpeg|max:2048',
+            ]);
+            $img = $request->file('gambar');
+            $img->storeAs('public/img',$img->hashName());
+
+            $keterangan = 'Sedang dibuat';
+        }
+
+        DB::table('pemantauan')->insert([
+            'idPesanan'   => $request->idPesanan,
+            'progres'     => $progres,
+            'keterangan'  => $keterangan,
+            'gambar'      => isset($img) ? $img->hashName():null,
         ]);
         // Redirect ke halaman yang sesuai
         return redirect('/cbDalamProses')->with(['success' => 'Data Berhasil ditambah']);

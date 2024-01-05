@@ -26,6 +26,7 @@
             $no = 1;
         @endphp
         @foreach ($custom as $row)
+        @if ($row->statusPesanan === 'Menunggu Verifikasi')
         <tr>
             <td>{{$no++}}</td>
             <td></td>
@@ -134,6 +135,7 @@
                 </div>
             </div>
         </div>
+        @endif
         @endforeach
         @if(session('success'))
                 <div class="alert alert-success mb-2">

@@ -70,7 +70,6 @@ Route::get('/loginAdmin', [LoginAdminController::class, 'loginAdminIndex'])->nam
 Route::post('/loginAdmin', [LoginAdminController::class, 'loginAdminPost'])->name('loginAdminPost');
 
 Route::get('/lupaPassAdmin', [ChangePasswordController::class, 'editAdmin'])->name('editPassAdmin');
-
 // Route::put('/ubahpw', [LoginAdminController::class, 'changePassword'])->name('changePassword');
 Route::put('/admin/{idAdmin}/change-password', [LoginAdminController::class, 'changePassword'])->name('changePassword');
 
@@ -162,6 +161,8 @@ Route::get('/jsDalamProses/{id}',[jaserDalamProsesController::class, 'selesai'])
 Route::get('/cbPesananBaru/{id}/terima',[cusbarPesananBaruController::class, 'terimaPesanan'])->name('terimaPesanan');
 Route::get('/cbPesananBaru/{id}/tolak',[cusbarPesananBaruController::class, 'tolakPesanan'])->name('tolakPesanan');
 Route::get('/cbPesananBaru/{id}/verifikasiPembayaran',[cusbarDalamProsesController::class, 'verifikasiPembayaran'])->name('verifikasiPembayaran');
+Route::put('/inputProgres/{id}/inputProgres',[cusbarDalamProsesController::class,'inputProgres'])->name('inputProgres');
+
 
 
 

@@ -21,6 +21,7 @@
             $no = 1;
         @endphp
         @foreach ($custom as $row)
+        @if ($row->statusPesanan === 'Selesai' || $row->statusPesanan === 'Ditolak')
         <tr>
             <td>{{$no++}}</td>
             <td>
@@ -138,6 +139,7 @@
                 </div>
             </div>
         </div>
+        @endif
         @endforeach
         @if(session('success'))
                 <div class="alert alert-success mb-2">
