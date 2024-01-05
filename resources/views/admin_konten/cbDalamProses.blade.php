@@ -107,25 +107,28 @@
             </td>
             <td>
                 @if($row->statusPesanan == 'Pesanan Sedang Dibuat')
-                <a href="#" type="button" class="btn btn-sm btn-success btn-primary w-100" data-bs-toggle="modal" data-bs-target="#edit">Input Progres</a>
+                <a href="#" type="button" class="btn btn-sm btn-success btn-primary w-100" data-bs-toggle="modal" data-bs-target="#progres{{$row->idPesanan}}">Input Progres</a>
                 @endif
             </td>
             <td></td>
         </tr>
-        <div class="modal fade modal-dialog-scrollable text-start" id="edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal fade modal-dialog-scrollable text-start" id="progres{{$row->idPesanan}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Edit Data</h5>
+                        <h5 class="modal-title" id="staticBackdropLabel">Input Progres</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('inputProgres',$row->idPesanan)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="mb-3">
-                                <select class="form-select" aria-label="Default select example">
-                                    <option name="statusPesanan" selected>Input Progres</option>
+                                <input type="readonly" class="form-control readonly" name="idPesanan" value="{{$row->idPesanan}}">
+                            </div>
+                            <div class="mb-3">
+                                <select name="progres" class="form-select" aria-label="Default select example">
+                                    <option elected>Input Progres</option>
                                     <option value="25">25%</option>
                                     <option value="50">50%</option>
                                     <option value="75">75%</option>
@@ -141,11 +144,11 @@
                                     <option value="3">100%</option>
                                 </select>
                             </div>
-                            <div class="mb-3">
+                            {{-- <div class="mb-3">
                                 <label for="formGroupExampleInput" class="form-label">Gambar</label>
                                 <input type="file" class="form-control" id="formGroupExampleInput" name="gambar" placeholder="" value="">
                                 <input type="hidden" value="">
-                            </div>
+                            </div> --}}
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Batal</button>

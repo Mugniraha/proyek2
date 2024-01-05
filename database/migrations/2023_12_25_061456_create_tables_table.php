@@ -87,6 +87,7 @@ return new class extends Migration
             $table->integer('tinggi');
             $table->string('warna');
             $table->string('statusPesanan')->nullable();
+            $table->string('statusPembayaran')->nullable();
             $table->date('tanggalPemesanan');
             $table->timestamps();
         });
@@ -94,7 +95,6 @@ return new class extends Migration
         // Tabel Wishlist
         Schema::create('wishlist', function (Blueprint $table) {
             $table->id('idKeranjang');
-            $table->integer('jumlahItem');
             $table->timestamps();
         });
 
@@ -108,8 +108,10 @@ return new class extends Migration
         // Tabel Pemantauan
         Schema::create('pemantauan', function (Blueprint $table) {
             $table->id('idPemantauan');
-            $table->string('statusPesanan');
-            $table->string('statusPengiriman');
+            $table->string('start');
+            $table->string('process');
+            $table->string('finishing');
+            $table->string('end');
             $table->timestamps();
         });
 
@@ -117,9 +119,7 @@ return new class extends Migration
         Schema::create('pembayaran', function (Blueprint $table) {
             $table->id('idPembayaran');
             $table->string('metodePembayaran');
-            $table->float('dpPembayaran', 10, 2);
-            $table->float('totalPembayaran', 10, 2);
-            $table->string('statusPembayaran');
+            $table->string('buktiPembayaran');
             $table->timestamps();
         });
     }
