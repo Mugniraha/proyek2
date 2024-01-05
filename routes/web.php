@@ -121,6 +121,10 @@ Route::post('/costumproduk/{idProduk}', [CostumProdukController::class, 'index']
 
 Route::get('/pembayaran/transaksi/{idPesanan}', [PembayaranController::class, 'transaksi'])->name('pembayaran.transaksi');
 Route::post('/pembayaran/transaksi', [PembayaranController::class, 'store'])->name('pembayaran.store');
+Route::post('/produk/{idProduk}', [ProdukController::class, 'store'])->name('produk.store');
+
+
+
 
 Route::get('/daftarpesanan', [DaftarPesananController::class, 'index'])->name('daftarpesanan.index');
 Route::get('/riwayat', [DaftarPesananController::class, 'riwayat'])->name('daftarpesanan.riwayat');
