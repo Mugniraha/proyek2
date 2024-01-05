@@ -115,13 +115,20 @@ p.idpesanan{
     width: 10px;
 }
 .product-details td:nth-child(3) {
-    width: 70%;
+    width: 30%;
+}
+.product-details td:nth-child(4) {
+    width: 10px;
+}
+.product-details td:nth-child(5) {
+    width: 10px;
 }
 
 
 .col-d{
     padding-left: 20px;
 }
+
 
 .colhead{
     font-weight: bold;
@@ -170,7 +177,7 @@ p.idpesanan{
     float: inline-end;
     margin-top: 20%;
     margin-right: 20px;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
 }
 .pricefull{
@@ -245,6 +252,24 @@ p.idpesanan{
 .btncall:hover {
     background-color: rgb(183, 255, 181);
     color: #4C6687;
+}
+.btncall-disabled{
+    padding: 4px 8px;
+    font-size: 14px;
+    border-radius: 4px;
+    background-color: rgb(224, 255, 233);
+    color: #b2b2b2;
+    transition: background-color 0.3s ease;
+}
+.btncall-finish{
+    color: green;
+    background-color: rgb(241, 255, 241);
+    font-size: 12px;
+    border: 1px solid #30fc85;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-style: italic;
 }
 .card-progres{
     background-color: #f4f5f7;

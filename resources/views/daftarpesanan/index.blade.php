@@ -3,14 +3,11 @@
         <section id="productspes">
             <div class="btn-top">
                 <a href="{{ route('daftarpesanan.riwayat') }}"><button class="btnriwayat">Riwayat Pesanan</button></a>
-<<<<<<< HEAD
-=======
-
->>>>>>> 23f680b71ac630b86ed97fa0d9c7a0f3f80e469f
                 <a href="{{ route('daftarpesanan.riwayatService') }}"><button class="btnriwayat">Riwayat Service</button></a>
                 <hr>
             </div>
         @foreach($dataPesanan as $pesanan)
+        @if($pesanan->statusPesanan !== 'Selesai')
         <div class="container">
             <div class="row">
                 <div class="cardpes">
@@ -38,9 +35,29 @@
                                     <td  class="colhead" colspan="3">{{ $pesanan->namaPesanan }}</td>
                                 </tr>
                                 <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="col-g">Panjang</td>
+                                    <td class="narrow-column">:</td>
+                                    <td class="col-g">{{ $pesanan->panjang }}</td>
+                                    
+                                </tr>
+                                <tr>
                                     <td>Warna</td>
                                     <td class="narrow-column">:</td>
-                                    <td>{{ $pesanan->warna}}</td>
+                                    <td>{{ $pesanan->warna }}</td>
+                                    <td class="col-g">Lebar</td>
+                                    <td class="narrow-column">:</td>
+                                    <td>{{ $pesanan->lebar }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Bahan Rangka</td>
+                                    <td class="narrow-column">:</td>
+                                    <td>{{ \App\Models\Bahan::find($pesanan->bahan)->namaBahan }}</td>
+                                    <td>Tinggi</td>
+                                    <td class="narrow-column">:</td>
+                                    <td >{{ $pesanan->tinggi }}</td>
                                 </tr>
                                 <tr>
                                     <td>Jumlah Barang</td>
@@ -48,9 +65,16 @@
                                     <td>{{ $pesanan->jumlahItem }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Total Harga</td>
+                                    <td>Tanggal Pemesanan</td>
                                     <td class="narrow-column">:</td>
-                                    <td>{{ $pesanan->totalHarga }}</td>
+                                    <td>{{ $pesanan->tanggalPemesanan }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Metode Pengiriman</td>
+                                    <td class="narrow-column">:</td>
+                                    <td>
+                                            {{ \App\Models\Pengiriman::find($pesanan->metodePengiriman)->jenisPengiriman }}
+                                    </td>
                                 </tr>
                             </table>
                         </div>
@@ -62,7 +86,7 @@
                                             <td><i>Harga DP :</i></td>
                                             <td class="gap" rowspan="2">
                                             </td>
-                                            <td class="status-payment" rowspan="2"><i>Sudah Dibayar</i></td>
+                                            <td class="status-payment" rowspan="2"><i>{{ $pesanan->statusPembayarangi }}</i></td>
                                         </tr>
                                         <tr>
                                             <td>{{ $pesanan->totalHarga / 2 }}</td>
@@ -74,9 +98,9 @@
                                 <table>
                                     <tbody>
                                         <tr>
-                                            <td><i>Belum dibayar</i></td>
-                                            <td>: Rp</td>
-                                            <td class="pricefull"> {{ $pesanan->totalHarga}}</td>
+                                            <td><i>Total Harga</i></td>
+                                            <td>:</td>
+                                            <td class="pricefull">Rp {{ $pesanan->totalHarga}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -164,11 +188,25 @@
 
 
                         <div class="btn-right">
-                            <a href="{{ route('pembayaran.transaksi', ['idPesanan' => $pesanan->idPesanan]) }}"><button class="btncall">Pembayaran</button></a>
+                            @if($pesanan->statusPesanan === 'Sudah Diverifikasi')
+                            <a href="{{ route('pembayaran.transaksi', ['idPesanan' => $pesanan->idPesanan]) }}">
+                                <button class="btncall">Pembayaran DP</button>
+                            </a>
+                            @elseif($pesanan->statusPesanan === 'Menunggu Verifikasi')
+                            <!-- Tambahkan kelas "disabled" dan atribut "disabled" untuk menonaktifkan tombol -->
+                            <button class="btncall-disabled" disabled>Pembayaran DP</button>
+                            @elseif($pesanan->statusPesanan === 'Sedang Diproses')
+                            <button class="btncall-finish" disabled><i class="fa-solid fa-circle-check" style="color: #66ff70;"></i> Sudah Pembayaran DP</button>
+                            @else
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
+            
         </div>
+        @else
+            
+        @endif
         @endforeach
         </section>

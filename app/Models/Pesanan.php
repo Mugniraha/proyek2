@@ -30,6 +30,7 @@ class Pesanan extends Model
         'warna',
         'tanggalPemesanan',
         'statusPesanan',
+        'statusPembayaran',
         'idUser',
         'idProduk'
     ];

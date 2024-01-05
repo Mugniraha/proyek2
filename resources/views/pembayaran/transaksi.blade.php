@@ -116,27 +116,71 @@
                 </div>
                 <div class="transaksi-middle">
                     <div class="transaksi-pilihan">
+                        <div id="qrCodeContainer"></div>
                         <ul class="list-group-transaksi">
-                            <li class="list-group-item-gopay"><a href="">
+                            <li class="list-group-item-gopay">
                                 <img src="{{ asset('images/LogoGopay.png')}}" alt="Logo" class="img-pembayaran">Gopay
-                            </a></li>
-                            <li class="list-group-item-ovo"><a href="">
+                            </li>
+                            <li class="list-group-item-ovo">
                                 <img src="{{ asset('images/LogoOvo.png')}}" alt="Logo"  class="img-pembayaran">OVO
-                            </a></li>
-                            <li class="list-group-item-dana"><a href="">
+                            </li>
+                            <li class="list-group-item-dana">
                                 <img src="{{ asset('images/LogoDana.png')}}" alt="Logo" class="img-pembayaran">Dana
-                            </a></li>
-                            
+                            </li>
                         </ul>
+                        
                     </div>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                        const gopayItem = document.querySelector('.list-group-item-gopay');
+                        const ovoItem = document.querySelector('.list-group-item-ovo');
+                        const danaItem = document.querySelector('.list-group-item-dana');
+                        const qrCodeContainer = document.getElementById('qrCodeContainer');
+                        
+
+                        // Fungsi untuk menampilkan gambar QR Code
+                        function showQRCode(imageUrl) {
+                            qrCodeContainer.innerHTML = `<img src="{{ asset('${imageUrl}') }}" alt="QR Code" class="qr-code">`;
+                        }
+
+                        // Event listener ketika item Gopay dipilih
+                        gopayItem.addEventListener('click', function() {
+                            const gopayQRCode = 'images/kodeqrgopay.jpeg'; // Ganti dengan URL gambar QR Code Gopay
+                            showQRCode(gopayQRCode);
+                        });
+
+                        // Event listener ketika item OVO dipilih
+                        ovoItem.addEventListener('click', function() {
+                            const ovoQRCode = 'images/kodeqrovo.jpeg'; // Ganti dengan URL gambar QR Code OVO
+                            showQRCode(ovoQRCode);
+                        });
+
+                        // Event listener ketika item Dana dipilih
+                        danaItem.addEventListener('click', function() {
+                            const danaQRCode = 'images/kodeqrdana.jpeg'; // Ganti dengan URL gambar QR Code Dana
+                            showQRCode(danaQRCode);
+                        });
+                    });
+
+                    </script>
                 </div>
                 <div class="transaksi-bottom">
                     <div class="button-transaksi">
-                        <form action="">
+                        <form action="{{ route('pembayaran.store')}}" method="POST">
+                            @csrf
+                            <div class="metode">
+                                <select class="form-select" id="metodePembayaran" name="metodePembayaran">
+                                    <option value="" selected disabled>Pilih Metode Pembayaran</option>
+                                    <option value="GOPAY">GOPAY</option>
+                                    <option value="OVO">OVO</option>
+                                    <option value="DANA">DANA</option>
+                                </select>
+                            </div>
                             <div class="button-upload">
                                 <div class="inputan-upload">
-                                    <input type="file" name="file" id="file" class="inputfile" data-multiple-caption="{count} files selected" multiple />
-                                    <label for="file"><span>Upload Bukti Pembayaran...</span></label>
+                                    <input type="hidden" class="form-control" name="idPesanan" value="{{ $pesanan->idPesanan }}">
+                                    <input type="file" name="buktiPembayaran" id="file" class="inputfile" data-multiple-caption="{count} files selected" multiple />
+                                    <label for="file"><span><i class="fa-solid fa-cloud-arrow-up" style="color: #2474ff;"></i> Upload Bukti Pembayaran...</span></label>
                                 </div>
                                 <div class="button-submit">
                                     <button class="btn-trn" type="submit">Kirim</button>
@@ -164,8 +208,6 @@
                                     });
                                 });
                             </script>
-                            
-                           
                         </form>
                     </div>
                 </div>

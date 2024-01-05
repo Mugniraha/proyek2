@@ -48,6 +48,7 @@ class CostumProdukController extends Controller
         $hargaProduk = $request->input('totalharga');
         $idProduk = $request->input('idProduk');
         $statusPesanan = $request->input('statusPesanan');
+        $statusPembayaran = $request->input('statusPembayaran');
         $tanggalPemesanan = Carbon::now();
         $idUser = Auth::id();
 
@@ -82,6 +83,8 @@ class CostumProdukController extends Controller
         $pesanan->jumlahItem = $jumlahItem;
         $pesanan->tanggalPemesanan = $tanggalPemesanan;
         $pesanan->metodePengiriman = $idPengiriman;
+        $pesanan->statusPesanan = $statusPesanan;
+        $pesanan->statusPembayaran = $statusPembayaran;
         $pesanan->deskripsiPesanan = $request->input('deskripsi');
         $pesanan->totalHarga = $totalHarga;
         $pesanan->save();
