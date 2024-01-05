@@ -166,7 +166,7 @@
                 </div>
                 <div class="transaksi-bottom">
                     <div class="button-transaksi">
-                        <form action="{{ route('pembayaran.store')}}" method="POST">
+                        <form action="{{ route('pembayaran.store')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="metode">
                                 <select class="form-select" id="metodePembayaran" name="metodePembayaran">

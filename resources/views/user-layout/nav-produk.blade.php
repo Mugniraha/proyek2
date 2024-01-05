@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset('css/costumproduk.css') }}">
     <link rel="stylesheet" href="{{ asset('css/payment.css') }}">
     <link rel="stylesheet" href="{{ asset('css/transaksi.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/wishlist.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -89,28 +90,24 @@
             <div>
                 <h4 class="p-1 border-bottom">Kategori</h4>
                 <ul class="list-group">
-                    <li class="list-group-item"><a href="#">
+                    <li class="list-group-item"><a href="{{ route('produk.index') }}">
                         <span class="fa fa-circle pr-1" id="semua"></span>Semua
                     </a></li>
-                    <li class="list-group-item"><a href="#">
+                    <li class="list-group-item"><a href="{{ route('produk.index', ['kategori' => 'meja']) }}">
                         <span class="fa fa-circle pr-1" id="meja"></span>Meja
                     </a></li>
-                    <li class="list-group-item"><a href="#">
+                    <li class="list-group-item"><a href="{{ route('produk.index', ['kategori' => 'kursi']) }}">
                         <span class="fa fa-circle pr-1" id="kursi"></span>Kursi
                     </a></li>
-                    <li class="list-group-item"><a href="#">
+                    <li class="list-group-item"><a href="{{ route('produk.index', ['kategori' => 'container']) }}">
+                        <span class="fa fa-circle pr-1" id="tangga"></span>Container
+                    </a></li>
+                    <li class="list-group-item"><a href="{{ route('produk.index', ['kategori' => 'tangga']) }}">
                         <span class="fa fa-circle pr-1" id="tangga"></span>Tangga
                     </a></li>
-                    <li class="list-group-item"><a href="#">
-                        <span class="fa fa-circle pr-1" id="tralis"></span>Tralis
+                    <li class="list-group-item"><a href="{{ route('produk.index', ['kategori' => 'tralis']) }}">
+                        <span class="fa fa-circle pr-1" id="tangga"></span>Tralis
                     </a></li>
-                    <li class="list-group-item"><a href="#">
-                        <span class="fa fa-circle pr-1" id="etalase"></span>Etalase
-                    </a></li>
-                    <li class="list-group-item"><a href="#">
-                        <span class="fa fa-circle pr-1" id="container"></span>Container
-                    </a></li>
-
                 </ul>
             </div>
         </section>

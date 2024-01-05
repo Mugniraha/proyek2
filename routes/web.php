@@ -77,7 +77,9 @@ Route::get('/logout', [LoginAdminController::class, 'logout'])->name('logout');
 
 
 Route::get('/home', [HomeController::class, 'HomeIndex'])->name('HomeIndex');
-Route::get('/produk', [ProdukController::class, 'index'])->name('produk.index');
+Route::get('/produk/{kategori?}', [ProdukController::class, 'index'])->name('produk.index');
+
+
 Route::get('/akunUser', [HomeUserController::class, 'HomeUserIndex'])->name('HomeUserIndex');
 Route::resource('/buatAkun', buatAkunController::class );
 
@@ -120,6 +122,11 @@ Route::post('/costumproduk/{idProduk}', [CostumProdukController::class, 'index']
 
 Route::get('/pembayaran/transaksi/{idPesanan}', [PembayaranController::class, 'transaksi'])->name('pembayaran.transaksi');
 Route::post('/pembayaran/transaksi', [PembayaranController::class, 'store'])->name('pembayaran.store');
+Route::post('/produk/{idProduk}', [ProdukController::class, 'store'])->name('produk.store');
+
+
+
+
 
 Route::get('/daftarpesanan', [DaftarPesananController::class, 'index'])->name('daftarpesanan.index');
 Route::get('/riwayat', [DaftarPesananController::class, 'riwayat'])->name('daftarpesanan.riwayat');

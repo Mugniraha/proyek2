@@ -124,40 +124,24 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach($pesanan->pemantauans as $pemantauan)
                                             <tr>
                                                 <td colspan="3"></td>
-                                                <td colspan="3"><img class="card-img-left" src="images/portopolio 1.png" alt="Card image cap" width=75px height=75px></td>
+                                                <td colspan="3"><img class="card-img-left" src="{{ asset('storage/img/' . $pemantauan->gambar) }}" alt="Card image cap" width=75px height=75px></td>
                                                 <td colspan="3"></td>
-                                                <td colspan="3"><img class="card-img-left" src="images/portopolio 1.png" alt="Card image cap" width=75px height=75px></td>
+                                                <td colspan="3"><img class="card-img-left" src="{{ asset('storage/img/' . $pemantauan->gambar) }}" alt="Card image cap" width=75px height=75px></td>
                                             </tr>
                                             <tr>
                                                 <td>Keterangan</td>
                                                 <td>:</td>
-                                                <td></td>
-                                                <td>Keterangan</td>
-                                                <td>:</td>
-                                                <td></td>
-                                                <td>Keterangan</td>
-                                                <td>:</td>
-                                                <td></td>
-                                                <td>Keterangan</td>
-                                                <td>:</td>
-                                                <td></td>
+                                                <td>{{ $pemantauan->keterangan }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Tanggal Update</td>
                                                 <td>:</td>
-                                                <td></td>
-                                                <td>Tanggal Update</td>
-                                                <td>:</td>
-                                                <td></td>
-                                                <td>Tanggal Update</td>
-                                                <td>:</td>
-                                                <td></td>
-                                                <td>Tanggal Update</td>
-                                                <td>:</td>
-                                                <td></td>
+                                                <td>{{ $pemantauan->tanggalUpdate }}</td>
                                             </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
