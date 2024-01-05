@@ -111,6 +111,7 @@ return new class extends Migration
             $table->integer('progres');
             $table->string('keterangan');
             $table->string('gambar')->nullable();
+            $table->date('tanggalUpdate');
             $table->timestamps();
         });
 

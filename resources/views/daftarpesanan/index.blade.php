@@ -86,7 +86,7 @@
                                             <td><i>Harga DP :</i></td>
                                             <td class="gap" rowspan="2">
                                             </td>
-                                            <td class="status-payment" rowspan="2"><i>{{ $pesanan->statusPembayarangi }}</i></td>
+                                            <td class="status-payment" rowspan="2"><i>{{ $pesanan->statusPembayaran }}</i></td>
                                         </tr>
                                         <tr>
                                             <td>{{ $pesanan->totalHarga / 2 }}</td>
