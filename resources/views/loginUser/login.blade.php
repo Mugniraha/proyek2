@@ -38,7 +38,7 @@
                         </div>
                         <div class="mb-3 justify-content-center">
                             <div class="d-flex">
-                                <a href="{{ route('HomeIndex') }}" class="btn btn-primary custom-button mx-auto me-3 text-dark">Batal</a>
+                                <a href="{{ url('/') }}" class="btn btn-primary custom-button mx-auto me-3 text-dark">Batal</a>
                                 <button class="btn btn-primary custom-button mx-auto">Login</button>
                             </div>
                         </div>
