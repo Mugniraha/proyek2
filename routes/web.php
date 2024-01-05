@@ -54,6 +54,7 @@ use App\Http\Controllers\pengirimanController;
     Route::get('/', function () {
         return view('HomeAwal.index'); // Ganti 'home' dengan nama view yang ingin Anda tampilkan
     });
+    Route::get('/', [ProdukController::class, 'landingPage'])->name('landing-page');
 Route::get('/register', [RegisterController::class, 'registerIndex'])->name('registerIndex');
 Route::post('/register', [RegisterController::class, 'registerPost'])->name('registerPost');
 Route::get('/loginUser', [RegisterController::class, 'loginIndex'])->name('loginIndex');
@@ -76,7 +77,6 @@ Route::put('/admin/{idAdmin}/change-password', [LoginAdminController::class, 'ch
 Route::get('/logout', [LoginAdminController::class, 'logout'])->name('logout');
 
 
-Route::get('/home', [HomeController::class, 'HomeIndex'])->name('HomeIndex');
 Route::get('/produk/{kategori?}', [ProdukController::class, 'index'])->name('produk.index');
 
 
