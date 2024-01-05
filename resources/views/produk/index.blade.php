@@ -3,6 +3,7 @@
         <section id="products">
         <div class="container">
             <div class="row">
+                @if(count($dataProduk) > 0)
                 @foreach($dataProduk as $produk)
                 <div class="card">
                     <div class="card-top">
@@ -84,7 +85,9 @@
                         </button>
                     </div>
                 </div>
-                
                 @endforeach
+                @else
+                    
+                @endif
             </div>
         </section>

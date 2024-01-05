@@ -8,11 +8,15 @@ use Illuminate\Http\Request;
 
 class ProdukController extends Controller
 {
-    public function index()
+    public function index($kategori = null)
     {
-        $dataProduk = produk::all(); // Perbaikan penulisan nama class dan variabel
+        if ($kategori) {
+            $dataProduk = Produk::where('kategori', $kategori)->get();
+        } else {
+            $dataProduk = Produk::all();
+        }
 
-        return view('produk.index', ['dataProduk' => $dataProduk]); // Mengirim data ke view dengan nama 'dataProduk'
+        return view('produk.index', compact('dataProduk'));
     }
     public function show($idProduk)
     {

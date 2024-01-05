@@ -8,6 +8,8 @@ use App\Models\Produk;
 use App\Models\Bahan;
 use App\Models\Pengiriman;
 use App\Models\Pembayaran;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class PembayaranController extends Controller
 {
@@ -28,20 +30,35 @@ class PembayaranController extends Controller
         $pesanan = Pesanan::find($idPesanan);
         return view('pembayaran.transaksi', compact('pesanan'));
     }
-    
+
     public function store(Request $request){
+        // $this->validate($request, [
+        //     'metodePembayaran'   => 'required',
+        //     'idPesanan'          => 'required',
+        //     'buktiPembayaran'    => 'required|image|mimes:png,jpg,jpeg|max:2048',
+        // ]);
+
+        $img = $request->file('buktiPembayaran');
+        $img->storeAs('public/img',$img->hashName());
+        // Proses insert
+        DB::table('pembayaran')->insert([
+            'metodePembayaran'  => $request->metodePembayaran,
+            'idPesanan'         => $request->idPesanan,
+            'buktiPembayaran'   => $img->hashName(),
+        ]);
+
         // Mengambil data dari request
-        $idPesanan = $request->input('idPesanan');
-        $buktiPembayaran = $request->input('buktiPembayaran');
-        $metodePembayaran = $request->input('metodePembayaran'); // Diambil dari form sebelumnya
+        // $idPesanan = $request->input('idPesanan');
+        // $buktiPembayaran = $request->input('buktiPembayaran');
+        // $metodePembayaran = $request->input('metodePembayaran'); // Diambil dari form sebelumnya
 
-        $pembayaran = new Pembayaran();
-        $pembayaran->idPesanan = $idPesanan;
-        $pembayaran->buktiPembayaran = $buktiPembayaran;
-        $pembayaran->metodePembayaran = $metodePembayaran;
+        // $pembayaran = new Pembayaran();
+        // $pembayaran->idPesanan = $idPesanan;
+        // $pembayaran->buktiPembayaran = $buktiPembayaran;
+        // $pembayaran->metodePembayaran = $metodePembayaran;
 
-        $pembayaran->save();
+        // $pembayaran->save();
 
-        return redirect()->route('daftarpesanan.index',['idPesanan' => $idPesanan])->with('success', 'Data Berhasil Disimpan');
+        return redirect()->route('daftarpesanan.index',['idPesanan' => $request->idPesanan])->with('success', 'Data Berhasil Disimpan');
     }
 }

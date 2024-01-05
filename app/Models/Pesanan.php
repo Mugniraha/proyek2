@@ -41,4 +41,7 @@ class Pesanan extends Model
     {
         return $this->belongsTo(\App\Models\Produk::class, 'idProduk', 'idProduk');
     }
+    public function pemantauans() {
+        return $this->hasMany(Pemantauan::class, 'idPesanan');
+    }
 }

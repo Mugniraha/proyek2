@@ -90,28 +90,24 @@
             <div>
                 <h4 class="p-1 border-bottom">Kategori</h4>
                 <ul class="list-group">
-                    <li class="list-group-item"><a href="#">
+                    <li class="list-group-item"><a href="{{ route('produk.index') }}">
                         <span class="fa fa-circle pr-1" id="semua"></span>Semua
                     </a></li>
-                    <li class="list-group-item"><a href="#">
+                    <li class="list-group-item"><a href="{{ route('produk.index', ['kategori' => 'meja']) }}">
                         <span class="fa fa-circle pr-1" id="meja"></span>Meja
                     </a></li>
-                    <li class="list-group-item"><a href="#">
+                    <li class="list-group-item"><a href="{{ route('produk.index', ['kategori' => 'kursi']) }}">
                         <span class="fa fa-circle pr-1" id="kursi"></span>Kursi
                     </a></li>
-                    <li class="list-group-item"><a href="#">
+                    <li class="list-group-item"><a href="{{ route('produk.index', ['kategori' => 'container']) }}">
+                        <span class="fa fa-circle pr-1" id="tangga"></span>Container
+                    </a></li>
+                    <li class="list-group-item"><a href="{{ route('produk.index', ['kategori' => 'tangga']) }}">
                         <span class="fa fa-circle pr-1" id="tangga"></span>Tangga
                     </a></li>
-                    <li class="list-group-item"><a href="#">
-                        <span class="fa fa-circle pr-1" id="tralis"></span>Tralis
+                    <li class="list-group-item"><a href="{{ route('produk.index', ['kategori' => 'tralis']) }}">
+                        <span class="fa fa-circle pr-1" id="tangga"></span>Tralis
                     </a></li>
-                    <li class="list-group-item"><a href="#">
-                        <span class="fa fa-circle pr-1" id="etalase"></span>Etalase
-                    </a></li>
-                    <li class="list-group-item"><a href="#">
-                        <span class="fa fa-circle pr-1" id="container"></span>Container
-                    </a></li>
-
                 </ul>
             </div>
         </section>
