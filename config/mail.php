@@ -86,6 +86,14 @@ return [
                 'log',
             ],
         ],
+
+        'roundrobin' => [
+            'transport' => 'roundrobin',
+            'mailers' => [
+                'ses',
+                'postmark',
+            ],
+        ],
     ],
 
     /*

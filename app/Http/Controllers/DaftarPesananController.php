@@ -19,7 +19,7 @@ class DaftarPesananController extends Controller
         $pesanan = Pesanan::find($idPesanan);
         return view('daftarpesanan.index', compact('pesanan'));
     }
-    
+
     public function riwayat()
     {
         $dataPesanan = Pesanan::all();

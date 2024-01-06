@@ -35,6 +35,13 @@ use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\bahanController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\pengirimanController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\PasswordReset;
+use App\Models\User;
+use App\Models\Admin;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Password;
 
 
 
@@ -59,9 +66,49 @@ Route::get('/register', [RegisterController::class, 'registerIndex'])->name('reg
 Route::post('/register', [RegisterController::class, 'registerPost'])->name('registerPost');
 Route::get('/loginUser', [RegisterController::class, 'loginIndex'])->name('loginIndex');
 Route::post('/loginUser', [RegisterController::class, 'loginPost'])->name('loginPost');
-Route::get('/lupaPassUser', [ChangePasswordController::class, 'edit'])->name('password.edit');
 Route::put('/ubahPassword', [ChangePasswordController::class, 'ubahKataSandi'])->name('ubahKataSandi');
 Route::get('/logout', [RegisterController::class, 'logout'])->name('logout');
+
+Route::post('/forgot-passwordUser', function (Request $request) {
+    $request->validate(['email' => 'required|email']);
+    $status = Password::sendResetLink(
+        $request->only('email')
+    );
+    return $status === Password::RESET_LINK_SENT
+                ? back()->with(['status' => __($status)])
+                : back()->withErrors(['email' => __($status)]);
+})->middleware('guest')->name('password.email');
+
+Route::get('/reset-passwordUser/{token}', function (string $token) {
+    return view('password.emailToken', ['token' => $token]);
+})->middleware('guest')->name('password.reset');
+
+Route::post('/reset-passwordUser', function (Request $request) {
+    $request->validate([
+        'token' => 'required',
+        'email' => 'required|email',
+        'password' => 'required|min:8|confirmed',
+    ]);
+
+    $status = Password::reset(
+        $request->only('email', 'password', 'password_confirmation', 'token'),
+        function (User $user, string $password) {
+            $user->forceFill([
+                'password' => Hash::make($password)
+            ])->setRememberToken(Str::random(60));
+
+            $user->save();
+
+            event(new PasswordReset($user));
+        }
+    );
+
+    return $status === Password::PASSWORD_RESET
+                ? redirect()->route('loginIndex')->with('status', __($status))
+                : back()->withErrors(['email' => [__($status)]]);
+})->middleware('guest')->name('password.update');
+Route::get('/lupaPassUser', [ChangePasswordController::class, 'edit'])->name('password.edit');
+
 
 Route::post('/costumproduk', [CostumprodukController::class, 'store'])->name('costumproduk.store');
 
@@ -69,12 +116,53 @@ Route::get('/registerAdmin', [LoginAdminController::class, 'registerAdminIndex']
 Route::post('/registerAdmin', [LoginAdminController::class, 'registerAdminPost'])->name('registerAdminPost');
 Route::get('/loginAdmin', [LoginAdminController::class, 'loginAdminIndex'])->name('loginAdminIndex');
 Route::post('/loginAdmin', [LoginAdminController::class, 'loginAdminPost'])->name('loginAdminPost');
+// Route::put('/ubahpw', [LoginAdminController::class, 'changePassword'])->name('changePassword');
+Route::put('/admin/{idAdmin}/change-password', [LoginAdminController::class, 'changePassword'])->name('changePassword');
 
 Route::get('/lupaPassAdmin', [ChangePasswordController::class, 'editAdmin'])->name('editPassAdmin');
 // Route::put('/ubahpw', [LoginAdminController::class, 'changePassword'])->name('changePassword');
 Route::put('/admin/{idAdmin}/change-password', [LoginAdminController::class, 'changePassword'])->name('changePassword');
-
 Route::get('/logout', [LoginAdminController::class, 'logout'])->name('logout');
+
+Route::post('/forgot-passwordAdmin', function (Request $request) {
+    $request->validate(['emailAdmin' => 'required|email']);
+    $status = Password::sendResetLink(
+        $request->only('emailAdmin')
+    );
+    return $status === Password::RESET_LINK_SENT
+                ? back()->with(['status' => __($status)])
+                : back()->withErrors(['emailAdmin' => __($status)]);
+})->middleware('guest')->name('password.emailAdmin');
+
+Route::get('/reset-passwordAdmin/{token}', function (string $token) {
+    return view('password.emailTokenAdmin', ['token' => $token]);
+})->middleware('guest')->name('password.resetAdmin');
+
+Route::post('/reset-passwordAdmin', function (Request $request) {
+    $request->validate([
+        'token' => 'required',
+        'emailAdmin' => 'required|email',
+        'password' => 'required|min:8|confirmed',
+    ]);
+
+    $status = Password::reset(
+        $request->only('emailAdmin', 'password', 'confirmation_password', 'token'),
+        function (Admin $admin, string $password) {
+            $admin->forceFill([
+                'password' => Hash::make($password)
+            ])->setRememberToken(Str::random(60));
+
+            $admin->save();
+
+            event(new PasswordReset($admin));
+        }
+    );
+
+    return $status === Password::PASSWORD_RESET
+                ? redirect()->route('loginAdminIndex')->with('status', __($status))
+                : back()->withErrors(['emailAdmin' => [__($status)]]);
+})->middleware('guest')->name('password.updateAdmin');
+Route::get('/lupaPassAdmin', [ChangePasswordController::class, 'editAdmin'])->name('editPassAdmin');
 
 
 Route::get('/produk/{kategori?}', [ProdukController::class, 'index'])->name('produk.index');
@@ -110,6 +198,10 @@ Route::get('/notifikasi', [NotifikasiController::class, 'NotifikasiIndex'])->nam
 Route::get('/konfirmasi', [NotifikasiController::class, 'KonfirmasiIndex'])->name('KonfirmasiIndex');
 Route::resource('/formOrder', formJsController::class,  );
 Route::put('/formOrder/{id}', [formJSController::class, 'update'])->name('formOrder.update');
+Route::put('/formOrder/{id}', [formJSController::class, 'show'])->name('formOrder.show');
+
+Route::get('/notifikasi', [NotifikasiController::class, 'index'])->name('notifikasi.index');
+
 Route::get('/serviceUser', [serviceBaruController::class, 'serviceBaruIndex'])->name('serviceBaruIndex');
 Route::resource('/costumproduk', CostumProdukController::class);
 Route::get('/costumproduk/{idProduk}', [CostumProdukController::class, 'show'])->name('costumproduk.index');
@@ -158,13 +250,14 @@ Route::resource('/bantuan', bantuanController::class);
 Route::resource('/profil', profilAdminController::class);
 Route::resource('/bahan', bahanController::class);
 Route::resource('/pengiriman', pengirimanController::class);
-Route::get('/jsPesananBaru/{id}/terima', [jaserPesananBaruController::class, 'terimaPesanan'])->name('terimaPesanan');
-Route::get('/jsPesananBaru/{id}/tolak', [jaserPesananBaruController::class, 'tolakPesanan'])->name('tolakPesanan');
-Route::get('/jsDalamProses/{id}',[jaserDalamProsesController::class, 'selesai'])->name('selesai');
+Route::get('/jsPesananBaru/{id}/terima', [jaserPesananBaruController::class, 'terimaPesananService'])->name('terimaPesananService');
+Route::get('/jsPesananBaru/{id}/tolak', [jaserPesananBaruController::class, 'tolakPesananService'])->name('tolakPesananService');
+Route::get('/jsDalamProses/{id}',[jaserDalamProsesController::class, 'selesaiService'])->name('selesaiService');
 Route::get('/cbPesananBaru/{id}/terima',[cusbarPesananBaruController::class, 'terimaPesanan'])->name('terimaPesanan');
 Route::get('/cbPesananBaru/{id}/tolak',[cusbarPesananBaruController::class, 'tolakPesanan'])->name('tolakPesanan');
 Route::get('/cbPesananBaru/{id}/verifikasiPembayaran',[cusbarDalamProsesController::class, 'verifikasiPembayaran'])->name('verifikasiPembayaran');
 Route::put('/inputProgres/{id}/inputProgres',[cusbarDalamProsesController::class,'inputProgres'])->name('inputProgres');
+Route::get('/selesai/{id}',[cusbarDalamProsesController::class,'selesai'])->name('selesai');
 
 
 

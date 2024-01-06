@@ -14,7 +14,7 @@ class formJsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index() 
+    public function index()
     {
         $slug = "jasa_service";
         // $form_js = DB::table('jasa_service')->get();
@@ -52,6 +52,7 @@ class formJsController extends Controller
 
         return redirect()->route('serviceBaruIndex')->with('success', 'Data berhasil disimpan!');
     }
+
 
     /**
      * Display the specified resource.

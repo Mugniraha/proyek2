@@ -5,6 +5,7 @@
                 <a href="{{ route('daftarpesanan.index') }}"><button class="btnriwayat">Kembali</button></a>
                 <hr>
             </div>
+            @foreach($form_js as $form)
         <div class="container">
             <div class="row">
                 <div class="cardpes">
@@ -26,9 +27,7 @@
                         </div>
                         <div class="center-col">
                             <table class="product-details">
-                                {{-- @if(isset($form_js) && count($form_js) > 0) --}}
                                 <table class="product-details">
-                                    @foreach($form_js as $form)
                                         <tr>
                                             <td>Nama Jasa</td>
                                             <td class="narrow-column">:</td>

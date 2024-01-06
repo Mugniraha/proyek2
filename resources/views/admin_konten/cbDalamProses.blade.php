@@ -22,7 +22,7 @@
         @endphp
         @foreach ($custom as $row)
         @if ($row->statusPesanan === 'Sudah Diverifikasi'
-        || $row->statusPesanan === 'Pesanan Sedang Dibuat')
+        || $row->statusPesanan === 'Sedang Diproses')
         <tr>
             <td>{{$no++}}</td>
             <td>
@@ -99,18 +99,30 @@
             </td>
             <td>
                 @if($row->statusPesanan == 'Sudah Diverifikasi')
+                    @if($row->pembayaran)
+                    <img class="mb-2" src="{{ asset('storage/img/'. $row->pembayaran->buktiPembayaran) }}" width="100%" alt="{{$row->pembayaran->buktiPembayaran}}">
                     <a href="{{ route('verifikasiPembayaran', $row->idPesanan) }}" type="button" class="btn btn-sm btn-success btn-primary w-100">Verifikasi</a>
                     <a href="#" type="button" class="mt-2 btn btn-sm btn-danger btn-primary w-100" data-bs-toggle="modal" data-bs-target="#hapus">Tolak</a>
-                    @elseif ($row->statusPesanan === 'Pesanan Sedang Dibuat')
+                    @else
+                        <!-- Handle ketika pembayaran bernilai null -->
+                        <span>Tidak Ada Bukti Pembayaran</span>
+                    @endif
+
+                    @elseif ($row->statusPesanan === 'Sedang Diproses')
                     <a href="#" type="button" class="mt-2 btn btn-sm btn w-100" style="background-color:#4C6687;color:white;">Terverifikasi</a>
                 @endif
             </td>
             <td>
-                @if($row->statusPesanan == 'Pesanan Sedang Dibuat')
+                @if($row->statusPesanan == 'Sedang Diproses')
                 <a href="#" type="button" class="btn btn-sm btn-success btn-primary w-100" data-bs-toggle="modal" data-bs-target="#progres{{$row->idPesanan}}">Input Progres</a>
                 @endif
             </td>
-            <td></td>
+            <td>
+                @if ($row->statusPesanan === 'Sedang Diproses')
+                <a href="{{ route('selesai', $row->idPesanan) }}" type="button" class="btn btn-sm btn-success btn-primary w-100">Selesaikan</a>
+                @endif
+
+            </td>
         </tr>
         <div class="modal fade modal-dialog-scrollable text-start" id="progres{{$row->idPesanan}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -120,41 +132,60 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{route('inputProgres',$row->idPesanan)}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('inputProgres', $row->idPesanan) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="mb-3">
+                                <label for="">Id Pesanan</label>
                                 <input type="readonly" class="form-control readonly" name="idPesanan" value="{{$row->idPesanan}}">
+                                {{-- <input type="hidden" name="idAdmin" value="idAdmin"> --}}
                             </div>
                             <div class="mb-3">
-                                <select name="progres" class="form-select" aria-label="Default select example">
-                                    <option elected>Input Progres</option>
+                                <label for="">Input Progres:</label>
+                                <select name="progres" class="form-select" aria-label="Default select example" id="progresSelect">
+                                    <option selected disabled>Input Progres</option>
                                     <option value="25">25%</option>
                                     <option value="50">50%</option>
                                     <option value="75">75%</option>
                                     <option value="100">100%</option>
                                 </select>
                             </div>
-                            <div class="mb-3">
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Keterangan</option>
-                                    <option value="1">Bahan sedang dibeli</option>
-                                    <option value="2">50%</option>
-                                    <option value="3">75%</option>
-                                    <option value="3">100%</option>
-                                </select>
-                            </div>
-                            {{-- <div class="mb-3">
-                                <label for="formGroupExampleInput" class="form-label">Gambar</label>
+
+                            <div class="mb-3" id="gambarInput" style="display: none;">
+                                <label for="formGroupExampleInput" class="form-label">tambahkan Gambar</label>
                                 <input type="file" class="form-control" id="formGroupExampleInput" name="gambar" placeholder="" value="">
                                 <input type="hidden" value="">
-                            </div> --}}
                             </div>
+
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Batal</button>
                                 <button type="submit" class="btn btn-success">Simpan</button>
                             </div>
+
+                            <script>
+                                var progresSelect = document.getElementById('progresSelect');
+                                var keteranganSelect = document.getElementById('keteranganSelect');
+                                var gambarInput = document.getElementById('gambarInput');
+
+                                progresSelect.addEventListener('change', function() {
+                                    if (this.value == '50' || this.value == '100') {
+                                        gambarInput.style.display = 'block';
+                                    } else {
+                                        gambarInput.style.display = 'none';
+                                    }
+                                });
+
+                                keteranganSelect.addEventListener('change', function() {
+                                    if (this.value == '2' || this.value == '4') {
+                                        gambarInput.style.display = 'block';
+                                    } else {
+                                        gambarInput.style.display = 'none';
+                                    }
+                                });
+                            </script>
+
                         </form>
+
                     </div>
                 </div>
             </div>

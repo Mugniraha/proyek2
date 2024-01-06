@@ -41,7 +41,7 @@
                                     <td class="col-g">Panjang</td>
                                     <td class="narrow-column">:</td>
                                     <td class="col-g">{{ $pesanan->panjang }}</td>
-                                    
+
                                 </tr>
                                 <tr>
                                     <td>Warna</td>
@@ -86,7 +86,7 @@
                                             <td><i>Harga DP :</i></td>
                                             <td class="gap" rowspan="2">
                                             </td>
-                                            <td class="status-payment" rowspan="2"><i>{{ $pesanan->statusPembayarangi }}</i></td>
+                                            <td class="status-payment" rowspan="2"><i>{{ $pesanan->statusPembayaran }}</i></td>
                                         </tr>
                                         <tr>
                                             <td>{{ $pesanan->totalHarga / 2 }}</td>
@@ -194,10 +194,10 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
         @else
-            
+
         @endif
         @endforeach
         </section>

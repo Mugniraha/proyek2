@@ -94,7 +94,7 @@
                                         <td class="dp-price-transaksi" rowspan="2"><i>{{ $pesanan->totalHarga / 2 }}</i></td>
                                     </tr>
                                 </tbody>
-                            </table>     
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -103,8 +103,8 @@
                         <a href="#"><button class="btndp">{{ $pesanan->statusPesanan }}</button></a>
                     </div>
                 </div>
-            </div> 
-        
+            </div>
+
             <div class="transaksi-card">
                 <div class="transaksi-top">
                     <div class="transaksi-head">
@@ -128,7 +128,7 @@
                                 <img src="{{ asset('images/LogoDana.png')}}" alt="Logo" class="img-pembayaran">Dana
                             </li>
                         </ul>
-                        
+
                     </div>
                     <script>
                         document.addEventListener('DOMContentLoaded', function() {
@@ -136,7 +136,7 @@
                         const ovoItem = document.querySelector('.list-group-item-ovo');
                         const danaItem = document.querySelector('.list-group-item-dana');
                         const qrCodeContainer = document.getElementById('qrCodeContainer');
-                        
+
 
                         // Fungsi untuk menampilkan gambar QR Code
                         function showQRCode(imageUrl) {
@@ -191,7 +191,7 @@
                                 Array.prototype.forEach.call(inputs, function (input) {
                                     var label = input.nextElementSibling,
                                         labelVal = label.innerHTML;
-                            
+
                                     input.addEventListener('change', function (e) {
                                         var fileName = '';
                                         if (this.files && this.files.length > 1) {
@@ -199,7 +199,7 @@
                                         } else {
                                             fileName = e.target.value.split('\\').pop();  // Mengganti '\' menjadi '\\'
                                         }
-                            
+
                                         if (fileName) {
                                             label.querySelector('span').innerHTML = fileName;  // Menggunakan strong sebagai pengganti span
                                         } else {
@@ -216,4 +216,4 @@
         @else
         <p>Data tidak ditemukan</p>
         @endif
-    </section>                
+    </section>
