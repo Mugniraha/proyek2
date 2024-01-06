@@ -35,7 +35,7 @@
             <td>{{ ($row->tanggal) }}</td>
             <td>
                 @if($row->status === 'diproses')
-                    <a href="{{route('selesai', $row->idJasa)}}" class="btn btn-sm btn-primary w-100">Selesaikan</a>
+                    <a href="{{route('selesaiService', $row->idJasa)}}" class="btn btn-sm btn-primary w-100">Selesaikan</a>
                 @elseif($row->status === 'ditolak')
                     <button class="btn btn-sm btn-danger w-100" disabled>Ditolak</button>
                 @else

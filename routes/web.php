@@ -252,7 +252,7 @@ Route::resource('/bahan', bahanController::class);
 Route::resource('/pengiriman', pengirimanController::class);
 Route::get('/jsPesananBaru/{id}/terima', [jaserPesananBaruController::class, 'terimaPesananService'])->name('terimaPesananService');
 Route::get('/jsPesananBaru/{id}/tolak', [jaserPesananBaruController::class, 'tolakPesananService'])->name('tolakPesananService');
-Route::get('/jsDalamProses/{id}',[jaserDalamProsesController::class, 'selesai'])->name('selesai');
+Route::get('/jsDalamProses/{id}',[jaserDalamProsesController::class, 'selesaiService'])->name('selesaiService');
 Route::get('/cbPesananBaru/{id}/terima',[cusbarPesananBaruController::class, 'terimaPesanan'])->name('terimaPesanan');
 Route::get('/cbPesananBaru/{id}/tolak',[cusbarPesananBaruController::class, 'tolakPesanan'])->name('tolakPesanan');
 Route::get('/cbPesananBaru/{id}/verifikasiPembayaran',[cusbarDalamProsesController::class, 'verifikasiPembayaran'])->name('verifikasiPembayaran');

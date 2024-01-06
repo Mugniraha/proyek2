@@ -21,7 +21,7 @@ class jaserDalamProsesController extends Controller
         return view("admin_konten.jsDalamProses", compact("slug", "jasaServis"));
     }
 
-    public function selesai($idJasa){
+    public function selesaiService($idJasa){
         $pesanan = Formjs::find($idJasa);
         $pesanan->status = 'Selesai';
         $pesanan->tanggal_selesai = now();
