@@ -49,7 +49,7 @@
                     </a>
                     <div class="dropdown-content" id="dropdownProfil">
                         <a class="listdrop" href="#">Profil</a>
-                        <a class="listdrop" href="#">Logout</a>
+                        <a class="listdrop" href="{{ route('logout') }}">Logout</a>
                     </div>
                     <script>
                         document.addEventListener('DOMContentLoaded', function() {
@@ -76,9 +76,9 @@
                     });
 
                     </script>
-                </li>                
+                </li>
             </ul>
-        </nav>        
+        </nav>
     </header>
     <main>
         <section id="sidebar">
@@ -106,7 +106,7 @@
                     <li class="list-group-item"><a href="#">
                         <span class="fa fa-circle pr-1" id="container"></span>Container
                     </a></li>
-                    
+
                 </ul>
             </div>
         </section>

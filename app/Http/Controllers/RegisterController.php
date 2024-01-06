@@ -57,7 +57,7 @@ class RegisterController extends Controller
             return redirect('/profilUser')->with('success', 'Login berhasil');
         }
 
-        return back()->with('error', 'Email or Password salah');
+        return back()->with('error', 'Email atau Password yang Anda masukkan salah. Silahkan ulangi!');
     }
 
     public function logout()

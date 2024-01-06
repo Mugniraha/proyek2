@@ -14,7 +14,7 @@ class formJsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index() 
+    public function index()
     {
         $slug = "jasa_service";
         // $form_js = DB::table('jasa_service')->get();
@@ -34,24 +34,19 @@ class formJsController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        // $request->validate([
-        //     'namaJasa' => 'required',
-        //     'kategorijasa' => 'required',
-        //     'deskripsiJasa' => 'required',
-        //     'alamat' => 'required',
-        //     'tanggal' => 'required',
-        // ]);
-        $userId = Auth::id();
+{
+    $userId = Auth::id();
 
-        $dataPesanan = $request->all();
-        $dataPesanan['idUser'] = $userId;
-        $dataPesanan['status'] = 'Menunggu Proses';
+    $dataPesanan = $request->all();
+    $dataPesanan['idUser'] = $userId;
+    $dataPesanan['status'] = 'Menunggu Proses';
 
-        Formjs::create($dataPesanan);
+    $formJs = Formjs::create($dataPesanan);
 
-        return redirect()->route('serviceBaruIndex')->with('success', 'Data berhasil disimpan!');
-    }
+    // Meneruskan ID pengguna dan ID formulir ke view notifikasi
+    return redirect()->route('serviceBaruIndex', ['userId' => $userId, 'formId' => $formJs->idJasa])->with(['success' => 'Data berhasil disimpan!']);
+}
+
 
     /**
      * Display the specified resource.
@@ -59,9 +54,25 @@ class formJsController extends Controller
     public function show(string $id)
     {
         $formJS = Formjs::find($id);
+        $user = $formJS->user;
 
-        return view('jasaService_User.detail_pesanan', compact('formJS'));
+        $jasaServiceData = Formjs::all();
+        dd($jasaServiceData);
+
+        return view('jasaService_User.detail_pesanan', compact('formJS', 'user', 'jasaServiceData'));
     }
+
+    public function serviceBaruIndex()
+{
+    $data = [
+        ['userId' => 1, 'formId' => 101],
+        ['userId' => 2, 'formId' => 102],
+        // Tambahkan data sesuai kebutuhan Anda
+    ];
+
+    return view('notifikasi.index', compact('data'));
+}
+
 
     /**
      * Show the form for editing the specified resource.

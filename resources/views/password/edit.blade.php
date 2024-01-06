@@ -13,6 +13,20 @@
     <div class="row justify-content-center mt-5">
         <div class="col-lg-4">
             <div class="card">
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+                @if (session()->has('status'))
+                    <div class="alert alert-success">
+                        {{ session()->get('status') }}
+                    </div>
+                @endif
                 <div class="card-header text-center">
                     <div class="d-flex flex-column align-items-center">
                         <img src="{{ asset('images/logo welding .png')}}" alt="Logo" class="bg">
@@ -21,17 +35,11 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    @if (Session::has('error'))
-                    <div class='alert alert-danger' role="alert">
-                        {{ Session::get('error') }}
-                    </div>
-                    @endif
-                    <form action="" method="POST">
+                    <form action="{{ route('password.email') }}" method="POST">
                         @csrf
-                        @method('PUT')
                         <div class="mb-3">
                             <label for="current_password" class="form-label">Email</label>
-                            <input type="email" name="current_password" class="form-control" id="current_password" placeholder="Masukkan Email" >
+                            <input type="email" name="email" class="form-control" id="current_password" placeholder="Masukkan Email">
                         </div>
                         <div class="mb-3">
                             <div class="d-grid">
@@ -39,6 +47,7 @@
                             </div>
                         </div>
                     </form>
+
                     <div class="mb-3 d-flex justify-content-between flex-column align-items-center">
                             <a href="{{ route('loginIndex') }}" class="text-decoration-none">Kembali</a>
                     </div>

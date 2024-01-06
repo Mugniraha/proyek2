@@ -27,9 +27,13 @@
                         <label for="exampleFormControlTextarea1" class="form-label">Deskripsi Masalah</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" name="deskripsiJasa" placeholder="" rows="3"></textarea>
                     </div>
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Lokasi</label>
                         <textarea type="text" class="form-control" id="formGroupExampleInput2" name="alamat" placeholder="" value=""></textarea>
+                    </div> --}}
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput2" class="form-label">Lokasi</label>
+                        <input type="text" class="form-control" id="locationInput" name="alamat" placeholder="Type your location">
                     </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Tanggal Pengerjaan</label>
@@ -44,3 +48,15 @@
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     </section>
+
+    <script>
+        function initAutocomplete() {
+            var input = document.getElementById('locationInput');
+            var autocomplete = new google.maps.places.Autocomplete(input);
+        }
+        google.maps.event.addDomListener(window, 'load', initAutocomplete);
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places" defer></script>
+    @endsection

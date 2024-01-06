@@ -3,10 +3,6 @@
         <section id="productspes">
             <div class="btn-top">
                 <a href="{{ route('daftarpesanan.riwayat') }}"><button class="btnriwayat">Riwayat Pesanan</button></a>
-<<<<<<< HEAD
-=======
-
->>>>>>> 23f680b71ac630b86ed97fa0d9c7a0f3f80e469f
                 <a href="{{ route('daftarpesanan.riwayatService') }}"><button class="btnriwayat">Riwayat Service</button></a>
                 <hr>
             </div>
