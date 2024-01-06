@@ -305,7 +305,7 @@ footer {
     gap: 2px;
     margin-top: 0;
     height: 40%;
-    
+
 }
 .card-body h7{
     font-weight: bold;
@@ -314,7 +314,7 @@ footer {
     font-weight: bold;
     font-size: 18px;
     color: #71c14c;
-    
+
 }
 .filter{
     display: none;
@@ -330,7 +330,7 @@ footer {
     justify-content: center;
     gap: 8px;
     height: 10%;
-    
+
 }
 
 
@@ -592,4 +592,3 @@ h2.product-title::after {
     background-color: #000; /* Warna garis (sesuaikan sesuai kebutuhan) */
     margin-top: 8px; /* Jarak antara h2 dan garis bawah (sesuaikan sesuai kebutuhan) */
 }
-

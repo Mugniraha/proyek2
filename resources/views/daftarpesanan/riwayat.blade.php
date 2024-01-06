@@ -40,7 +40,7 @@
                                         <td class="col-g">Panjang</td>
                                         <td class="narrow-column">:</td>
                                         <td class="col-g">{{ $pesanan->panjang }}</td>
-                                        
+
                                     </tr>
                                     <tr>
                                         <td>Warna</td>
@@ -167,12 +167,12 @@
                                     // Dapatkan elemen tombol dan card-progres
                                     const toggleButton = document.getElementById('toggleButton');
                                     const cardProgres = document.getElementById('cardProgres');
-    
+
                                     // Tambahkan event listener untuk menampilkan card-progres saat tombol diklik
                                     toggleButton.addEventListener('click', function() {
                                         // Cek apakah card-progres sedang ditampilkan
                                         const isCardVisible = cardProgres.classList.contains('show');
-    
+
                                         // Toggle tampilan card-progres berdasarkan kondisi saat ini
                                         if (!isCardVisible) {
                                             // Tampilkan card-progres
@@ -187,11 +187,10 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
             @else
-                
+
             @endif
             @endforeach
             </section>
-    

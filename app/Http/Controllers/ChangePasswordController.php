@@ -8,6 +8,10 @@ use App\Models\User;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ResetPasswordMail;
 
 class ChangePasswordController extends Controller
 {
@@ -16,9 +20,19 @@ class ChangePasswordController extends Controller
         return view('password.edit');
     }
 
+    public function email()
+    {
+        return view('password.emailToken');
+    }
+
     public function editAdmin()
     {
         return view('password.editAdmin');
+    }
+
+    public function emailAdmin()
+    {
+        return view('password.emailTokenAdmin');
     }
 
     public function ubahKataSandi(Request $request)

@@ -50,9 +50,10 @@ class UpdateProfilController extends Controller
         return redirect()->route('ProfilUserIndex')->with('success', 'Profil berhasil diperbarui');
     }
 }
-
+//     return redirect()->route('ProfilUserIndex')->with('success', 'Profil berhasil diperbarui');
+// }
+// }
 
     return redirect()->route('ProfilUserIndex')->with('success', 'Profil berhasil diperbarui');
 }
-
 
