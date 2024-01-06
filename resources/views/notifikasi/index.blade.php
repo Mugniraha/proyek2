@@ -2,6 +2,7 @@
 @section('konten')
     <section id="productspes">
         @foreach ($dataPesanan as $service)
+        @if($service->status !== 'Selesai')
         <div class="breadcrumb-item active" style="font-size: 22px" aria-current="page">Konfirmasi Pesanan</div>
         <div class="accordion" id="accordionExample">
 
@@ -12,7 +13,7 @@
                                 onclick="toggleText('{{ $service->idJasa }}')">
                             <div class="container">
                                 <h5>Konfirmasi Pesanan</h5>
-                                <p>Permintaan dengan no. {{ $service->idJasa }} telah diterima</p>
+                                <p>Permintaan dengan no. {{ $service->idJasa }} {{ $service->status }}</p>
                                 <p class="breadcrumb-item-custom">{{ $service->updated_at->format('d-m-Y') }}</p>
                             </div>
                         </button>
@@ -47,6 +48,9 @@
                 </div>
             </div>
         </div>
+        @else
+
+        @endif
         @endforeach
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
