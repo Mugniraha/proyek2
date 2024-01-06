@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use  App\Models\User;
 use App\Models\Alamat;
+use App\Models\Produk;
 
 class RegisterController extends Controller
 {
@@ -60,16 +61,24 @@ class RegisterController extends Controller
         return back()->with('error', 'Email atau Password yang Anda masukkan salah. Silahkan ulangi!');
     }
 
+    
     public function logout()
     {
-        $authenticatedUser = Auth::user();
+        // Periksa jika pengguna sudah terotentikasi sebelum melakukan logout
+        if (Auth::check()) {
+            // Membersihkan semua data sesi pengguna
+            Session::flush();
 
-        // Membersihkan atau menghapus sesi yang tidak diperlukan
-        Session::forget('user_profile_url_' . $authenticatedUser->idUser);
+            // Lakukan proses logout
+            Auth::logout();
 
-        // Lakukan proses logout lainnya
-        Auth::logout();
-
-        return view('homeAwal.index');
+            // Ambil data produk untuk ditampilkan di halaman home
+            $dataProduk = Produk::take(4)->get();
+            return view('homeAwal.index', ['dataProduk' => $dataProduk]);
+        } else {
+            // Pengguna belum terotentikasi, mungkin tidak perlu melakukan logout
+            return redirect()->route('homeAwal.index'); // Ganti dengan rute yang sesuai
+        }
     }
 }
+
