@@ -29,9 +29,19 @@ class Pesanan extends Model
         'tinggi',
         'warna',
         'tanggalPemesanan',
-        'idUser'
+        'statusPesanan',
+        'statusPembayaran',
+        'idUser',
+        'idProduk'
     ];
-    
+
 
     public $timestamps = false;
+    public function produk()
+    {
+        return $this->belongsTo(\App\Models\Produk::class, 'idProduk', 'idProduk');
+    }
+    public function pemantauans() {
+        return $this->hasMany(Pemantauan::class, 'idPesanan');
+    }
 }

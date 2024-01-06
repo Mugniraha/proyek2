@@ -11,11 +11,14 @@
     <div class="row mt-5">
         <h5 class="fw-bold">Custom Barang</h5>
         <hr>
+        @php
+            $jumlahCustomBarang = $customBarang->where('statusPesanan','Menunggu Verifikasi')->count();
+        @endphp
         <div class="col-md-4">
             <div class="card shadow rounded">
                 <div class="card-body text-center">
                     <h5 class="card-title">Pesanan Baru</h5>
-                    <p>4</p>
+                    <p>{{$jumlahCustomBarang}}</p>
                 </div>
             </div>
         </div>

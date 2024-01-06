@@ -3,13 +3,7 @@
     <img src="{{ asset('images/Tentang kami Atas.png')}}" alt="TKA" width="1300" height="300">
     <div class="textTKM">
         <h4>Apa yang Dilakukan Perusahaan dan apa yang perusahaan lakukan untuk konsumen? <br>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum euismod urna lorem,
-            sit amet ultricies metus aliquet mollis. Cras ornare, lacus eu tempus molestie,
-            erat metus feugiat magna, eget malesuada erat ipsum vel lorem. Quisque egestas mi vitae
-            vestibulum ultricies. Etiam ac tempor ipsum. Vestibulum scelerisque cursus leo ut blandit.
-            Vivamus eleifend dui vel arcu molestie, vitae finibus nisi ultrices. Nullam iaculis lorem lacinia nisi tincidunt,
-            a aliquam augue vulputate. Nullam orci dolor, cursus et turpis eget, cursus cursus erat. Vivamus sed pretium mi.
-            Aliquam molestie, ex et auctor laoreet, mauris diam pellentesque quam, vitae consectetur mauris magna nec mi.</p>
+            <p>Selamat datang di Welding Joyo Royo, platform yang didedikasikan untuk membangun aplikasi pemesanan jasa service dan custom barang berbasis website. Kami hadir untuk memberikan solusi terbaik dalam dunia welding dengan fokus utama pada layanan custom barang dan pemanggilan jasa servis yang efisien. Visi kami adalah menjadi mitra terpercaya dalam memenuhi kebutuhan pelanggan, dengan misi untuk memberikan pengalaman pengguna optimal, inovasi dalam custom barang, layanan jasa servis yang efisien, serta kualitas produk terbaik. Tim kami, yang terdiri dari profesional berpengalaman, berkomitmen untuk memberikan solusi yang memuaskan dan mendukung kebutuhan unik pelanggan kami. Dengan fitur-fitur utama seperti custom barang dan pemanggilan jasa servis, Welding Joyo Royo siap menjadi mitra terpercaya Anda di dunia welding. Terhubunglah dengan kami dan alami kemudahan dalam memenuhi kebutuhan welding Anda.</p>
         </h4>
         <img src="{{ asset('images/kemal-kozbaev-mun6ABiRJws-unsplash 1.png')}}" alt="TKA1" width="455" height="300">
     </div>
@@ -22,7 +16,7 @@
             <img src="{{ asset('images/portopolio 1.png')}}" alt="Por1" width="355" height="200" >
             <img src="{{ asset('images/portopolio 2.png')}}" alt="Por2" width="355" height="250" >
         </div>
-        <div class="portfolio-group"> 
+        <div class="portfolio-group">
             <img src="{{ asset('images/portopolio 3.png')}}" alt="Por3" width="320" height="460">
         </div>
         <div class="portfolio-group">

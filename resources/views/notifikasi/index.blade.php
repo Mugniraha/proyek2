@@ -1,53 +1,45 @@
 @extends('user-layout.nav-user')
 @section('konten')
     <section id="productspes">
-
+        @foreach ($dataPesanan as $service)
         <div class="breadcrumb-item active" style="font-size: 22px" aria-current="page">Konfirmasi Pesanan</div>
         <div class="accordion" id="accordionExample">
 
-            @foreach ($dataPesanan as $service)
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <button class="accordion-button custom-bg" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        <div class="container">
-                            <h5>Konfirmasi Pesanan</h5>
-                            <p>Permintaan dengan no. {{ $service->idJasa }} telah diterima</p>
-                            <p class="breadcrumb-item-custom">{{ now() }}</p>
-                        </div>
-                    </button>
+                                data-bs-target="#collapse{{ $service->idJasa }}" aria-expanded="true" aria-controls="collapse{{ $service->idJasa }}"
+                                onclick="toggleText('{{ $service->idJasa }}')">
+                            <div class="container">
+                                <h5>Konfirmasi Pesanan</h5>
+                                <p>Permintaan dengan no. {{ $service->idJasa }} telah diterima</p>
+                                <p class="breadcrumb-item-custom">{{ $service->updated_at->format('d-m-Y') }}</p>
+                            </div>
+                        </button>
+                        <script>
+                            function toggleText(idJasa) {
+                                // Ganti teks atau tambahkan logika lain jika diperlukan
+                                console.log("Button dengan idJasa " + idJasa + " diklik!");
+                            }
+                        </script>
                 </h2>
                 <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <strong>Selamat datang di layanan jasa kami</strong><br>
 
-                        {{-- <p>Nomor Referensi Permintaan: #{{ session('formId') }}</p> --}}
-                        {{-- @if($jasaServiceData->isNotEmpty())
                         <strong>Ringkasan Detail</strong>
                         <ul>
-                            @foreach($jasaServiceData as $data)
-                            <li>Jenis Jasa: {{ $data->namaJasa }}</li>
-                            <li>Deskripsi Masalah: {{ $data->deskripsiJasa }}</li>
-                            <li>Lokasi: {{ $data->alamat }}</li>
-                            <li>Tanggal Pengerjaan: {{ $data->tanggal }}</li>
-                            @endforeach
+                            <li>Jenis Jasa: {{ $service->namaJasa }}</li>
+                            <li>Deskripsi Masalah: {{ $service->deskripsiJasa }}</li>
+                            <li>Lokasi: {{ $service->alamat }}</li>
+                            <li>Tanggal Pengerjaan: {{ $service->tanggal }}</li>
                         </ul>
-                        @endif --}}
-                        {{-- <strong>Ringkasan Detail</strong>
-                        <ul>
-                            <li>Jenis Jasa: {{ session('formJS.namaJasa') }}</li>
-                            <li>Deskripsi Masalah: {{ session('formJS.deskripsiJasa') }}</li>
-                            <li>Lokasi: {{ session('formJS.alamat') }}</li>
-                            <li>Tanggal Pengerjaan: {{ session('formJS.tanggal') }}</li>
-                        </ul> --}}
 
                         <strong>Informasi Kontak</strong>
                         <p>Jika Anda memiliki pertanyaan atau perlu melakukan perubahan pada permintaan Anda,<br>
                             silakan hubungi kami di [joyoroyo@gmail.com] atau [+62 899 998 999].</p>
                         <p>Nama: {{ Auth::user()->name }}</p>
                         <p>Nomor Telepon: {{ Auth::user()->telp }}</p>
-
-                        <!-- Sisanya konten notifikasi -->
 
                         <strong>Hormat kami,</strong>
                         <p>[Tim Layanan Jasa Kami]</p>

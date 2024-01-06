@@ -34,18 +34,24 @@ class formJsController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-{
-    $userId = Auth::id();
+    {
+        // $request->validate([
+        //     'namaJasa' => 'required',
+        //     'kategorijasa' => 'required',
+        //     'deskripsiJasa' => 'required',
+        //     'alamat' => 'required',
+        //     'tanggal' => 'required',
+        // ]);
+        $userId = Auth::id();
 
-    $dataPesanan = $request->all();
-    $dataPesanan['idUser'] = $userId;
-    $dataPesanan['status'] = 'Menunggu Proses';
+        $dataPesanan = $request->all();
+        $dataPesanan['idUser'] = $userId;
+        $dataPesanan['status'] = 'Menunggu Proses';
 
-    $formJs = Formjs::create($dataPesanan);
+        Formjs::create($dataPesanan);
 
-    // Meneruskan ID pengguna dan ID formulir ke view notifikasi
-    return redirect()->route('serviceBaruIndex', ['userId' => $userId, 'formId' => $formJs->idJasa])->with(['success' => 'Data berhasil disimpan!']);
-}
+        return redirect()->route('serviceBaruIndex')->with('success', 'Data berhasil disimpan!');
+    }
 
 
     /**
@@ -54,25 +60,9 @@ class formJsController extends Controller
     public function show(string $id)
     {
         $formJS = Formjs::find($id);
-        $user = $formJS->user;
 
-        $jasaServiceData = Formjs::all();
-        dd($jasaServiceData);
-
-        return view('jasaService_User.detail_pesanan', compact('formJS', 'user', 'jasaServiceData'));
+        return view('jasaService_User.detail_pesanan', compact('formJS'));
     }
-
-    public function serviceBaruIndex()
-{
-    $data = [
-        ['userId' => 1, 'formId' => 101],
-        ['userId' => 2, 'formId' => 102],
-        // Tambahkan data sesuai kebutuhan Anda
-    ];
-
-    return view('notifikasi.index', compact('data'));
-}
-
 
     /**
      * Show the form for editing the specified resource.

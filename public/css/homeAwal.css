@@ -216,12 +216,7 @@ footer {
     padding-bottom: 5px; /* Jarak antara tulisan dan garis bawah */
 }
 
-.row{
-    /* width: 20%; */
-    gap: 8px;
-    display: flex;
-    flex-wrap: wrap;
-}
+
 
 .card{
     flex: 1 0 calc(20% - 8px);
@@ -233,6 +228,12 @@ footer {
     box-sizing: border-box;
 }
 
+.row{
+    width: 100%;
+    gap: 8px;
+    display: flex;
+    position: relative;
+}
 .model{
     display: flex;
     gap: 5px;
@@ -242,10 +243,11 @@ footer {
 }
 .card-top{
     width: 100%;
-    height: 150px;
+    height: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 .card-top img{
     width: 100%;
@@ -264,14 +266,55 @@ footer {
     font-size: 12px;
     margin: 1px;
 }
+
+.headProduk{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    z-index: 1;
+    display: flex;
+    text-align: left;
+    padding-left: 0;
+    top: 0;
+    left: 0;
+}
+.headProduk:hover{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    z-index: 100001;
+    display: flex;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+.headProduk:focus {
+    outline: none;
+}
+.fullText {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
 .card-body{
     padding: 0;
     padding-left: 2px;
     gap: 2px;
     margin-top: 0;
+    height: 40%;
+
 }
 .card-body h7{
     font-weight: bold;
+}
+.card-body .harga p{
+    font-weight: bold;
+    font-size: 18px;
+    color: #71c14c;
+
 }
 .filter{
     display: none;
@@ -282,11 +325,14 @@ footer {
     width: 16px;
     color: #17425f;;
 }
-.card-body .btn{
+.card .btn{
     display: flex;
     justify-content: center;
     gap: 8px;
+    height: 10%;
+
 }
+
 
 .btn .btnwhis {
     border: 1px solid transparent;
@@ -303,8 +349,8 @@ footer {
 }
 .btn .btnwhis:hover{
     outline: none;
-    background-color: #fdea97;
-    color: #17425f;
+    background-color: rgb(177, 231, 247);
+    color: #4C6687;
 }
 .btn .btnord {
     border: 1px solid transparent;
@@ -321,10 +367,10 @@ footer {
 }
 .btn .btnord:hover{
     outline: none;
-    background-color: #fdea97;
-    color: #17425f;
+    background-color: rgb(95, 248, 171);
+    color: #4C6687;
 }
-.btn .btnulasan {
+.btn-top .btnulasan {
     border: 1px solid transparent;
     border-radius: 8px;
     background-color: white;
@@ -337,7 +383,7 @@ footer {
     float: right;
     cursor: pointer;
 }
-.btn .btnulasan:hover{
+.btn-top .btnulasan:hover{
     outline: none;
     color: #17425f;
 }
@@ -546,4 +592,3 @@ h2.product-title::after {
     background-color: #000; /* Warna garis (sesuaikan sesuai kebutuhan) */
     margin-top: 8px; /* Jarak antara h2 dan garis bawah (sesuaikan sesuai kebutuhan) */
 }
-

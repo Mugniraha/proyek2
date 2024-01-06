@@ -12,7 +12,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    height: 220px;
+    height: 250px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     padding: 10px;
     gap: 10px;
@@ -55,11 +55,19 @@
     display: flex;
     gap: 20px;
     align-items: center;
-    font-weight: bold;
+}
+p.statusPesanan{
+    font-size: 12px;
+    color: green;
+    background-color: rgb(209, 250, 209);
+    padding: 3px 5px;
+    border-radius: 5px;
     font-style: italic;
 }
 p.idpesanan{
     color: #949494b6;
+    font-style: italic;
+    text-transform: uppercase;
 }
 .vertical-line {
     border-left: 2px solid #949494b6;
@@ -78,12 +86,20 @@ p.idpesanan{
     display: flex;
     align-items: center;
 }
+
 .product-details {
     border-collapse: collapse;
     width: 100%;
     height: 70%;
     float: left;
 
+}
+.left-col{
+    width: 20%;
+}
+.left-col img{
+    width: 100%;
+    height: 100%;
 }
 
 .product-details td {
@@ -99,7 +115,13 @@ p.idpesanan{
     width: 10px;
 }
 .product-details td:nth-child(3) {
-    width: 70%;
+    width: 30%;
+}
+.product-details td:nth-child(4) {
+    width: 10px;
+}
+.product-details td:nth-child(5) {
+    width: 10px;
 }
 
 
@@ -107,13 +129,16 @@ p.idpesanan{
     padding-left: 20px;
 }
 
+
 .colhead{
     font-weight: bold;
     font-size: 16px;
     width: 100%;
 }
+
 .center-col{
-    width: 80%;
+    width: 60%;
+    padding-left: 10px;
 }
 .right-col {
     width: 20%;
@@ -152,7 +177,7 @@ p.idpesanan{
     float: inline-end;
     margin-top: 20%;
     margin-right: 20px;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
 }
 .pricefull{
@@ -227,6 +252,24 @@ p.idpesanan{
 .btncall:hover {
     background-color: rgb(183, 255, 181);
     color: #4C6687;
+}
+.btncall-disabled{
+    padding: 4px 8px;
+    font-size: 14px;
+    border-radius: 4px;
+    background-color: rgb(224, 255, 233);
+    color: #b2b2b2;
+    transition: background-color 0.3s ease;
+}
+.btncall-finish{
+    color: green;
+    background-color: rgb(241, 255, 241);
+    font-size: 12px;
+    border: 1px solid #30fc85;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-style: italic;
 }
 .card-progres{
     background-color: #f4f5f7;

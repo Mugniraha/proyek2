@@ -58,7 +58,10 @@ use Illuminate\Support\Facades\Password;
 |
 */
 // Route::middleware(['auth'])->group(function () {
-
+    Route::get('/', function () {
+        return view('HomeAwal.index'); // Ganti 'home' dengan nama view yang ingin Anda tampilkan
+    });
+    Route::get('/', [ProdukController::class, 'landingPage'])->name('landing-page');
 Route::get('/register', [RegisterController::class, 'registerIndex'])->name('registerIndex');
 Route::post('/register', [RegisterController::class, 'registerPost'])->name('registerPost');
 Route::get('/loginUser', [RegisterController::class, 'loginIndex'])->name('loginIndex');
@@ -115,6 +118,10 @@ Route::get('/loginAdmin', [LoginAdminController::class, 'loginAdminIndex'])->nam
 Route::post('/loginAdmin', [LoginAdminController::class, 'loginAdminPost'])->name('loginAdminPost');
 // Route::put('/ubahpw', [LoginAdminController::class, 'changePassword'])->name('changePassword');
 Route::put('/admin/{idAdmin}/change-password', [LoginAdminController::class, 'changePassword'])->name('changePassword');
+
+Route::get('/lupaPassAdmin', [ChangePasswordController::class, 'editAdmin'])->name('editPassAdmin');
+// Route::put('/ubahpw', [LoginAdminController::class, 'changePassword'])->name('changePassword');
+Route::put('/admin/{idAdmin}/change-password', [LoginAdminController::class, 'changePassword'])->name('changePassword');
 Route::get('/logout', [LoginAdminController::class, 'logout'])->name('logout');
 
 Route::post('/forgot-passwordAdmin', function (Request $request) {
@@ -158,8 +165,9 @@ Route::post('/reset-passwordAdmin', function (Request $request) {
 Route::get('/lupaPassAdmin', [ChangePasswordController::class, 'editAdmin'])->name('editPassAdmin');
 
 
-Route::get('/home', [HomeController::class, 'HomeIndex'])->name('HomeIndex');
-Route::get('/produk', [ProdukController::class, 'index'])->name('produk.index');
+Route::get('/produk/{kategori?}', [ProdukController::class, 'index'])->name('produk.index');
+
+
 Route::get('/akunUser', [HomeUserController::class, 'HomeUserIndex'])->name('HomeUserIndex');
 Route::resource('/buatAkun', buatAkunController::class );
 
@@ -204,6 +212,12 @@ Route::post('/costumproduk/{idProduk}', [CostumProdukController::class, 'index']
 
 
 
+Route::get('/pembayaran/transaksi/{idPesanan}', [PembayaranController::class, 'transaksi'])->name('pembayaran.transaksi');
+Route::post('/pembayaran/transaksi', [PembayaranController::class, 'store'])->name('pembayaran.store');
+Route::post('/produk/{idProduk}', [ProdukController::class, 'store'])->name('produk.store');
+
+
+
 
 
 Route::get('/daftarpesanan', [DaftarPesananController::class, 'index'])->name('daftarpesanan.index');
@@ -239,6 +253,11 @@ Route::resource('/pengiriman', pengirimanController::class);
 Route::get('/jsPesananBaru/{id}/terima', [jaserPesananBaruController::class, 'terimaPesanan'])->name('terimaPesanan');
 Route::get('/jsPesananBaru/{id}/tolak', [jaserPesananBaruController::class, 'tolakPesanan'])->name('tolakPesanan');
 Route::get('/jsDalamProses/{id}',[jaserDalamProsesController::class, 'selesai'])->name('selesai');
+Route::get('/cbPesananBaru/{id}/terima',[cusbarPesananBaruController::class, 'terimaPesanan'])->name('terimaPesanan');
+Route::get('/cbPesananBaru/{id}/tolak',[cusbarPesananBaruController::class, 'tolakPesanan'])->name('tolakPesanan');
+Route::get('/cbPesananBaru/{id}/verifikasiPembayaran',[cusbarDalamProsesController::class, 'verifikasiPembayaran'])->name('verifikasiPembayaran');
+Route::put('/inputProgres/{id}/inputProgres',[cusbarDalamProsesController::class,'inputProgres'])->name('inputProgres');
+Route::get('/selesai/{id}',[cusbarDalamProsesController::class,'selesai'])->name('selesai');
 
 
 
