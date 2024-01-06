@@ -25,7 +25,7 @@ class jaserPesananBaruController extends Controller
         return view("admin_konten.jsPesananBaru", compact("slug", "jasaServis"));
     }
 
-    public function terimaPesanan($idJasa)
+    public function terimaPesananService($idJasa)
     {
         $pesanan = Formjs::find($idJasa);
         $pesanan->status = 'diproses';
@@ -34,7 +34,7 @@ class jaserPesananBaruController extends Controller
         return back()->with('success', 'Pesanan diterima.');
     }
 
-    public function tolakPesanan($idJasa)
+    public function tolakPesananService($idJasa)
     {
         $pesanan = Formjs::find($idJasa);
         $pesanan->status = 'ditolak';
