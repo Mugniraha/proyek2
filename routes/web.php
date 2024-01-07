@@ -35,6 +35,7 @@ use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\bahanController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\pengirimanController;
+use App\Http\Controllers\ForgotPasswordController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\PasswordReset;
@@ -42,6 +43,7 @@ use App\Models\User;
 use App\Models\Admin;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -69,21 +71,27 @@ Route::post('/loginUser', [RegisterController::class, 'loginPost'])->name('login
 Route::put('/ubahPassword', [ChangePasswordController::class, 'ubahKataSandi'])->name('ubahKataSandi');
 Route::get('/logout', [RegisterController::class, 'logout'])->name('logout');
 
-Route::post('/forgot-passwordUser', function (Request $request) {
+Route::get('/forgot-password', function () {
+    return view('password.edit');
+})->middleware('guest')->name('password.request');
+
+Route::post('/forgot-password', function (Request $request) {
     $request->validate(['email' => 'required|email']);
+
     $status = Password::sendResetLink(
         $request->only('email')
     );
+
     return $status === Password::RESET_LINK_SENT
                 ? back()->with(['status' => __($status)])
                 : back()->withErrors(['email' => __($status)]);
 })->middleware('guest')->name('password.email');
 
-Route::get('/reset-passwordUser/{token}', function (string $token) {
+Route::get('/reset-password/{token}', function (string $token) {
     return view('password.emailToken', ['token' => $token]);
 })->middleware('guest')->name('password.reset');
 
-Route::post('/reset-passwordUser', function (Request $request) {
+Route::post('/reset-password', function (Request $request) {
     $request->validate([
         'token' => 'required',
         'email' => 'required|email',
@@ -124,21 +132,22 @@ Route::get('/lupaPassAdmin', [ChangePasswordController::class, 'editAdmin'])->na
 Route::put('/admin/{idAdmin}/change-password', [LoginAdminController::class, 'changePassword'])->name('changePassword');
 Route::get('/logout', [LoginAdminController::class, 'logout'])->name('logout');
 
+
 Route::post('/forgot-passwordAdmin', function (Request $request) {
     $request->validate(['emailAdmin' => 'required|email']);
+
     $status = Password::sendResetLink(
         $request->only('emailAdmin')
     );
+
     return $status === Password::RESET_LINK_SENT
                 ? back()->with(['status' => __($status)])
                 : back()->withErrors(['emailAdmin' => __($status)]);
 })->middleware('guest')->name('password.emailAdmin');
 
-Route::get('/reset-passwordAdmin/{token}', function (string $token) {
-    return view('password.emailTokenAdmin', ['token' => $token]);
-})->middleware('guest')->name('password.resetAdmin');
-
 Route::post('/reset-passwordAdmin', function (Request $request) {
+    DB::enableQueryLog();
+    dd($request->input('emailAdmin'));
     $request->validate([
         'token' => 'required',
         'emailAdmin' => 'required|email',
@@ -146,7 +155,7 @@ Route::post('/reset-passwordAdmin', function (Request $request) {
     ]);
 
     $status = Password::reset(
-        $request->only('emailAdmin', 'password', 'confirmation_password', 'token'),
+        $request->only('emailAdmin', 'password', 'password_confirmation', 'token'),
         function (Admin $admin, string $password) {
             $admin->forceFill([
                 'password' => Hash::make($password)
@@ -161,7 +170,10 @@ Route::post('/reset-passwordAdmin', function (Request $request) {
     return $status === Password::PASSWORD_RESET
                 ? redirect()->route('loginAdminIndex')->with('status', __($status))
                 : back()->withErrors(['emailAdmin' => [__($status)]]);
+                dd(DB::getQueryLog());
 })->middleware('guest')->name('password.updateAdmin');
+
+
 Route::get('/lupaPassAdmin', [ChangePasswordController::class, 'editAdmin'])->name('editPassAdmin');
 
 
@@ -199,9 +211,7 @@ Route::get('/konfirmasi', [NotifikasiController::class, 'KonfirmasiIndex'])->nam
 Route::resource('/formOrder', formJsController::class,  );
 Route::put('/formOrder/{id}', [formJSController::class, 'update'])->name('formOrder.update');
 Route::put('/formOrder/{id}', [formJSController::class, 'show'])->name('formOrder.show');
-
 Route::get('/notifikasi', [NotifikasiController::class, 'index'])->name('notifikasi.index');
-
 Route::get('/serviceUser', [serviceBaruController::class, 'serviceBaruIndex'])->name('serviceBaruIndex');
 Route::resource('/costumproduk', CostumProdukController::class);
 Route::get('/costumproduk/{idProduk}', [CostumProdukController::class, 'show'])->name('costumproduk.index');

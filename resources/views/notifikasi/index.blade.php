@@ -1,30 +1,26 @@
 @extends('user-layout.nav-user')
 @section('konten')
     <section id="productspes">
+
+        <div class="breadcrumb-item active" style="font-size: 22px" aria-current="page">Konfirmasi Pesanan</div>
         @foreach ($dataPesanan as $service)
         @if($service->status !== 'Selesai')
-        <div class="breadcrumb-item active" style="font-size: 22px" aria-current="page">Konfirmasi Pesanan</div>
-        <div class="accordion" id="accordionExample">
-
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button custom-bg" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapse{{ $service->idJasa }}" aria-expanded="true" aria-controls="collapse{{ $service->idJasa }}"
-                                onclick="toggleText('{{ $service->idJasa }}')">
+        <br>
+            <div class="accordion" id="accordionExample{{ $service->idJasa }}">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading{{ $service->idJasa }}">
+                        <button class="accordion-button custom-bg" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapse{{ $service->idJasa }}" aria-expanded="true"
+                                aria-controls="collapse{{ $service->idJasa }}">
                             <div class="container">
                                 <h5>Konfirmasi Pesanan</h5>
                                 <p>Permintaan dengan no. {{ $service->idJasa }} {{ $service->status }}</p>
                                 <p class="breadcrumb-item-custom">{{ $service->updated_at->format('d-m-Y') }}</p>
                             </div>
                         </button>
-                        <script>
-                            function toggleText(idJasa) {
-                                // Ganti teks atau tambahkan logika lain jika diperlukan
-                                console.log("Button dengan idJasa " + idJasa + " diklik!");
-                            }
-                        </script>
-                </h2>
-                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                    </h2>
+                    <div id="collapse{{ $service->idJasa }}" class="accordion-collapse collapse"
+                        aria-labelledby="heading{{ $service->idJasa }}" data-bs-parent="#accordionExample{{ $service->idJasa }}">
                     <div class="accordion-body">
                         <strong>Selamat datang di layanan jasa kami</strong><br>
 
