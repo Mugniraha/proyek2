@@ -106,6 +106,12 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+
+        'admins' => [
+            'provider' => 'admins',
+            'table' => 'password_reset_tokens', // Sesuaikan dengan nama tabel yang sesuai untuk admin
+            'expire' => 60,
+        ],
     ],
 
     /*
