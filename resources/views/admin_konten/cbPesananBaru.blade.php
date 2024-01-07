@@ -29,7 +29,7 @@
         @if ($row->statusPesanan === 'Menunggu Verifikasi')
         <tr>
             <td>{{$no++}}</td>
-            <td></td>
+            <td>{{$row->user->username}}</td>
             <td>{{$row->namaPesanan}}</td>
             <td>
                 <div class="card shadow p-2">

@@ -1,5 +1,9 @@
 body{
     overflow-x: hidden; /* Prevent horizontal scroll */
+    background-color: #F7F6F2;
+}
+.tbl {
+    background-color: white;
 }
 ul .collapse {
     transition: height .35s ease; /* Sesuaikan durasi sesuai kebutuhan Anda */

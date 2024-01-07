@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use PhpParser\Node\Expr\Cast;
 
 class Pesanan extends Model
@@ -47,5 +48,10 @@ class Pesanan extends Model
     }
     public function pemantauans() {
         return $this->hasMany(Pemantauan::class, 'idPesanan');
+    }
+
+    public function user():BelongsTo
+    {
+        return $this->belongsTo(User::class, 'idUser');
     }
 }

@@ -30,7 +30,7 @@
                         <tr>
                             <td style="width:25%">Nama Pemesan</td>
                             <td style="width: 5%">:</td>
-                            <td style="width: 70%"></td>
+                            <td style="width: 70%">{{$row->user->username}}</td>
                         </tr>
                         <tr>
                             <td>Nama Pesanan</td>

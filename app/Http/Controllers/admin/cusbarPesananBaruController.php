@@ -15,7 +15,7 @@ class cusbarPesananBaruController extends Controller
     {
         //
         $slug = "cbPesananBaru";
-        $custom = DB::table('pesanan')->get();
+        $custom = Pesanan::with('User')->get();
         return view("admin_konten.cbPesananBaru", compact("slug","custom"));
     }
 

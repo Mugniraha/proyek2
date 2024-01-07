@@ -50,15 +50,22 @@
                                         </a>
                                         <div class="collapse" id="submenu">
                                             <ul class="nav flex-column ms-1">
-                                                <li class="w-100">
-                                                    <a href="{{ url('/bahan')}}" class="nav-link align-middle px-0">
-                                                        <i class="fa-solid fa-barcode {{($slug === "bahan") ? 'active' : ''}}" style="color: #f6f1db;"></i><span class="ms-1 d-none d-sm-inline ">Kelola Harga Bahan</span>
+                                                <li>
+                                                    <a href="{{ url('/bahan') }}" class="nav-link align-middle px-0">
+                                                        {{-- <i class="fa-solid fa-truck" style="color: #f6f1db;"></i> --}}
+                                                        <span class="d-none d-sm-inline"> Kelola Harga Bahan</span>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ url('/pengiriman') }}" class="nav-link {{ ($slug === 'jsDalamProses') ? 'active' : '' }} px-0">
-                                                        <i class="fa-solid fa-truck" style="color: #f6f1db;"></i>
-                                                        <span class="d-none d-sm-inline text-white">Kelola Pengiriman</span>
+                                                    <a href="{{ url('/pengiriman') }}" class="nav-link align-middle px-0">
+                                                        {{-- <i class="fa-solid fa-truck" style="color: #f6f1db;"></i> --}}
+                                                        <span class="d-none d-sm-inline"> Kelola Pengiriman</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ url('/kategori') }}" class="nav-link align-middle px-0">
+                                                        {{-- <i class="fa-solid fa-truck" style="color: #f6f1db;"></i> --}}
+                                                        <span class="d-none d-sm-inline">Kelola Kategori</span>
                                                     </a>
                                                 </li>
                                             </ul>
@@ -66,8 +73,6 @@
                                     </li>
                                 </ul>
                             </li>
-
-
                             <li>
                                 <ul class="nav flex-column" id="menu">
                                     <li class="nav-item">
@@ -79,17 +84,17 @@
                                             <ul class="nav flex-column ms-1">
                                                 <li class="w-100">
                                                     <a href="{{ url('/jsPesananbaru') }}" class="nav-link {{ ($slug === 'jsPesananBaru') ? 'active' : '' }} px-0">
-                                                        <span class="d-none d-sm-inline text-white">Pesanan Baru</span>
+                                                        <span class="d-none d-sm-inline">Pesanan Baru</span>
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="{{ url('/jsDalamproses') }}" class="nav-link {{ ($slug === 'jsDalamProses') ? 'active' : '' }} px-0">
-                                                        <span class="d-none d-sm-inline text-white">Dalam Proses</span>
+                                                        <span class="d-none d-sm-inline">Dalam Proses</span>
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="{{ url('/jsSelesai') }}" class="nav-link px-0">
-                                                        <span class="d-none d-sm-inline text-white">Selesai</span>
+                                                        <span class="d-none d-sm-inline">Selesai</span>
                                                     </a>
                                                 </li>
                                             </ul>
@@ -109,17 +114,17 @@
                                             <ul class="nav flex-column ms-1">
                                                 <li class="w-100">
                                                     <a href="{{ url('/cbPesananBaru') }}" class="nav-link {{ ($slug === 'cbPesananBaru') ? '' : '' }} px-0">
-                                                        <span class="d-none d-sm-inline text-white">Pesanan Baru</span>
+                                                        <span class="d-none d-sm-inline">Pesanan Baru</span>
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="{{ url('/cbDalamProses') }}" class="nav-link {{ ($slug === 'cbDalamProses') ? '' : '' }} px-0">
-                                                        <span class="d-none d-sm-inline text-white">Dalam Proses</span>
+                                                        <span class="d-none d-sm-inline">Dalam Proses</span>
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="{{ url('/cbSelesai') }}" class="nav-link {{ ($slug === 'cbSelesai') ? '' : '' }} px-0">
-                                                        <span class="d-none d-sm-inline text-white">Selesai</span>
+                                                        <span class="d-none d-sm-inline">Selesai</span>
                                                     </a>
                                                 </li>
                                             </ul>
@@ -139,12 +144,12 @@
                                             <ul class="nav flex-column ms-1">
                                                 <li class="w-100">
                                                     <a href="{{ url('/historyJaser') }}" class="nav-link px-0">
-                                                        <span class="d-none d-sm-inline text-white">Jasa Service</span>
+                                                        <span class="d-none d-sm-inline ">Jasa Service</span>
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="{{ url('/historyCusbar') }}" class="nav-link px-0">
-                                                        <span class="d-none d-sm-inline text-white">Custom Barang</span>
+                                                        <span class="d-none d-sm-inline ">Custom Barang</span>
                                                     </a>
                                                 </li>
                                             </ul>

@@ -42,6 +42,7 @@ use App\Models\User;
 use App\Models\Admin;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Password;
+use App\Http\Controllers\kelolaKategoriController;
 
 
 
@@ -250,6 +251,7 @@ Route::resource('/bantuan', bantuanController::class);
 Route::resource('/profil', profilAdminController::class);
 Route::resource('/bahan', bahanController::class);
 Route::resource('/pengiriman', pengirimanController::class);
+Route::resource('/kategori', kelolaKategoriController::class);
 Route::get('/jsPesananBaru/{id}/terima', [jaserPesananBaruController::class, 'terimaPesananService'])->name('terimaPesananService');
 Route::get('/jsPesananBaru/{id}/tolak', [jaserPesananBaruController::class, 'tolakPesananService'])->name('tolakPesananService');
 Route::get('/jsDalamProses/{id}',[jaserDalamProsesController::class, 'selesaiService'])->name('selesaiService');

@@ -31,7 +31,7 @@
                         <tr>
                             <td style="width:25%">Nama Pemesan</td>
                             <td style="width: 5%">:</td>
-                            <td style="width: 70%"></td>
+                            <td style="width: 70%">{{$row->user->username}}</td>
                         </tr>
                         <tr>
                             <td>Nama Pesanan</td>
@@ -224,7 +224,7 @@
 
 @foreach ($custom as $row)
     <div class="modal fade" id="edit{{$row->idPesanan}}" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="staticBackdropLabel">Detail Pesanan</h5>
@@ -236,7 +236,7 @@
                         <tr>
                             <td style="width:25%">Nama Pemesan</td>
                             <td style="width: 5%">:</td>
-                            <td style="width: 70%"></td>
+                            <td style="width: 70%">{{$row->user->username}}</td>
                         </tr>
                         <tr>
                             <td>Nama Pesanan</td>
