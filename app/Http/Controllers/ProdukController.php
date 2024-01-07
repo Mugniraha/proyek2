@@ -36,7 +36,7 @@ class ProdukController extends Controller
         return redirect()->route('produk.index')->with('success', 'Data Berhasil Disimpan');
     }
     public function landingPage() {
-        $dataProduk = Produk::take(5)->get(); // Mengambil 4 produk
+        $dataProduk = Produk::take(4)->get(); // Mengambil 4 produk
         return view('homeAwal.index', compact('dataProduk'));
     }
 }
