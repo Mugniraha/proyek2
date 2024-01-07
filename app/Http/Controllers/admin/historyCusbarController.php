@@ -15,7 +15,7 @@ class historyCusbarController extends Controller
     {
         //
         $slug = "historyCusbar";
-        $custom = DB::table('pesanan')->get();
+        $custom = Pesanan::with('User')->get();
         return view("admin_konten.historyCusbar", compact("slug","custom"));
     }
 
