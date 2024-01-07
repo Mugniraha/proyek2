@@ -218,7 +218,7 @@ footer {
 
 
 
-.card{
+.row .card{
     flex: 1 0 calc(20% - 8px);
     display: flex;
     flex-direction: column;
