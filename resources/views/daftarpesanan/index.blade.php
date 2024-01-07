@@ -114,43 +114,46 @@
                             </button>
                             <div class="dropdown-menu" aria-labelledby="toggleButton" style="background-color: #f4f5f7">
                                 <div class="card-progres" id="cardProgres">
-                                    <table class="progres-barang">
-                                        <thead>
-                                            <tr>
-                                                <th colspan="3">Start</th>
-                                                <th colspan="3">Process</th>
-                                                <th colspan="3">Finishing</th>
-                                                <th colspan="3">End</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach($pesanan->pemantauans as $pemantauan)
-                                            <tr>
-                                                @if($pemantauan->porgres==25)
-                                                <td colspan="3"></td>
-                                                @elseif($pemantauan->porgres==50)
-                                                <td colspan="3"><img class="card-img-left" src="{{ asset('storage/img/' . $pemantauan->gambar) }}" alt="Card image cap" width=75px height=75px></td>
-                                                @elseif($pemantauan->porgres==75)
-                                                <td colspan="3"></td>
-                                                @elseif($pemantauan->progres==100)
-                                                <td></td>
+                                @foreach($pesanan->pemantauans as $pemantauan)
+                                    <div class="card-proses">
+                                        <div class="card-proses-top">
+                                            @if($pemantauan->progres===25)
+                                            <p>Start</p>
+                                            @elseif($pemantauan->progres===50)
+                                            <p>Process</p>
+                                            @elseif($pemantauan->progres===75)
+                                            <p>Finishing</p>
+                                            @elseif($pemantauan->progres===100)
+                                            <p>Finish</p>
+                                            @else
+                                            
+                                            @endif
+                                        </div>
+                                        <div class="card-proses-middle">
+                                            <div class="desk-star">
+                                                @if($pemantauan->progres == 50 || $pemantauan->progres == 100)
+                                                <img src="{{ asset('storage/img/'.$pemantauan->gambar) }}" alt="Gambar Progres">
                                                 @else
-
+                                                <img src="{{ asset('images/ikonproses.png')}}" alt="Logo">
                                                 @endif
-                                            </tr>
-                                            <tr>
-                                                <td>Keterangan</td>
-                                                <td>:</td>
-                                                <td>{{ $pemantauan->keterangan }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tanggal Update</td>
-                                                <td>:</td>
-                                                <td>{{ $pemantauan->tanggalUpdate }}</td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                                            </div>
+                                        </div>
+                                        <div class="card-proses-bottom">
+                                            <table class="progres-barang">
+                                                <tr>
+                                                    <td>Keterangan</td>
+                                                    <td class="td-titik">:</td>
+                                                    <td class="keterangan-proses">{{ $pemantauan->keterangan }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tanggal Update</td>
+                                                    <td class="td-titik">:</td>
+                                                    <td>{{ $pemantauan->tanggalUpdate }}</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                @endforeach
                                 </div>
                             </div>
                         </div>

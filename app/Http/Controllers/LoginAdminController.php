@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Admin;
+use App\Models\Produk;
 
 class LoginAdminController extends Controller
 {
@@ -88,7 +89,8 @@ public function changePassword(Request $request, $id)
 
 public function logout(){
     Auth::logout();
-    return view('homeAwal.index');
+    $dataProduk = Produk::take(4)->get(); // Mengambil 4 produk
+    return view('homeAwal.index', compact('dataProduk'));
 }
 
 

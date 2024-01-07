@@ -275,6 +275,7 @@ p.idpesanan{
     background-color: #f4f5f7;
     width: 900px;
     height: 180px;
+    display: flex;
 }
 .dropdown-menu{
     background-color: #f4f5f7;

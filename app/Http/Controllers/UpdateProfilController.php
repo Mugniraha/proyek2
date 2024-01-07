@@ -38,22 +38,6 @@ class UpdateProfilController extends Controller
             session(['user_profile_url_' . $authenticatedUser->idUser => asset('storage/profiles/' . $fileName)]);
         }
 
-
-    //         // Simpan nama file gambar ke dalam basis data
-    //         $user->profil = $profilFileName;
-    //         $user->save();
-    //     }
-
-    //     // Redirect atau kirim respons sesuai kebutuhan
-    //     return redirect()->route('ProfilUserIndex')->with('success', 'Profil berhasil diperbarui');
-    // }
         return redirect()->route('ProfilUserIndex')->with('success', 'Profil berhasil diperbarui');
     }
 }
-//     return redirect()->route('ProfilUserIndex')->with('success', 'Profil berhasil diperbarui');
-// }
-// }
-
-    return redirect()->route('ProfilUserIndex')->with('success', 'Profil berhasil diperbarui');
-}
-
