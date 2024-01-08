@@ -138,17 +138,28 @@
                                     {{-- <input type="hidden" name="idAdmin" value="idAdmin"> --}}
                                 </div>
                                 <div class="mb-3">
-                                    <label for="">Input Progres:</label>
-                                    <select name="progres" class="form-select" aria-label="Default select example" id="progresSelect">
-                                        <option selected disabled>Input Progres</option>
-                                        <option value="25">25%</option>
-                                        <option value="50">50%</option>
-                                        <option value="75">75%</option>
-                                        <option value="100">100%</option>
-                                    </select>
+                                    @foreach ($row->pemantauans->take(1) as $pemantauan)
+                                        <label for="">Input Progres:</label>
+
+                                        @php
+                                            $terbaru = $row->pemantauans->last();
+                                            $progresSaatIni = $terbaru->progres;
+                                        @endphp
+
+                                        <select name="progres" class="form-select" aria-label="Default select example" id="progresSelect{{$row->idPesanan}}">
+                                            <option selected disabled value="">Progres saat ini {{$progresSaatIni}}%</option>
+                                            @for ($i = 25; $i <= 100; $i += 25)
+                                                @if ($progresSaatIni < $i)
+                                                    <option value="{{$i}}">{{$i}}%</option>
+                                                @else
+                                                    <option value="{{$i}}" disabled>{{$i}}%</option>
+                                                @endif
+                                            @endfor
+                                        </select>
+                                    @endforeach
                                 </div>
 
-                                <div class="mb-3" id="gambarInput" style="display: none;">
+                                <div class="mb-3" id="gambarInput{{$row->idPesanan}}" style="display: none;">
                                     <label for="formGroupExampleInput" class="form-label">tambahkan Gambar</label>
                                     <input type="file" class="form-control" id="formGroupExampleInput" name="gambar" placeholder="" value="">
                                     <input type="hidden" value="">
@@ -158,28 +169,6 @@
                                     <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Batal</button>
                                     <button type="submit" class="btn btn-success">Simpan</button>
                                 </div>
-
-                                <script>
-                                    var progresSelect = document.getElementById('progresSelect');
-                                    var keteranganSelect = document.getElementById('keteranganSelect');
-                                    var gambarInput = document.getElementById('gambarInput');
-
-                                    progresSelect.addEventListener('change', function() {
-                                        if (this.value == '50' || this.value == '100') {
-                                            gambarInput.style.display = 'block';
-                                        } else {
-                                            gambarInput.style.display = 'none';
-                                        }
-                                    });
-
-                                    keteranganSelect.addEventListener('change', function() {
-                                        if (this.value == '2' || this.value == '4') {
-                                            gambarInput.style.display = 'block';
-                                        } else {
-                                            gambarInput.style.display = 'none';
-                                        }
-                                    });
-                                </script>
 
                             </form>
 
@@ -212,8 +201,9 @@
             @endif
             @endforeach
             @if(session('success'))
-                    <div class="alert alert-success mb-2">
+                    <div class="alert alert-success mb-2 alert-dismissible fade show" role="alert">
                         {{ session('success') }}
+                        <button type="button" class="btn-close text-end" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
             @endif
         </tbody>
@@ -333,4 +323,23 @@
         </div>
     </div>
 </div>
+
+@foreach ($custom as $row)
+    <script>
+        var progresSelect{{$row->idPesanan}} = document.getElementById('progresSelect{{$row->idPesanan}}');
+        var gambarInput{{$row->idPesanan}} = document.getElementById('gambarInput{{$row->idPesanan}}');
+
+        progresSelect{{$row->idPesanan}}.addEventListener('change', function() {
+            if (this.value == '50' || this.value == '100') {
+                gambarInput{{$row->idPesanan}}.style.display = 'block';
+            } else {
+                gambarInput{{$row->idPesanan}}.style.display = 'none';
+            }
+        });
+    </script>
+@endforeach
+
+
 @endsection
+
+

@@ -78,7 +78,6 @@
                                         <option value="Kursi">Kursi</option>
                                         <option value="Tangga">Tangga</option>
                                         <option value="Tralis">Tralis</option>
-                                        <option value="Etalase">Etalase</option>
                                         <option value="Container">Container</option>
                                     </select>
                                 </div>
@@ -216,12 +215,11 @@
                         <label for="formGroupExampleInput2" class="form-label">Kategori</label>
                         <select class="form-select" name="kategori" aria-label="Default select example">
                             <option selected>Pilih kategori</option>
-                            <option value="meja">Meja</option>
+                            <option value="Meja">Meja</option>
                             <option value="kursi">Kursi</option>
-                            <option value="tangga">Tangga</option>
-                            <option value="tralis">Tralis</option>
-                            <option value="etalase">Etalase</option>
-                            <option value="container">Container</option>
+                            <option value="Tangga">Tangga</option>
+                            <option value="Tralis">Tralis</option>
+                            <option value="Container">Container</option>
                         </select>
                     </div>
                     <div class="mb-3">
@@ -231,7 +229,7 @@
                     <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Bahan</label>
                         <select class="form-select" name="bahan" aria-label="Default select example">
-                            <option selected>Pilih kategori</option>
+                            <option selected>Pilih Bahan</option>
                             <option value="alumunium">Alumunium</option>
                             <option value="besi">Besi</option>
                             <option value="baja ringan">Baja Ringan</option>
@@ -239,7 +237,17 @@
                     </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Warna</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2" name="warna" placeholder="" value=" ">
+                        <select class="form-select" name="warna" id="" aria-label="Default select example">
+                            <option selected>Pilih Warna</option>
+                            <option value="Putih">Putih</option>
+                            <option value="Hitam">Hitam</option>
+                            <option value="Merah">Merah</option>
+                            <option value="Cokelat">Cokelat</option>
+                            <option value="Kuning">Kuning</option>
+                            <option value="Biru">Biru</option>
+                            <option value="Hijau">Hijau</option>
+                            <option value="Ungu">Ungu</option>
+                        </select>
                     </div>
                     <div class="row gx-3 mb-3 gy-2 align-items-center">
                         <label for="formGroupExampleInput2" class="form-label">Dimensi</label>

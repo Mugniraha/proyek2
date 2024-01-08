@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Pesanan;
 use App\Models\Pembayaran;
+use App\Models\Pemantauan;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -19,7 +20,7 @@ class cusbarDalamProsesController extends Controller
     {
         //
         $slug = "cbDalamProses";
-        $custom = Pesanan::with('pembayaran')->get();
+        $custom = Pesanan::all();
         return view("admin_konten.cbDalamProses", compact("slug","custom"));
     }
 
@@ -47,7 +48,7 @@ class cusbarDalamProsesController extends Controller
                 break;
             case 50:
                 $this->validate($request, [
-                    'gambar' => 'required|image|mimes:jpeg|max:2048',
+                    'gambar' => 'required|image|mimes:jpeg,png,jpg|max:2048',
                 ]);
                 $img = $request->file('gambar');
                 $img->storeAs('public/img', $img->hashName());
@@ -60,7 +61,7 @@ class cusbarDalamProsesController extends Controller
                 break;
             case 100:
                 $this->validate($request, [
-                    'gambar' => 'required|image|mimes:jpeg|max:2048',
+                    'gambar' => 'required|image|mimes:jpeg,png,jpg|max:2048',
                 ]);
                 $img = $request->file('gambar');
                 $img->storeAs('public/img', $img->hashName());
@@ -77,7 +78,7 @@ class cusbarDalamProsesController extends Controller
             'gambar'      => isset($img) ? $img->hashName():null,
         ]);
         // Redirect ke halaman yang sesuai
-        return redirect('/cbDalamProses')->with(['success' => 'Data Berhasil ditambah']);
+        return redirect('/cbDalamProses')->with(['success' => 'Progres Berhasil ditambah']);
     }
 
     public function selesai($idPesanan){
@@ -107,9 +108,12 @@ class cusbarDalamProsesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $idPesanan)
     {
         //
+        $pesanan1 = Pesanan::find($idPesanan);
+        return view("admin_konten.cbDalamProses", compact("pesanan1"));
+
     }
 
     /**

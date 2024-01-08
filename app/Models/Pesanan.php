@@ -33,7 +33,7 @@ class Pesanan extends Model
         'statusPesanan',
         'statusPembayaran',
         'idUser',
-        'idProduk'
+        'idProduk',
     ];
 
 

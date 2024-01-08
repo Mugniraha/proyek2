@@ -36,20 +36,20 @@
                                     <i class="fa-regular fa-user" style="color: #f6f1db;"></i> <span class="ms-1 d-none d-sm-inline">Profil</span>
                                 </a>
                             </li>
-                            <li class="nav-item ">
-                                <a href="{{ url('/galeri')}}" class="nav-link align-middle px-0">
-                                    <i class="fa-regular fa-image {{($slug === "galeri") ? 'active' : ''}}" style="color: #f6f1db;"></i></i> <span class="ms-1 d-none d-sm-inline ">Kelola Produk</span>
-                                </a>
-                            </li>
                             <li>
                                 <ul class="nav flex-column" id="menu">
                                     <li class="nav-item">
                                         <a href="#submenu" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                            <i class="fa-solid fa-sliders" style="color: #f6f1db;"></i>
-                                            <span class="ms-1 d-none d-sm-inline">Kelola Custom Barang</span>
+                                            <i class="fa-solid fa-bag-shopping" style="color: #f6f1db;"></i>
+                                            <span class="ms-1 d-none d-sm-inline">Kelola Produk</span>
                                         </a>
                                         <div class="collapse" id="submenu">
                                             <ul class="nav flex-column ms-1">
+                                                <li class="nav-item ">
+                                                    <a href="{{ url('/galeri')}}" class="nav-link align-middle px-0">
+                                                        <span class="d-none d-sm-inline ">Produk</span>
+                                                    </a>
+                                                </li>
                                                 <li>
                                                     <a href="{{ url('/bahan') }}" class="nav-link align-middle px-0">
                                                         {{-- <i class="fa-solid fa-truck" style="color: #f6f1db;"></i> --}}
